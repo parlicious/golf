@@ -1,5 +1,7 @@
 {
   "guid": "b21cc1ef-c798-4ea9-b44c-049f7b343651",
+  "tournament": "masters",
+  "year": "2019",
   "name": "Jeremy Lizza",
   "editKey": "hex string of sha-512'd input",
   "picks": [
