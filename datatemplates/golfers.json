@@ -1,0 +1,959 @@
+{
+  "1226": {
+    "id": "1226",
+    "first_name": "Fred",
+    "last_name": "Couples",
+    "tournament_ids": {
+      "masters": "",
+      "pga": "",
+      "open": "",
+      "us_open": ""
+    }
+  },
+  "1666": {
+    "id": "1666",
+    "first_name": "Bernhard",
+    "last_name": "Langer",
+    "tournament_ids": {
+      "masters": "",
+      "pga": "",
+      "open": "",
+      "us_open": ""
+    }
+  },
+  "1717": {
+    "id": "1717",
+    "first_name": "Sandy",
+    "last_name": "Lyle",
+    "tournament_ids": {
+      "masters": "",
+      "pga": "",
+      "open": "",
+      "us_open": ""
+    }
+  },
+  "1810": {
+    "id": "1810",
+    "first_name": "Phil",
+    "last_name": "Mickelson",
+    "tournament_ids": {
+      "masters": "",
+      "pga": "",
+      "open": "",
+      "us_open": ""
+    }
+  },
+  "1823": {
+    "id": "1823",
+    "first_name": "Larry",
+    "last_name": "Mize",
+    "tournament_ids": {
+      "masters": "",
+      "pga": "",
+      "open": "",
+      "us_open": ""
+    }
+  },
+  "1887": {
+    "id": "1887",
+    "first_name": "Mark",
+    "last_name": "O'Meara",
+    "tournament_ids": {
+      "masters": "",
+      "pga": "",
+      "open": "",
+      "us_open": ""
+    }
+  },
+  "2300": {
+    "id": "2300",
+    "first_name": "Ian",
+    "last_name": "Woosnam",
+    "tournament_ids": {
+      "masters": "",
+      "pga": "",
+      "open": "",
+      "us_open": ""
+    }
+  },
+  "6373": {
+    "id": "6373",
+    "first_name": "Jose Maria",
+    "last_name": "Olazabal",
+    "tournament_ids": {
+      "masters": "",
+      "pga": "",
+      "open": "",
+      "us_open": ""
+    }
+  },
+  "6567": {
+    "id": "6567",
+    "first_name": "Vijay",
+    "last_name": "Singh",
+    "tournament_ids": {
+      "masters": "",
+      "pga": "",
+      "open": "",
+      "us_open": ""
+    }
+  },
+  "8793": {
+    "id": "8793",
+    "first_name": "Tiger",
+    "last_name": "Woods",
+    "tournament_ids": {
+      "masters": "",
+      "pga": "",
+      "open": "",
+      "us_open": ""
+    }
+  },
+  "10423": {
+    "id": "10423",
+    "first_name": "Mike",
+    "last_name": "Weir",
+    "tournament_ids": {
+      "masters": "",
+      "pga": "",
+      "open": "",
+      "us_open": ""
+    }
+  },
+  "12716": {
+    "id": "12716",
+    "first_name": "Charley",
+    "last_name": "Hoffman",
+    "tournament_ids": {
+      "masters": "",
+      "pga": "",
+      "open": "",
+      "us_open": ""
+    }
+  },
+  "20848": {
+    "id": "20848",
+    "first_name": "Angel",
+    "last_name": "Cabrera",
+    "tournament_ids": {
+      "masters": "",
+      "pga": "",
+      "open": "",
+      "us_open": ""
+    }
+  },
+  "21209": {
+    "id": "21209",
+    "first_name": "Sergio",
+    "last_name": "Garcia",
+    "tournament_ids": {
+      "masters": "",
+      "pga": "",
+      "open": "",
+      "us_open": ""
+    }
+  },
+  "21528": {
+    "id": "21528",
+    "first_name": "Henrik",
+    "last_name": "Stenson",
+    "tournament_ids": {
+      "masters": "",
+      "pga": "",
+      "open": "",
+      "us_open": ""
+    }
+  },
+  "22378": {
+    "id": "22378",
+    "first_name": "Trevor",
+    "last_name": "Immelman",
+    "tournament_ids": {
+      "masters": "",
+      "pga": "",
+      "open": "",
+      "us_open": ""
+    }
+  },
+  "22405": {
+    "id": "22405",
+    "first_name": "Justin",
+    "last_name": "Rose",
+    "tournament_ids": {
+      "masters": "",
+      "pga": "",
+      "open": "",
+      "us_open": ""
+    }
+  },
+  "23108": {
+    "id": "23108",
+    "first_name": "Matt",
+    "last_name": "Kuchar",
+    "tournament_ids": {
+      "masters": "",
+      "pga": "",
+      "open": "",
+      "us_open": ""
+    }
+  },
+  "23821": {
+    "id": "23821",
+    "first_name": "Yusaku",
+    "last_name": "Miyazato",
+    "tournament_ids": {
+      "masters": "",
+      "pga": "",
+      "open": "",
+      "us_open": ""
+    }
+  },
+  "24024": {
+    "id": "24024",
+    "first_name": "Zach",
+    "last_name": "Johnson",
+    "tournament_ids": {
+      "masters": "",
+      "pga": "",
+      "open": "",
+      "us_open": ""
+    }
+  },
+  "24138": {
+    "id": "24138",
+    "first_name": "Ian",
+    "last_name": "Poulter",
+    "tournament_ids": {
+      "masters": "",
+      "pga": "",
+      "open": "",
+      "us_open": ""
+    }
+  },
+  "24361": {
+    "id": "24361",
+    "first_name": "Pat",
+    "last_name": "Perez",
+    "tournament_ids": {
+      "masters": "",
+      "pga": "",
+      "open": "",
+      "us_open": ""
+    }
+  },
+  "24502": {
+    "id": "24502",
+    "first_name": "Adam",
+    "last_name": "Scott",
+    "tournament_ids": {
+      "masters": "",
+      "pga": "",
+      "open": "",
+      "us_open": ""
+    }
+  },
+  "25198": {
+    "id": "25198",
+    "first_name": "Francesco",
+    "last_name": "Molinari",
+    "tournament_ids": {
+      "masters": "",
+      "pga": "",
+      "open": "",
+      "us_open": ""
+    }
+  },
+  "25364": {
+    "id": "25364",
+    "first_name": "Paul",
+    "last_name": "Casey",
+    "tournament_ids": {
+      "masters": "",
+      "pga": "",
+      "open": "",
+      "us_open": ""
+    }
+  },
+  "25632": {
+    "id": "25632",
+    "first_name": "Jimmy",
+    "last_name": "Walker",
+    "tournament_ids": {
+      "masters": "",
+      "pga": "",
+      "open": "",
+      "us_open": ""
+    }
+  },
+  "25686": {
+    "id": "25686",
+    "first_name": "Jason",
+    "last_name": "Dufner",
+    "tournament_ids": {
+      "masters": "",
+      "pga": "",
+      "open": "",
+      "us_open": ""
+    }
+  },
+  "25804": {
+    "id": "25804",
+    "first_name": "Bubba",
+    "last_name": "Watson",
+    "tournament_ids": {
+      "masters": "",
+      "pga": "",
+      "open": "",
+      "us_open": ""
+    }
+  },
+  "26329": {
+    "id": "26329",
+    "first_name": "Louis",
+    "last_name": "Oosthuizen",
+    "tournament_ids": {
+      "masters": "",
+      "pga": "",
+      "open": "",
+      "us_open": ""
+    }
+  },
+  "26331": {
+    "id": "26331",
+    "first_name": "Charl",
+    "last_name": "Schwartzel",
+    "tournament_ids": {
+      "masters": "",
+      "pga": "",
+      "open": "",
+      "us_open": ""
+    }
+  },
+  "26476": {
+    "id": "26476",
+    "first_name": "Chez",
+    "last_name": "Reavie",
+    "tournament_ids": {
+      "masters": "",
+      "pga": "",
+      "open": "",
+      "us_open": ""
+    }
+  },
+  "26499": {
+    "id": "26499",
+    "first_name": "Rafael",
+    "last_name": "Cabrera Bello",
+    "tournament_ids": {
+      "masters": "",
+      "pga": "",
+      "open": "",
+      "us_open": ""
+    }
+  },
+  "26596": {
+    "id": "26596",
+    "first_name": "Ryan",
+    "last_name": "Moore",
+    "tournament_ids": {
+      "masters": "",
+      "pga": "",
+      "open": "",
+      "us_open": ""
+    }
+  },
+  "26851": {
+    "id": "26851",
+    "first_name": "Marc",
+    "last_name": "Leishman",
+    "tournament_ids": {
+      "masters": "",
+      "pga": "",
+      "open": "",
+      "us_open": ""
+    }
+  },
+  "26908": {
+    "id": "26908",
+    "first_name": "Yuta",
+    "last_name": "Ikeda",
+    "tournament_ids": {
+      "masters": "",
+      "pga": "",
+      "open": "",
+      "us_open": ""
+    }
+  },
+  "27064": {
+    "id": "27064",
+    "first_name": "Jhonattan",
+    "last_name": "Vegas",
+    "tournament_ids": {
+      "masters": "",
+      "pga": "",
+      "open": "",
+      "us_open": ""
+    }
+  },
+  "27349": {
+    "id": "27349",
+    "first_name": "Alex",
+    "last_name": "Noren",
+    "tournament_ids": {
+      "masters": "",
+      "pga": "",
+      "open": "",
+      "us_open": ""
+    }
+  },
+  "27408": {
+    "id": "27408",
+    "first_name": "Martin",
+    "last_name": "Kaymer",
+    "tournament_ids": {
+      "masters": "",
+      "pga": "",
+      "open": "",
+      "us_open": ""
+    }
+  },
+  "27556": {
+    "id": "27556",
+    "first_name": "Ted",
+    "last_name": "Potter, Jr.",
+    "tournament_ids": {
+      "masters": "",
+      "pga": "",
+      "open": "",
+      "us_open": ""
+    }
+  },
+  "27644": {
+    "id": "27644",
+    "first_name": "Brian",
+    "last_name": "Harman",
+    "tournament_ids": {
+      "masters": "",
+      "pga": "",
+      "open": "",
+      "us_open": ""
+    }
+  },
+  "27896": {
+    "id": "27896",
+    "first_name": "Ross",
+    "last_name": "Fisher",
+    "tournament_ids": {
+      "masters": "",
+      "pga": "",
+      "open": "",
+      "us_open": ""
+    }
+  },
+  "28089": {
+    "id": "28089",
+    "first_name": "Jason",
+    "last_name": "Day",
+    "tournament_ids": {
+      "masters": "",
+      "pga": "",
+      "open": "",
+      "us_open": ""
+    }
+  },
+  "28237": {
+    "id": "28237",
+    "first_name": "Rory",
+    "last_name": "McIlroy",
+    "tournament_ids": {
+      "masters": "",
+      "pga": "",
+      "open": "",
+      "us_open": ""
+    }
+  },
+  "29221": {
+    "id": "29221",
+    "first_name": "Webb",
+    "last_name": "Simpson",
+    "tournament_ids": {
+      "masters": "",
+      "pga": "",
+      "open": "",
+      "us_open": ""
+    }
+  },
+  "29420": {
+    "id": "29420",
+    "first_name": "Billy",
+    "last_name": "Horschel",
+    "tournament_ids": {
+      "masters": "",
+      "pga": "",
+      "open": "",
+      "us_open": ""
+    }
+  },
+  "29454": {
+    "id": "29454",
+    "first_name": "Bernd",
+    "last_name": "Wiesberger",
+    "tournament_ids": {
+      "masters": "",
+      "pga": "",
+      "open": "",
+      "us_open": ""
+    }
+  },
+  "29478": {
+    "id": "29478",
+    "first_name": "Kevin",
+    "last_name": "Kisner",
+    "tournament_ids": {
+      "masters": "",
+      "pga": "",
+      "open": "",
+      "us_open": ""
+    }
+  },
+  "29518": {
+    "id": "29518",
+    "first_name": "Brendan",
+    "last_name": "Steele",
+    "tournament_ids": {
+      "masters": "",
+      "pga": "",
+      "open": "",
+      "us_open": ""
+    }
+  },
+  "29725": {
+    "id": "29725",
+    "first_name": "Tony",
+    "last_name": "Finau",
+    "tournament_ids": {
+      "masters": "",
+      "pga": "",
+      "open": "",
+      "us_open": ""
+    }
+  },
+  "29970": {
+    "id": "29970",
+    "first_name": "Dylan",
+    "last_name": "Frittelli",
+    "tournament_ids": {
+      "masters": "",
+      "pga": "",
+      "open": "",
+      "us_open": ""
+    }
+  },
+  "29974": {
+    "id": "29974",
+    "first_name": "Branden",
+    "last_name": "Grace",
+    "tournament_ids": {
+      "masters": "",
+      "pga": "",
+      "open": "",
+      "us_open": ""
+    }
+  },
+  "30110": {
+    "id": "30110",
+    "first_name": "Kyle",
+    "last_name": "Stanley",
+    "tournament_ids": {
+      "masters": "",
+      "pga": "",
+      "open": "",
+      "us_open": ""
+    }
+  },
+  "30911": {
+    "id": "30911",
+    "first_name": "Tommy",
+    "last_name": "Fleetwood",
+    "tournament_ids": {
+      "masters": "",
+      "pga": "",
+      "open": "",
+      "us_open": ""
+    }
+  },
+  "30925": {
+    "id": "30925",
+    "first_name": "Dustin",
+    "last_name": "Johnson",
+    "tournament_ids": {
+      "masters": "",
+      "pga": "",
+      "open": "",
+      "us_open": ""
+    }
+  },
+  "30978": {
+    "id": "30978",
+    "first_name": "Kiradech",
+    "last_name": "Aphibarnrat",
+    "tournament_ids": {
+      "masters": "",
+      "pga": "",
+      "open": "",
+      "us_open": ""
+    }
+  },
+  "31323": {
+    "id": "31323",
+    "first_name": "Gary",
+    "last_name": "Woodland",
+    "tournament_ids": {
+      "masters": "",
+      "pga": "",
+      "open": "",
+      "us_open": ""
+    }
+  },
+  "32102": {
+    "id": "32102",
+    "first_name": "Rickie",
+    "last_name": "Fowler",
+    "tournament_ids": {
+      "masters": "",
+      "pga": "",
+      "open": "",
+      "us_open": ""
+    }
+  },
+  "32139": {
+    "id": "32139",
+    "first_name": "Danny",
+    "last_name": "Willett",
+    "tournament_ids": {
+      "masters": "",
+      "pga": "",
+      "open": "",
+      "us_open": ""
+    }
+  },
+  "32366": {
+    "id": "32366",
+    "first_name": "Kevin",
+    "last_name": "Chappell",
+    "tournament_ids": {
+      "masters": "",
+      "pga": "",
+      "open": "",
+      "us_open": ""
+    }
+  },
+  "32757": {
+    "id": "32757",
+    "first_name": "Patton",
+    "last_name": "Kizzire",
+    "tournament_ids": {
+      "masters": "",
+      "pga": "",
+      "open": "",
+      "us_open": ""
+    }
+  },
+  "32816": {
+    "id": "32816",
+    "first_name": "Satoshi",
+    "last_name": "Kodaira",
+    "tournament_ids": {
+      "masters": "",
+      "pga": "",
+      "open": "",
+      "us_open": ""
+    }
+  },
+  "32839": {
+    "id": "32839",
+    "first_name": "Hideki",
+    "last_name": "Matsuyama",
+    "tournament_ids": {
+      "masters": "",
+      "pga": "",
+      "open": "",
+      "us_open": ""
+    }
+  },
+  "33293": {
+    "id": "33293",
+    "first_name": "Thomas",
+    "last_name": "Pieters",
+    "tournament_ids": {
+      "masters": "",
+      "pga": "",
+      "open": "",
+      "us_open": ""
+    }
+  },
+  "33399": {
+    "id": "33399",
+    "first_name": "Adam",
+    "last_name": "Hadwin",
+    "tournament_ids": {
+      "masters": "",
+      "pga": "",
+      "open": "",
+      "us_open": ""
+    }
+  },
+  "33448": {
+    "id": "33448",
+    "first_name": "Justin",
+    "last_name": "Thomas",
+    "tournament_ids": {
+      "masters": "",
+      "pga": "",
+      "open": "",
+      "us_open": ""
+    }
+  },
+  "34046": {
+    "id": "34046",
+    "first_name": "Jordan",
+    "last_name": "Spieth",
+    "tournament_ids": {
+      "masters": "",
+      "pga": "",
+      "open": "",
+      "us_open": ""
+    }
+  },
+  "34098": {
+    "id": "34098",
+    "first_name": "Russell",
+    "last_name": "Henley",
+    "tournament_ids": {
+      "masters": "",
+      "pga": "",
+      "open": "",
+      "us_open": ""
+    }
+  },
+  "34360": {
+    "id": "34360",
+    "first_name": "Patrick",
+    "last_name": "Reed",
+    "tournament_ids": {
+      "masters": "",
+      "pga": "",
+      "open": "",
+      "us_open": ""
+    }
+  },
+  "34363": {
+    "id": "34363",
+    "first_name": "Tyrrell",
+    "last_name": "Hatton",
+    "tournament_ids": {
+      "masters": "",
+      "pga": "",
+      "open": "",
+      "us_open": ""
+    }
+  },
+  "35296": {
+    "id": "35296",
+    "first_name": "Haotong",
+    "last_name": "Li",
+    "tournament_ids": {
+      "masters": "",
+      "pga": "",
+      "open": "",
+      "us_open": ""
+    }
+  },
+  "35450": {
+    "id": "35450",
+    "first_name": "Patrick",
+    "last_name": "Cantlay",
+    "tournament_ids": {
+      "masters": "",
+      "pga": "",
+      "open": "",
+      "us_open": ""
+    }
+  },
+  "35891": {
+    "id": "35891",
+    "first_name": "Cameron",
+    "last_name": "Smith",
+    "tournament_ids": {
+      "masters": "",
+      "pga": "",
+      "open": "",
+      "us_open": ""
+    }
+  },
+  "37455": {
+    "id": "37455",
+    "first_name": "Si Woo",
+    "last_name": "Kim",
+    "tournament_ids": {
+      "masters": "",
+      "pga": "",
+      "open": "",
+      "us_open": ""
+    }
+  },
+  "39113": {
+    "id": "39113",
+    "first_name": "Shubhankar",
+    "last_name": "Sharma",
+    "tournament_ids": {
+      "masters": "",
+      "pga": "",
+      "open": "",
+      "us_open": ""
+    }
+  },
+  "40026": {
+    "id": "40026",
+    "first_name": "Daniel",
+    "last_name": "Berger",
+    "tournament_ids": {
+      "masters": "",
+      "pga": "",
+      "open": "",
+      "us_open": ""
+    }
+  },
+  "40098": {
+    "id": "40098",
+    "first_name": "Matthew",
+    "last_name": "Fitzpatrick",
+    "tournament_ids": {
+      "masters": "",
+      "pga": "",
+      "open": "",
+      "us_open": ""
+    }
+  },
+  "45486": {
+    "id": "45486",
+    "first_name": "Joaquin",
+    "last_name": "Niemann",
+    "tournament_ids": {
+      "masters": "",
+      "pga": "",
+      "open": "",
+      "us_open": ""
+    }
+  },
+  "46435": {
+    "id": "46435",
+    "first_name": "Austin",
+    "last_name": "Cook",
+    "tournament_ids": {
+      "masters": "",
+      "pga": "",
+      "open": "",
+      "us_open": ""
+    }
+  },
+  "46837": {
+    "id": "46837",
+    "first_name": "Yuxin",
+    "last_name": "Lin",
+    "tournament_ids": {
+      "masters": "",
+      "pga": "",
+      "open": "",
+      "us_open": ""
+    }
+  },
+  "46970": {
+    "id": "46970",
+    "first_name": "Jon",
+    "last_name": "Rahm",
+    "tournament_ids": {
+      "masters": "",
+      "pga": "",
+      "open": "",
+      "us_open": ""
+    }
+  },
+  "47959": {
+    "id": "47959",
+    "first_name": "Bryson",
+    "last_name": "DeChambeau",
+    "tournament_ids": {
+      "masters": "",
+      "pga": "",
+      "open": "",
+      "us_open": ""
+    }
+  },
+  "48081": {
+    "id": "48081",
+    "first_name": "Xander",
+    "last_name": "Schauffele",
+    "tournament_ids": {
+      "masters": "",
+      "pga": "",
+      "open": "",
+      "us_open": ""
+    }
+  },
+  "48084": {
+    "id": "48084",
+    "first_name": "Wesley",
+    "last_name": "Bryan",
+    "tournament_ids": {
+      "masters": "",
+      "pga": "",
+      "open": "",
+      "us_open": ""
+    }
+  },
+  "52375": {
+    "id": "52375",
+    "first_name": "Doug",
+    "last_name": "Ghim",
+    "tournament_ids": {
+      "masters": "",
+      "pga": "",
+      "open": "",
+      "us_open": ""
+    }
+  },
+  "52569": {
+    "id": "52569",
+    "first_name": "Harry",
+    "last_name": "Ellis",
+    "tournament_ids": {
+      "masters": "",
+      "pga": "",
+      "open": "",
+      "us_open": ""
+    }
+  },
+  "53165": {
+    "id": "53165",
+    "first_name": "Doc",
+    "last_name": "Redman",
+    "tournament_ids": {
+      "masters": "",
+      "pga": "",
+      "open": "",
+      "us_open": ""
+    }
+  },
+  "54318": {
+    "id": "54318",
+    "first_name": "Matt",
+    "last_name": "Parziale",
+    "tournament_ids": {
+      "masters": "",
+      "pga": "",
+      "open": "",
+      "us_open": ""
+    }
+  }
+}
