@@ -1,7 +1,7 @@
 {
   "id": 1,
   "name": "Jeremy Lizza",
-  "editKey": "fc32d8cf10d0dc1ac12d4146bd77685cdc4bb4f35ccd9453606b7061dbc4cba0",
+  "editKey": "hex string of sha-512'd input",
   "picks": [
     {
       "id": "33448",
