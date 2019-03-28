@@ -13,7 +13,7 @@ const bufferToHex = (buffer) => {
   return s;
 };
 
-const sha256 = async (key) => {
+export const sha256 = async (key) => {
   const keyBuffer = await digestMessage(key);
   return bufferToHex(keyBuffer);
 };
