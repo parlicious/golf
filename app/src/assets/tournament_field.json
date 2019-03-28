@@ -1,6 +1,10 @@
 {
   "tournament_id": "1",
   "tournament_name": "name",
+  "year": 2018,
+  "data_url": "http://example.com",
+  "start_date_ms": 1553732616829,
+  "end_date_ms": 1553732616829,
   "field": [
     {
       "id": "1226",
