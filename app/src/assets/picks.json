@@ -1,0 +1,39 @@
+{
+    "hash": null,
+    "timestamp": null,
+    "pool_participants": [
+        {
+            "id":1,
+            "name":"Jeremy Lizza",
+            "picks":[
+                { "id": "33448", "tier": "A" },
+                { "id": "8793", "tier": "A" },
+                { "id": "22405", "tier": "B" },
+                { "id": "32102", "tier": "B" },
+                { "id": "24138", "tier": "C" },
+                { "id": "47959", "tier": "C" },
+                { "id": "12716", "tier": "C" },
+                { "id": "31323", "tier": "D" },
+                { "id": "25632", "tier": "D" },
+                { "id": "29221", "tier": "D" },
+                { "id": "27064", "tier": "D" }
+            ]
+        }, {
+            "id":2,
+            "name":"Brian O'Connor",
+            "picks":[
+                { "id": "28237", "tier": "A" },
+                { "id": "34046", "tier": "A" },
+                { "id": "25804", "tier": "B" },
+                { "id": "32102", "tier": "B" },
+                { "id": "24502", "tier": "C" },
+                { "id": "26851", "tier": "C" },
+                { "id": "34363", "tier": "C" },
+                { "id": "33399", "tier": "D" },
+                { "id": "34098", "tier": "D" },
+                { "id": "25686", "tier": "D" },
+                { "id": "29970", "tier": "D" }
+            ]
+        }
+    ]
+}
