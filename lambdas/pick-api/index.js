@@ -1,6 +1,41 @@
 const AWS = require('aws-sdk');
 const s3 = new AWS.S3();
 
+const errors = {
+    tooFewOfTier: (tier) => `Too few picks for tier ${tier}`,
+    tooManyOfTier: (tier) => `Too many picks for tier ${tier}`,
+    missingRequired: (val) => `Missing required value: ${value}`
+};
+
+const requiredPlayerPickValues = [
+    'guid',
+    'tournament',
+    'year',
+    'name',
+    'editKey',
+    'picks'
+];
+
+const validatePick = (pick) => {
+
+};
+
+const validateRequiredFields = (pickRequest, requiredFields) => {
+    return requiredFields
+        .filter((field) => !pickRequest[field])
+        .map(errors.missingRequired)
+};
+
+const validatePicksMeetTierRequirements = (picks, tierRequirements) => {
+    picks.reduce((acc, val) => {
+
+    }, {})
+};
+
+const validatePicksRequest = (pickRequest, tierRequirements) => {
+    const missingRequiredFields = validateRequiredFields(pickRequest, requiredPlayerPickValues);
+    const picksCorrect =
+};
 
 exports.handler = async (event, context, callback) => {
     console.log('Received event:', JSON.stringify(event, null, 2));
