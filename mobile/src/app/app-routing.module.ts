@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
-	{ path: '', redirectTo: 'main/scoreboard', pathMatch: 'full' },
+	// { path: '', redirectTo: 'main/scoreboard', pathMatch: 'full' },
 	{ path: 'auth/login', loadChildren: './auth/login/login.module#LoginPageModule' },
 	{ path: 'main/scoreboard', loadChildren: './main/scoreboard/scoreboard.module#ScoreboardPageModule' },
 	{ path: 'main/leaderboard', loadChildren: './main/leaderboard/leaderboard.module#LeaderboardPageModule' },

@@ -6,6 +6,8 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { ApiService } from './services/api/api.service';
 import { AlertService } from './services/alert/alert.service';
 import { Api } from './classes/api';
+import { Router } from '@angular/router';
+import { routerNgProbeToken } from '@angular/router/src/router_module';
 
 @Component({
   selector: 'app-root',
@@ -13,9 +15,9 @@ import { Api } from './classes/api';
 })
 export class AppComponent {
 
-	minimumApiVersion: string = '0.0.2';
+	minimumApiVersion: string = '0.0.1';
 
-	constructor(private platform: Platform, private splashScreen: SplashScreen, private statusBar: StatusBar, private apiService: ApiService, private alertService: AlertService) {
+	constructor(private platform: Platform, private splashScreen: SplashScreen, private statusBar: StatusBar, private router: Router, private apiService: ApiService, private alertService: AlertService) {
 		this.initializeApp();
 	}
 
@@ -43,12 +45,15 @@ export class AppComponent {
 		this.apiService.getApi().subscribe((api: Api) => {
 			let valid = this.validateVersion(api.apiVersion.split('.'), this.minimumApiVersion.split('.'))
 			if(!valid) {
-				this.alertService.presentAlert('Upgrade', `Your app appears to be out of date. Please download the latest version from the store.`);
+				this.router.navigate(['upgrade']);
+				this.splashScreen.hide();
 			} else {
+				this.router.navigate(['main', 'scoreboard']);
 				this.splashScreen.hide();
 			}
 		}, err => {
 			this.alertService.presentAlert('Error', `We weren't able to find an internet connection. Please validate you're connected to the internet and you have the latest version of the app.`);
+			this.splashScreen.hide();
 		});
 	}
 }
