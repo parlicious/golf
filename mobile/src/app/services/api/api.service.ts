@@ -11,6 +11,10 @@ export class ApiService {
 
 	constructor(private http: HttpClient) { }
 
+	get(url: string) {
+		return this.http.get(url).toPromise();
+	}
+
 	getApi() {
 		return this.http.get(`${environment.apiUrl}/api.json`);
 	}
