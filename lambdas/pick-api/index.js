@@ -85,12 +85,6 @@ const validatePicksMeetTierRequirements = (picksRequest, tierRequirements) => {
     }
 };
 
-const validatePicksRequest = (pickRequest, tierRequirements) => {
-    const missingRequiredFields = validateRequiredFields(pickRequest, requiredPlayerPickValues);
-    const tierRequirementsNotMet = validatePicksMeetTierRequirements(pickRequest, tierRequirements);
-    return missingRequiredFields.concat(tierRequirementsNotMet);
-};
-
 const listExistingIndividualPicks = async (tournament, year) => {
     const prefix = `picks/${tournament}/${year}/individual`;
 
@@ -157,7 +151,6 @@ exports.handler = async (event, context, callback) => {
     const missingFields = validateRequiredFields(body, requiredPlayerPickValues);
 
     // validate request
-
     if (missingFields.length !== 0) {
         return multipleErrors(missingFields)
     }
@@ -166,12 +159,18 @@ exports.handler = async (event, context, callback) => {
     const existingPicks = await listExistingIndividualPicks(body.tournament, body.year);
     const picksFound = existingPicks.find(e => e.email === body.email);
 
-    // validate edit key
+    /*
+    TODO: Add check to see tournament/year are valid
+    TODO: Pull tier requirements and check those also
+     */
     if (picksFound) {
         const existingPickKey = picksFound.key;
         const existingPick = await getPick(existingPickKey);
+
+        // validate edit key
         if(body.editKey === existingPick.editKey){
             try {
+                // update existing picks
                 await savePicks(existingPickKey, body)
             } catch (e){
                 console.log(e);
@@ -182,6 +181,8 @@ exports.handler = async (event, context, callback) => {
         }
         return success(existingPick);
     } else {
+
+        // save new picks
         await saveNewPicks(body);
         return success(body);
     }
