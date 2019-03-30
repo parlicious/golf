@@ -1,5 +1,7 @@
 {
-  "name": "golf",
-  "integrations": {},
+  "name": "Parlicious",
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }
