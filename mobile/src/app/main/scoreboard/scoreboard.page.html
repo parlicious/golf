@@ -1,7 +1,22 @@
+<ion-header>
+	<ion-toolbar color="primary">
+		<ion-title>{{ activeTournament.title }} Scoreboard</ion-title>
+	</ion-toolbar>
+</ion-header>
 <ion-content>
-	<ion-list>
-		<ion-item *ngFor="let participant of picks">
-			<ion-label>Pokémon Yellow</ion-label>
-		</ion-item>
-	</ion-list>
+	<ng-container *ngIf="error">
+		<div class="error">
+			{{ error }}
+		</div>
+	</ng-container>
+	<ng-container *ngIf="activeTournament && picks && picks.pool_participants">
+		<ion-list>
+			<ion-item *ngFor="let participant of picks.pool_participants" (click)="showParticipant(participant)">
+				<ion-label>{{ participant.name }}</ion-label>
+				<div slot="end">
+					{{ participant.score }}
+				</div>
+			</ion-item>
+		</ion-list>
+	</ng-container>
 </ion-content>
