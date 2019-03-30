@@ -9,7 +9,7 @@ const errors = {
 
 const DATA_BUCKET = 'parlicious-data';
 
-const generateErrorResponse = (errors) => {
+const multipleErrors = (errors) => {
     const responseBody = {
         message: `There was ${errors.length === 1 ? 'an error' : 'some errors'} with your request`,
         errors: errors
@@ -22,6 +22,32 @@ const generateErrorResponse = (errors) => {
         }
     }
 };
+
+const fail = (message, statusCode = '400') => {
+    const responseBody = {
+        message
+    };
+
+    return {
+        statusCode: statusCode,
+        body: JSON.stringify(responseBody),
+        headers: {
+            'Content-Type': 'application/json',
+        }
+    }
+};
+
+const success = (responseBody) => {
+    return {
+        statusCode: '200',
+        body: JSON.stringify(responseBody),
+        headers: {
+            'Content-Type': 'application/json',
+        }
+    }
+};
+
+
 
 const requiredPlayerPickValues = [
     'guid',
@@ -44,7 +70,7 @@ const validatePicksMeetTierRequirements = (picksRequest, tierRequirements) => {
             if (acc.hasOwnProperty(val.tier)) {
                 acc[val.tier]++;
             } else {
-                acc[val.tier] = 1;
+                 acc[val.tier] = 1;
             }
         }, {});
 
@@ -108,6 +134,22 @@ const getPick = async (key) => {
     return JSON.parse(data.Body);
 };
 
+const savePicks = async (key, picks) => {
+
+    const params = {
+        Bucket: DATA_BUCKET,
+        Key: key,
+        Body: JSON.stringify(picks)
+    };
+
+    await s3.putObject(params).promise();
+};
+
+const saveNewPicks = async (picks) => {
+    const key = `picks/${picks.tournament}/${picks.year}/individual/${picks.email}`;
+    await savePicks(key, picks)
+};
+
 
 exports.handler = async (event, context, callback) => {
     console.log('Received event:', JSON.stringify(event, null, 2));
@@ -117,51 +159,30 @@ exports.handler = async (event, context, callback) => {
     // validate request
 
     if (missingFields.length !== 0) {
-        return generateErrorResponse(missingFields)
+        return multipleErrors(missingFields)
     }
 
     // check for existing pick w/ this email
     const existingPicks = await listExistingIndividualPicks(body.tournament, body.year);
-    const existingPickKey = existingPicks.find(e => e.email === body.email).key;
+    const picksFound = existingPicks.find(e => e.email === body.email);
 
     // validate edit key
-    if (existingPickKey) {
+    if (picksFound) {
+        const existingPickKey = picksFound.key;
         const existingPick = await getPick(existingPickKey);
-        return {
-            statusCode: '200',
-            body: JSON.stringify(existingPick),
-            headers: {
-                'Content-Type': 'application/json',
+        if(body.editKey === existingPick.editKey){
+            try {
+                await savePicks(existingPickKey, body)
+            } catch (e){
+                console.log(e);
+                return fail('Unable to update picks');
             }
+        } else {
+            return fail('EditKey is incorrect', '403');
         }
+        return success(existingPick);
     } else {
-        return {
-            statusCode: '200',
-            body: JSON.stringify(existingPicks),
-            headers: {
-                'Content-Type': 'application/json',
-            }
-        }
+        await saveNewPicks(body);
+        return success(body);
     }
-
-    // switch (event.httpMethod) {
-    //     case 'DELETE':
-    //         console.log('Delete');
-    //         done(false, JSON.parse(event.body));
-    //         break;
-    //     case 'GET':
-    //         console.log('Get');
-    //         done(false, JSON.parse(event.body));
-    //         break;
-    //     case 'POST':
-    //         console.log('Post');
-    //         done(false, JSON.parse(event.body));
-    //         break;
-    //     case 'PUT':
-    //         console.log('Put');
-    //         done(false, JSON.parse(event.body));
-    //         break;
-    //     default:
-    //         done(new Error(`Unsupported method "${event.httpMethod}"`));
-    // }
 };
