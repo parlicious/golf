@@ -1,9 +1,9 @@
 import Vue from 'vue';
 import axios from 'axios';
 import VueAxios from 'vue-axios';
-import { API_URL } from '@/common/config';
+import { API_URL, DATA_URL } from '@/common/config';
 
-const ApiService = {
+export const ApiService = {
   init() {
     Vue.use(VueAxios, axios);
     Vue.axios.defaults.baseURL = API_URL;
@@ -15,8 +15,12 @@ const ApiService = {
     });
   },
 
-  get(resource, slug = '') {
-    return Vue.axios.get(`${resource}/${slug}`).catch((error) => {
+  getTournaments() {
+    return this.get(`${DATA_URL}/tournaments.json`);
+  },
+
+  get(resource) {
+    return Vue.axios.get(`${resource}`).catch((error) => {
       throw new Error(`[RWV] ApiService ${error}`);
     });
   },
@@ -41,4 +45,3 @@ const ApiService = {
 };
 
 export default ApiService;
-
