@@ -3,7 +3,7 @@ resource "aws_s3_bucket" "parlicious_cicd_cache" {
   acl    = "private"
 }
 
-resource "aws_codebuild_project" "parlicious-uat" {
+resource "aws_codebuild_project" "parlicious_uat" {
   name          = "parlicious-uat"
   description   = "parlicious uat pipeline"
   build_timeout = "10"
