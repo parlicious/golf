@@ -14,6 +14,11 @@ LAMBDA_FOLDERS=$(ls lambdas | awk ' BEGIN { ORS = ""; print "["; } { print "\/\@
 
 cd web
 
+eval "cat << EOF
+$(<src/common/config.js.tmpl)
+EOF
+" > src/common/config.js
+
 npm install
 npm run build
 

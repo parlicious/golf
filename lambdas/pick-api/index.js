@@ -7,7 +7,7 @@ const errors = {
     missingRequired: (val) => `Missing required value: ${val}`
 };
 
-const DATA_BUCKET = 'parlicious-data';
+const DATA_BUCKET = process.env.DATA_BUCKET_NAME || 'parlicious-data';
 
 const multipleErrors = (errors) => {
     const responseBody = {
