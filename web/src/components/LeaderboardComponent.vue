@@ -7,15 +7,17 @@
       Loading...
     </div>
 
-    <div v-if="leaderboard" class="content">
-      <h2>{{leaderboard.players}}</h2>
+    <div v-if="!loading" class="content">
+        <div v-for="participant in poolParticipants">
+          {{ participant.name}} : {{participant.score}}
+        </div>
     </div>
   </div>
 </template>
 
 <script>
 import { sha256 } from '../common/security';
-import { ApiService } from '../common/api';
+import { ScoreboardService } from '../common/scoreboard';
 
 export default {
   name: 'HelloWorld',
@@ -27,8 +29,8 @@ export default {
   data() {
     return {
       loading: false,
-      picks: null,
-      leaderboard: null,
+      players: {},
+      poolParticipants: [],
     };
   },
   created() {
@@ -43,13 +45,9 @@ export default {
   methods: {
     async fetchData() {
       this.loading = true;
-      // replace `getPost` with your data fetching util / API wrapper
-      const tournaments = await ApiService.getTournaments();
-      const active = tournaments.data.find(x => x.active);
-      this.leaderboard = await ApiService.get(active.leaderboard);
-      this.leaderboard = this.leaderboard.data;
-      this.picks = await ApiService.get(active.picks);
-      this.picks = this.picks.data;
+      const data = await ScoreboardService.load();
+      this.players = data.players;
+      this.poolParticipants = data.poolParticipants;
       this.loading = false;
     },
   },
