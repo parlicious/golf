@@ -1,29 +1,28 @@
-import {ApiService} from './api';
+import { ApiService } from './api';
 
-const calculatePoolParticipantScore = (poolParticipant, playerMap) => {
-  const score = poolParticipant.picks.reduce((acc, val) => {
+const calculatePoolParticipantScores = (poolParticipant, playerMap) => {
+  const [total, today] = poolParticipant.picks.reduce(([accTotal, accToday], val) => {
     const player = playerMap[val.id];
-    return acc + (player.to_par ? player.to_par : 0);
-  }, 0);
+    const newTotal = accTotal + parseInt(player.to_par ? player.to_par : 0, 10);
+    const newToday = accToday + parseInt(player.today ? player.today : 0, 10);
+    return [newTotal, newToday];
+  }, [0, 0]);
 
   return {
     ...poolParticipant,
-    score
-  }
+    total,
+    today,
+  };
 };
 
-const transformLeaderboardToPlayerMap = (leaderboard) => {
-  return leaderboard.players.reduce((acc, val) => {
-    acc[val.id] = val;
-    return acc;
-  }, {});
-};
+const transformLeaderboardToPlayerMap = leaderboard => leaderboard.players.reduce((acc, val) => {
+  acc[val.id] = val;
+  return acc;
+}, {});
 
-const scoreAndRankPoolParticipants = (poolParticipants, leaderboard) => {
-  return poolParticipants
-    .map(p => calculatePoolParticipantScore(p, leaderboard))
-    .sort((p1, p2) => p1.score - p2.score);
-};
+const scoreAndRankPoolParticipants = (poolParticipants, leaderboard) => poolParticipants
+  .map(p => calculatePoolParticipantScores(p, leaderboard))
+  .sort((p1, p2) => p1.total - p2.total);
 
 export const ScoreboardService = {
 
@@ -40,7 +39,7 @@ export const ScoreboardService = {
 
     return {
       players: this.players,
-      poolParticipants: this.poolParticipants
+      poolParticipants: this.poolParticipants,
     };
   },
 };

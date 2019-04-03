@@ -4,6 +4,8 @@ import App from './App.vue';
 import router from './router';
 import store from './store';
 import { ApiService } from './common/api';
+import 'bootstrap';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 Vue.use(AsyncComputed);
 

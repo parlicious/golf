@@ -1,16 +1,30 @@
 <template>
   <div class="post">
     <div class="hello">
-      <h1> LeaderBoard </h1>
+      <h1> Leaderboard </h1>
     </div>
     <div class="loading" v-if="loading">
       Loading...
     </div>
 
+
     <div v-if="!loading" class="content">
-        <div v-for="participant in poolParticipants">
-          {{ participant.name}} : {{participant.score}}
-        </div>
+      <table class="table">
+        <thead>
+        <tr>
+          <th scope="col">Rank</th>
+          <th scope="col">Name</th>
+          <th scope="col">Total</th>
+          <th scope="col">Today</th>
+          <th scope="col">Thru</th>
+        </tr>
+        </thead>
+        <pool-participant
+          v-for="participant in poolParticipants"
+          v-bind:key="participant.name"
+          v-bind:participant="participant">
+        </pool-participant>
+      </table>
     </div>
   </div>
 </template>
@@ -18,9 +32,11 @@
 <script>
 import { sha256 } from '../common/security';
 import { ScoreboardService } from '../common/scoreboard';
+import PoolParticipantComponent from '@/components/PoolParticipantComponent.vue';
 
 export default {
-  name: 'HelloWorld',
+  name: 'LeaderboardComponent',
+  components: { 'pool-participant': PoolParticipantComponent },
   asyncComputed: {
     async msg() {
       return sha256('hello world');
@@ -47,7 +63,11 @@ export default {
       this.loading = true;
       const data = await ScoreboardService.load();
       this.players = data.players;
-      this.poolParticipants = data.poolParticipants;
+      this.poolParticipants = data.poolParticipants
+        .map((p) => {
+          p.picks = p.picks.map(pick => this.players[pick.id]);
+          return p;
+        });
       this.loading = false;
     },
   },
