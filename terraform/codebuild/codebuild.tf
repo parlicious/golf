@@ -39,6 +39,6 @@ resource "aws_codebuild_project" "parlicious_uat" {
 }
 
 resource "aws_codebuild_webhook" "parlicious" {
-  project_name  = "${aws_codebuild_project.parlicious.name}"
+  project_name  = "${aws_codebuild_project.parlicious_uat.name}"
   branch_filter = "master"
 }
