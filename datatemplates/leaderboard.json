@@ -1,791 +1,878 @@
 {
-    "version": 1,
-    "round": 1,
-    "cut_line": "",
-    "timezone": "EDT",
-    "players": [
-      {
-        "id": "34360",
-        "first_name": "Patrick",
-        "last_name": "Reed",
-        "thru": "F",
-        "teetime": "2:40 PM",
-        "today": "-1",
-        "status": "F"
-      },
-      {
-        "id": "32102",
-        "first_name": "Rickie",
-        "last_name": "Fowler",
-        "thru": "F",
-        "teetime": "2:30 PM",
-        "today": "-5",
-        "status": "F"
-      },
-      {
-        "id": "34046",
-        "first_name": "Jordan",
-        "last_name": "Spieth",
-        "thru": "F",
-        "teetime": "2:00 PM",
-        "today": "-8",
-        "status": "F"
-      },
-      {
-        "id": "46970",
-        "first_name": "Jon",
-        "last_name": "Rahm",
-        "thru": "F",
-        "teetime": "2:30 PM",
-        "today": "-3",
-        "status": "F"
-      },
-      {
-        "id": "35891",
-        "first_name": "Cameron",
-        "last_name": "Smith",
-        "thru": "F",
-        "teetime": "1:50 PM",
-        "today": "-6",
-        "status": "F"
-      },
-      {
-        "id": "25804",
-        "first_name": "Bubba",
-        "last_name": "Watson",
-        "thru": "F",
-        "teetime": "2:10 PM",
-        "today": "-3",
-        "status": "F"
-      },
-      {
-        "id": "21528",
-        "first_name": "Henrik",
-        "last_name": "Stenson",
-        "thru": "F",
-        "teetime": "2:20 PM",
-        "today": "-2",
-        "status": "F"
-      },
-      {
-        "id": "28237",
-        "first_name": "Rory",
-        "last_name": "McIlroy",
-        "thru": "F",
-        "teetime": "2:40 PM",
-        "today": "+2",
-        "status": "F"
-      },
-      {
-        "id": "26851",
-        "first_name": "Marc",
-        "last_name": "Leishman",
-        "thru": "F",
-        "teetime": "2:10 PM",
-        "today": "-2",
-        "status": "F"
-      },
-      {
-        "id": "29725",
-        "first_name": "Tony",
-        "last_name": "Finau",
-        "thru": "F",
-        "teetime": "1:00 PM",
-        "today": "-6",
-        "status": "F"
-      },
-      {
-        "id": "30925",
-        "first_name": "Dustin",
-        "last_name": "Johnson",
-        "thru": "F",
-        "teetime": "1:50 PM",
-        "today": "-3",
-        "status": "F"
-      },
-      {
-        "id": "12716",
-        "first_name": "Charley",
-        "last_name": "Hoffman",
-        "thru": "F",
-        "teetime": "1:00 PM",
-        "today": "-5",
-        "status": "F"
-      },
-      {
-        "id": "22405",
-        "first_name": "Justin",
-        "last_name": "Rose",
-        "thru": "F",
-        "teetime": "1:40 PM",
-        "today": "-3",
-        "status": "F"
-      },
-      {
-        "id": "26329",
-        "first_name": "Louis",
-        "last_name": "Oosthuizen",
-        "thru": "F",
-        "teetime": "1:40 PM",
-        "today": "-3",
-        "status": "F"
-      },
-      {
-        "id": "25364",
-        "first_name": "Paul",
-        "last_name": "Casey",
-        "thru": "F",
-        "teetime": "12:10 PM",
-        "today": "-7",
-        "status": "F"
-      },
-      {
-        "id": "34098",
-        "first_name": "Russell",
-        "last_name": "Henley",
-        "thru": "F",
-        "teetime": "12:30 PM",
-        "today": "-5",
-        "status": "F"
-      },
-      {
-        "id": "33448",
-        "first_name": "Justin",
-        "last_name": "Thomas",
-        "thru": "F",
-        "teetime": "2:00 PM",
-        "today": "+1",
-        "status": "F"
-      },
-      {
-        "id": "30911",
-        "first_name": "Tommy",
-        "last_name": "Fleetwood",
-        "thru": "F",
-        "teetime": "2:20 PM",
-        "today": "+2",
-        "status": "F"
-      },
-      {
-        "id": "32839",
-        "first_name": "Hideki",
-        "last_name": "Matsuyama",
-        "thru": "F",
-        "teetime": "12:20 PM",
-        "today": "-3",
-        "status": "F"
-      },
-      {
-        "id": "29221",
-        "first_name": "Webb",
-        "last_name": "Simpson",
-        "thru": "F",
-        "teetime": "11:40 AM",
-        "today": "-5",
-        "status": "F"
-      },
-      {
-        "id": "25198",
-        "first_name": "Francesco",
-        "last_name": "Molinari",
-        "thru": "F",
-        "teetime": "12:40 PM",
-        "today": "-2",
-        "status": "F"
-      },
-      {
-        "id": "25632",
-        "first_name": "Jimmy",
-        "last_name": "Walker",
-        "thru": "F",
-        "teetime": "1:20 PM",
-        "today": "-1",
-        "status": "F"
-      },
-      {
-        "id": "28089",
-        "first_name": "Jason",
-        "last_name": "Day",
-        "thru": "F",
-        "teetime": "1:30 PM",
-        "today": "-1",
-        "status": "F"
-      },
-      {
-        "id": "29974",
-        "first_name": "Branden",
-        "last_name": "Grace",
-        "thru": "F",
-        "teetime": "11:00 AM",
-        "today": "-5",
-        "status": "F"
-      },
-      {
-        "id": "33399",
-        "first_name": "Adam",
-        "last_name": "Hadwin",
-        "thru": "F",
-        "teetime": "12:20 PM",
-        "today": "-1",
-        "status": "F"
-      },
-      {
-        "id": "37455",
-        "first_name": "Si Woo",
-        "last_name": "Kim",
-        "thru": "F",
-        "teetime": "12:50 PM",
-        "today": "-1",
-        "status": "F"
-      },
-      {
-        "id": "29454",
-        "first_name": "Bernd",
-        "last_name": "Wiesberger",
-        "thru": "F",
-        "teetime": "1:30 PM",
-        "today": "E",
-        "status": "F"
-      },
-      {
-        "id": "26596",
-        "first_name": "Ryan",
-        "last_name": "Moore",
-        "thru": "F",
-        "teetime": "11:50 AM",
-        "today": "-2",
-        "status": "F"
-      },
-      {
-        "id": "32816",
-        "first_name": "Satoshi",
-        "last_name": "Kodaira",
-        "thru": "F",
-        "teetime": "12:30 PM",
-        "today": "E",
-        "status": "F"
-      },
-      {
-        "id": "29478",
-        "first_name": "Kevin",
-        "last_name": "Kisner",
-        "thru": "F",
-        "teetime": "12:40 PM",
-        "today": "E",
-        "status": "F"
-      },
-      {
-        "id": "23108",
-        "first_name": "Matt",
-        "last_name": "Kuchar",
-        "thru": "F",
-        "teetime": "1:20 PM",
-        "today": "+1",
-        "status": "F"
-      },
-      {
-        "id": "8793",
-        "first_name": "Tiger",
-        "last_name": "Woods",
-        "thru": "F",
-        "teetime": "11:10 AM",
-        "today": "-3",
-        "status": "F"
-      },
-      {
-        "id": "24502",
-        "first_name": "Adam",
-        "last_name": "Scott",
-        "thru": "F",
-        "teetime": "12:00 PM",
-        "today": "-1",
-        "status": "F"
-      },
-      {
-        "id": "40026",
-        "first_name": "Daniel",
-        "last_name": "Berger",
-        "thru": "F",
-        "teetime": "12:00 PM",
-        "today": "-1",
-        "status": "F"
-      },
-      {
-        "id": "35296",
-        "first_name": "Haotong",
-        "last_name": "Li",
-        "thru": "F",
-        "teetime": "12:10 PM",
-        "today": "E",
-        "status": "F"
-      },
-      {
-        "id": "1810",
-        "first_name": "Phil",
-        "last_name": "Mickelson",
-        "thru": "F",
-        "teetime": "10:20 AM",
-        "today": "-5",
-        "status": "F"
-      },
-      {
-        "id": "24024",
-        "first_name": "Zach",
-        "last_name": "Johnson",
-        "thru": "F",
-        "teetime": "11:40 AM",
-        "today": "E",
-        "status": "F"
-      },
-      {
-        "id": "47959",
-        "first_name": "Bryson",
-        "last_name": "DeChambeau",
-        "thru": "F",
-        "teetime": "11:00 AM",
-        "today": "-1",
-        "status": "F"
-      },
-      {
-        "id": "26499",
-        "first_name": "Rafael",
-        "last_name": "Cabrera Bello",
-        "thru": "F",
-        "teetime": "11:10 AM",
-        "today": "E",
-        "status": "F"
-      },
-      {
-        "id": "1666",
-        "first_name": "Bernhard",
-        "last_name": "Langer",
-        "thru": "F",
-        "teetime": "11:20 AM",
-        "today": "E",
-        "status": "F"
-      },
-      {
-        "id": "1226",
-        "first_name": "Fred",
-        "last_name": "Couples",
-        "thru": "F",
-        "teetime": "11:20 AM",
-        "today": "E",
-        "status": "F"
-      },
-      {
-        "id": "27064",
-        "first_name": "Jhonattan",
-        "last_name": "Vegas",
-        "thru": "F",
-        "teetime": "11:50 AM",
-        "today": "+1",
-        "status": "F"
-      },
-      {
-        "id": "40098",
-        "first_name": "Matthew",
-        "last_name": "Fitzpatrick",
-        "thru": "F",
-        "teetime": "12:50 PM",
-        "today": "+3",
-        "status": "F"
-      },
-      {
-        "id": "24138",
-        "first_name": "Ian",
-        "last_name": "Poulter",
-        "thru": "F",
-        "teetime": "10:10 AM",
-        "today": "-3",
-        "status": "F"
-      },
-      {
-        "id": "27644",
-        "first_name": "Brian",
-        "last_name": "Harman",
-        "thru": "F",
-        "teetime": "10:10 AM",
-        "today": "-3",
-        "status": "F"
-      },
-      {
-        "id": "34363",
-        "first_name": "Tyrrell",
-        "last_name": "Hatton",
-        "thru": "F",
-        "teetime": "10:30 AM",
-        "today": "-2",
-        "status": "F"
-      },
-      {
-        "id": "30978",
-        "first_name": "Kiradech",
-        "last_name": "Aphibarnrat",
-        "thru": "F",
-        "teetime": "10:50 AM",
-        "today": "-1",
-        "status": "F"
-      },
-      {
-        "id": "27408",
-        "first_name": "Martin",
-        "last_name": "Kaymer",
-        "thru": "F",
-        "teetime": "10:40 AM",
-        "today": "+1",
-        "status": "F"
-      },
-      {
-        "id": "6567",
-        "first_name": "Vijay",
-        "last_name": "Singh",
-        "thru": "F",
-        "teetime": "10:00 AM",
-        "today": "-1",
-        "status": "F"
-      },
-      {
-        "id": "52375",
-        "first_name": "Doug",
-        "last_name": "Ghim",
-        "thru": "F",
-        "teetime": "10:30 AM",
-        "today": "+2",
-        "status": "F"
-      },
-      {
-        "id": "48081",
-        "first_name": "Xander",
-        "last_name": "Schauffele",
-        "thru": "F",
-        "teetime": "10:50 AM",
-        "today": "+3",
-        "status": "F"
-      },
-      {
-        "id": "30110",
-        "first_name": "Kyle",
-        "last_name": "Stanley",
-        "thru": "F",
-        "teetime": "10:40 AM",
-        "today": "+4",
-        "status": "F"
-      },
-      {
-        "id": "26476",
-        "first_name": "Chez",
-        "last_name": "Reavie",
-        "thru": "F",
-        "teetime": "10:20 AM",
-        "today": "+4",
-        "status": "F"
-      },
-      {
-        "id": "1717",
-        "first_name": "Sandy",
-        "last_name": "Lyle",
-        "thru": "",
-        "teetime": "",
-        "today": "",
-        "status": "C"
-      },
-      {
-        "id": "26331",
-        "first_name": "Charl",
-        "last_name": "Schwartzel",
-        "thru": "",
-        "teetime": "",
-        "today": "",
-        "status": "C"
-      },
-      {
-        "id": "6373",
-        "first_name": "Jose Maria",
-        "last_name": "Olazabal",
-        "thru": "",
-        "teetime": "",
-        "today": "",
-        "status": "C"
-      },
-      {
-        "id": "25686",
-        "first_name": "Jason",
-        "last_name": "Dufner",
-        "thru": "",
-        "teetime": "",
-        "today": "",
-        "status": "C"
-      },
-      {
-        "id": "35450",
-        "first_name": "Patrick",
-        "last_name": "Cantlay",
-        "thru": "",
-        "teetime": "",
-        "today": "",
-        "status": "C"
-      },
-      {
-        "id": "39113",
-        "first_name": "Shubhankar",
-        "last_name": "Sharma",
-        "thru": "",
-        "teetime": "",
-        "today": "",
-        "status": "C"
-      },
-      {
-        "id": "33293",
-        "first_name": "Thomas",
-        "last_name": "Pieters",
-        "thru": "",
-        "teetime": "",
-        "today": "",
-        "status": "C"
-      },
-      {
-        "id": "27556",
-        "first_name": "Ted",
-        "last_name": "Potter, Jr.",
-        "thru": "",
-        "teetime": "",
-        "today": "",
-        "status": "C"
-      },
-      {
-        "id": "29518",
-        "first_name": "Brendan",
-        "last_name": "Steele",
-        "thru": "",
-        "teetime": "",
-        "today": "",
-        "status": "C"
-      },
-      {
-        "id": "29970",
-        "first_name": "Dylan",
-        "last_name": "Frittelli",
-        "thru": "",
-        "teetime": "",
-        "today": "",
-        "status": "C"
-      },
-      {
-        "id": "32139",
-        "first_name": "Danny",
-        "last_name": "Willett",
-        "thru": "",
-        "teetime": "",
-        "today": "",
-        "status": "C"
-      },
-      {
-        "id": "27896",
-        "first_name": "Ross",
-        "last_name": "Fisher",
-        "thru": "",
-        "teetime": "",
-        "today": "",
-        "status": "C"
-      },
-      {
-        "id": "48084",
-        "first_name": "Wesley",
-        "last_name": "Bryan",
-        "thru": "",
-        "teetime": "",
-        "today": "",
-        "status": "C"
-      },
-      {
-        "id": "24361",
-        "first_name": "Pat",
-        "last_name": "Perez",
-        "thru": "",
-        "teetime": "",
-        "today": "",
-        "status": "C"
-      },
-      {
-        "id": "32757",
-        "first_name": "Patton",
-        "last_name": "Kizzire",
-        "thru": "",
-        "teetime": "",
-        "today": "",
-        "status": "C"
-      },
-      {
-        "id": "22378",
-        "first_name": "Trevor",
-        "last_name": "Immelman",
-        "thru": "",
-        "teetime": "",
-        "today": "",
-        "status": "C"
-      },
-      {
-        "id": "45486",
-        "first_name": "Joaquin",
-        "last_name": "Niemann",
-        "thru": "",
-        "teetime": "",
-        "today": "",
-        "status": "C"
-      },
-      {
-        "id": "26908",
-        "first_name": "Yuta",
-        "last_name": "Ikeda",
-        "thru": "",
-        "teetime": "",
-        "today": "",
-        "status": "C"
-      },
-      {
-        "id": "27349",
-        "first_name": "Alex",
-        "last_name": "Noren",
-        "thru": "",
-        "teetime": "",
-        "today": "",
-        "status": "C"
-      },
-      {
-        "id": "32366",
-        "first_name": "Kevin",
-        "last_name": "Chappell",
-        "thru": "",
-        "teetime": "",
-        "today": "",
-        "status": "C"
-      },
-      {
-        "id": "53165",
-        "first_name": "Doc",
-        "last_name": "Redman",
-        "thru": "",
-        "teetime": "",
-        "today": "",
-        "status": "C"
-      },
-      {
-        "id": "31323",
-        "first_name": "Gary",
-        "last_name": "Woodland",
-        "thru": "",
-        "teetime": "",
-        "today": "",
-        "status": "C"
-      },
-      {
-        "id": "23821",
-        "first_name": "Yusaku",
-        "last_name": "Miyazato",
-        "thru": "",
-        "teetime": "",
-        "today": "",
-        "status": "C"
-      },
-      {
-        "id": "46435",
-        "first_name": "Austin",
-        "last_name": "Cook",
-        "thru": "",
-        "teetime": "",
-        "today": "",
-        "status": "C"
-      },
-      {
-        "id": "29420",
-        "first_name": "Billy",
-        "last_name": "Horschel",
-        "thru": "",
-        "teetime": "",
-        "today": "",
-        "status": "C"
-      },
-      {
-        "id": "2300",
-        "first_name": "Ian",
-        "last_name": "Woosnam",
-        "thru": "",
-        "teetime": "",
-        "today": "",
-        "status": "C"
-      },
-      {
-        "id": "10423",
-        "first_name": "Mike",
-        "last_name": "Weir",
-        "thru": "",
-        "teetime": "",
-        "today": "",
-        "status": "C"
-      },
-      {
-        "id": "1823",
-        "first_name": "Larry",
-        "last_name": "Mize",
-        "thru": "",
-        "teetime": "",
-        "today": "",
-        "status": "C"
-      },
-      {
-        "id": "20848",
-        "first_name": "Angel",
-        "last_name": "Cabrera",
-        "thru": "",
-        "teetime": "",
-        "today": "",
-        "status": "C"
-      },
-      {
-        "id": "46837",
-        "first_name": "Yuxin",
-        "last_name": "Lin",
-        "thru": "",
-        "teetime": "",
-        "today": "",
-        "status": "C"
-      },
-      {
-        "id": "1887",
-        "first_name": "Mark",
-        "last_name": "O'Meara",
-        "thru": "",
-        "teetime": "",
-        "today": "",
-        "status": "C"
-      },
-      {
-        "id": "21209",
-        "first_name": "Sergio",
-        "last_name": "Garcia",
-        "thru": "",
-        "teetime": "",
-        "today": "",
-        "status": "C"
-      },
-      {
-        "id": "54318",
-        "first_name": "Matt",
-        "last_name": "Parziale",
-        "thru": "",
-        "teetime": "",
-        "today": "",
-        "status": "C"
-      },
-      {
-        "id": "52569",
-        "first_name": "Harry",
-        "last_name": "Ellis",
-        "thru": "",
-        "teetime": "",
-        "today": "",
-        "status": "C"
-      }
-    ]
-  }
+  "version": 1,
+  "round": 1,
+  "cut_line": "",
+  "timezone": "EDT",
+  "players": [
+    {
+      "id": "34360",
+      "first_name": "Patrick",
+      "last_name": "Reed",
+      "thru": "F",
+      "teetime": "2:40 PM",
+      "today": "-1",
+      "to_par": "-15",
+      "status": "F"
+    },
+    {
+      "id": "32102",
+      "first_name": "Rickie",
+      "last_name": "Fowler",
+      "thru": "F",
+      "teetime": "2:30 PM",
+      "today": "-5",
+      "to_par": "-14",
+      "status": "F"
+    },
+    {
+      "id": "34046",
+      "first_name": "Jordan",
+      "last_name": "Spieth",
+      "thru": "F",
+      "teetime": "2:00 PM",
+      "today": "-8",
+      "to_par": "-13",
+      "status": "F"
+    },
+    {
+      "id": "46970",
+      "first_name": "Jon",
+      "last_name": "Rahm",
+      "thru": "F",
+      "teetime": "2:30 PM",
+      "today": "-3",
+      "to_par": "-11",
+      "status": "F"
+    },
+    {
+      "id": "35891",
+      "first_name": "Cameron",
+      "last_name": "Smith",
+      "thru": "F",
+      "teetime": "1:50 PM",
+      "today": "-6",
+      "to_par": "-9",
+      "status": "F"
+    },
+    {
+      "id": "25804",
+      "first_name": "Bubba",
+      "last_name": "Watson",
+      "thru": "F",
+      "teetime": "2:10 PM",
+      "today": "-3",
+      "to_par": "-9",
+      "status": "F"
+    },
+    {
+      "id": "21528",
+      "first_name": "Henrik",
+      "last_name": "Stenson",
+      "thru": "F",
+      "teetime": "2:20 PM",
+      "today": "-2",
+      "to_par": "-9",
+      "status": "F"
+    },
+    {
+      "id": "28237",
+      "first_name": "Rory",
+      "last_name": "McIlroy",
+      "thru": "F",
+      "teetime": "2:40 PM",
+      "today": "+2",
+      "to_par": "-9",
+      "status": "F"
+    },
+    {
+      "id": "26851",
+      "first_name": "Marc",
+      "last_name": "Leishman",
+      "thru": "F",
+      "teetime": "2:10 PM",
+      "today": "-2",
+      "to_par": "-8",
+      "status": "F"
+    },
+    {
+      "id": "29725",
+      "first_name": "Tony",
+      "last_name": "Finau",
+      "thru": "F",
+      "teetime": "1:00 PM",
+      "today": "-6",
+      "to_par": "-7",
+      "status": "F"
+    },
+    {
+      "id": "30925",
+      "first_name": "Dustin",
+      "last_name": "Johnson",
+      "thru": "F",
+      "teetime": "1:50 PM",
+      "today": "-3",
+      "to_par": "-7",
+      "status": "F"
+    },
+    {
+      "id": "12716",
+      "first_name": "Charley",
+      "last_name": "Hoffman",
+      "thru": "F",
+      "teetime": "1:00 PM",
+      "today": "-5",
+      "to_par": "-6",
+      "status": "F"
+    },
+    {
+      "id": "22405",
+      "first_name": "Justin",
+      "last_name": "Rose",
+      "thru": "F",
+      "teetime": "1:40 PM",
+      "today": "-3",
+      "to_par": "-6",
+      "status": "F"
+    },
+    {
+      "id": "26329",
+      "first_name": "Louis",
+      "last_name": "Oosthuizen",
+      "thru": "F",
+      "teetime": "1:40 PM",
+      "today": "-3",
+      "to_par": "-6",
+      "status": "F"
+    },
+    {
+      "id": "25364",
+      "first_name": "Paul",
+      "last_name": "Casey",
+      "thru": "F",
+      "teetime": "12:10 PM",
+      "today": "-7",
+      "to_par": "-5",
+      "status": "F"
+    },
+    {
+      "id": "34098",
+      "first_name": "Russell",
+      "last_name": "Henley",
+      "thru": "F",
+      "teetime": "12:30 PM",
+      "today": "-5",
+      "to_par": "-5",
+      "status": "F"
+    },
+    {
+      "id": "33448",
+      "first_name": "Justin",
+      "last_name": "Thomas",
+      "thru": "F",
+      "teetime": "2:00 PM",
+      "today": "+1",
+      "to_par": "-4",
+      "status": "F"
+    },
+    {
+      "id": "30911",
+      "first_name": "Tommy",
+      "last_name": "Fleetwood",
+      "thru": "F",
+      "teetime": "2:20 PM",
+      "today": "+2",
+      "to_par": "-4",
+      "status": "F"
+    },
+    {
+      "id": "32839",
+      "first_name": "Hideki",
+      "last_name": "Matsuyama",
+      "thru": "F",
+      "teetime": "12:20 PM",
+      "today": "-3",
+      "to_par": "-3",
+      "status": "F"
+    },
+    {
+      "id": "29221",
+      "first_name": "Webb",
+      "last_name": "Simpson",
+      "thru": "F",
+      "teetime": "11:40 AM",
+      "today": "-5",
+      "to_par": "-2",
+      "status": "F"
+    },
+    {
+      "id": "25198",
+      "first_name": "Francesco",
+      "last_name": "Molinari",
+      "thru": "F",
+      "teetime": "12:40 PM",
+      "today": "-2",
+      "to_par": "-2",
+      "status": "F"
+    },
+    {
+      "id": "25632",
+      "first_name": "Jimmy",
+      "last_name": "Walker",
+      "thru": "F",
+      "teetime": "1:20 PM",
+      "today": "-1",
+      "to_par": "-2",
+      "status": "F"
+    },
+    {
+      "id": "28089",
+      "first_name": "Jason",
+      "last_name": "Day",
+      "thru": "F",
+      "teetime": "1:30 PM",
+      "today": "-1",
+      "to_par": "-2",
+      "status": "F"
+    },
+    {
+      "id": "29974",
+      "first_name": "Branden",
+      "last_name": "Grace",
+      "thru": "F",
+      "teetime": "11:00 AM",
+      "today": "-5",
+      "to_par": "-1",
+      "status": "F"
+    },
+    {
+      "id": "33399",
+      "first_name": "Adam",
+      "last_name": "Hadwin",
+      "thru": "F",
+      "teetime": "12:20 PM",
+      "today": "-1",
+      "to_par": "-1",
+      "status": "F"
+    },
+    {
+      "id": "37455",
+      "first_name": "Si Woo",
+      "last_name": "Kim",
+      "thru": "F",
+      "teetime": "12:50 PM",
+      "today": "-1",
+      "to_par": "-1",
+      "status": "F"
+    },
+    {
+      "id": "29454",
+      "first_name": "Bernd",
+      "last_name": "Wiesberger",
+      "thru": "F",
+      "teetime": "1:30 PM",
+      "today": "E",
+      "to_par": "-1",
+      "status": "F"
+    },
+    {
+      "id": "26596",
+      "first_name": "Ryan",
+      "last_name": "Moore",
+      "thru": "F",
+      "teetime": "11:50 AM",
+      "today": "-2",
+      "to_par": "E",
+      "status": "F"
+    },
+    {
+      "id": "32816",
+      "first_name": "Satoshi",
+      "last_name": "Kodaira",
+      "thru": "F",
+      "teetime": "12:30 PM",
+      "today": "E",
+      "to_par": "E",
+      "status": "F"
+    },
+    {
+      "id": "29478",
+      "first_name": "Kevin",
+      "last_name": "Kisner",
+      "thru": "F",
+      "teetime": "12:40 PM",
+      "today": "E",
+      "to_par": "E",
+      "status": "F"
+    },
+    {
+      "id": "23108",
+      "first_name": "Matt",
+      "last_name": "Kuchar",
+      "thru": "F",
+      "teetime": "1:20 PM",
+      "today": "+1",
+      "to_par": "E",
+      "status": "F"
+    },
+    {
+      "id": "8793",
+      "first_name": "Tiger",
+      "last_name": "Woods",
+      "thru": "F",
+      "teetime": "11:10 AM",
+      "today": "-3",
+      "to_par": "+1",
+      "status": "F"
+    },
+    {
+      "id": "24502",
+      "first_name": "Adam",
+      "last_name": "Scott",
+      "thru": "F",
+      "teetime": "12:00 PM",
+      "today": "-1",
+      "to_par": "+1",
+      "status": "F"
+    },
+    {
+      "id": "40026",
+      "first_name": "Daniel",
+      "last_name": "Berger",
+      "thru": "F",
+      "teetime": "12:00 PM",
+      "today": "-1",
+      "to_par": "+1",
+      "status": "F"
+    },
+    {
+      "id": "35296",
+      "first_name": "Haotong",
+      "last_name": "Li",
+      "thru": "F",
+      "teetime": "12:10 PM",
+      "today": "E",
+      "to_par": "+1",
+      "status": "F"
+    },
+    {
+      "id": "1810",
+      "first_name": "Phil",
+      "last_name": "Mickelson",
+      "thru": "F",
+      "teetime": "10:20 AM",
+      "today": "-5",
+      "to_par": "+2",
+      "status": "F"
+    },
+    {
+      "id": "24024",
+      "first_name": "Zach",
+      "last_name": "Johnson",
+      "thru": "F",
+      "teetime": "11:40 AM",
+      "today": "E",
+      "to_par": "+2",
+      "status": "F"
+    },
+    {
+      "id": "47959",
+      "first_name": "Bryson",
+      "last_name": "DeChambeau",
+      "thru": "F",
+      "teetime": "11:00 AM",
+      "today": "-1",
+      "to_par": "+3",
+      "status": "F"
+    },
+    {
+      "id": "26499",
+      "first_name": "Rafael",
+      "last_name": "Cabrera Bello",
+      "thru": "F",
+      "teetime": "11:10 AM",
+      "today": "E",
+      "to_par": "+3",
+      "status": "F"
+    },
+    {
+      "id": "1666",
+      "first_name": "Bernhard",
+      "last_name": "Langer",
+      "thru": "F",
+      "teetime": "11:20 AM",
+      "today": "E",
+      "to_par": "+3",
+      "status": "F"
+    },
+    {
+      "id": "1226",
+      "first_name": "Fred",
+      "last_name": "Couples",
+      "thru": "F",
+      "teetime": "11:20 AM",
+      "today": "E",
+      "to_par": "+3",
+      "status": "F"
+    },
+    {
+      "id": "27064",
+      "first_name": "Jhonattan",
+      "last_name": "Vegas",
+      "thru": "F",
+      "teetime": "11:50 AM",
+      "today": "+1",
+      "to_par": "+3",
+      "status": "F"
+    },
+    {
+      "id": "40098",
+      "first_name": "Matthew",
+      "last_name": "Fitzpatrick",
+      "thru": "F",
+      "teetime": "12:50 PM",
+      "today": "+3",
+      "to_par": "+3",
+      "status": "F"
+    },
+    {
+      "id": "24138",
+      "first_name": "Ian",
+      "last_name": "Poulter",
+      "thru": "F",
+      "teetime": "10:10 AM",
+      "today": "-3",
+      "to_par": "+4",
+      "status": "F"
+    },
+    {
+      "id": "27644",
+      "first_name": "Brian",
+      "last_name": "Harman",
+      "thru": "F",
+      "teetime": "10:10 AM",
+      "today": "-3",
+      "to_par": "+4",
+      "status": "F"
+    },
+    {
+      "id": "34363",
+      "first_name": "Tyrrell",
+      "last_name": "Hatton",
+      "thru": "F",
+      "teetime": "10:30 AM",
+      "today": "-2",
+      "to_par": "+4",
+      "status": "F"
+    },
+    {
+      "id": "30978",
+      "first_name": "Kiradech",
+      "last_name": "Aphibarnrat",
+      "thru": "F",
+      "teetime": "10:50 AM",
+      "today": "-1",
+      "to_par": "+4",
+      "status": "F"
+    },
+    {
+      "id": "27408",
+      "first_name": "Martin",
+      "last_name": "Kaymer",
+      "thru": "F",
+      "teetime": "10:40 AM",
+      "today": "+1",
+      "to_par": "+6",
+      "status": "F"
+    },
+    {
+      "id": "6567",
+      "first_name": "Vijay",
+      "last_name": "Singh",
+      "thru": "F",
+      "teetime": "10:00 AM",
+      "today": "-1",
+      "to_par": "+7",
+      "status": "F"
+    },
+    {
+      "id": "52375",
+      "first_name": "Doug",
+      "last_name": "Ghim",
+      "thru": "F",
+      "teetime": "10:30 AM",
+      "today": "+2",
+      "to_par": "+8",
+      "status": "F"
+    },
+    {
+      "id": "48081",
+      "first_name": "Xander",
+      "last_name": "Schauffele",
+      "thru": "F",
+      "teetime": "10:50 AM",
+      "today": "+3",
+      "to_par": "+8",
+      "status": "F"
+    },
+    {
+      "id": "30110",
+      "first_name": "Kyle",
+      "last_name": "Stanley",
+      "thru": "F",
+      "teetime": "10:40 AM",
+      "today": "+4",
+      "to_par": "+9",
+      "status": "F"
+    },
+    {
+      "id": "26476",
+      "first_name": "Chez",
+      "last_name": "Reavie",
+      "thru": "F",
+      "teetime": "10:20 AM",
+      "today": "+4",
+      "to_par": "+10",
+      "status": "F"
+    },
+    {
+      "id": "1717",
+      "first_name": "Sandy",
+      "last_name": "Lyle",
+      "thru": "",
+      "teetime": "",
+      "today": "",
+      "to_par": "+6",
+      "status": "C"
+    },
+    {
+      "id": "26331",
+      "first_name": "Charl",
+      "last_name": "Schwartzel",
+      "thru": "",
+      "teetime": "",
+      "today": "",
+      "to_par": "+6",
+      "status": "C"
+    },
+    {
+      "id": "6373",
+      "first_name": "Jose Maria",
+      "last_name": "Olazabal",
+      "thru": "",
+      "teetime": "",
+      "today": "",
+      "to_par": "+6",
+      "status": "C"
+    },
+    {
+      "id": "25686",
+      "first_name": "Jason",
+      "last_name": "Dufner",
+      "thru": "",
+      "teetime": "",
+      "today": "",
+      "to_par": "+6",
+      "status": "C"
+    },
+    {
+      "id": "35450",
+      "first_name": "Patrick",
+      "last_name": "Cantlay",
+      "thru": "",
+      "teetime": "",
+      "today": "",
+      "to_par": "+7",
+      "status": "C"
+    },
+    {
+      "id": "39113",
+      "first_name": "Shubhankar",
+      "last_name": "Sharma",
+      "thru": "",
+      "teetime": "",
+      "today": "",
+      "to_par": "+7",
+      "status": "C"
+    },
+    {
+      "id": "33293",
+      "first_name": "Thomas",
+      "last_name": "Pieters",
+      "thru": "",
+      "teetime": "",
+      "today": "",
+      "to_par": "+7",
+      "status": "C"
+    },
+    {
+      "id": "27556",
+      "first_name": "Ted",
+      "last_name": "Potter, Jr.",
+      "thru": "",
+      "teetime": "",
+      "today": "",
+      "to_par": "+7",
+      "status": "C"
+    },
+    {
+      "id": "29518",
+      "first_name": "Brendan",
+      "last_name": "Steele",
+      "thru": "",
+      "teetime": "",
+      "today": "",
+      "to_par": "+7",
+      "status": "C"
+    },
+    {
+      "id": "29970",
+      "first_name": "Dylan",
+      "last_name": "Frittelli",
+      "thru": "",
+      "teetime": "",
+      "today": "",
+      "to_par": "+7",
+      "status": "C"
+    },
+    {
+      "id": "32139",
+      "first_name": "Danny",
+      "last_name": "Willett",
+      "thru": "",
+      "teetime": "",
+      "today": "",
+      "to_par": "+7",
+      "status": "C"
+    },
+    {
+      "id": "27896",
+      "first_name": "Ross",
+      "last_name": "Fisher",
+      "thru": "",
+      "teetime": "",
+      "today": "",
+      "to_par": "+8",
+      "status": "C"
+    },
+    {
+      "id": "48084",
+      "first_name": "Wesley",
+      "last_name": "Bryan",
+      "thru": "",
+      "teetime": "",
+      "today": "",
+      "to_par": "+8",
+      "status": "C"
+    },
+    {
+      "id": "24361",
+      "first_name": "Pat",
+      "last_name": "Perez",
+      "thru": "",
+      "teetime": "",
+      "today": "",
+      "to_par": "+8",
+      "status": "C"
+    },
+    {
+      "id": "32757",
+      "first_name": "Patton",
+      "last_name": "Kizzire",
+      "thru": "",
+      "teetime": "",
+      "today": "",
+      "to_par": "+8",
+      "status": "C"
+    },
+    {
+      "id": "22378",
+      "first_name": "Trevor",
+      "last_name": "Immelman",
+      "thru": "",
+      "teetime": "",
+      "today": "",
+      "to_par": "+9",
+      "status": "C"
+    },
+    {
+      "id": "45486",
+      "first_name": "Joaquin",
+      "last_name": "Niemann",
+      "thru": "",
+      "teetime": "",
+      "today": "",
+      "to_par": "+9",
+      "status": "C"
+    },
+    {
+      "id": "26908",
+      "first_name": "Yuta",
+      "last_name": "Ikeda",
+      "thru": "",
+      "teetime": "",
+      "today": "",
+      "to_par": "+9",
+      "status": "C"
+    },
+    {
+      "id": "27349",
+      "first_name": "Alex",
+      "last_name": "Noren",
+      "thru": "",
+      "teetime": "",
+      "today": "",
+      "to_par": "+9",
+      "status": "C"
+    },
+    {
+      "id": "32366",
+      "first_name": "Kevin",
+      "last_name": "Chappell",
+      "thru": "",
+      "teetime": "",
+      "today": "",
+      "to_par": "+9",
+      "status": "C"
+    },
+    {
+      "id": "53165",
+      "first_name": "Doc",
+      "last_name": "Redman",
+      "thru": "",
+      "teetime": "",
+      "today": "",
+      "to_par": "+9",
+      "status": "C"
+    },
+    {
+      "id": "31323",
+      "first_name": "Gary",
+      "last_name": "Woodland",
+      "thru": "",
+      "teetime": "",
+      "today": "",
+      "to_par": "+10",
+      "status": "C"
+    },
+    {
+      "id": "23821",
+      "first_name": "Yusaku",
+      "last_name": "Miyazato",
+      "thru": "",
+      "teetime": "",
+      "today": "",
+      "to_par": "+10",
+      "status": "C"
+    },
+    {
+      "id": "46435",
+      "first_name": "Austin",
+      "last_name": "Cook",
+      "thru": "",
+      "teetime": "",
+      "today": "",
+      "to_par": "+10",
+      "status": "C"
+    },
+    {
+      "id": "29420",
+      "first_name": "Billy",
+      "last_name": "Horschel",
+      "thru": "",
+      "teetime": "",
+      "today": "",
+      "to_par": "+11",
+      "status": "C"
+    },
+    {
+      "id": "2300",
+      "first_name": "Ian",
+      "last_name": "Woosnam",
+      "thru": "",
+      "teetime": "",
+      "today": "",
+      "to_par": "+11",
+      "status": "C"
+    },
+    {
+      "id": "10423",
+      "first_name": "Mike",
+      "last_name": "Weir",
+      "thru": "",
+      "teetime": "",
+      "today": "",
+      "to_par": "+11",
+      "status": "C"
+    },
+    {
+      "id": "1823",
+      "first_name": "Larry",
+      "last_name": "Mize",
+      "thru": "",
+      "teetime": "",
+      "today": "",
+      "to_par": "+12",
+      "status": "C"
+    },
+    {
+      "id": "20848",
+      "first_name": "Angel",
+      "last_name": "Cabrera",
+      "thru": "",
+      "teetime": "",
+      "today": "",
+      "to_par": "+15",
+      "status": "C"
+    },
+    {
+      "id": "46837",
+      "first_name": "Yuxin",
+      "last_name": "Lin",
+      "thru": "",
+      "teetime": "",
+      "today": "",
+      "to_par": "+15",
+      "status": "C"
+    },
+    {
+      "id": "1887",
+      "first_name": "Mark",
+      "last_name": "O'Meara",
+      "thru": "",
+      "teetime": "",
+      "today": "",
+      "to_par": "+15",
+      "status": "C"
+    },
+    {
+      "id": "21209",
+      "first_name": "Sergio",
+      "last_name": "Garcia",
+      "thru": "",
+      "teetime": "",
+      "today": "",
+      "to_par": "+15",
+      "status": "C"
+    },
+    {
+      "id": "54318",
+      "first_name": "Matt",
+      "last_name": "Parziale",
+      "thru": "",
+      "teetime": "",
+      "today": "",
+      "to_par": "+16",
+      "status": "C"
+    },
+    {
+      "id": "52569",
+      "first_name": "Harry",
+      "last_name": "Ellis",
+      "thru": "",
+      "teetime": "",
+      "today": "",
+      "to_par": "+22",
+      "status": "C"
+    }
+  ]
+}
