@@ -55,7 +55,14 @@ const requiredPlayerPickValues = [
     'year',
     'name',
     'editKey',
-    'picks'
+    'picks',
+    'email'
+];
+
+const requiredPlayerPickQueryValues = [
+    'tournament',
+    'year',
+    'email',
 ];
 
 const validateRequiredFields = (pickRequest, requiredFields) => {
@@ -144,9 +151,30 @@ const saveNewPicks = async (picks) => {
     await savePicks(key, picks)
 };
 
+const handleGet = async (event) => {
+    const body = event.queryStringParameters;
+    const missingFields = validateRequiredFields(body, requiredPlayerPickQueryValues);
 
-exports.handler = async (event, context, callback) => {
-    console.log('Received event:', JSON.stringify(event, null, 2));
+    // validate request
+    if (missingFields.length !== 0) {
+        return multipleErrors(missingFields)
+    }
+
+    // check for existing pick w/ this email
+    const existingPicks = await listExistingIndividualPicks(body.tournament, body.year);
+    const picksFound = existingPicks.find(e => e.email === body.email);
+
+    if (picksFound) {
+        const existingPickKey = picksFound.key;
+        const existingPick = await getPick(existingPickKey);
+
+        return success(existingPick);
+    } else {
+        return fail('No picks found for this email', '404');
+    }
+};
+
+const handlePost = async (event) => {
     const body = JSON.parse(event.body);
     const missingFields = validateRequiredFields(body, requiredPlayerPickValues);
 
@@ -185,5 +213,15 @@ exports.handler = async (event, context, callback) => {
         // save new picks
         await saveNewPicks(body);
         return success(body);
+    }
+};
+
+
+exports.handler = async (event, context, callback) => {
+    console.log('Received event:', JSON.stringify(event, null, 2));
+    switch(event.httpMethod){
+        case 'POST': return handlePost(event);
+        case 'GET': return handleGet(event);
+        default: return fail('Method Not Allowed', '405')
     }
 };
