@@ -57,6 +57,7 @@ export default {
     async getIndividualPicks() {
       this.loading = true;
       const picks = PicksService.getIndividualPicks(this.email);
+      this.selectEmail = false;
       this.loading = false;
     },
   },

@@ -1,0 +1,12 @@
+[{
+	"id": 1,
+	"active": true,
+	"title": "Masters",
+	"year": "2018",
+	"start": "",
+	"end": "",
+	"location": "Augusta, Georgia",
+	"picks": "https://s3.amazonaws.com/parlicious-data/picks/Masters/2018/picks.json",
+	"leaderboard": "https://s3.amazonaws.com/parlicious-data/leaderboards/masters/2018/leaderboard.json",
+	"field": "https://s3.amazonaws.com/parlicious-data/picks/Masters/2018/tournament_field.json"
+}]
