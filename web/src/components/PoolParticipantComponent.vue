@@ -1,6 +1,6 @@
 <template>
   <tbody>
-  <tr v-on:click="toggleShowPlayers">
+  <tr v-on:click="toggleShowPlayers" class="pool_participants">
     <td> 0 </td>
     <td>{{participant.name}}</td>
     <td>{{participant.total}}</td>
@@ -36,3 +36,12 @@ export default {
   },
 };
 </script>
+<style scoped>
+  .pool_participants td {
+    cursor:pointer;
+  }
+  .pool_participants td {
+    font-weight: bold;
+  }
+
+</style>
