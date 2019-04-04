@@ -1,6 +1,6 @@
 import Vue from 'vue';
 import Router from 'vue-router';
-import Leaderboard from "./views/Leaderboard";
+import Leaderboard from './views/Leaderboard.vue';
 
 Vue.use(Router);
 
