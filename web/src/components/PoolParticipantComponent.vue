@@ -1,6 +1,6 @@
 <template>
   <tbody>
-  <tr v-on:click="showPlayers = !showPlayers">
+  <tr v-on:click="toggleShowPlayers">
     <td> 0 </td>
     <td>{{participant.name}}</td>
     <td>{{participant.total}}</td>
@@ -8,7 +8,7 @@
     <td> F </td>
   </tr>
   <tr
-    v-show="showPlayers"
+    v-show="showPlayers || showPlayersOverride"
     v-for="pick in participant.picks"
     v-bind:key="pick.last_name">
     <td> </td>
@@ -23,11 +23,16 @@
 
 export default {
   name: 'PoolParticipant',
-  props: ['participant'],
+  props: ['participant', 'showPlayers'],
   data() {
     return {
-      showPlayers: true,
+      showPlayersOverride: false,
     };
+  },
+  methods: {
+    toggleShowPlayers() {
+      this.showPlayersOverride = !this.showPlayersOverride;
+    },
   },
 };
 </script>

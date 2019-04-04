@@ -7,7 +7,15 @@
       Loading...
     </div>
 
-
+    <div class="condense-expand"
+      v-on:click="showAll = !showAll">
+      <div v-if="showAll">
+        Collapse All
+      </div>
+      <div v-if="!showAll">
+        Expand All
+      </div>
+    </div>
     <div v-if="!loading" class="content">
       <table class="table">
         <thead>
@@ -22,6 +30,7 @@
         <pool-participant
           v-for="participant in poolParticipants"
           v-bind:key="participant.name"
+          v-bind:showPlayers="showAll"
           v-bind:participant="participant">
         </pool-participant>
       </table>
@@ -45,6 +54,7 @@ export default {
   data() {
     return {
       loading: false,
+      showAll: false,
       players: {},
       poolParticipants: [],
     };
@@ -92,5 +102,9 @@ export default {
 
   a {
     color: #42b983;
+  }
+
+  .condense-expand{
+    text-align: left;
   }
 </style>
