@@ -6,7 +6,9 @@
     </div>
     <div v-if="!loading && selectEmail">
 
-      <form class="form-signin form-inline justify-content-center">
+      <form
+        @submit.prevent="getIndividualPicks"
+        class="form-signin form-inline justify-content-center">
         <label class="sr-only" for="inlineFormInputName2">Email</label>
         <input
           v-model="email"
@@ -16,19 +18,19 @@
           placeholder="Email Address">
 
         <button
-          v-on:click="loading=true"
+          type="submit"
           class="btn btn-primary mb-2">
           Let's Go
         </button>
       </form>
       <small> If you've already created picks, we'll look them up.</small>
-      <p>{{email}}</p>
     </div>
   </div>
 </template>
 
 <script>
 import { sha256 } from '../common/security';
+import { PicksService } from '../common/picks';
 
 export default {
   name: 'PicksComponent',
@@ -37,7 +39,26 @@ export default {
       email: '',
       loading: false,
       selectEmail: true,
+      golfers: [],
+      tournamentField: {},
     };
+  },
+  created() {
+    this.fetchData();
+  },
+  methods: {
+    async fetchData() {
+      this.loading = true;
+      const data = await PicksService.load();
+      this.golfers = data.golfers;
+      this.tournamentField = data.tournamentField;
+      this.loading = false;
+    },
+    async getIndividualPicks() {
+      this.loading = true;
+      const picks = PicksService.getIndividualPicks(this.email);
+      this.loading = false;
+    },
   },
   asyncComputed: {
     async msg() {

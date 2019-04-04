@@ -43,6 +43,7 @@ const success = (responseBody) => {
         body: JSON.stringify(responseBody),
         headers: {
             'Content-Type': 'application/json',
+            "Access-Control-Allow-Origin": "*"
         }
     }
 };
