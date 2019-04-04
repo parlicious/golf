@@ -1,0 +1,7 @@
+version: 0.2
+
+phases:
+build:
+  commands:
+    - cicd/scripts/build.sh prod
+    - cicd/scripts/deploy.sh prod
