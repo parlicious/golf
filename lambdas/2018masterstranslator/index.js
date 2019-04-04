@@ -56,7 +56,7 @@ exports.handler = (event, context, callback) => {
                     'thru': player.thru,
                     'teetime': player.teetime,
                     'today': player.today,
-                    'to_par': player.to_par,
+                    'to_par': player.topar,
                     'status': player.status
                 };
                 leaderboard.players.push(newplayer);
