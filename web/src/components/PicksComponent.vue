@@ -27,24 +27,25 @@
     </div>
 
     <div v-if="!loading && makePicks">
-      <div class="tier-validation-container">
-        <div class="tier-validation-cell">
-          <p>Picks remaining for each tier:</p>
-        </div>
-        <div
-          class="tier-validation-cell"
-          v-for="tier in tiers"
-          v-bind:key="tier.name">
-          {{tier.name}} : {{tier.selected}} / {{tier.required}}
-        </div>
-      </div>
+      <!--<div class="tier-validation-container">-->
+        <!--<div class="tier-validation-cell">-->
+          <!--<p>Picks remaining for each tier:</p>-->
+        <!--</div>-->
+        <!--<div-->
+          <!--class="tier-validation-cell"-->
+          <!--v-for="tier in tiers"-->
+          <!--v-bind:key="tier.name">-->
+          <!--{{tier.name}} : {{tier.selected}} / {{tier.required}}-->
+        <!--</div>-->
+      <!--</div>-->
       <div class="picks-list">
         <div
-          v-for="player in tournamentField.field"
+          v-for="player in players"
           v-bind:key="player.id"
-          v-bind:class="{picked: playerPicked(player)}"
+          v-bind:class="{picked: player.picked}"
+          v-on:click="makePick(thisTournamentId(player))"
           class="pick-cell">
-          {{player.name}} {{player.odds}} {{player.tier}}
+          {{player.first_name}} {{player.last_name}} {{player.odds}} {{player.tier}}
         </div>
       </div>
     </div>
@@ -63,91 +64,65 @@ export default {
       loading: false,
       selectEmail: true,
       makePicks: false,
-      picks: null,
-      tiers: [
-
-        {
-          name: 'A',
-          required: 1,
-          selected: 0,
-        },
-        {
-          name: 'B',
-          required: 2,
-          selected: 0,
-        },
-        {
-          name: 'C',
-          required: 3,
-          selected: 0,
-        },
-        {
-          name: 'D',
-          required: 4,
-          selected: 0,
-        },
-      ],
-      golfers: [],
-      tournamentField: {},
+      picks_per_tier: {},
+      players: []
     };
   },
   created() {
     this.fetchData();
   },
   methods: {
-    playerPicked(player) {
-      if (this.picks && this.picks.picks) {
-        return !!this.picks.picks.find(x => x.id === player.id);
-      }
-      return false;
-    },
-    togglePlayerPick(player) {
-      if (this.picks && this.picks.picks) {
-        if (this.picks.picks.find(x => x.id === player.id)) {
-          this.picks.picks = this.picks.picks.filter(x => x.id !== player.id);
-        } else {
-          this.picks.picks.append()
-        }
+    thisTournamentId(golfer){
+      switch(this.activeTournament.title){
+        case 'Masters': return golfer.masters_id;
+        default: return golfer.masters_id;
       }
     },
     async fetchData() {
       this.loading = true;
       const data = await PicksService.load();
-      this.golfers = data.golfers.players.reduce((acc, val) => {
-        acc[val.masters_id] = val;
-        return acc;
+      this.activeTournament = data.activeTournament;
+      this.players = data.golfers.players;
+
+      const masterIdToFieldEntry = data.tournamentField.field.reduce((acc, val) => {
+          acc[val.id] = val;
+          return acc;
       }, {});
 
-      this.tournamentField = data.tournamentField;
-
-      this.tournamentField.field.map((p) => {
-        p.name = `${this.golfers[p.id].first_name} ${this.golfers[p.id].last_name}`;
-        return p;
+      this.players = this.players.map(g => {
+          const fieldEntry = masterIdToFieldEntry[this.thisTournamentId(g)]
+          return {
+            ...g,
+            odds: fieldEntry.odds,
+            tier: fieldEntry.tier
+          };
       });
 
+      this.picks_per_tier = data.tournamentField.picks_per_tier;
       this.loading = false;
+    },
+    makePick(playerId){
+      console.log(playerId);
+      const playerIndex = this.players.findIndex(p => this.thisTournamentId(p) === playerId);
+      if(playerIndex >= 0){
+        const newPlayer = {
+          ...this.players[playerIndex],
+          picked: !this.players[playerIndex].picked
+        };
+
+        this.$set(this.players, playerIndex, newPlayer);
+      }
     },
     async getIndividualPicks() {
       this.loading = true;
-      this.picks = (await PicksService.getIndividualPicks(this.email)).data;
+      const pickObject = (await PicksService.getIndividualPicks(this.email)).data;
       this.selectEmail = false;
       this.makePicks = true;
       this.loading = false;
 
-      this.tiers = Object.keys(this.tournamentField.picks_per_tier)
-        .map(l => (
-          { name: l, required: this.tournamentField.picks_per_tier[l], selected: 0 }));
-
-      this.picks.picks.forEach((p) => {
-        this.tiers.find(t => t.name === p.tier).selected += 1;
-      });
+      pickObject.picks.forEach(p => this.makePick(p.id))
     },
-  },
-  asyncComputed: {
-    async msg() {
-      return sha256('hello world');
-    },
-  },
+  }
 };
 </script>
 

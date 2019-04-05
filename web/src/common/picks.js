@@ -14,6 +14,7 @@ export const PicksService = {
 
     return {
       golfers: this.golfers,
+      activeTournament: this.activeTournament,
       tournamentField: this.tournamentField,
     };
   },
