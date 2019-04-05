@@ -25,6 +25,26 @@
       </form>
       <small> If you've already created picks, we'll look them up.</small>
     </div>
+
+    <div v-if="!loading && makePicks">
+      <p>Picks remaining for each tier</p>
+      <div class="tier-validation-container">
+        <div
+          class="tier-validation-cell"
+          v-for="tier in tiers"
+          v-bind:key="tier.name">
+          {{tier.name}} : {{tier.selected}} / {{tier.required}}
+        </div>
+      </div>
+      <div class="picks-list">
+        <div
+          v-for="player in tournamentField.field"
+          v-bind:key="player.id"
+          class="pick-cell">
+          {{player.id}} {{player.odds}} {{player.tier}} {{playerPicked(player)}}
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -39,6 +59,31 @@ export default {
       email: '',
       loading: false,
       selectEmail: true,
+      makePicks: false,
+      picks: null,
+      tiers: [
+
+        {
+          name: 'A',
+          required: 1,
+          selected: 0,
+        },
+        {
+          name: 'B',
+          required: 2,
+          selected: 0,
+        },
+        {
+          name: 'C',
+          required: 3,
+          selected: 0,
+        },
+        {
+          name: 'D',
+          required: 4,
+          selected: 0,
+        },
+      ],
       golfers: [],
       tournamentField: {},
     };
@@ -47,6 +92,12 @@ export default {
     this.fetchData();
   },
   methods: {
+    playerPicked(player) {
+      if (this.picks && this.picks.picks) {
+        return !!this.picks.picks.find(x => x.id === player.id);
+      }
+      return false;
+    },
     async fetchData() {
       this.loading = true;
       const data = await PicksService.load();
@@ -56,9 +107,18 @@ export default {
     },
     async getIndividualPicks() {
       this.loading = true;
-      const picks = PicksService.getIndividualPicks(this.email);
+      this.picks = (await PicksService.getIndividualPicks(this.email)).data;
       this.selectEmail = false;
+      this.makePicks = true;
       this.loading = false;
+
+      this.tiers = Object.keys(this.tournamentField.picks_per_tier)
+        .map(l => (
+          { name: l, required: this.tournamentField.picks_per_tier[l], selected: 0 }));
+
+      this.picks.picks.forEach((p) => {
+        this.tiers.find(t => t.name === p.tier).selected += 1;
+      });
     },
   },
   asyncComputed: {
@@ -96,6 +156,11 @@ export default {
   .form-signin {
     padding-left: 5%;
     padding-right: 5%;
+  }
+
+  .tier-validation-container {
+    display: flex;
+    justify-content: space-around;
   }
 
   /*.btn-primary, .btn-primary:hover, .btn-primary:active, .btn-primary:visited {*/
