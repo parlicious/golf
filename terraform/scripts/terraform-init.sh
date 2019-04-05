@@ -28,6 +28,9 @@ fi
 TERRAFORM_FOLDER_PATH="$(dirname ${0})/../${TERRAFORM_FOLDER}"
 cd ${TERRAFORM_FOLDER_PATH}
 
+# Clear any existing terraform config files
+rm -rf .terraform
+
 terraform init \
     -backend-config="bucket=${S3_BUCKET_NAME}" \
     -backend-config="key=${S3_BUCKET_KEY}" \
