@@ -27,8 +27,10 @@
     </div>
 
     <div v-if="!loading && makePicks">
-      <p>Picks remaining for each tier</p>
       <div class="tier-validation-container">
+        <div class="tier-validation-cell">
+          <p>Picks remaining for each tier:</p>
+        </div>
         <div
           class="tier-validation-cell"
           v-for="tier in tiers"
@@ -40,8 +42,9 @@
         <div
           v-for="player in tournamentField.field"
           v-bind:key="player.id"
+          v-bind:class="{picked: playerPicked(player)}"
           class="pick-cell">
-          {{player.id}} {{player.odds}} {{player.tier}} {{playerPicked(player)}}
+          {{player.name}} {{player.odds}} {{player.tier}}
         </div>
       </div>
     </div>
@@ -98,11 +101,30 @@ export default {
       }
       return false;
     },
+    togglePlayerPick(player) {
+      if (this.picks && this.picks.picks) {
+        if (this.picks.picks.find(x => x.id === player.id)) {
+          this.picks.picks = this.picks.picks.filter(x => x.id !== player.id);
+        } else {
+          this.picks.picks.append()
+        }
+      }
+    },
     async fetchData() {
       this.loading = true;
       const data = await PicksService.load();
-      this.golfers = data.golfers;
+      this.golfers = data.golfers.players.reduce((acc, val) => {
+        acc[val.masters_id] = val;
+        return acc;
+      }, {});
+
       this.tournamentField = data.tournamentField;
+
+      this.tournamentField.field.map((p) => {
+        p.name = `${this.golfers[p.id].first_name} ${this.golfers[p.id].last_name}`;
+        return p;
+      });
+
       this.loading = false;
     },
     async getIndividualPicks() {
@@ -161,6 +183,12 @@ export default {
   .tier-validation-container {
     display: flex;
     justify-content: space-around;
+    background-color: #333333;
+    color: white;
+  }
+
+  .picked {
+    background-color: lavender;
   }
 
   /*.btn-primary, .btn-primary:hover, .btn-primary:active, .btn-primary:visited {*/
