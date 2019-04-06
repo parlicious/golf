@@ -13,15 +13,25 @@ fi
 
 terraform/scripts/terraform-init.sh parlicious ${LIFECYCLE}
 
+echo "** TF Init Done **"
+
 cd terraform/parlicious
 
 terraform apply --auto-approve -var-file ${LIFECYCLE}.tfvars
 
+echo "** TF Apply Done **"
+
 cd - > /dev/null
 
+echo "** CD Done **"
+
 aws s3 sync web/dist s3://${WEBSITE_BUCKET_NAME}
+
+echo "** UI Bucket Sync Done **"
 
 TOTAL_OBJECTS=$(aws s3 ls s3://${DATA_BUCKET_NAME} --summarize  | grep "Total Objects: 0")
 if [ "Total Objects: 0" == "${TOTAL_OBJECTS}" ] ; then
     aws s3 sync datatemplates s3://${DATA_BUCKET_NAME}
 fi
+
+echo "** Control Data Bucket Sync Done **"
