@@ -8,7 +8,6 @@ export const PicksService = {
 
   async load() {
     const tournaments = (await ApiService.getTournaments()).data;
-    this.golfers = (await ApiService.getGolfers()).data;
     this.activeTournament = tournaments.find(x => x.active);
     this.tournamentField = (await ApiService.get(this.activeTournament.field)).data;
 
