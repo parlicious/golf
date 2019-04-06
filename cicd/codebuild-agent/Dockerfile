@@ -1,8 +1,9 @@
-FROM alpine:3.9
+FROM node:8-alpine
 
 ARG TERRAFORM_VERSION=0.11.13
 
 RUN apk add --update \
+    bash \
     python \
     python-dev \
     py-pip \
