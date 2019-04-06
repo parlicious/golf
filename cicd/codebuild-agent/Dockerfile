@@ -3,6 +3,7 @@ FROM node:8-alpine
 ARG TERRAFORM_VERSION=0.11.13
 
 RUN apk add --update \
+    zip \
     bash \
     python \
     python-dev \
