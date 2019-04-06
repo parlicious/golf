@@ -23,7 +23,7 @@ resource "aws_codebuild_project" "parlicious_uat" {
     compute_type                = "BUILD_GENERAL1_SMALL"
     image                       = "${aws_ecr_repository.parlicious_cicd_agent.repository_url}"
     type                        = "LINUX_CONTAINER"
-    image_pull_credentials_type = "CODEBUILD"
+    image_pull_credentials_type = "SERVICE_ROLE"
   }
 
   source {
@@ -58,7 +58,7 @@ resource "aws_codebuild_project" "parlicious_dev" {
     compute_type                = "BUILD_GENERAL1_SMALL"
     image                       = "${aws_ecr_repository.parlicious_cicd_agent.repository_url}"
     type                        = "LINUX_CONTAINER"
-    image_pull_credentials_type = "CODEBUILD"
+    image_pull_credentials_type = "SERVICE_ROLE"
   }
 
   source {
@@ -93,7 +93,7 @@ resource "aws_codebuild_project" "parlicious_prod" {
     compute_type                = "BUILD_GENERAL1_SMALL"
     image                       = "${aws_ecr_repository.parlicious_cicd_agent.repository_url}"
     type                        = "LINUX_CONTAINER"
-    image_pull_credentials_type = "CODEBUILD"
+    image_pull_credentials_type = "SERVICE_ROLE"
   }
 
   source {
@@ -110,10 +110,10 @@ resource "aws_codebuild_project" "parlicious_prod" {
 
 resource "aws_codebuild_webhook" "parlicious_uat" {
   project_name  = "${aws_codebuild_project.parlicious_uat.name}"
-  branch_filter = "master"
+  branch_filter = "^master$"
 }
 
 resource "aws_codebuild_webhook" "parlicious_dev" {
   project_name  = "${aws_codebuild_project.parlicious_dev.name}"
-  branch_filter = ":^(?!(<master>)).*"
+  branch_filter = "^(?!.*master).*$"
 }

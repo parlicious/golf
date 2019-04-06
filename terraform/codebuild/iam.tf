@@ -27,6 +27,16 @@ resource "aws_iam_role_policy_attachment" "parlicious_cicd_r53_policy" {
   policy_arn = "arn:aws:iam::aws:policy/AmazonRoute53FullAccess"
 }
 
+resource "aws_iam_role_policy_attachment" "parlicious_cicd_ecr_policy" {
+    role       = "${aws_iam_role.parlicious_cicd_role.name}"
+    policy_arn = "arn:aws:iam::aws:policy/AmazonEC2ContainerRegistryReadOnly"
+}
+
+resource "aws_iam_role_policy_attachment" "parlicious_cicd_iam_policy" {
+    role       = "${aws_iam_role.parlicious_cicd_role.name}"
+    policy_arn = "arn:aws:iam::aws:policy/IAMFullAccess"
+}
+
 resource "aws_iam_role_policy" "parlicious_cicd_policy" {
   role = "${aws_iam_role.parlicious_cicd_role.name}"
 

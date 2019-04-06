@@ -1,7 +1,7 @@
 version: 0.2
 
 phases:
-build:
-  commands:
+  build:
+    commands:
     - cicd/scripts/build.sh uat
     - cicd/scripts/deploy.sh uat
