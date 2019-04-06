@@ -101,7 +101,6 @@ export default {
       this.loading = false;
     },
     makePick(playerId) {
-      console.log(playerId);
       const playerIndex = this.players.findIndex(p => this.thisTournamentId(p) === playerId);
       if (playerIndex >= 0) {
         const newPlayer = {
