@@ -110,7 +110,6 @@ resource "aws_codebuild_project" "parlicious_prod" {
 
 resource "aws_codebuild_webhook" "parlicious_uat" {
   project_name  = "${aws_codebuild_project.parlicious_uat.name}"
-  branch_filter = "^master$"
 }
 
 resource "aws_codebuild_webhook" "parlicious_dev" {
