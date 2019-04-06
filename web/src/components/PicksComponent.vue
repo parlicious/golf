@@ -53,7 +53,6 @@
 </template>
 
 <script>
-import { sha256 } from '../common/security';
 import { PicksService } from '../common/picks';
 
 export default {
@@ -65,15 +64,15 @@ export default {
       selectEmail: true,
       makePicks: false,
       picks_per_tier: {},
-      players: []
+      players: [],
     };
   },
   created() {
     this.fetchData();
   },
   methods: {
-    thisTournamentId(golfer){
-      switch(this.activeTournament.title){
+    thisTournamentId(golfer) {
+      switch (this.activeTournament.title) {
         case 'Masters': return golfer.masters_id;
         default: return golfer.masters_id;
       }
@@ -85,29 +84,29 @@ export default {
       this.players = data.golfers.players;
 
       const masterIdToFieldEntry = data.tournamentField.field.reduce((acc, val) => {
-          acc[val.id] = val;
-          return acc;
+        acc[val.id] = val;
+        return acc;
       }, {});
 
-      this.players = this.players.map(g => {
-          const fieldEntry = masterIdToFieldEntry[this.thisTournamentId(g)]
-          return {
-            ...g,
-            odds: fieldEntry.odds,
-            tier: fieldEntry.tier
-          };
+      this.players = this.players.map((g) => {
+        const fieldEntry = masterIdToFieldEntry[this.thisTournamentId(g)];
+        return {
+          ...g,
+          odds: fieldEntry.odds,
+          tier: fieldEntry.tier,
+        };
       });
 
       this.picks_per_tier = data.tournamentField.picks_per_tier;
       this.loading = false;
     },
-    makePick(playerId){
+    makePick(playerId) {
       console.log(playerId);
       const playerIndex = this.players.findIndex(p => this.thisTournamentId(p) === playerId);
-      if(playerIndex >= 0){
+      if (playerIndex >= 0) {
         const newPlayer = {
           ...this.players[playerIndex],
-          picked: !this.players[playerIndex].picked
+          picked: !this.players[playerIndex].picked,
         };
 
         this.$set(this.players, playerIndex, newPlayer);
@@ -120,9 +119,9 @@ export default {
       this.makePicks = true;
       this.loading = false;
 
-      pickObject.picks.forEach(p => this.makePick(p.id))
+      pickObject.picks.forEach(p => this.makePick(p.id));
     },
-  }
+  },
 };
 </script>
 
