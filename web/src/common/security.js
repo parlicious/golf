@@ -1,7 +1,11 @@
+import * as sjcl from 'sjcl';
+
+// TODO: switch back to WebCrypto API when using https
 const digestMessage = async (message) => {
-  const encoder = new TextEncoder();
-  const data = encoder.encode(message);
-  return window.crypto.subtle.digest('SHA-256', data);
+  // const encoder = new TextEncoder();
+  // const data = encoder.encode(message);
+  // return window.crypto.subtle.digest('SHA-256', data);
+  return sjcl.hash.sha256.hash(message);
 };
 
 // https://stackoverflow.com/questions/40031688/javascript-arraybuffer-to-hex
