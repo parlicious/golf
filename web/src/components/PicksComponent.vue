@@ -27,25 +27,46 @@
     </div>
 
     <div v-if="!loading && makePicks">
-      <!--<div class="tier-validation-container">-->
-        <!--<div class="tier-validation-cell">-->
-          <!--<p>Picks remaining for each tier:</p>-->
-        <!--</div>-->
-        <!--<div-->
-          <!--class="tier-validation-cell"-->
-          <!--v-for="tier in tiers"-->
-          <!--v-bind:key="tier.name">-->
-          <!--{{tier.name}} : {{tier.selected}} / {{tier.required}}-->
-        <!--</div>-->
-      <!--</div>-->
+      <div class="tier-validation-container">
+        <div class="tier-validation-cell">
+          <p>Picks remaining for each tier:</p>
+        </div>
+        <div
+          class="tier-validation-cell"
+          v-for="tier in tierView().view"
+          v-bind:key="tier.name">
+          {{tier.name}} : <span>{{tier.selected}} / {{tier.required}}</span>
+        </div>
+        <div
+          class="tier-validation-cell">
+          Valid: {{tierView().valid}}
+        </div>
+      </div>
+      <form
+        @submit.prevent="submitPicks"
+        class="form-signin form-inline justify-content-center">
+        <label class="sr-only" for="editKeyInput">Edit Key</label>
+        <input
+          v-model="editKey"
+          type="text"
+          class="form-control mb-2 mr-sm-2"
+          id="editKeyInput"
+          placeholder="Picks Password">
+
+        <button
+          type="submit"
+          class="btn btn-primary mb-2">
+          Submit Picks
+        </button>
+      </form>
       <div class="picks-list">
         <div
           v-for="player in players"
           v-bind:key="player.id"
           v-bind:class="{picked: player.picked}"
-          v-on:click="makePick(thisTournamentId(player))"
+          v-on:click="makePick(player.tournament_id)"
           class="pick-cell">
-          {{player.first_name}} {{player.last_name}} {{player.odds}} {{player.tier}}
+          {{player.first_name}} {{player.last_name}} {{player.fractional_odds}} {{player.tier}}
         </div>
       </div>
     </div>
@@ -54,12 +75,14 @@
 
 <script>
 import { PicksService } from '../common/picks';
+import { sha256 } from '../common/security';
 
 export default {
   name: 'PicksComponent',
   data() {
     return {
       email: '',
+      editKey: '',
       loading: false,
       selectEmail: true,
       makePicks: false,
@@ -71,38 +94,15 @@ export default {
     this.fetchData();
   },
   methods: {
-    thisTournamentId(golfer) {
-      switch (this.activeTournament.title) {
-        case 'Masters': return golfer.masters_id;
-        default: return golfer.masters_id;
-      }
-    },
     async fetchData() {
       this.loading = true;
       const data = await PicksService.load();
-      this.activeTournament = data.activeTournament;
-      this.players = data.golfers.players;
-
-      const masterIdToFieldEntry = data.tournamentField.field.reduce((acc, val) => {
-        acc[val.id] = val;
-        return acc;
-      }, {});
-
-      this.players = this.players.map((g) => {
-        const fieldEntry = masterIdToFieldEntry[this.thisTournamentId(g)];
-        return {
-          ...g,
-          odds: fieldEntry.odds,
-          tier: fieldEntry.tier,
-        };
-      });
-
+      this.players = data.tournamentField.field;
       this.picks_per_tier = data.tournamentField.picks_per_tier;
       this.loading = false;
     },
     makePick(playerId) {
-      console.log(playerId);
-      const playerIndex = this.players.findIndex(p => this.thisTournamentId(p) === playerId);
+      const playerIndex = this.players.findIndex(p => p.tournament_id === playerId);
       if (playerIndex >= 0) {
         const newPlayer = {
           ...this.players[playerIndex],
@@ -121,12 +121,45 @@ export default {
 
       pickObject.picks.forEach(p => this.makePick(p.id));
     },
+    async submitPicks() {
+      const hashedEditKey = await sha256(this.editKey);
+      console.log(hashedEditKey);
+    },
+    tierView() {
+      const tier = this.picks_per_tier;
+      const view = Object.keys(tier).map(k => ({ name: k, selected: 0, required: tier[k] }));
+      const mapping = Object.keys(tier).reduce(([acc, idx], val) => {
+        acc[val] = idx;
+        const newIdx = idx + 1;
+        return [acc, newIdx];
+      }, [{}, 0])[0];
+
+      this.players.forEach((p) => {
+        if (p.picked) {
+          view[mapping[p.tier]].selected += 1;
+        }
+      });
+
+      const valid = view.filter(t => t.selected !== t.required).length === 0;
+
+      return {
+        view,
+        valid,
+      };
+    },
   },
 };
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+
+  *, *:before, *:after {
+    -webkit-user-select: none; /* Chrome/Safari */
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* IE10+ */
+  }
+
   h3 {
     margin: 40px 0 0;
   }
