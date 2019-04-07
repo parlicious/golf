@@ -271,7 +271,11 @@ export default {
   .tiers .tier .card-header{
     font-size:1.5rem;
     font-weight: bold;
+    padding:.5rem;
+  }
 
+  .tiers .tier .card-body{
+    padding:.25rem;
   }
 
   .picks-list {
