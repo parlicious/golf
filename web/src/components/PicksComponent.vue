@@ -52,58 +52,69 @@
             class="col mx-0 px-1 my-2 tier"
             v-for="tier in tierView().view"
             v-bind:key="tier.name">
-              <div class="card"
-                v-bind:class="{ 'bg-success': tier.required === tier.selected }"
-                >
-                <div class="card-header">{{tier.name}}</div>
-                <div class="card-body">
-                  <p class="card-text">{{tier.required - tier.selected}} left </p>
-                </div>
+            <div class="card"
+                 v-bind:class="{ 'bg-success': tier.required === tier.selected }"
+            >
+              <div class="card-header">{{tier.name}}</div>
+              <div class="card-body">
+                <p class="card-text">{{tier.required - tier.selected}} left </p>
               </div>
+            </div>
           </div>
 
         </div>
         <div
-            class="row">
-            <div class="col  align-self-end">
-              <form
-                @submit.prevent="submitPicks"
-                class="form-signin float-right">
-                <div class="form-row">
-                  <div class="col-auto">
-                    <label class="sr-only" for="editKeyInput">Edit Key</label>
-                    <input
-                      v-model="editKey"
-                      type="text"
-                      class="form-control  mb-2 "
-                      id="editKeyInput"
-                      placeholder="Picks Password">
-                  </div>
-                  <div class="col-auto">
-                    <button
-                      type="submit"
-                      class="btn btn-primary mb-2"
-                      :disabled="!tierView().valid">
-                      Submit Picks
-                    </button>
-                  </div>
+          class="row">
+          <div class="col  align-self-end">
+            <form
+              @submit.prevent="submitPicks"
+              class="form-signin float-right">
+              <div class="form-row">
+                <div class="col-auto">
+                  <label class="sr-only" for="editKeyInput">Edit Key</label>
+                  <input
+                    v-model="editKey"
+                    type="text"
+                    class="form-control  mb-2 "
+                    id="editKeyInput"
+                    placeholder="Picks Password">
                 </div>
-              </form>
-            </div>
+                <div class="col-auto">
+                  <button
+                    type="submit"
+                    class="btn btn-primary mb-2"
+                    :disabled="!tierView().valid">
+                    Submit Picks
+                  </button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col  align-self-end">
+          <small> Make sure you remember your password, you'll need it to edit picks in the future</small>
         </div>
       </div>
 
       <div class="picks-list">
         <table class="table">
+          <thead>
+          <th scope="col">Tier</th>
+          <th scope="col">Name</th>
+          <th scope="col">Odds</th>
+          </thead>
           <tr
             v-for="player in players"
             v-bind:key="player.id"
             v-bind:class="{picked: player.picked}"
             v-on:click="makePick(player.tournament_id)"
             class="pick-cell">
-            <td> {{player.tier}} </td>
-            <td> {{player.first_name}} {{player.last_name}}  </td>
-            <td> {{player.fractional_odds}}  </td>
+            <td> {{player.tier}}</td>
+            <td> {{player.first_name}} {{player.last_name}}</td>
+            <td> {{player.fractional_odds}}</td>
           </tr>
         </table>
 
@@ -113,122 +124,126 @@
 </template>
 
 <script>
-import { PicksService } from '../common/picks';
+  import {PicksService} from '../common/picks';
 
-const timeout = (ms) => {
-  return new Promise(resolve => setTimeout(resolve, ms));
-};
+  const timeout = (ms) => {
+    return new Promise(resolve => setTimeout(resolve, ms));
+  };
 
-export default {
-  name: 'PicksComponent',
-  data() {
-    return {
-      email: '',
-      editKey: '',
-      showErrorMessage: false,
-      errorMessage: null,
-      showInfoMessage: false,
-      infoMessage: null,
-      showSuccessMessage: false,
-      successMessage: null,
-      loading: false,
-      selectEmail: true,
-      editing: false,
-      makePicks: false,
-      picks_per_tier: {},
-      players: [],
-    };
-  },
-  created() {
-    this.fetchData();
-  },
-  methods: {
-    async fetchData() {
-      this.loading = true;
-      const data = await PicksService.load();
-      this.players = data.tournamentField.field;
-      this.picks_per_tier = data.tournamentField.picks_per_tier;
-      this.loading = false;
-    },
-    async displayInfo(message){
-      this.infoMessage = message;
-      this.showInfoMessage = true;
-      await timeout(2000);
-      this.showInfoMessage = false;
-    },
-    async displayError(message){
-      this.errorMessage = message;
-      this.showErrorMessage = true;
-      await timeout(2000);
-      this.showErrorMessage = false;
-    },
-    async displaySuccess(message){
-      this.successMessage = message;
-      this.showSuccessMessage = true;
-      await timeout(2000);
-      this.showSuccessMessage = false;
-    },
-    makePick(playerId) {
-      const playerIndex = this.players.findIndex(p => p.tournament_id === playerId);
-      if (playerIndex >= 0) {
-        const newPlayer = {
-          ...this.players[playerIndex],
-          picked: !this.players[playerIndex].picked,
-        };
-
-        this.$set(this.players, playerIndex, newPlayer);
-      }
-    },
-    async getIndividualPicks() {
-      this.loading = true;
-      try {
-        const pickObject = (await PicksService.getIndividualPicks(this.email)).data;
-        pickObject.picks.forEach(p => this.makePick(p.tournament_id));
-        this.editing = true;
-        this.displayInfo('Loaded picks!')
-      } catch {
-        // new picks
-        this.editing = false;
-      }
-
-      this.selectEmail = false;
-      this.makePicks = true;
-      this.loading = false;
-    },
-    async submitPicks() {
-      const picks = this.players.filter(p => p.picked);
-      try{
-        await PicksService.submitPicks(picks, this.email, '', this.editKey);
-        this.displaySuccess('Picks Saved!')
-      } catch(e){
-        console.log(e);
-        this.displayError('Error saving picks');
-      }
-    },
-    tierView() {
-      const tier = this.picks_per_tier;
-      const view = Object.keys(tier).map(k => ({ name: k, selected: 0, required: tier[k] }));
-      const mapping = Object.keys(tier).reduce(([acc, idx], val) => {
-        acc[val] = idx;
-        const newIdx = idx + 1;
-        return [acc, newIdx];
-      }, [{}, 0])[0];
-
-      this.players.forEach((p) => {
-        if (p.picked) {
-          view[mapping[p.tier]].selected += 1;
-        }
-      });
-
-      const valid = view.filter(t => t.selected !== t.required).length === 0;
-
+  export default {
+    name: 'PicksComponent',
+    data() {
       return {
-        view,
-        valid,
+        email: '',
+        editKey: '',
+        showErrorMessage: false,
+        errorMessage: null,
+        showInfoMessage: false,
+        infoMessage: null,
+        showSuccessMessage: false,
+        successMessage: null,
+        loading: false,
+        selectEmail: true,
+        editing: false,
+        makePicks: false,
+        picks_per_tier: {},
+        players: [],
       };
     },
-  },
-};
+    created() {
+      this.fetchData();
+    },
+    methods: {
+      async fetchData() {
+        this.loading = true;
+        const data = await PicksService.load();
+        this.players = data.tournamentField.field;
+        this.picks_per_tier = data.tournamentField.picks_per_tier;
+        this.loading = false;
+      },
+      async displayInfo(message) {
+        this.infoMessage = message;
+        this.showInfoMessage = true;
+        await timeout(2000);
+        this.showInfoMessage = false;
+      },
+      async displayError(message) {
+        this.errorMessage = message;
+        this.showErrorMessage = true;
+        await timeout(2000);
+        this.showErrorMessage = false;
+      },
+      async displaySuccess(message) {
+        this.successMessage = message;
+        this.showSuccessMessage = true;
+        await timeout(2000);
+        this.showSuccessMessage = false;
+      },
+      makePick(playerId) {
+        const playerIndex = this.players.findIndex(p => p.tournament_id === playerId);
+        if (playerIndex >= 0) {
+          const newPlayer = {
+            ...this.players[playerIndex],
+            picked: !this.players[playerIndex].picked,
+          };
+
+          this.$set(this.players, playerIndex, newPlayer);
+        }
+      },
+      async getIndividualPicks() {
+        this.loading = true;
+        try {
+          const pickObject = (await PicksService.getIndividualPicks(this.email)).data;
+          pickObject.picks.forEach(p => this.makePick(p.tournament_id));
+          this.editing = true;
+          this.displayInfo('Loaded picks!')
+        } catch {
+          // new picks
+          this.editing = false;
+        }
+
+        this.selectEmail = false;
+        this.makePicks = true;
+        this.loading = false;
+      },
+      async submitPicks() {
+        const picks = this.players.filter(p => p.picked);
+        try {
+          await PicksService.submitPicks(picks, this.email, '', this.editKey);
+          this.displaySuccess('Picks Saved!')
+        } catch (e) {
+          console.log(e);
+          if (e.response.status === 403) {
+            this.displayError('Password for picks was incorrect');
+          } else {
+            this.displayError('Error saving picks');
+          }
+        }
+      },
+      tierView() {
+        const tier = this.picks_per_tier;
+        const view = Object.keys(tier).map(k => ({name: k, selected: 0, required: tier[k]}));
+        const mapping = Object.keys(tier).reduce(([acc, idx], val) => {
+          acc[val] = idx;
+          const newIdx = idx + 1;
+          return [acc, newIdx];
+        }, [{}, 0])[0];
+
+        this.players.forEach((p) => {
+          if (p.picked) {
+            view[mapping[p.tier]].selected += 1;
+          }
+        });
+
+        const valid = view.filter(t => t.selected !== t.required).length === 0;
+
+        return {
+          view,
+          valid,
+        };
+      },
+    },
+  };
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
@@ -263,28 +278,29 @@ export default {
   }
 
   .tiers {
-    position:sticky;
-    top:0;
-    background:white;
+    position: sticky;
+    top: 0;
+    background: white;
   }
 
-  .tiers .tier .card-header{
-    font-size:1.5rem;
+  .tiers .tier .card-header {
+    font-size: 1.5rem;
     font-weight: bold;
-    padding:.5rem;
+    padding: .5rem;
   }
 
-  .tiers .tier .card-body{
-    padding:.25rem;
+  .tiers .tier .card-body {
+    padding: .25rem;
   }
 
   .picks-list {
-    margin-top:2rem;
+    margin-top: 2rem;
   }
 
   .pick-cell {
     cursor: pointer;
   }
+
   .pick-cell:hover {
     background-color: #eee;
   }
