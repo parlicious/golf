@@ -18,13 +18,14 @@
       {{infoMessage}}
     </div>
 
-    <h1> Make Your Picks </h1>
-
     <div v-if="loading">
+      <h1> Make Your Picks </h1>
       Loading ...
     </div>
 
     <div v-if="!loading && selectEmail">
+      <h1> Make Your Picks </h1>
+      <p> Enter your email to get started </p>
       <form
         @submit.prevent="getIndividualPicks"
         class="form-signin form-inline justify-content-center">
@@ -46,6 +47,8 @@
     </div>
 
     <div v-if="!loading && makePicks">
+      <h1 v-if="!editing"> Make Your Picks </h1>
+      <h1 v-if="editing"> Edit Your Picks </h1>
       <div class="tiers ">
         <div class="row">
           <div
@@ -67,35 +70,20 @@
           class="row">
           <div class="col  align-self-end">
             <form
-              @submit.prevent="submitPicks"
+              @submit.prevent="confirmPicks"
               class="form-signin float-right">
               <div class="form-row">
-                <div class="col-auto">
-                  <label class="sr-only" for="editKeyInput">Edit Key</label>
-                  <input
-                    v-model="editKey"
-                    type="text"
-                    class="form-control  mb-2 "
-                    id="editKeyInput"
-                    placeholder="Picks Password">
-                </div>
                 <div class="col-auto">
                   <button
                     type="submit"
                     class="btn btn-primary mb-2"
                     :disabled="!tierView().valid">
-                    Submit Picks
+                    Confirm Picks
                   </button>
                 </div>
               </div>
             </form>
           </div>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="col  align-self-end">
-          <small> Make sure you remember your password, you'll need it to edit picks in the future</small>
         </div>
       </div>
 
@@ -120,6 +108,83 @@
 
       </div>
     </div>
+
+    <div v-if="!loading && confirmingPicks">
+      <h1> Confirm Your Picks </h1>
+      <small>
+        If the picks below look right, enter your name and pick a password to lock
+        down your picks. Don't forget it, you'll need it later if you want to edit your
+        picks.
+      </small>
+      <div
+        class="row">
+        <div class="col  align-self-center">
+          <form
+            @submit.prevent="submitPicks"
+            class="form-signin float-center">
+            <div class="form-row">
+              <div class="col-12 col-md-3">
+                <label class="sr-only" for="editKeyInput">Edit Key</label>
+                <input
+                  v-model="name"
+
+                  type="text"
+                  class="form-control  mb-2 "
+                  id="nameInput"
+                  placeholder="Name">
+              </div>
+              <div class="col-12 col-md-4">
+                <label class="sr-only" for="editKeyInput">Edit Key</label>
+                <input
+                  v-model="email"
+
+                  type="text"
+                  class="form-control  mb-2 "
+                  id="emailInput"
+                  placeholder="Email Address">
+              </div>
+              <div class="col-12 col-md-3">
+                <label class="sr-only" for="editKeyInput">Edit Key</label>
+                <input
+                  v-model="editKey"
+
+                  type="text"
+                  class="form-control  mb-2 "
+                  id="editKeyInput"
+                  placeholder="Picks Password">
+              </div>
+              <div class="col-12 col-md-2">
+                <button
+                  type="submit"
+                  class="btn btn-primary mb-2"
+                  :disabled="!submitFormValid()">
+                  Submit Picks
+                </button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <div class="picks-list">
+        <table class="table">
+          <thead>
+          <th scope="col">Tier</th>
+          <th scope="col">Name</th>
+          <th scope="col">Odds</th>
+          </thead>
+          <tr
+            v-for="player in players.filter(p => p.picked)"
+            v-bind:key="player.id"
+            class="pick-cell">
+            <td> {{player.tier}}</td>
+            <td> {{player.first_name}} {{player.last_name}}</td>
+            <td> {{player.fractional_odds}}</td>
+          </tr>
+        </table>
+
+      </div>
+    </div>
   </div>
 </template>
 
@@ -135,6 +200,7 @@
     data() {
       return {
         email: '',
+        name: '',
         editKey: '',
         showErrorMessage: false,
         errorMessage: null,
@@ -146,6 +212,7 @@
         selectEmail: true,
         editing: false,
         makePicks: false,
+        confirmingPicks: false,
         picks_per_tier: {},
         players: [],
       };
@@ -191,25 +258,37 @@
         }
       },
       async getIndividualPicks() {
-        this.loading = true;
-        try {
-          const pickObject = (await PicksService.getIndividualPicks(this.email)).data;
-          pickObject.picks.forEach(p => this.makePick(p.tournament_id));
-          this.editing = true;
-          this.displayInfo('Loaded picks!')
-        } catch {
-          // new picks
-          this.editing = false;
-        }
+        if (!this.email) {
+          this.displayError('You must enter an email address');
+        } else {
 
-        this.selectEmail = false;
-        this.makePicks = true;
-        this.loading = false;
+          this.loading = true;
+          try {
+            const pickObject = (await PicksService.getIndividualPicks(this.email)).data;
+            pickObject.picks.forEach(p => this.makePick(p.tournament_id));
+            this.editing = true;
+            this.displayInfo('Loaded picks!')
+          } catch {
+            // new picks
+            this.editing = false;
+          }
+
+          this.selectEmail = false;
+          this.makePicks = true;
+          this.loading = false;
+        }
+      },
+      confirmPicks() {
+        this.makePicks = false;
+        this.confirmingPicks = true;
+      },
+      submitFormValid() {
+        return !!this.email && !!this.name && !!this.editKey;
       },
       async submitPicks() {
         const picks = this.players.filter(p => p.picked);
         try {
-          await PicksService.submitPicks(picks, this.email, '', this.editKey);
+          await PicksService.submitPicks(picks, this.email, this.name, this.editKey);
           this.displaySuccess('Picks Saved!')
         } catch (e) {
           console.log(e);
