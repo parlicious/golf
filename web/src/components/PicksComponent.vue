@@ -28,9 +28,8 @@
     </div>
 
     <div v-if="!loading && makePicks">
-      <div class="tiers">
+      <div class="tiers ">
         <div class="row">
-
           <div
             class="col mx-0 px-1 my-2 tier"
             v-for="tier in tierView().view"
@@ -48,24 +47,29 @@
         </div>
         <div
             class="row">
-            <div class="col align-self-end">
+            <div class="col  align-self-end">
               <form
                 @submit.prevent="submitPicks"
-                class="form-signin form-inline float-right">
-                <label class="sr-only" for="editKeyInput">Edit Key</label>
-                <input
-                  v-model="editKey"
-                  type="text"
-                  class="form-control mb-2 mr-sm-2"
-                  id="editKeyInput"
-                  placeholder="Picks Password">
-
-                <button
-                  type="submit"
-                  class="btn btn-primary mb-2"
-                  :disabled="!tierView().valid">
-                  Submit Picks
-                </button>
+                class="form-signin float-right">
+                <div class="form-row">
+                  <div class="col-auto">
+                    <label class="sr-only" for="editKeyInput">Edit Key</label>
+                    <input
+                      v-model="editKey"
+                      type="text"
+                      class="form-control  mb-2 "
+                      id="editKeyInput"
+                      placeholder="Picks Password">
+                  </div>
+                  <div class="col-auto">
+                    <button
+                      type="submit"
+                      class="btn btn-primary mb-2"
+                      :disabled="!tierView().valid">
+                      Submit Picks
+                    </button>
+                  </div>
+                </div>
               </form>
             </div>
         </div>
