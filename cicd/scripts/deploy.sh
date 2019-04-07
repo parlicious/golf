@@ -42,7 +42,6 @@ fi
 
 echo "** Control Data Bucket Sync Done **"
 
-
 if [ "prod" == "${LIFECYCLE}" ]; then
     echo '** Copying to production UI buckets **'
     aws s3 sync web/dist s3://parlicious.com
