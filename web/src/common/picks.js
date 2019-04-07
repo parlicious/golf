@@ -1,5 +1,5 @@
 import { ApiService } from './api';
-import { sha256 } from '../common/security';
+import { sha256 } from './security';
 
 export const PicksService = {
 
@@ -37,11 +37,11 @@ export const PicksService = {
       email,
       name,
       editKey: hashedEditKey,
-      picks
+      picks,
     };
 
     return ApiService.submitPicks(pickRequest);
-  }
+  },
 };
 
 export default PicksService;

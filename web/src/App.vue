@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <div id="nav">
-      <router-link to="/">Leaderboard</router-link> |
+      <router-link to="/">Leaderboard</router-link>
       <router-link to="/picks">Picks</router-link>
     </div>
     <router-view/>
@@ -23,10 +23,15 @@
 #nav a {
   font-weight: bold;
   color: #2c3e50;
+  padding:1rem;
+  border: 1px solid #ccc;
+  border-radius:.25rem;
+  margin:.25rem;
 }
 
 #nav a.router-link-exact-active {
-  color: #42b983;
+  background-color: #42b983;
+  color:white;
 }
 .home {
   padding: .75rem;

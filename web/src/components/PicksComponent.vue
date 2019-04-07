@@ -19,11 +19,12 @@
     </div>
 
     <h1> Make Your Picks </h1>
+
     <div v-if="loading">
       Loading ...
     </div>
-    <div v-if="!loading && selectEmail">
 
+    <div v-if="!loading && selectEmail">
       <form
         @submit.prevent="getIndividualPicks"
         class="form-signin form-inline justify-content-center">
@@ -45,47 +46,67 @@
     </div>
 
     <div v-if="!loading && makePicks">
-      <div class="tier-validation-container">
-        <div class="tier-validation-cell">
-          <p>Picks remaining for each tier:</p>
+      <div class="tiers ">
+        <div class="row">
+          <div
+            class="col mx-0 px-1 my-2 tier"
+            v-for="tier in tierView().view"
+            v-bind:key="tier.name">
+              <div class="card"
+                v-bind:class="{ 'bg-success': tier.required === tier.selected }"
+                >
+                <div class="card-header">{{tier.name}}</div>
+                <div class="card-body">
+                  <p class="card-text">{{tier.required - tier.selected}} left </p>
+                </div>
+              </div>
+          </div>
+
         </div>
         <div
-          class="tier-validation-cell"
-          v-for="tier in tierView().view"
-          v-bind:key="tier.name">
-          {{tier.name}} : <span>{{tier.selected}} / {{tier.required}}</span>
-        </div>
-        <div
-          class="tier-validation-cell">
-          Valid: {{tierView().valid}}
+            class="row">
+            <div class="col  align-self-end">
+              <form
+                @submit.prevent="submitPicks"
+                class="form-signin float-right">
+                <div class="form-row">
+                  <div class="col-auto">
+                    <label class="sr-only" for="editKeyInput">Edit Key</label>
+                    <input
+                      v-model="editKey"
+                      type="text"
+                      class="form-control  mb-2 "
+                      id="editKeyInput"
+                      placeholder="Picks Password">
+                  </div>
+                  <div class="col-auto">
+                    <button
+                      type="submit"
+                      class="btn btn-primary mb-2"
+                      :disabled="!tierView().valid">
+                      Submit Picks
+                    </button>
+                  </div>
+                </div>
+              </form>
+            </div>
         </div>
       </div>
-      <form
-        @submit.prevent="submitPicks"
-        class="form-signin form-inline justify-content-center">
-        <label class="sr-only" for="editKeyInput">Edit Key</label>
-        <input
-          v-model="editKey"
-          type="text"
-          class="form-control mb-2 mr-sm-2"
-          id="editKeyInput"
-          placeholder="Picks Password">
 
-        <button
-          type="submit"
-          class="btn btn-primary mb-2">
-          Submit Picks
-        </button>
-      </form>
       <div class="picks-list">
-        <div
-          v-for="player in players"
-          v-bind:key="player.id"
-          v-bind:class="{picked: player.picked}"
-          v-on:click="makePick(player.tournament_id)"
-          class="pick-cell">
-          {{player.first_name}} {{player.last_name}} {{player.fractional_odds}} {{player.tier}}
-        </div>
+        <table class="table">
+          <tr
+            v-for="player in players"
+            v-bind:key="player.id"
+            v-bind:class="{picked: player.picked}"
+            v-on:click="makePick(player.tournament_id)"
+            class="pick-cell">
+            <td> {{player.tier}} </td>
+            <td> {{player.first_name}} {{player.last_name}}  </td>
+            <td> {{player.fractional_odds}}  </td>
+          </tr>
+        </table>
+
       </div>
     </div>
   </div>
@@ -173,7 +194,6 @@ export default {
       this.selectEmail = false;
       this.makePicks = true;
       this.loading = false;
-
     },
     async submitPicks() {
       const picks = this.players.filter(p => p.picked);
@@ -224,6 +244,10 @@ export default {
     margin: 40px 0 0;
   }
 
+  div, tr {
+    transition: background-color 0.5s ease;
+  }
+
   ul {
     list-style-type: none;
     padding: 0;
@@ -238,24 +262,39 @@ export default {
     color: #42b983;
   }
 
+  .tiers {
+    position:sticky;
+    top:0;
+    background:white;
+  }
+
+  .tiers .tier .card-header{
+    font-size:1.5rem;
+    font-weight: bold;
+    padding:.5rem;
+  }
+
+  .tiers .tier .card-body{
+    padding:.25rem;
+  }
+
+  .picks-list {
+    margin-top:2rem;
+  }
+
+  .pick-cell {
+    cursor: pointer;
+  }
+  .pick-cell:hover {
+    background-color: #eee;
+  }
+
   .form-label-group {
     text-align: left;
   }
 
-  .form-signin {
-    padding-left: 5%;
-    padding-right: 5%;
-  }
-
-  .tier-validation-container {
-    display: flex;
-    justify-content: space-around;
-    background-color: #333333;
-    color: white;
-  }
-
   .picked {
-    background-color: lavender;
+    background-color: #42b983 !important;
   }
 
   /*.btn-primary, .btn-primary:hover, .btn-primary:active, .btn-primary:visited {*/
