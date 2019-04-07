@@ -1,7 +1,8 @@
 {
   "version": 1,
-  "round": 1,
-  "cut_line": "",
+  "round": "F",
+  "cut_line": "+6",
+  "cut_penalty": 7,
   "timezone": "EDT",
   "players": [
     {
@@ -12,6 +13,9 @@
       "teetime": "2:40 PM",
       "today": "-1",
       "to_par": "-15",
+      "position": "1",
+      "individual_pen": null,
+      "individual_bonus": -14,
       "status": "F"
     },
     {
@@ -22,6 +26,9 @@
       "teetime": "2:30 PM",
       "today": "-5",
       "to_par": "-14",
+      "position": "2",
+      "individual_pen": null,
+      "individual_bonus": null,
       "status": "F"
     },
     {
@@ -32,6 +39,9 @@
       "teetime": "2:00 PM",
       "today": "-8",
       "to_par": "-13",
+      "position": "3",
+      "individual_pen": null,
+      "individual_bonus": null,
       "status": "F"
     },
     {
@@ -42,6 +52,9 @@
       "teetime": "2:30 PM",
       "today": "-3",
       "to_par": "-11",
+      "position": "4",
+      "individual_pen": null,
+      "individual_bonus": null,
       "status": "F"
     },
     {
@@ -52,6 +65,9 @@
       "teetime": "1:50 PM",
       "today": "-6",
       "to_par": "-9",
+      "position": "T5",
+      "individual_pen": null,
+      "individual_bonus": null,
       "status": "F"
     },
     {
@@ -62,6 +78,9 @@
       "teetime": "2:10 PM",
       "today": "-3",
       "to_par": "-9",
+      "position": "T5",
+      "individual_pen": null,
+      "individual_bonus": null,
       "status": "F"
     },
     {
@@ -72,6 +91,9 @@
       "teetime": "2:20 PM",
       "today": "-2",
       "to_par": "-9",
+      "position": "T5",
+      "individual_pen": null,
+      "individual_bonus": null,
       "status": "F"
     },
     {
@@ -82,6 +104,9 @@
       "teetime": "2:40 PM",
       "today": "+2",
       "to_par": "-9",
+      "position": "T5",
+      "individual_pen": null,
+      "individual_bonus": null,
       "status": "F"
     },
     {
@@ -92,6 +117,9 @@
       "teetime": "2:10 PM",
       "today": "-2",
       "to_par": "-8",
+      "position": "9",
+      "individual_pen": null,
+      "individual_bonus": null,
       "status": "F"
     },
     {
@@ -102,6 +130,9 @@
       "teetime": "1:00 PM",
       "today": "-6",
       "to_par": "-7",
+      "position": "T10",
+      "individual_pen": null,
+      "individual_bonus": null,
       "status": "F"
     },
     {
@@ -112,6 +143,9 @@
       "teetime": "1:50 PM",
       "today": "-3",
       "to_par": "-7",
+      "position": "T10",
+      "individual_pen": null,
+      "individual_bonus": null,
       "status": "F"
     },
     {
@@ -122,6 +156,9 @@
       "teetime": "1:00 PM",
       "today": "-5",
       "to_par": "-6",
+      "position": "T12",
+      "individual_pen": null,
+      "individual_bonus": null,
       "status": "F"
     },
     {
@@ -132,6 +169,9 @@
       "teetime": "1:40 PM",
       "today": "-3",
       "to_par": "-6",
+      "position": "T12",
+      "individual_pen": null,
+      "individual_bonus": null,
       "status": "F"
     },
     {
@@ -142,6 +182,9 @@
       "teetime": "1:40 PM",
       "today": "-3",
       "to_par": "-6",
+      "position": "T12",
+      "individual_pen": null,
+      "individual_bonus": null,
       "status": "F"
     },
     {
@@ -152,6 +195,9 @@
       "teetime": "12:10 PM",
       "today": "-7",
       "to_par": "-5",
+      "position": "T15",
+      "individual_pen": null,
+      "individual_bonus": null,
       "status": "F"
     },
     {
@@ -162,6 +208,9 @@
       "teetime": "12:30 PM",
       "today": "-5",
       "to_par": "-5",
+      "position": "T15",
+      "individual_pen": null,
+      "individual_bonus": null,
       "status": "F"
     },
     {
@@ -172,6 +221,9 @@
       "teetime": "2:00 PM",
       "today": "+1",
       "to_par": "-4",
+      "position": "T17",
+      "individual_pen": null,
+      "individual_bonus": null,
       "status": "F"
     },
     {
@@ -182,6 +234,9 @@
       "teetime": "2:20 PM",
       "today": "+2",
       "to_par": "-4",
+      "position": "T17",
+      "individual_pen": null,
+      "individual_bonus": null,
       "status": "F"
     },
     {
@@ -192,6 +247,9 @@
       "teetime": "12:20 PM",
       "today": "-3",
       "to_par": "-3",
+      "position": "19",
+      "individual_pen": null,
+      "individual_bonus": null,
       "status": "F"
     },
     {
@@ -202,6 +260,9 @@
       "teetime": "11:40 AM",
       "today": "-5",
       "to_par": "-2",
+      "position": "T20",
+      "individual_pen": null,
+      "individual_bonus": null,
       "status": "F"
     },
     {
@@ -212,6 +273,9 @@
       "teetime": "12:40 PM",
       "today": "-2",
       "to_par": "-2",
+      "position": "T20",
+      "individual_pen": null,
+      "individual_bonus": null,
       "status": "F"
     },
     {
@@ -222,6 +286,9 @@
       "teetime": "1:20 PM",
       "today": "-1",
       "to_par": "-2",
+      "position": "T20",
+      "individual_pen": null,
+      "individual_bonus": null,
       "status": "F"
     },
     {
@@ -232,6 +299,9 @@
       "teetime": "1:30 PM",
       "today": "-1",
       "to_par": "-2",
+      "position": "T20",
+      "individual_pen": null,
+      "individual_bonus": null,
       "status": "F"
     },
     {
@@ -242,6 +312,9 @@
       "teetime": "11:00 AM",
       "today": "-5",
       "to_par": "-1",
+      "position": "T24",
+      "individual_pen": null,
+      "individual_bonus": null,
       "status": "F"
     },
     {
@@ -252,6 +325,9 @@
       "teetime": "12:20 PM",
       "today": "-1",
       "to_par": "-1",
+      "position": "T24",
+      "individual_pen": null,
+      "individual_bonus": null,
       "status": "F"
     },
     {
@@ -262,6 +338,9 @@
       "teetime": "12:50 PM",
       "today": "-1",
       "to_par": "-1",
+      "position": "T24",
+      "individual_pen": null,
+      "individual_bonus": null,
       "status": "F"
     },
     {
@@ -272,6 +351,9 @@
       "teetime": "1:30 PM",
       "today": "E",
       "to_par": "-1",
+      "position": "T24",
+      "individual_pen": null,
+      "individual_bonus": null,
       "status": "F"
     },
     {
@@ -282,6 +364,9 @@
       "teetime": "11:50 AM",
       "today": "-2",
       "to_par": "E",
+      "position": "T28",
+      "individual_pen": null,
+      "individual_bonus": null,
       "status": "F"
     },
     {
@@ -292,6 +377,9 @@
       "teetime": "12:30 PM",
       "today": "E",
       "to_par": "E",
+      "position": "T28",
+      "individual_pen": null,
+      "individual_bonus": null,
       "status": "F"
     },
     {
@@ -302,6 +390,9 @@
       "teetime": "12:40 PM",
       "today": "E",
       "to_par": "E",
+      "position": "T28",
+      "individual_pen": null,
+      "individual_bonus": null,
       "status": "F"
     },
     {
@@ -312,6 +403,9 @@
       "teetime": "1:20 PM",
       "today": "+1",
       "to_par": "E",
+      "position": "T28",
+      "individual_pen": null,
+      "individual_bonus": null,
       "status": "F"
     },
     {
@@ -322,6 +416,9 @@
       "teetime": "11:10 AM",
       "today": "-3",
       "to_par": "+1",
+      "position": "T32",
+      "individual_pen": null,
+      "individual_bonus": null,
       "status": "F"
     },
     {
@@ -332,6 +429,9 @@
       "teetime": "12:00 PM",
       "today": "-1",
       "to_par": "+1",
+      "position": "T32",
+      "individual_pen": null,
+      "individual_bonus": null,
       "status": "F"
     },
     {
@@ -342,6 +442,9 @@
       "teetime": "12:00 PM",
       "today": "-1",
       "to_par": "+1",
+      "position": "T32",
+      "individual_pen": null,
+      "individual_bonus": null,
       "status": "F"
     },
     {
@@ -352,6 +455,9 @@
       "teetime": "12:10 PM",
       "today": "E",
       "to_par": "+1",
+      "position": "T32",
+      "individual_pen": null,
+      "individual_bonus": null,
       "status": "F"
     },
     {
@@ -362,6 +468,9 @@
       "teetime": "10:20 AM",
       "today": "-5",
       "to_par": "+2",
+      "position": "T36",
+      "individual_pen": null,
+      "individual_bonus": null,
       "status": "F"
     },
     {
@@ -372,6 +481,9 @@
       "teetime": "11:40 AM",
       "today": "E",
       "to_par": "+2",
+      "position": "T36",
+      "individual_pen": null,
+      "individual_bonus": null,
       "status": "F"
     },
     {
@@ -382,6 +494,9 @@
       "teetime": "11:00 AM",
       "today": "-1",
       "to_par": "+3",
+      "position": "T38",
+      "individual_pen": null,
+      "individual_bonus": null,
       "status": "F"
     },
     {
@@ -392,6 +507,9 @@
       "teetime": "11:10 AM",
       "today": "E",
       "to_par": "+3",
+      "position": "T38",
+      "individual_pen": null,
+      "individual_bonus": null,
       "status": "F"
     },
     {
@@ -402,6 +520,9 @@
       "teetime": "11:20 AM",
       "today": "E",
       "to_par": "+3",
+      "position": "T38",
+      "individual_pen": null,
+      "individual_bonus": null,
       "status": "F"
     },
     {
@@ -412,6 +533,9 @@
       "teetime": "11:20 AM",
       "today": "E",
       "to_par": "+3",
+      "position": "T38",
+      "individual_pen": null,
+      "individual_bonus": null,
       "status": "F"
     },
     {
@@ -422,6 +546,9 @@
       "teetime": "11:50 AM",
       "today": "+1",
       "to_par": "+3",
+      "position": "T38",
+      "individual_pen": null,
+      "individual_bonus": null,
       "status": "F"
     },
     {
@@ -432,6 +559,9 @@
       "teetime": "12:50 PM",
       "today": "+3",
       "to_par": "+3",
+      "position": "T38",
+      "individual_pen": null,
+      "individual_bonus": null,
       "status": "F"
     },
     {
@@ -442,6 +572,9 @@
       "teetime": "10:10 AM",
       "today": "-3",
       "to_par": "+4",
+      "position": "T44",
+      "individual_pen": null,
+      "individual_bonus": null,
       "status": "F"
     },
     {
@@ -452,6 +585,9 @@
       "teetime": "10:10 AM",
       "today": "-3",
       "to_par": "+4",
+      "position": "T44",
+      "individual_pen": null,
+      "individual_bonus": null,
       "status": "F"
     },
     {
@@ -462,6 +598,9 @@
       "teetime": "10:30 AM",
       "today": "-2",
       "to_par": "+4",
+      "position": "T44",
+      "individual_pen": null,
+      "individual_bonus": null,
       "status": "F"
     },
     {
@@ -472,6 +611,9 @@
       "teetime": "10:50 AM",
       "today": "-1",
       "to_par": "+4",
+      "position": "T44",
+      "individual_pen": null,
+      "individual_bonus": null,
       "status": "F"
     },
     {
@@ -482,6 +624,9 @@
       "teetime": "10:40 AM",
       "today": "+1",
       "to_par": "+6",
+      "position": "48",
+      "individual_pen": null,
+      "individual_bonus": null,
       "status": "F"
     },
     {
@@ -492,6 +637,9 @@
       "teetime": "10:00 AM",
       "today": "-1",
       "to_par": "+7",
+      "position": "49",
+      "individual_pen": null,
+      "individual_bonus": null,
       "status": "F"
     },
     {
@@ -502,6 +650,9 @@
       "teetime": "10:30 AM",
       "today": "+2",
       "to_par": "+8",
+      "position": "T50",
+      "individual_pen": null,
+      "individual_bonus": null,
       "status": "F"
     },
     {
@@ -512,6 +663,9 @@
       "teetime": "10:50 AM",
       "today": "+3",
       "to_par": "+8",
+      "position": "T50",
+      "individual_pen": null,
+      "individual_bonus": null,
       "status": "F"
     },
     {
@@ -522,6 +676,9 @@
       "teetime": "10:40 AM",
       "today": "+4",
       "to_par": "+9",
+      "position": "52",
+      "individual_pen": null,
+      "individual_bonus": null,
       "status": "F"
     },
     {
@@ -532,6 +689,9 @@
       "teetime": "10:20 AM",
       "today": "+4",
       "to_par": "+10",
+      "position": "53",
+      "individual_pen": null,
+      "individual_bonus": null,
       "status": "F"
     },
     {
@@ -542,6 +702,9 @@
       "teetime": "",
       "today": "",
       "to_par": "+6",
+      "position": "",
+      "individual_pen": 14,
+      "individual_bonus": null,
       "status": "C"
     },
     {
@@ -552,6 +715,9 @@
       "teetime": "",
       "today": "",
       "to_par": "+6",
+      "position": "",
+      "individual_pen": 14,
+      "individual_bonus": null,
       "status": "C"
     },
     {
@@ -562,6 +728,9 @@
       "teetime": "",
       "today": "",
       "to_par": "+6",
+      "position": "",
+      "individual_pen": 14,
+      "individual_bonus": null,
       "status": "C"
     },
     {
@@ -572,6 +741,9 @@
       "teetime": "",
       "today": "",
       "to_par": "+6",
+      "position": "",
+      "individual_pen": 14,
+      "individual_bonus": null,
       "status": "C"
     },
     {
@@ -582,6 +754,9 @@
       "teetime": "",
       "today": "",
       "to_par": "+7",
+      "position": "",
+      "individual_pen": 14,
+      "individual_bonus": null,
       "status": "C"
     },
     {
@@ -592,6 +767,9 @@
       "teetime": "",
       "today": "",
       "to_par": "+7",
+      "position": "",
+      "individual_pen": 14,
+      "individual_bonus": null,
       "status": "C"
     },
     {
@@ -602,6 +780,9 @@
       "teetime": "",
       "today": "",
       "to_par": "+7",
+      "position": "",
+      "individual_pen": 14,
+      "individual_bonus": null,
       "status": "C"
     },
     {
@@ -612,6 +793,9 @@
       "teetime": "",
       "today": "",
       "to_par": "+7",
+      "position": "",
+      "individual_pen": 14,
+      "individual_bonus": null,
       "status": "C"
     },
     {
@@ -622,6 +806,9 @@
       "teetime": "",
       "today": "",
       "to_par": "+7",
+      "position": "",
+      "individual_pen": 14,
+      "individual_bonus": null,
       "status": "C"
     },
     {
@@ -632,6 +819,9 @@
       "teetime": "",
       "today": "",
       "to_par": "+7",
+      "position": "",
+      "individual_pen": 14,
+      "individual_bonus": null,
       "status": "C"
     },
     {
@@ -642,6 +832,9 @@
       "teetime": "",
       "today": "",
       "to_par": "+7",
+      "position": "",
+      "individual_pen": 14,
+      "individual_bonus": null,
       "status": "C"
     },
     {
@@ -652,6 +845,9 @@
       "teetime": "",
       "today": "",
       "to_par": "+8",
+      "position": "",
+      "individual_pen": 14,
+      "individual_bonus": null,
       "status": "C"
     },
     {
@@ -662,6 +858,9 @@
       "teetime": "",
       "today": "",
       "to_par": "+8",
+      "position": "",
+      "individual_pen": 14,
+      "individual_bonus": null,
       "status": "C"
     },
     {
@@ -672,6 +871,9 @@
       "teetime": "",
       "today": "",
       "to_par": "+8",
+      "position": "",
+      "individual_pen": 14,
+      "individual_bonus": null,
       "status": "C"
     },
     {
@@ -682,6 +884,9 @@
       "teetime": "",
       "today": "",
       "to_par": "+8",
+      "position": "",
+      "individual_pen": 14,
+      "individual_bonus": null,
       "status": "C"
     },
     {
@@ -692,6 +897,9 @@
       "teetime": "",
       "today": "",
       "to_par": "+9",
+      "position": "",
+      "individual_pen": 14,
+      "individual_bonus": null,
       "status": "C"
     },
     {
@@ -702,6 +910,9 @@
       "teetime": "",
       "today": "",
       "to_par": "+9",
+      "position": "",
+      "individual_pen": 14,
+      "individual_bonus": null,
       "status": "C"
     },
     {
@@ -712,6 +923,9 @@
       "teetime": "",
       "today": "",
       "to_par": "+9",
+      "position": "",
+      "individual_pen": 14,
+      "individual_bonus": null,
       "status": "C"
     },
     {
@@ -722,6 +936,9 @@
       "teetime": "",
       "today": "",
       "to_par": "+9",
+      "position": "",
+      "individual_pen": 14,
+      "individual_bonus": null,
       "status": "C"
     },
     {
@@ -732,6 +949,9 @@
       "teetime": "",
       "today": "",
       "to_par": "+9",
+      "position": "",
+      "individual_pen": 14,
+      "individual_bonus": null,
       "status": "C"
     },
     {
@@ -742,6 +962,9 @@
       "teetime": "",
       "today": "",
       "to_par": "+9",
+      "position": "",
+      "individual_pen": 14,
+      "individual_bonus": null,
       "status": "C"
     },
     {
@@ -752,6 +975,9 @@
       "teetime": "",
       "today": "",
       "to_par": "+10",
+      "position": "",
+      "individual_pen": 14,
+      "individual_bonus": null,
       "status": "C"
     },
     {
@@ -762,6 +988,9 @@
       "teetime": "",
       "today": "",
       "to_par": "+10",
+      "position": "",
+      "individual_pen": 14,
+      "individual_bonus": null,
       "status": "C"
     },
     {
@@ -772,6 +1001,9 @@
       "teetime": "",
       "today": "",
       "to_par": "+10",
+      "position": "",
+      "individual_pen": 14,
+      "individual_bonus": null,
       "status": "C"
     },
     {
@@ -782,6 +1014,9 @@
       "teetime": "",
       "today": "",
       "to_par": "+11",
+      "position": "",
+      "individual_pen": 14,
+      "individual_bonus": null,
       "status": "C"
     },
     {
@@ -792,6 +1027,9 @@
       "teetime": "",
       "today": "",
       "to_par": "+11",
+      "position": "",
+      "individual_pen": 14,
+      "individual_bonus": null,
       "status": "C"
     },
     {
@@ -802,6 +1040,9 @@
       "teetime": "",
       "today": "",
       "to_par": "+11",
+      "position": "",
+      "individual_pen": 14,
+      "individual_bonus": null,
       "status": "C"
     },
     {
@@ -812,6 +1053,9 @@
       "teetime": "",
       "today": "",
       "to_par": "+12",
+      "position": "",
+      "individual_pen": 14,
+      "individual_bonus": null,
       "status": "C"
     },
     {
@@ -822,6 +1066,9 @@
       "teetime": "",
       "today": "",
       "to_par": "+15",
+      "position": "",
+      "individual_pen": 14,
+      "individual_bonus": null,
       "status": "C"
     },
     {
@@ -832,6 +1079,9 @@
       "teetime": "",
       "today": "",
       "to_par": "+15",
+      "position": "",
+      "individual_pen": 14,
+      "individual_bonus": null,
       "status": "C"
     },
     {
@@ -842,6 +1092,9 @@
       "teetime": "",
       "today": "",
       "to_par": "+15",
+      "position": "",
+      "individual_pen": 14,
+      "individual_bonus": null,
       "status": "C"
     },
     {
@@ -852,6 +1105,9 @@
       "teetime": "",
       "today": "",
       "to_par": "+15",
+      "position": "",
+      "individual_pen": 14,
+      "individual_bonus": null,
       "status": "C"
     },
     {
@@ -862,6 +1118,9 @@
       "teetime": "",
       "today": "",
       "to_par": "+16",
+      "position": "",
+      "individual_pen": 14,
+      "individual_bonus": null,
       "status": "C"
     },
     {
@@ -872,6 +1131,9 @@
       "teetime": "",
       "today": "",
       "to_par": "+22",
+      "position": "",
+      "individual_pen": 14,
+      "individual_bonus": null,
       "status": "C"
     }
   ]

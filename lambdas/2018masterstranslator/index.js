@@ -6,11 +6,12 @@ var host = '2018.masters.com';
 var path = '/en_US/scores/feeds/scores.json';
 
 var leaderboard = {
-    'version': 1,
-    'round': null,
-    'cut_line': null,
-    'timezone': 'EDT',
-    'players': [
+    "version": 1,
+    "round": "F",
+    "cut_line": 6,
+    "cut_penalty": 7,
+    "timezone": "EDT",
+    "players": [
         // {
         //     "id":null,
         //     "first_name":null,
@@ -46,7 +47,6 @@ exports.handler = (event, context, callback) => {
 
             //build our model
             leaderboard.cut_line = mastersdata.data.cutLine;
-            leaderboard.round = 1;
             let players = mastersdata.data.player;
             players.forEach(player => {
                 let newplayer = {
@@ -57,7 +57,10 @@ exports.handler = (event, context, callback) => {
                     'teetime': player.teetime,
                     'today': player.today,
                     'to_par': player.topar,
-                    'status': player.status
+                    'position': player.pos,
+                    "individual_pen": player.status == "C" ? leaderboard.cut_penalty * 2 : null,
+                    "individual_bonus": ((leaderboard.round == "F" || leaderboard.round == "4") && player.pos == "1") ? leaderboard.cut_penalty * -2 : null,
+                    "status": player.status
                 };
                 leaderboard.players.push(newplayer);
             });
