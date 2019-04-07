@@ -20,5 +20,6 @@ export default new Router({
       component: () => import(/* webpackChunkName: "about" */ './views/Picks.vue'),
     },
   ],
-  mode: 'history',
+  // TODO: change this when we go to cloudfront
+  // mode: 'history',
 });

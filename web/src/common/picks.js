@@ -1,4 +1,5 @@
 import { ApiService } from './api';
+import { sha256 } from '../common/security';
 
 export const PicksService = {
 
@@ -25,6 +26,22 @@ export const PicksService = {
       this.activeTournament.year,
     );
   },
+
+  async submitPicks(picks = [], email = '', name = '', editKey = '') {
+    const hashedEditKey = await sha256(editKey);
+
+    const pickRequest = {
+      guid: '',
+      tournament: this.activeTournament.title,
+      year: this.activeTournament.year,
+      email,
+      name,
+      editKey: hashedEditKey,
+      picks
+    };
+
+    return ApiService.submitPicks(pickRequest);
+  }
 };
 
 export default PicksService;

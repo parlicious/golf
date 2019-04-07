@@ -75,7 +75,6 @@
 
 <script>
 import { PicksService } from '../common/picks';
-import { sha256 } from '../common/security';
 
 export default {
   name: 'PicksComponent',
@@ -117,7 +116,7 @@ export default {
       this.loading = true;
       try {
         const pickObject = (await PicksService.getIndividualPicks(this.email)).data;
-        pickObject.picks.forEach(p => this.makePick(p.id));
+        pickObject.picks.forEach(p => this.makePick(p.tournament_id));
         this.editing = true;
       } catch {
         // new picks
@@ -130,8 +129,8 @@ export default {
 
     },
     async submitPicks() {
-      const hashedEditKey = await sha256(this.editKey);
-      console.log(hashedEditKey);
+      const picks = this.players.filter(p => p.picked);
+      await PicksService.submitPicks(picks, this.email, '', this.editKey);
     },
     tierView() {
       const tier = this.picks_per_tier;

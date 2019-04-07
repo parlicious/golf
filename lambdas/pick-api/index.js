@@ -43,7 +43,10 @@ const success = (responseBody) => {
         body: JSON.stringify(responseBody),
         headers: {
             'Content-Type': 'application/json',
-            "Access-Control-Allow-Origin": "*"
+            "Access-Control-Allow-Origin": "*",
+            "Access-Control-Allow-Methods": "POST, GET, OPTIONS, DELETE",
+            "Access-Control-Allow-Headers": "*",
+            "Access-Control-Max-Age": 86400,
         }
     }
 };
@@ -51,10 +54,10 @@ const success = (responseBody) => {
 
 
 const requiredPlayerPickValues = [
-    'guid',
+    // 'guid',
     'tournament',
     'year',
-    'name',
+    // 'name',
     'editKey',
     'picks',
     'email'
@@ -217,12 +220,17 @@ const handlePost = async (event) => {
     }
 };
 
+const handleOptions = async (event) => {
+    return success({});
+};
+
 
 exports.handler = async (event, context, callback) => {
     console.log('Received event:', JSON.stringify(event, null, 2));
     switch(event.httpMethod){
         case 'POST': return handlePost(event);
         case 'GET': return handleGet(event);
+        case 'OPTIONS': return handleOptions(event);
         default: return fail('Method Not Allowed', '405')
     }
 };

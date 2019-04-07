@@ -35,6 +35,10 @@ export const ApiService = {
     });
   },
 
+  submitPicks(picksRequest){
+    return this.post(API_URL, picksRequest);
+  },
+
   get(resource) {
     return Vue.axios.get(`${resource}`).catch((error) => {
       throw new Error(`[RWV] ApiService ${error}`);
