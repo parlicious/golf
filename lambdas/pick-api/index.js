@@ -5,7 +5,8 @@ const standardHeaders = {
     'Content-Type': 'application/json',
     "Access-Control-Allow-Origin": "*",
     "Access-Control-Allow-Methods": "POST, GET, OPTIONS, DELETE",
-    "Access-Control-Allow-Headers": "*",
+    "Access-Control-Allow-Headers": "Content-Type, Accept, Origin, Referer, User-Agent",
+    "Access-Control-Expose-Headers:": "*",
     "Access-Control-Max-Age": 86400,
 };
 
