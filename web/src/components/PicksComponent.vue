@@ -408,6 +408,10 @@
     background-color: #42b983 !important;
   }
 
+  #inlineFormInputName2{
+    width: 80%;
+  }
+
   /*.btn-primary, .btn-primary:hover, .btn-primary:active, .btn-primary:visited {*/
   /*  background-color: #42b983 !important;*/
   /*}*/
