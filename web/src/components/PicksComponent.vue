@@ -187,6 +187,10 @@ export default {
     margin: 40px 0 0;
   }
 
+  div, tr {
+    transition: background-color 0.5s ease;
+  }
+
   ul {
     list-style-type: none;
     padding: 0;
