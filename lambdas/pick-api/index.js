@@ -175,7 +175,7 @@ const handleGet = async (event) => {
     if (picksFound) {
         const existingPickKey = picksFound.key;
         const existingPick = await getPick(existingPickKey);
-
+        existingPick.editKey = '****masked****';
         return success(existingPick);
     } else {
         return fail('No picks found for this email', '404');
