@@ -1,6 +1,14 @@
 const AWS = require('aws-sdk');
 const s3 = new AWS.S3();
 
+const standardHeaders = {
+    'Content-Type': 'application/json',
+    "Access-Control-Allow-Origin": "*",
+    "Access-Control-Allow-Methods": "POST, GET, OPTIONS, DELETE",
+    "Access-Control-Allow-Headers": "*",
+    "Access-Control-Max-Age": 86400,
+};
+
 const errors = {
     tooFewOfTier: (tier) => `Too few picks for tier ${tier}`,
     tooManyOfTier: (tier) => `Too many picks for tier ${tier}`,
@@ -32,7 +40,7 @@ const fail = (message, statusCode = '400') => {
         statusCode: statusCode,
         body: JSON.stringify(responseBody),
         headers: {
-            'Content-Type': 'application/json',
+            ...standardHeaders,
         }
     }
 };
@@ -42,11 +50,7 @@ const success = (responseBody) => {
         statusCode: '200',
         body: JSON.stringify(responseBody),
         headers: {
-            'Content-Type': 'application/json',
-            "Access-Control-Allow-Origin": "*",
-            "Access-Control-Allow-Methods": "POST, GET, OPTIONS, DELETE",
-            "Access-Control-Allow-Headers": "*",
-            "Access-Control-Max-Age": 86400,
+            ...standardHeaders,
         }
     }
 };
