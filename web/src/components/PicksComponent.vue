@@ -85,6 +85,7 @@ export default {
       editKey: '',
       loading: false,
       selectEmail: true,
+      editing: false,
       makePicks: false,
       picks_per_tier: {},
       players: [],
@@ -114,12 +115,19 @@ export default {
     },
     async getIndividualPicks() {
       this.loading = true;
-      const pickObject = (await PicksService.getIndividualPicks(this.email)).data;
+      try {
+        const pickObject = (await PicksService.getIndividualPicks(this.email)).data;
+        pickObject.picks.forEach(p => this.makePick(p.id));
+        this.editing = true;
+      } catch {
+        // new picks
+        this.editing = false;
+      }
+
       this.selectEmail = false;
       this.makePicks = true;
       this.loading = false;
 
-      pickObject.picks.forEach(p => this.makePick(p.id));
     },
     async submitPicks() {
       const hashedEditKey = await sha256(this.editKey);
@@ -154,11 +162,11 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 
-  *, *:before, *:after {
-    -webkit-user-select: none; /* Chrome/Safari */
-    -moz-user-select: none; /* Firefox */
-    -ms-user-select: none; /* IE10+ */
-  }
+  /**, *:before, *:after {*/
+  /*  -webkit-user-select: none; !* Chrome/Safari *!*/
+  /*  -moz-user-select: none; !* Firefox *!*/
+  /*  -ms-user-select: none; !* IE10+ *!*/
+  /*}*/
 
   h3 {
     margin: 40px 0 0;
