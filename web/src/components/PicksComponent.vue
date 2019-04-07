@@ -273,7 +273,6 @@
             pickObject.picks.forEach(p => this.makePick(p.tournament_id));
             this.name = pickObject.name;
             this.editing = true;
-            this.displayInfo('Loaded picks!')
           } catch {
             // new picks
             this.editing = false;

@@ -7,54 +7,55 @@
       Loading...
     </div>
 
-    <div class="condense-expand"
-      v-on:click="showAll = !showAll">
-      <div v-if="showAll">
-        Collapse All
+    <div v-if="leaderboardActive">
+      <div class="condense-expand"
+           v-on:click="showAll = !showAll">
+        <div v-if="showAll">
+          Collapse All
+        </div>
+        <div v-if="!showAll">
+          Expand All
+        </div>
       </div>
-      <div v-if="!showAll">
-        Expand All
+      <div v-if="!loading" class="content">
+        <table class="table">
+          <thead>
+          <tr>
+            <th scope="col">Rank</th>
+            <th scope="col">Name</th>
+            <th scope="col">Total</th>
+            <th scope="col">Today</th>
+            <th scope="col">Thru</th>
+          </tr>
+          </thead>
+          <pool-participant
+            v-for="participant in poolParticipants"
+            v-bind:key="participant.name"
+            v-bind:showPlayers="showAll"
+            v-bind:participant="participant">
+          </pool-participant>
+        </table>
       </div>
     </div>
-    <div v-if="!loading" class="content">
-      <table class="table">
-        <thead>
-        <tr>
-          <th scope="col">Rank</th>
-          <th scope="col">Name</th>
-          <th scope="col">Total</th>
-          <th scope="col">Today</th>
-          <th scope="col">Thru</th>
-        </tr>
-        </thead>
-        <pool-participant
-          v-for="participant in poolParticipants"
-          v-bind:key="participant.name"
-          v-bind:showPlayers="showAll"
-          v-bind:participant="participant">
-        </pool-participant>
-      </table>
+
+    <div v-if="!leaderboardActive">
+      <p> The leaderboard will be available when the tournament begins</p>
     </div>
   </div>
 </template>
 
 <script>
-import { sha256 } from '../common/security';
 import { ScoreboardService } from '../common/scoreboard';
 import PoolParticipantComponent from '@/components/PoolParticipantComponent.vue';
 
 export default {
   name: 'LeaderboardComponent',
   components: { 'pool-participant': PoolParticipantComponent },
-  asyncComputed: {
-    async msg() {
-      return sha256('hello world');
-    },
-  },
   data() {
     return {
       loading: false,
       showAll: false,
+      leaderboardActive: false,
       players: {},
       poolParticipants: [],
     };
