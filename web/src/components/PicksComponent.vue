@@ -32,7 +32,7 @@
         <label class="sr-only" for="inlineFormInputName2">Email</label>
         <input
           v-model="email"
-          type="text"
+          type="email"
           class="form-control mb-2 mr-sm-2"
           id="inlineFormInputName2"
           placeholder="Email Address">
@@ -138,7 +138,7 @@
                 <input
                   v-model="email"
 
-                  type="text"
+                  type="email"
                   class="form-control  mb-2 "
                   id="emailInput"
                   placeholder="Email Address">
@@ -278,6 +278,7 @@
           try {
             const pickObject = (await PicksService.getIndividualPicks(this.email)).data;
             pickObject.picks.forEach(p => this.makePick(p.tournament_id));
+            this.name = pickObject.name;
             this.editing = true;
             this.displayInfo('Loaded picks!')
           } catch {
