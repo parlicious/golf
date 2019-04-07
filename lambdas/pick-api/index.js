@@ -1,6 +1,14 @@
 const AWS = require('aws-sdk');
 const s3 = new AWS.S3();
 
+const standardHeaders = {
+    'Content-Type': 'application/json',
+    "Access-Control-Allow-Origin": "*",
+    "Access-Control-Allow-Methods": "POST, GET, OPTIONS, DELETE",
+    "Access-Control-Allow-Headers": "*",
+    "Access-Control-Max-Age": 86400,
+};
+
 const errors = {
     tooFewOfTier: (tier) => `Too few picks for tier ${tier}`,
     tooManyOfTier: (tier) => `Too many picks for tier ${tier}`,
@@ -32,7 +40,7 @@ const fail = (message, statusCode = '400') => {
         statusCode: statusCode,
         body: JSON.stringify(responseBody),
         headers: {
-            'Content-Type': 'application/json',
+            ...standardHeaders,
         }
     }
 };
@@ -42,8 +50,7 @@ const success = (responseBody) => {
         statusCode: '200',
         body: JSON.stringify(responseBody),
         headers: {
-            'Content-Type': 'application/json',
-            "Access-Control-Allow-Origin": "*"
+            ...standardHeaders,
         }
     }
 };
@@ -51,10 +58,10 @@ const success = (responseBody) => {
 
 
 const requiredPlayerPickValues = [
-    'guid',
+    // 'guid',
     'tournament',
     'year',
-    'name',
+    // 'name',
     'editKey',
     'picks',
     'email'
@@ -217,12 +224,17 @@ const handlePost = async (event) => {
     }
 };
 
+const handleOptions = async (event) => {
+    return success({});
+};
+
 
 exports.handler = async (event, context, callback) => {
     console.log('Received event:', JSON.stringify(event, null, 2));
     switch(event.httpMethod){
         case 'POST': return handlePost(event);
         case 'GET': return handleGet(event);
+        case 'OPTIONS': return handleOptions(event);
         default: return fail('Method Not Allowed', '405')
     }
 };

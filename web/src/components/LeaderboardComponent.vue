@@ -75,8 +75,9 @@ export default {
       this.players = data.players;
       this.poolParticipants = data.poolParticipants
         .map((p) => {
-          p.picks = p.picks.map(pick => this.players[pick.id]);
-          return p;
+          const participant = p;
+          participant.picks = participant.picks.map(pick => this.players[pick.id]);
+          return participant;
         });
       this.loading = false;
     },
