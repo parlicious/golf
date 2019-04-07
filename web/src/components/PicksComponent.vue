@@ -1,5 +1,23 @@
 <template>
   <div class="hello">
+    <div
+      v-if="showErrorMessage"
+      class="alert alert-danger" role="alert">
+      {{errorMessage}}
+    </div>
+
+    <div
+      v-if="showSuccessMessage"
+      class="alert alert-success" role="alert">
+      {{successMessage}}
+    </div>
+
+    <div
+      v-if="showInfoMessage"
+      class="alert alert-info" role="alert">
+      {{infoMessage}}
+    </div>
+
     <h1> Make Your Picks </h1>
     <div v-if="loading">
       Loading ...
@@ -76,12 +94,22 @@
 <script>
 import { PicksService } from '../common/picks';
 
+const timeout = (ms) => {
+  return new Promise(resolve => setTimeout(resolve, ms));
+};
+
 export default {
   name: 'PicksComponent',
   data() {
     return {
       email: '',
       editKey: '',
+      showErrorMessage: false,
+      errorMessage: null,
+      showInfoMessage: false,
+      infoMessage: null,
+      showSuccessMessage: false,
+      successMessage: null,
       loading: false,
       selectEmail: true,
       editing: false,
@@ -101,6 +129,24 @@ export default {
       this.picks_per_tier = data.tournamentField.picks_per_tier;
       this.loading = false;
     },
+    async displayInfo(message){
+      this.infoMessage = message;
+      this.showInfoMessage = true;
+      await timeout(2000);
+      this.showInfoMessage = false;
+    },
+    async displayError(message){
+      this.errorMessage = message;
+      this.showErrorMessage = true;
+      await timeout(2000);
+      this.showErrorMessage = false;
+    },
+    async displaySuccess(message){
+      this.successMessage = message;
+      this.showSuccessMessage = true;
+      await timeout(2000);
+      this.showSuccessMessage = false;
+    },
     makePick(playerId) {
       const playerIndex = this.players.findIndex(p => p.tournament_id === playerId);
       if (playerIndex >= 0) {
@@ -118,6 +164,7 @@ export default {
         const pickObject = (await PicksService.getIndividualPicks(this.email)).data;
         pickObject.picks.forEach(p => this.makePick(p.tournament_id));
         this.editing = true;
+        this.displayInfo('Loaded picks!')
       } catch {
         // new picks
         this.editing = false;
@@ -130,7 +177,13 @@ export default {
     },
     async submitPicks() {
       const picks = this.players.filter(p => p.picked);
-      await PicksService.submitPicks(picks, this.email, '', this.editKey);
+      try{
+        await PicksService.submitPicks(picks, this.email, '', this.editKey);
+        this.displaySuccess('Picks Saved!')
+      } catch(e){
+        console.log(e);
+        this.displayError('Error saving picks');
+      }
     },
     tierView() {
       const tier = this.picks_per_tier;
