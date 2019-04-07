@@ -184,6 +184,18 @@
         </table>
 
       </div>
+
+      <div
+        class="row">
+        <div class="col  align-self-center">
+          <button
+            v-on:click="changePicks()"
+            type="button"
+            class="btn btn-primary mb-2">
+            Change Picks
+          </button>
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -281,6 +293,10 @@
       confirmPicks() {
         this.makePicks = false;
         this.confirmingPicks = true;
+      },
+      changePicks(){
+        this.makePicks = true;
+        this.confirmingPicks = false;
       },
       submitFormValid() {
         return !!this.email && !!this.name && !!this.editKey;
