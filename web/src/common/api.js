@@ -35,7 +35,7 @@ export const ApiService = {
     });
   },
 
-  submitPicks(picksRequest){
+  submitPicks(picksRequest) {
     return this.post(API_URL, picksRequest);
   },
 

@@ -1,7 +1,7 @@
 <template>
   <div class="hello">
     <h1> Make Your Picks </h1>
-    
+
     <div v-if="loading">
       Loading ...
     </div>
@@ -30,7 +30,7 @@
     <div v-if="!loading && makePicks">
       <div class="tiers">
         <div class="row">
-          
+
           <div
             class="col mx-0 px-1 my-2 tier"
             v-for="tier in tierView().view"
@@ -44,7 +44,7 @@
                 </div>
               </div>
           </div>
-          
+
         </div>
         <div
             class="row">
@@ -70,7 +70,7 @@
             </div>
         </div>
       </div>
-      
+
       <div class="picks-list">
         <table class="table">
           <tr
@@ -82,10 +82,9 @@
             <td> {{player.tier}} </td>
             <td> {{player.first_name}} {{player.last_name}}  </td>
             <td> {{player.fractional_odds}}  </td>
-                
           </tr>
         </table>
-        
+
       </div>
     </div>
   </div>
@@ -144,7 +143,6 @@ export default {
       this.selectEmail = false;
       this.makePicks = true;
       this.loading = false;
-
     },
     async submitPicks() {
       const picks = this.players.filter(p => p.picked);
@@ -215,12 +213,23 @@ export default {
 
   }
 
+  .picks-list {
+    margin-top:2rem;
+  }
+
+  .pick-cell {
+    cursor: pointer;
+  }
+  .pick-cell:hover {
+    background-color: #eee;
+  }
+
   .form-label-group {
     text-align: left;
   }
 
   .picked {
-    background-color: lavender;
+    background-color: #42b983 !important;
   }
 
   /*.btn-primary, .btn-primary:hover, .btn-primary:active, .btn-primary:visited {*/
