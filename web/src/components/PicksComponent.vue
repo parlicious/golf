@@ -56,7 +56,7 @@
             v-for="tier in tierView().view"
             v-bind:key="tier.name">
             <div class="card"
-                 v-bind:class="{ 'bg-success': tier.required === tier.selected }"
+                 v-bind:class="{ 'tiers-correct': tier.required === tier.selected }"
             >
               <div class="card-header">{{tier.name}}</div>
               <div class="card-body">
@@ -67,22 +67,15 @@
 
         </div>
         <div
-          class="row">
-          <div class="col  align-self-end">
-            <form
-              @submit.prevent="confirmPicks"
-              class="form-signin float-right">
-              <div class="form-row">
-                <div class="col-auto">
-                  <button
-                    type="submit"
-                    class="btn btn-primary mb-2"
-                    :disabled="!tierView().valid">
-                    Confirm Picks
-                  </button>
-                </div>
-              </div>
-            </form>
+          class="row justify-content-sm-center">
+          <div class="col-12 col-sm-6">
+            <button
+              type="button"
+              class="btn btn-primary btn-block"
+              v-on:click="confirmPicks()"
+              :disabled="!tierView().valid">
+              Confirm Picks
+            </button>
           </div>
         </div>
       </div>
@@ -356,7 +349,7 @@
   }
 
   div, tr {
-    transition: background-color 0.5s ease;
+    transition: background-color 0.2s ease;
   }
 
   ul {
@@ -390,7 +383,7 @@
   }
 
   .picks-list {
-    margin-top: 2rem;
+    margin-top: .5rem;
   }
 
   .pick-cell {
@@ -407,11 +400,19 @@
 
   .picked {
     background-color: #42b983 !important;
+    color: white;
+  }
+
+  .tiers-correct{
+    background-color: #42b983;
+    color: white;
   }
 
   #inlineFormInputName2{
     width: 80%;
   }
+
+
 
   /*.btn-primary, .btn-primary:hover, .btn-primary:active, .btn-primary:visited {*/
   /*  background-color: #42b983 !important;*/
