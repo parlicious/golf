@@ -4,7 +4,7 @@ var s3 = new AWS.S3();
 
 var https = require('https');
 
-var host = '2018.masters.com';
+var host = '2019.masters.com';
 var path = '/en_US/scores/feeds/scores.json';
 
 var leaderboard = {
@@ -14,16 +14,7 @@ var leaderboard = {
     "cut_penalty": 7,
     "timezone": "EDT",
     "players": [
-        // {
-        //     "id":null,
-        //     "first_name":null,
-        //     "last_name":null,
-        //     "thru":null,
-        //     "teetime":null,
-        //     "today":null,
-        //     "to_par":null,
-        //     "status":null
-        // }
+
     ]
 };
 
@@ -67,7 +58,7 @@ exports.handler = (event, context, callback) => {
                 leaderboard.players.push(newplayer);
             });
             
-            const key = "leaderboards/masters/2018/leaderboard.json";
+            const key = "leaderboards/masters/2019/leaderboard.json";
         
             var params = {
                 Bucket : process.env.LEADERBOARD_BUCKET,
