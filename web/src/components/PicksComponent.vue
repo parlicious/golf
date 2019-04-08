@@ -346,8 +346,8 @@ export default {
     },
   },
   mounted() {
-    if (localStorage.name) {
-      this.name = localStorage.email;
+    if (localStorage.email) {
+      this.$set(this, 'email', localStorage.email);
     }
   },
   watch: {
