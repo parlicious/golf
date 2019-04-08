@@ -9,7 +9,7 @@ var path = '/en_US/scores/feeds/scores.json';
 
 var leaderboard = {
     "version": 1,
-    "round": "F",
+    "round": "1",
     "cut_line": 6,
     "cut_penalty": 7,
     "timezone": "EDT",
