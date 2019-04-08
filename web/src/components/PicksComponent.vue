@@ -308,7 +308,9 @@ export default {
     },
     tierView() {
       const tier = this.picks_per_tier;
-      const view = Object.keys(tier).map(k => ({ name: k, selected: 0, required: tier[k] }));
+      const view = Object.keys(tier)
+        .map(k => ({ name: k, selected: 0, required: tier[k] }))
+        .filter(t => t.required > 0);
       const mapping = Object.keys(tier).reduce(([acc, idx], val) => {
         acc[val] = idx;
         const newIdx = idx + 1;
