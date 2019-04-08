@@ -66,21 +66,9 @@
           </div>
 
         </div>
-        <div
-          class="row justify-content-sm-center">
-          <div class="col-12 col-sm-6">
-            <button
-              type="button"
-              class="btn btn-primary btn-block"
-              v-on:click="confirmPicks()"
-              :disabled="!tierView().valid">
-              Confirm Picks
-            </button>
-          </div>
-        </div>
       </div>
 
-      <div class="picks-list">
+      <div class="picks-list mb-5">
         <table class="table">
           <thead>
           <th scope="col">Tier</th>
@@ -99,6 +87,19 @@
           </tr>
         </table>
 
+      </div>
+
+      <div
+        class="confirm-area row justify-content-sm-center pb-4 fixed-bottom">
+        <div class="col-12 col-sm-6">
+          <button
+            type="button"
+            class="btn btn-outline-primary btn-block"
+            v-on:click="confirmPicks()"
+            :disabled="!tierView().valid">
+            Confirm Picks
+          </button>
+        </div>
       </div>
     </div>
 
@@ -194,144 +195,141 @@
 </template>
 
 <script>
-  import {PicksService} from '../common/picks';
+import { PicksService } from '../common/picks';
 
-  const timeout = (ms) => {
-    return new Promise(resolve => setTimeout(resolve, ms));
-  };
+const timeout = ms => new Promise(resolve => setTimeout(resolve, ms));
 
-  export default {
-    name: 'PicksComponent',
-    data() {
+export default {
+  name: 'PicksComponent',
+  data() {
+    return {
+      email: '',
+      name: '',
+      editKey: '',
+      showErrorMessage: false,
+      errorMessage: null,
+      showInfoMessage: false,
+      infoMessage: null,
+      showSuccessMessage: false,
+      successMessage: null,
+      loading: false,
+      selectEmail: true,
+      editing: false,
+      makePicks: false,
+      confirmingPicks: false,
+      picks_per_tier: {},
+      players: [],
+    };
+  },
+  created() {
+    this.fetchData();
+  },
+  methods: {
+    async fetchData() {
+      this.loading = true;
+      const data = await PicksService.load();
+      this.players = data.tournamentField.field;
+      this.picks_per_tier = data.tournamentField.picks_per_tier;
+      this.loading = false;
+    },
+    async displayInfo(message) {
+      this.infoMessage = message;
+      this.showInfoMessage = true;
+      await timeout(2000);
+      this.showInfoMessage = false;
+    },
+    async displayError(message) {
+      this.errorMessage = message;
+      this.showErrorMessage = true;
+      await timeout(2000);
+      this.showErrorMessage = false;
+    },
+    async displaySuccess(message) {
+      this.successMessage = message;
+      this.showSuccessMessage = true;
+      await timeout(2000);
+      this.showSuccessMessage = false;
+    },
+    makePick(playerId) {
+      const playerIndex = this.players.findIndex(p => p.tournament_id === playerId);
+      if (playerIndex >= 0) {
+        const newPlayer = {
+          ...this.players[playerIndex],
+          picked: !this.players[playerIndex].picked,
+        };
+
+        this.$set(this.players, playerIndex, newPlayer);
+      }
+    },
+    async getIndividualPicks() {
+      if (!this.email) {
+        this.displayError('You must enter an email address');
+      } else {
+        this.loading = true;
+        try {
+          const pickObject = (await PicksService.getIndividualPicks(this.email)).data;
+          pickObject.picks.forEach(p => this.makePick(p.tournament_id));
+          this.name = pickObject.name;
+          this.editing = true;
+        } catch {
+          // new picks
+          this.editing = false;
+        }
+
+        this.selectEmail = false;
+        this.makePicks = true;
+        this.loading = false;
+      }
+    },
+    confirmPicks() {
+      this.makePicks = false;
+      this.confirmingPicks = true;
+    },
+    changePicks() {
+      this.makePicks = true;
+      this.confirmingPicks = false;
+    },
+    submitFormValid() {
+      return !!this.email && !!this.name && !!this.editKey;
+    },
+    async submitPicks() {
+      const picks = this.players.filter(p => p.picked);
+      try {
+        await PicksService.submitPicks(picks, this.email, this.name, this.editKey);
+        this.displaySuccess('Picks Saved!');
+      } catch (e) {
+        console.log(e);
+        if (e.response.status === 403) {
+          this.displayError('Password for picks was incorrect');
+        } else {
+          this.displayError('Error saving picks');
+        }
+      }
+    },
+    tierView() {
+      const tier = this.picks_per_tier;
+      const view = Object.keys(tier).map(k => ({ name: k, selected: 0, required: tier[k] }));
+      const mapping = Object.keys(tier).reduce(([acc, idx], val) => {
+        acc[val] = idx;
+        const newIdx = idx + 1;
+        return [acc, newIdx];
+      }, [{}, 0])[0];
+
+      this.players.forEach((p) => {
+        if (p.picked) {
+          view[mapping[p.tier]].selected += 1;
+        }
+      });
+
+      const valid = view.filter(t => t.selected !== t.required).length === 0;
+
       return {
-        email: '',
-        name: '',
-        editKey: '',
-        showErrorMessage: false,
-        errorMessage: null,
-        showInfoMessage: false,
-        infoMessage: null,
-        showSuccessMessage: false,
-        successMessage: null,
-        loading: false,
-        selectEmail: true,
-        editing: false,
-        makePicks: false,
-        confirmingPicks: false,
-        picks_per_tier: {},
-        players: [],
+        view,
+        valid,
       };
     },
-    created() {
-      this.fetchData();
-    },
-    methods: {
-      async fetchData() {
-        this.loading = true;
-        const data = await PicksService.load();
-        this.players = data.tournamentField.field;
-        this.picks_per_tier = data.tournamentField.picks_per_tier;
-        this.loading = false;
-      },
-      async displayInfo(message) {
-        this.infoMessage = message;
-        this.showInfoMessage = true;
-        await timeout(2000);
-        this.showInfoMessage = false;
-      },
-      async displayError(message) {
-        this.errorMessage = message;
-        this.showErrorMessage = true;
-        await timeout(2000);
-        this.showErrorMessage = false;
-      },
-      async displaySuccess(message) {
-        this.successMessage = message;
-        this.showSuccessMessage = true;
-        await timeout(2000);
-        this.showSuccessMessage = false;
-      },
-      makePick(playerId) {
-        const playerIndex = this.players.findIndex(p => p.tournament_id === playerId);
-        if (playerIndex >= 0) {
-          const newPlayer = {
-            ...this.players[playerIndex],
-            picked: !this.players[playerIndex].picked,
-          };
-
-          this.$set(this.players, playerIndex, newPlayer);
-        }
-      },
-      async getIndividualPicks() {
-        if (!this.email) {
-          this.displayError('You must enter an email address');
-        } else {
-
-          this.loading = true;
-          try {
-            const pickObject = (await PicksService.getIndividualPicks(this.email)).data;
-            pickObject.picks.forEach(p => this.makePick(p.tournament_id));
-            this.name = pickObject.name;
-            this.editing = true;
-          } catch {
-            // new picks
-            this.editing = false;
-          }
-
-          this.selectEmail = false;
-          this.makePicks = true;
-          this.loading = false;
-        }
-      },
-      confirmPicks() {
-        this.makePicks = false;
-        this.confirmingPicks = true;
-      },
-      changePicks(){
-        this.makePicks = true;
-        this.confirmingPicks = false;
-      },
-      submitFormValid() {
-        return !!this.email && !!this.name && !!this.editKey;
-      },
-      async submitPicks() {
-        const picks = this.players.filter(p => p.picked);
-        try {
-          await PicksService.submitPicks(picks, this.email, this.name, this.editKey);
-          this.displaySuccess('Picks Saved!')
-        } catch (e) {
-          console.log(e);
-          if (e.response.status === 403) {
-            this.displayError('Password for picks was incorrect');
-          } else {
-            this.displayError('Error saving picks');
-          }
-        }
-      },
-      tierView() {
-        const tier = this.picks_per_tier;
-        const view = Object.keys(tier).map(k => ({name: k, selected: 0, required: tier[k]}));
-        const mapping = Object.keys(tier).reduce(([acc, idx], val) => {
-          acc[val] = idx;
-          const newIdx = idx + 1;
-          return [acc, newIdx];
-        }, [{}, 0])[0];
-
-        this.players.forEach((p) => {
-          if (p.picked) {
-            view[mapping[p.tier]].selected += 1;
-          }
-        });
-
-        const valid = view.filter(t => t.selected !== t.required).length === 0;
-
-        return {
-          view,
-          valid,
-        };
-      },
-    },
-  };
+  },
+};
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
@@ -411,6 +409,9 @@
     width: 80%;
   }
 
+  .confirm-area{
+    background-color: white;
+  }
 
 
   /*.btn-primary, .btn-primary:hover, .btn-primary:active, .btn-primary:visited {*/
