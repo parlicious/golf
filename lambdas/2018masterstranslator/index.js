@@ -66,13 +66,14 @@ exports.handler = (event, context, callback) => {
                 };
                 leaderboard.players.push(newplayer);
             });
-            
+
             const key = "leaderboards/masters/2018/leaderboard.json";
-        
+
             var params = {
                 Bucket : process.env.LEADERBOARD_BUCKET,
                 Key : key,
-                Body : JSON.stringify(leaderboard)
+                Body : JSON.stringify(leaderboard),
+                ACL:'public-read'
             };
             s3.putObject(params, function(err, data) {
                 if (err) console.log(err, err.stack); // an error occurred
