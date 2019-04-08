@@ -25,7 +25,7 @@
 
     <div v-if="!loading && selectEmail">
       <h1> Make Your Picks </h1>
-      <p> Enter your email to get started </p>
+      <small> Enter your email to get started </small>
       <form
         @submit.prevent="getIndividualPicks"
         class="form-signin form-inline justify-content-center">
@@ -49,6 +49,14 @@
     <div v-if="!loading && makePicks">
       <h1 v-if="!editing"> Make Your Picks </h1>
       <h1 v-if="editing"> Edit Your Picks </h1>
+      <small v-if="!tierView().valid">
+        First pick your players for each tier below
+      </small>
+
+      <small v-if="tierView().valid">
+        Make changes to your players for each tier below
+      </small>
+
       <div class="tiers ">
         <div class="row">
           <div
@@ -90,11 +98,12 @@
       </div>
 
       <div
+        v-if="tierView().valid"
         class="confirm-area row justify-content-sm-center pb-4 pl-1 pr-1 fixed-bottom">
         <div class="col-12 col-sm-6">
           <button
             type="button"
-            class="btn btn-outline-primary btn-block"
+            class="btn btn-primary btn-block"
             v-on:click="confirmPicks()"
             :disabled="!tierView().valid">
             Confirm Picks
@@ -250,6 +259,9 @@ export default {
       await timeout(2000);
       this.showSuccessMessage = false;
     },
+    scrollToTop() {
+      window.scrollTo(0, 0);
+    },
     makePick(playerId) {
       const playerIndex = this.players.findIndex(p => p.tournament_id === playerId);
       if (playerIndex >= 0) {
@@ -284,10 +296,12 @@ export default {
     confirmPicks() {
       this.makePicks = false;
       this.confirmingPicks = true;
+      this.scrollToTop();
     },
     changePicks() {
       this.makePicks = true;
       this.confirmingPicks = false;
+      this.scrollToTop();
     },
     submitFormValid() {
       return !!this.email && !!this.name && !!this.editKey;
@@ -329,6 +343,16 @@ export default {
         view,
         valid,
       };
+    },
+  },
+  mounted() {
+    if (localStorage.name) {
+      this.name = localStorage.email;
+    }
+  },
+  watch: {
+    email(newEmail) {
+      localStorage.email = newEmail;
     },
   },
 };
