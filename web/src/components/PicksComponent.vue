@@ -90,7 +90,7 @@
       </div>
 
       <div
-        class="confirm-area row justify-content-sm-center pb-4 fixed-bottom">
+        class="confirm-area row justify-content-sm-center pb-4 pl-1 pr-1 fixed-bottom">
         <div class="col-12 col-sm-6">
           <button
             type="button"
