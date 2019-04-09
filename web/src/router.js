@@ -27,5 +27,5 @@ export default new Router({
     },
   ],
   // TODO: change this when we go to cloudfront
-  mode: 'history',
+  // mode: 'history',
 });
