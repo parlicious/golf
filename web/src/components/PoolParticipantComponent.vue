@@ -5,6 +5,7 @@
     <td>{{participant.name}}</td>
     <td>{{participant.total}}</td>
     <td>{{participant.today}}</td>
+    <td>{{getTotalPenalty(participant)}}</td>
     <td> F </td>
   </tr>
   <tr
@@ -15,6 +16,7 @@
     <td>{{pick.first_name}} {{pick.last_name}} ({{pick.teetime}})</td>
     <td>{{pick.to_par}}</td>
     <td>{{pick.today}}</td>
+    <td>{{getPenaltyColumn(pick)}}</td>
     <td>{{pick.thru}}</td>
   </tr>
   </tbody>
@@ -32,6 +34,19 @@ export default {
   methods: {
     toggleShowPlayers() {
       this.showPlayersOverride = !this.showPlayersOverride;
+    },
+    getTotalPenalty(participant){
+      return participant.picks.reduce((acc, val) => {
+        return acc + this.getPenaltyColumn(val);
+      }, 0);
+    },
+    getPenaltyColumn(pick) {
+      if (pick.individual_bonus) {
+        return pick.individual_bonus;
+      } if (pick.individual_pen) {
+        return pick.individual_pen;
+      }
+      return 0;
     },
   },
 };

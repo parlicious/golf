@@ -25,6 +25,7 @@
             <th scope="col">Name</th>
             <th scope="col">Total</th>
             <th scope="col">Today</th>
+            <th scope="col">Penalty</th>
             <th scope="col">Thru</th>
           </tr>
           </thead>
