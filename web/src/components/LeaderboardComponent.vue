@@ -21,7 +21,6 @@
         <table class="table">
           <thead>
           <tr>
-            <th scope="col">Rank</th>
             <th scope="col">Name</th>
             <th scope="col">Total</th>
             <th scope="col">Today</th>

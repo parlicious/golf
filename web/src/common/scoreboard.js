@@ -50,6 +50,7 @@ export const ScoreboardService = {
 
     return {
       players: this.players,
+      orderedPlayers: leaderboard.players,
       poolParticipants: this.poolParticipants,
     };
   },

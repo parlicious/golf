@@ -2,6 +2,7 @@ import Vue from 'vue';
 import Router from 'vue-router';
 import Leaderboard from './views/Leaderboard.vue';
 import Home from './views/Home.vue';
+import PlayerLeaderboard from './views/PlayerLeaderboard';
 
 Vue.use(Router);
 
@@ -16,6 +17,11 @@ export default new Router({
       path: '/leaderboard',
       name: 'leaderboard',
       component: Leaderboard,
+    },
+    {
+      path: '/player-leaderboard',
+      name: 'player-leaderboard',
+      component: PlayerLeaderboard,
     },
     {
       path: '/picks',

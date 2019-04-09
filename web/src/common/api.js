@@ -16,7 +16,8 @@ export const ApiService = {
   },
 
   getTournaments() {
-    return this.get(`${DATA_URL}/tournaments.json`);
+    // const timeSalt = Date.now();
+    return this.get(`${DATA_URL}/tournaments.json?${Date.now()}`);
   },
 
   getGolfers() {

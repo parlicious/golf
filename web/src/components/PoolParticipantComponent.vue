@@ -1,19 +1,17 @@
 <template>
   <tbody>
   <tr v-on:click="toggleShowPlayers" class="pool_participants">
-    <td> 0 </td>
     <td>{{participant.name}}</td>
     <td>{{participant.total}}</td>
     <td>{{participant.today}}</td>
     <td>{{getTotalPenalty(participant)}}</td>
-    <td> F </td>
+    <td></td>
   </tr>
   <tr
     v-show="showPlayers || showPlayersOverride"
     v-for="pick in participant.picks"
     v-bind:key="pick.last_name">
-    <td> </td>
-    <td>{{pick.first_name}} {{pick.last_name}} ({{pick.teetime}})</td>
+    <td>{{pick.first_name}} {{pick.last_name}}</td>
     <td>{{pick.to_par}}</td>
     <td>{{pick.today}}</td>
     <td>{{getPenaltyColumn(pick)}}</td>
@@ -22,6 +20,7 @@
   </tbody>
 </template>
 <script>
+const inProgressOrFinishedThruPattern = /[0-9]+|F/;
 
 export default {
   name: 'PoolParticipant',
@@ -35,26 +34,31 @@ export default {
     toggleShowPlayers() {
       this.showPlayersOverride = !this.showPlayersOverride;
     },
-    getTotalPenalty(participant){
-      return participant.picks.reduce((acc, val) => {
-        return acc + this.getPenaltyColumn(val);
-      }, 0);
+    getTotalPenalty(participant) {
+      return participant.picks.reduce((acc, val) => acc + this.getPenaltyColumn(val), 0);
     },
     getPenaltyColumn(pick) {
       if (pick.individual_bonus) {
         return pick.individual_bonus;
-      } if (pick.individual_pen) {
+      }
+      if (pick.individual_pen) {
         return pick.individual_pen;
       }
       return 0;
+    },
+    getPickThru(pick) {
+      if (inProgressOrFinishedThruPattern.test(pick.thru)) {
+        return pick.thru;
+      }
     },
   },
 };
 </script>
 <style scoped>
   .pool_participants td {
-    cursor:pointer;
+    cursor: pointer;
   }
+
   .pool_participants td {
     font-weight: bold;
   }
