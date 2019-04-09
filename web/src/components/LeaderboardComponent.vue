@@ -56,7 +56,7 @@ export default {
     return {
       loading: false,
       showAll: false,
-      leaderboardActive: false,
+      leaderboardActive: true,
       players: {},
       poolParticipants: [],
     };

@@ -1,6 +1,7 @@
 import Vue from 'vue';
 import Router from 'vue-router';
 import Leaderboard from './views/Leaderboard.vue';
+import Home from './views/Home.vue';
 
 Vue.use(Router);
 
@@ -8,6 +9,11 @@ export default new Router({
   routes: [
     {
       path: '/',
+      name: 'home',
+      component: Home,
+    },
+    {
+      path: '/leaderboard',
       name: 'leaderboard',
       component: Leaderboard,
     },
@@ -21,5 +27,5 @@ export default new Router({
     },
   ],
   // TODO: change this when we go to cloudfront
-  // mode: 'history',
+  mode: 'history',
 });

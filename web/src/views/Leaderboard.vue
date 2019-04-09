@@ -9,7 +9,7 @@
 import LeaderboardComponent from '@/components/LeaderboardComponent.vue';
 
 export default {
-  name: 'home',
+  name: 'leaderboard',
   components: {
     LeaderboardComponent,
   },
