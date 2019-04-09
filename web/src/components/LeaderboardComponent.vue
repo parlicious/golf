@@ -77,7 +77,9 @@ export default {
       this.poolParticipants = data.poolParticipants
         .map((p) => {
           const participant = p;
-          participant.picks = participant.picks.map(pick => this.players[pick.id]);
+          participant.picks = participant.picks
+            .map(pick => this.players[pick.tournament_id])
+            .filter(x => x);
           return participant;
         });
       this.loading = false;

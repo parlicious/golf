@@ -2,10 +2,21 @@ import { ApiService } from './api';
 
 const calculatePoolParticipantScores = (poolParticipant, playerMap) => {
   const [total, today] = poolParticipant.picks.reduce(([accTotal, accToday], val) => {
-    const player = playerMap[val.id];
-    const newTotal = accTotal + parseInt(player.to_par ? player.to_par : 0, 10);
-    const newToday = accToday + parseInt(player.today ? player.today : 0, 10);
-    return [newTotal, newToday];
+    const player = playerMap[val.tournament_id];
+    if (player) {
+      if (player.to_par === 'E') {
+        player.to_par = 0;
+      }
+
+      if (player.today === 'E') {
+        player.today = 0;
+      }
+
+      const newTotal = accTotal + parseInt(player.to_par ? player.to_par : 0, 10);
+      const newToday = accToday + parseInt(player.today ? player.today : 0, 10);
+      return [newTotal, newToday];
+    }
+    return [accTotal, accToday];
   }, [0, 0]);
 
   return {
