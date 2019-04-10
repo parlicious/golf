@@ -20,6 +20,7 @@
   </tbody>
 </template>
 <script>
+  import * as _ from 'lodash';
 const inProgressOrFinishedThruPattern = /[0-9]+|F/;
 
 export default {
@@ -47,7 +48,8 @@ export default {
       return 0;
     },
     sortedPicks(picks) {
-      return picks.sort((a, b) => a.to_par - b.to_par);
+      const newPicks = _.cloneDeep(picks);
+      return newPicks.sort((a, b) => a.to_par - b.to_par);
     },
     getPickThru(pick) {
       if (inProgressOrFinishedThruPattern.test(pick.thru)) {
