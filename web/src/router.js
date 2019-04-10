@@ -14,13 +14,13 @@ export default new Router({
       component: Home,
     },
     {
-      path: '/leaderboard',
-      name: 'leaderboard',
+      path: '/standings',
+      name: 'standings',
       component: Leaderboard,
     },
     {
-      path: '/player-leaderboard',
-      name: 'player-leaderboard',
+      path: '/leaderboard',
+      name: 'leaderboard',
       component: PlayerLeaderboard,
     },
     {

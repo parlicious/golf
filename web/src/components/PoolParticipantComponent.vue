@@ -9,13 +9,13 @@
   </tr>
   <tr
     v-show="showPlayers || showPlayersOverride"
-    v-for="pick in participant.picks"
+    v-for="pick in sortedPicks(participant.picks)"
     v-bind:key="pick.last_name">
     <td>{{pick.first_name}} {{pick.last_name}}</td>
     <td>{{pick.to_par}}</td>
     <td>{{pick.today}}</td>
     <td>{{getPenaltyColumn(pick)}}</td>
-    <td>{{pick.thru}}</td>
+    <td>{{getPickThru(pick)}}</td>
   </tr>
   </tbody>
 </template>
@@ -46,10 +46,14 @@ export default {
       }
       return 0;
     },
+    sortedPicks(picks) {
+      return picks.sort((a, b) => a.to_par - b.to_par);
+    },
     getPickThru(pick) {
       if (inProgressOrFinishedThruPattern.test(pick.thru)) {
         return pick.thru;
       }
+      return pick.teetime;
     },
   },
 };
