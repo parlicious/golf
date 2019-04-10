@@ -35,22 +35,56 @@ const scoreAndRankPoolParticipants = (poolParticipants, leaderboard) => poolPart
   .map(p => calculatePoolParticipantScores(p, leaderboard))
   .sort((p1, p2) => p1.total - p2.total);
 
+const playersWithScoreDiff = (oldPlayers, newPlayers) => {
+  Object.keys(oldPlayers).forEach(k => {
+    const oldScore = oldPlayers[k].to_par;
+    const newScore = newPlayers[k].to_par;
+    newPlayers[k].score_diff = oldScore - newScore;
+  });
+
+  return newPlayers;
+};
+
+const orderedPlayersWithScoreDiff = (oldPlayers, newPlayers) => {
+  return newPlayers.map(p => {
+    p.score_diff = oldPlayers[p.id].score - p.score;
+    return p;
+  });
+};
+
 export const ScoreboardService = {
 
   players: {},
+  orderedPlayers: [],
   poolParticipants: [],
-
+  tournaments: [],
+  activeTournament: {},
   async load() {
-    const tournaments = (await ApiService.getTournaments()).data;
-    const activeTournament = tournaments.find(x => x.active);
-    const picks = (await ApiService.get(activeTournament.picks)).data;
-    const leaderboard = (await ApiService.get(activeTournament.leaderboard)).data;
+    this.tournaments = (await ApiService.getTournaments()).data;
+    this.activeTournament = this.tournaments.find(x => x.active);
+    const picks = (await ApiService.get(this.activeTournament.picks)).data;
+    const leaderboard = (await ApiService.get(this.activeTournament.leaderboard)).data;
     this.players = transformLeaderboardToPlayerMap(leaderboard);
+    this.orderedPlayers = leaderboard.players;
     this.poolParticipants = scoreAndRankPoolParticipants(picks.pool_participants, this.players);
 
     return {
       players: this.players,
-      orderedPlayers: leaderboard.players,
+      orderedPlayers: this.orderedPlayers,
+      poolParticipants: this.poolParticipants,
+    };
+  },
+
+  async reload() {
+    const picks = (await ApiService.get(this.activeTournament.picks)).data;
+    const leaderboard = (await ApiService.get(this.activeTournament.leaderboard)).data;
+    this.orderedPlayers = orderedPlayersWithScoreDiff(this.players, leaderboard.players);
+    this.players = playersWithScoreDiff(this.players, transformLeaderboardToPlayerMap(leaderboard));
+    this.poolParticipants = scoreAndRankPoolParticipants(picks.pool_participants, this.players);
+
+    return {
+      players: this.players,
+      orderedPlayers: this.orderedPlayers,
       poolParticipants: this.poolParticipants,
     };
   },

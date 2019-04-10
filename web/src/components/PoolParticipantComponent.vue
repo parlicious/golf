@@ -10,6 +10,7 @@
   <tr
     v-show="showPlayers || showPlayersOverride"
     v-for="pick in sortedPicks(participant.picks)"
+    v-bind:class="{increased: pick.score_diff > 0, decreased: pick.score_diff < 0}"
     v-bind:key="pick.last_name">
     <td>{{pick.first_name}} {{pick.last_name}}</td>
     <td>{{zeroOr(pick.to_par)}}</td>
@@ -45,6 +46,14 @@ export default {
 
   .pool_participants td {
     font-weight: bold;
+  }
+
+  .increased{
+    color: red;
+  }
+
+  .decreased{
+    color: green;
   }
 
 </style>

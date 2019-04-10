@@ -26,6 +26,6 @@ export const DisplayUtils = {
     return participant.picks.reduce((acc, val) => acc + this.getPenaltyColumn(val), 0);
   },
   zeroOr(val) {
-    return val || 0;
+    return val || 'E';
   },
 };
