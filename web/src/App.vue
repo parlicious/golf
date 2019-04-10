@@ -21,7 +21,7 @@
   margin: 0 auto !important;
 }
 #nav {
-  padding: 30px;
+  padding: 30px 10px 10px 10px;
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
