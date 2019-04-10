@@ -14,6 +14,12 @@ var options = {
 };
 
 exports.handler = (event, context, callback) => {
+    buildleaderboard(callback, 1);
+};
+
+function buildleaderboard(callback, count){
+    const newcount = count + 1;
+    console.log(`count: ${count}`);
     let leaderboard = {
         "version": 1,
         "round": null,
@@ -73,14 +79,15 @@ exports.handler = (event, context, callback) => {
                 if (err) 
                 {
                     console.log(err, err.stack); // an error occurred
-                    callback(null, leaderboard);
                 }
                 else {
                     console.log(data);           // successful response
-                    callback(null, leaderboard);
-                }
+                    if(count < 5) {
+                        setTimeout(() => buildleaderboard(callback, newcount), 10000);
+                    } else callback(null,leaderboard);
+                 }
             });
         });
     });
     req.end();
-};
+}
