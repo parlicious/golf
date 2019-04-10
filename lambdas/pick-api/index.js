@@ -57,7 +57,6 @@ const success = (responseBody) => {
 };
 
 
-
 const requiredPlayerPickValues = [
     // 'guid',
     'tournament',
@@ -81,13 +80,16 @@ const validateRequiredFields = (pickRequest, requiredFields) => {
 };
 
 const validatePicksMeetTierRequirements = (picksRequest, tierRequirements) => {
+    console.log(picksRequest);
     if (picksRequest.hasOwnProperty("picks")) {
-        const tierCount = picks.reduce((acc, val) => {
+        const tierCount = picksRequest.picks.reduce((acc, val) => {
             if (acc.hasOwnProperty(val.tier)) {
                 acc[val.tier]++;
             } else {
-                 acc[val.tier] = 1;
+                acc[val.tier] = 1;
             }
+
+            return acc;
         }, {});
 
         return Object.keys(tierRequirements)
@@ -98,6 +100,23 @@ const validatePicksMeetTierRequirements = (picksRequest, tierRequirements) => {
             .map(n => n[1] > 0 ? errors.tooFewOfTier(n[0]) : errors.tooManyOfTier(n[0]))
     } else {
         return ['No picks sent'];
+    }
+};
+
+const getTierRequirements = async (tournament, year) => {
+    const key = `picks/${tournament}/${year}/tournament_info.json`;
+
+    const params = {
+        Bucket: DATA_BUCKET,
+        Key: key
+    };
+
+    let data;
+    try {
+        data = await s3.getObject(params).promise();
+        return JSON.parse(data.Body).picks_per_tier;
+    } catch (e) {
+        console.log(e);
     }
 };
 
@@ -192,24 +211,32 @@ const handlePost = async (event) => {
         return multipleErrors(missingFields)
     }
 
+    try {
+        const tierRequirements = await getTierRequirements(body.tournament, body.year);
+        if (tierRequirements) {
+            const tierRequirementsErrors = validatePicksMeetTierRequirements(body, tierRequirements);
+            if (tierRequirementsErrors && tierRequirementsErrors.length > 0) {
+                return multipleErrors(tierRequirementsErrors)
+            }
+        }
+    } catch (e) {
+        console.log(e);
+    }
+
     // check for existing pick w/ this email
     const existingPicks = await listExistingIndividualPicks(body.tournament, body.year);
     const picksFound = existingPicks.find(e => e.email === body.email);
 
-    /*
-    TODO: Add check to see tournament/year are valid
-    TODO: Pull tier requirements and check those also
-     */
     if (picksFound) {
         const existingPickKey = picksFound.key;
         const existingPick = await getPick(existingPickKey);
 
         // validate edit key
-        if(body.editKey === existingPick.editKey){
+        if (body.editKey === existingPick.editKey) {
             try {
                 // update existing picks
                 await savePicks(existingPickKey, body)
-            } catch (e){
+            } catch (e) {
                 console.log(e);
                 return fail('Unable to update picks');
             }
@@ -232,10 +259,14 @@ const handleOptions = async (event) => {
 
 exports.handler = async (event, context, callback) => {
     console.log('Received event:', JSON.stringify(event, null, 2));
-    switch(event.httpMethod){
-        case 'POST': return handlePost(event);
-        case 'GET': return handleGet(event);
-        case 'OPTIONS': return handleOptions(event);
-        default: return fail('Method Not Allowed', '405')
+    switch (event.httpMethod) {
+        case 'POST':
+            return handlePost(event);
+        case 'GET':
+            return handleGet(event);
+        case 'OPTIONS':
+            return handleOptions(event);
+        default:
+            return fail('Method Not Allowed', '405')
     }
 };
