@@ -9,10 +9,11 @@ var path = '/en_US/scores/feeds/scores.json';
 
 var leaderboard = {
     "version": 1,
-    "round": "1",
-    "cut_line": 6,
-    "cut_penalty": 7,
+    "round": null,
+    "cut_line": null,
+    "cut_penalty": null,
     "timezone": "EDT",
+    "refreshed": Date.now(),
     "players": [
 
     ]
@@ -40,10 +41,11 @@ exports.handler = (event, context, callback) => {
 
             //build our model
             leaderboard.cut_line = mastersdata.data.cutLine;
+            leaderboard.round = mastersdata.data.currentRound;
             let players = mastersdata.data.player;
             players.forEach(player => {
                 let newplayer = {
-                    'id': player.id,
+                    'id': parseInt(player.id),
                     'first_name': player.first_name,
                     'last_name': player.last_name,
                     'thru': player.thru,
@@ -64,7 +66,8 @@ exports.handler = (event, context, callback) => {
                 Bucket : process.env.LEADERBOARD_BUCKET,
                 Key : key,
                 Body : JSON.stringify(leaderboard),
-                ACL:'public-read'
+                ACL:'public-read',
+                ContentType: "application/json"
             };
             s3.putObject(params, function(err, data) {
                 if (err) console.log(err, err.stack); // an error occurred
