@@ -20,9 +20,10 @@
     "year": "2019",
     "start": "",
     "end": "",
+    "accepting_picks_until": "2019-04-11T12:00:00.000Z",
     "location": "Augusta, Georgia",
     "picks": "https://s3.amazonaws.com/parlicious-data/picks/Masters/2019/picks.json",
-    "leaderboard": "https://s3.amazonaws.com/parlicious-data/leaderboards/masters/2018/leaderboard.json",
+    "leaderboard": "https://s3.amazonaws.com/parlicious-data/leaderboards/masters/2019/leaderboard.json",
     "field": "https://s3.amazonaws.com/parlicious-data/picks/Masters/2019/tournament_info.json"
   }
 ]
