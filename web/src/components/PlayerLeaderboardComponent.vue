@@ -10,6 +10,7 @@
         <th scope="col">Penalty</th>
         <th scope="col">Thru</th>
         <th scope="col">Pos</th>
+        <th scope="col">Picked By</th>
       </tr>
       </thead>
       <tr
@@ -22,6 +23,7 @@
         <td>{{getPenaltyColumn(player)}}</td>
         <td>{{getPickThru(player)}}</td>
         <td>{{player.position || ''}}</td>
+        <td>{{getParticipantsForPlayer(player)}}</td>
       </tr>
     </table>
   </div>
@@ -36,6 +38,7 @@ export default {
   data() {
     return {
       players: {},
+      playersToPoolParticipants: {},
       refreshTime: 0,
       ...DisplayUtils,
     };
@@ -49,6 +52,7 @@ export default {
     async fetchData() {
       this.loading = true;
       const data = await ScoreboardService.load();
+      this.playersToPoolParticipants = data.playersToPoolParticipants;
       this.players = data.orderedPlayers;
     },
     async reload() {
@@ -65,6 +69,12 @@ export default {
           return participant;
         });
       this.loading = false;
+    },
+    getParticipantsForPlayer(player) {
+      if (this.playersToPoolParticipants.hasOwnProperty(player.id)) {
+        return this.playersToPoolParticipants[player.id].join(', ');
+      }
+      return '';
     },
   },
 };

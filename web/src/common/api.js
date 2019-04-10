@@ -41,7 +41,7 @@ export const ApiService = {
   },
 
   get(resource) {
-    return Vue.axios.get(`${resource}`).catch((error) => {
+    return Vue.axios.get(`${resource}?${Date.now()}`).catch((error) => {
       throw new Error(`[RWV] ApiService ${error}`);
     });
   },

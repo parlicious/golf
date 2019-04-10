@@ -2,7 +2,7 @@ import Vue from 'vue';
 import Router from 'vue-router';
 import Leaderboard from './views/Leaderboard.vue';
 import Home from './views/Home.vue';
-import PlayerLeaderboard from './views/PlayerLeaderboard';
+import PlayerLeaderboard from './views/PlayerLeaderboard.vue';
 
 Vue.use(Router);
 
