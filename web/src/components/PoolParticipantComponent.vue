@@ -20,8 +20,7 @@
   </tbody>
 </template>
 <script>
-  import * as _ from 'lodash';
-const inProgressOrFinishedThruPattern = /[0-9]+|F/;
+import { DisplayUtils } from '../common/displayUtils';
 
 export default {
   name: 'PoolParticipant',
@@ -29,33 +28,12 @@ export default {
   data() {
     return {
       showPlayersOverride: false,
+      ...DisplayUtils,
     };
   },
   methods: {
     toggleShowPlayers() {
       this.showPlayersOverride = !this.showPlayersOverride;
-    },
-    getTotalPenalty(participant) {
-      return participant.picks.reduce((acc, val) => acc + this.getPenaltyColumn(val), 0);
-    },
-    getPenaltyColumn(pick) {
-      if (pick.individual_bonus) {
-        return pick.individual_bonus;
-      }
-      if (pick.individual_pen) {
-        return pick.individual_pen;
-      }
-      return 0;
-    },
-    sortedPicks(picks) {
-      const newPicks = _.cloneDeep(picks);
-      return newPicks.sort((a, b) => a.to_par - b.to_par);
-    },
-    getPickThru(pick) {
-      if (inProgressOrFinishedThruPattern.test(pick.thru)) {
-        return pick.thru;
-      }
-      return pick.teetime;
     },
   },
 };

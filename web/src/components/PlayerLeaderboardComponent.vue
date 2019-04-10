@@ -18,7 +18,7 @@
       <td>{{player.to_par}}</td>
       <td>{{player.today}}</td>
       <td>{{getPenaltyColumn(player)}}</td>
-      <td>{{player.thru}}</td>
+      <td>{{getPickThru(player)}}</td>
     </tr>
   </table>
   </div>
@@ -26,12 +26,14 @@
 
 <script>
 import { ScoreboardService } from '../common/scoreboard';
+import { DisplayUtils } from '../common/displayUtils';
 
 export default {
   name: 'PlayerLeaderboardComponent',
   data() {
     return {
       players: {},
+      ...DisplayUtils
     };
   },
   created(){
@@ -42,15 +44,6 @@ export default {
       this.loading = true;
       const data = await ScoreboardService.load();
       this.players = data.orderedPlayers;
-    },
-    getPenaltyColumn(pick) {
-      if (pick.individual_bonus) {
-        return pick.individual_bonus;
-      }
-      if (pick.individual_pen) {
-        return pick.individual_pen;
-      }
-      return 0;
     },
   },
 };
