@@ -10,7 +10,7 @@
         <th scope="col">Penalty</th>
         <th scope="col">Thru</th>
         <th scope="col">Pos</th>
-        <th scope="col">Picked By</th>
+        <th class="d-none d-sm-table-cell" scope="col">Picked By</th>
       </tr>
       </thead>
       <tr
@@ -23,7 +23,7 @@
         <td>{{getPenaltyColumn(player)}}</td>
         <td>{{getPickThru(player)}}</td>
         <td>{{player.position || ''}}</td>
-        <td>{{getParticipantsForPlayer(player)}}</td>
+        <td class="d-none d-sm-table-cell">{{getParticipantsForPlayer(player)}}</td>
       </tr>
     </table>
   </div>
@@ -40,7 +40,7 @@ export default {
       players: {},
       playersToPoolParticipants: {},
       refreshTime: 0,
-      ...DisplayUtils,
+      ...DisplayUtils, //
     };
   },
   async created() {
