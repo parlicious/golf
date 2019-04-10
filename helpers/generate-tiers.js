@@ -1,8 +1,8 @@
 //load the file
 const fs = require('fs');
 
-let rawdata = fs.readFileSync('tournament_info.json');  
-let tournament_info = JSON.parse(rawdata);  
+let rawdata = fs.readFileSync('tournament_info.json');
+let tournament_info = JSON.parse(rawdata);
 
 //rules
 //to determine event rules (tiers and picks per tier) use the following logic:
@@ -64,5 +64,5 @@ tournament_info.picks_per_tier.A = countofas > 4 ? 2 : 1
 tournament_info.picks_per_tier.B = 2;
 tournament_info.picks_per_tier.C = 3;
 tournament_info.picks_per_tier.D = 4;
-tournament_info.picks_per_tier.D = tournament_info.field.length > 100 ? 1 : 0;
+tournament_info.picks_per_tier.E = tournament_info.field.length > 100 ? 1 : 0;
 console.log(JSON.stringify(tournament_info));
