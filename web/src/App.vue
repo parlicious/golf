@@ -22,6 +22,7 @@
 }
 #nav {
   padding: 30px;
+  /*display: flex;*/
 }
 
 #nav a {

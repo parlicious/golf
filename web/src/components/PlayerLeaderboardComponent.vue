@@ -4,6 +4,7 @@
   <table class="table">
     <thead>
     <tr>
+      <th scope="col">Position</th>
       <th scope="col">Name</th>
       <th scope="col">Total</th>
       <th scope="col">Today</th>
@@ -14,8 +15,9 @@
     <tr
       v-for="player in players"
       v-bind:key="player.tournament_id">
+      <td>{{player.position || ''}}</td>
       <td>{{player.first_name}} {{player.last_name}}</td>
-      <td>{{zeroOr(player.to_par)}}</td>gi
+      <td>{{zeroOr(player.to_par)}}</td>
       <td>{{zeroOr(player.today)}}</td>
       <td>{{getPenaltyColumn(player)}}</td>
       <td>{{getPickThru(player)}}</td>
