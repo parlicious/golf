@@ -16,9 +16,9 @@
         <div v-if="!showAll">
           Expand All
         </div>
-        <div>
-          Refreshing in {{Math.floor((refreshTime - Date.now())/1000)}}s
-        </div>
+<!--        <div>-->
+<!--          Refreshing in {{Math.floor((refreshTime - Date.now())/1000)}}s-->
+<!--        </div>-->
       </div>
       <div v-if="!loading" class="content">
         <table class="table">
