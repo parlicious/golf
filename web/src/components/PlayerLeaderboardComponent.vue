@@ -15,8 +15,8 @@
       v-for="player in players"
       v-bind:key="player.tournament_id">
       <td>{{player.first_name}} {{player.last_name}}</td>
-      <td>{{player.to_par}}</td>
-      <td>{{player.today}}</td>
+      <td>{{zeroOr(player.to_par)}}</td>gi
+      <td>{{zeroOr(player.today)}}</td>
       <td>{{getPenaltyColumn(player)}}</td>
       <td>{{getPickThru(player)}}</td>
     </tr>

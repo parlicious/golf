@@ -1,7 +1,8 @@
-const inProgressOrFinishedThruPattern = /[0-9]+|F/;
 import * as _ from 'lodash';
 
-export const DisplayUtils =  {
+const inProgressOrFinishedThruPattern = /[0-9]+|F/;
+
+export const DisplayUtils = {
   getPickThru(pick) {
     if (inProgressOrFinishedThruPattern.test(pick.thru)) {
       return pick.thru;
@@ -23,5 +24,8 @@ export const DisplayUtils =  {
   },
   getTotalPenalty(participant) {
     return participant.picks.reduce((acc, val) => acc + this.getPenaltyColumn(val), 0);
+  },
+  zeroOr(val) {
+    return val || 0;
   },
 };

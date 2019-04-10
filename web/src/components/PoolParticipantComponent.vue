@@ -12,8 +12,8 @@
     v-for="pick in sortedPicks(participant.picks)"
     v-bind:key="pick.last_name">
     <td>{{pick.first_name}} {{pick.last_name}}</td>
-    <td>{{pick.to_par}}</td>
-    <td>{{pick.today}}</td>
+    <td>{{zeroOr(pick.to_par)}}</td>
+    <td>{{zeroOr(pick.today)}}</td>
     <td>{{getPenaltyColumn(pick)}}</td>
     <td>{{getPickThru(pick)}}</td>
   </tr>
