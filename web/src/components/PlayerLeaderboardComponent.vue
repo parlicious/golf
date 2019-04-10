@@ -47,6 +47,9 @@ export default {
     await this.fetchData();
     this.interval = setInterval(() => this.fetchData(), 10000);
   },
+  async beforeDestroy(){
+    clearInterval(this.interval);
+  },
   methods: {
     async fetchData() {
       this.loading = true;
