@@ -45,8 +45,7 @@ export default {
   },
   async created() {
     await this.fetchData();
-    await this.reload();
-    this.interval = setInterval(() => this.reload(), 30000);
+    this.interval = setInterval(() => this.fetchData(), 10000);
   },
   methods: {
     async fetchData() {
@@ -54,21 +53,6 @@ export default {
       const data = await ScoreboardService.load();
       this.playersToPoolParticipants = data.playersToPoolParticipants;
       this.players = data.orderedPlayers;
-    },
-    async reload() {
-      this.refreshTime = Date.now() + 30000;
-      this.loading = true;
-      const data = await ScoreboardService.reload();
-      this.players = data.players;
-      this.poolParticipants = data.poolParticipants
-        .map((p) => {
-          const participant = p;
-          participant.picks = participant.picks
-            .map(pick => this.players[pick.tournament_id])
-            .filter(x => x);
-          return participant;
-        });
-      this.loading = false;
     },
     getParticipantsForPlayer(player) {
       if (this.playersToPoolParticipants.hasOwnProperty(player.id)) {
