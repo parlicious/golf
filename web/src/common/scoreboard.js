@@ -31,12 +31,24 @@ const transformLeaderboardToPlayerMap = leaderboard => leaderboard.players.reduc
   return acc;
 }, {});
 
+const playerIdToPoolParticipants = poolParticipants => poolParticipants
+  .flatMap(p => p.picks.map(pick => [pick.tournament_id, p.name]))
+  .reduce((acc, val) => {
+    if (acc.hasOwnProperty(val[0])) {
+      acc[val[0]] = [...acc[val[0]], val[1]];
+    } else {
+      acc[val[0]] = [val[1]];
+    }
+
+    return acc;
+  }, {});
+
 const scoreAndRankPoolParticipants = (poolParticipants, leaderboard) => poolParticipants
   .map(p => calculatePoolParticipantScores(p, leaderboard))
   .sort((p1, p2) => p1.total - p2.total);
 
 const playersWithScoreDiff = (oldPlayers, newPlayers) => {
-  Object.keys(oldPlayers).forEach(k => {
+  Object.keys(oldPlayers).forEach((k) => {
     const oldScore = oldPlayers[k].to_par;
     const newScore = newPlayers[k].to_par;
     newPlayers[k].score_diff = oldScore - newScore;
@@ -45,31 +57,38 @@ const playersWithScoreDiff = (oldPlayers, newPlayers) => {
   return newPlayers;
 };
 
-const orderedPlayersWithScoreDiff = (oldPlayers, newPlayers) => {
-  return newPlayers.map(p => {
-    p.score_diff = oldPlayers[p.id].score - p.score;
-    return p;
-  });
-};
+const orderedPlayersWithScoreDiff = (oldPlayers, newPlayers) => newPlayers.map((p) => {
+  p.score_diff = oldPlayers[p.id].score - p.score;
+  return p;
+});
+
 
 export const ScoreboardService = {
 
-  players: {},
+  players: null,
+  picks: null,
   orderedPlayers: [],
   poolParticipants: [],
-  tournaments: [],
-  activeTournament: {},
+  tournaments: null,
+  activeTournament: null,
   async load() {
-    this.tournaments = (await ApiService.getTournaments()).data;
-    this.activeTournament = this.tournaments.find(x => x.active);
-    const picks = (await ApiService.get(this.activeTournament.picks)).data;
+    this.tournaments = this.tournaments || (await ApiService.getTournaments()).data;
+    this.activeTournament = this.activeTournament || this.tournaments.find(x => x.active);
+    this.picks = this.picks || (await ApiService.get(this.activeTournament.picks)).data;
     const leaderboard = (await ApiService.get(this.activeTournament.leaderboard)).data;
-    this.players = transformLeaderboardToPlayerMap(leaderboard);
+    if (this.players) {
+      this.players = playersWithScoreDiff(this.players, transformLeaderboardToPlayerMap(leaderboard));
+    } else {
+      this.players = transformLeaderboardToPlayerMap(leaderboard);
+    }
     this.orderedPlayers = leaderboard.players;
-    this.poolParticipants = scoreAndRankPoolParticipants(picks.pool_participants, this.players);
+    this.poolParticipants = scoreAndRankPoolParticipants(this.picks.pool_participants, this.players);
+
+    playerIdToPoolParticipants(this.poolParticipants);
 
     return {
       players: this.players,
+      playersToPoolParticipants: playerIdToPoolParticipants(this.poolParticipants),
       orderedPlayers: this.orderedPlayers,
       poolParticipants: this.poolParticipants,
     };

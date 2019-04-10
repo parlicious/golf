@@ -16,9 +16,9 @@
         <div v-if="!showAll">
           Expand All
         </div>
-        <div>
-          Refreshing in {{Math.floor((refreshTime - Date.now())/1000)}}s
-        </div>
+<!--        <div>-->
+<!--          Refreshing in {{Math.floor((refreshTime - Date.now())/1000)}}s-->
+<!--        </div>-->
       </div>
       <div v-if="!loading" class="content">
         <table class="table">
@@ -68,8 +68,10 @@ export default {
     // fetch the data when the view is created and the data is
     // already being observed
     await this.fetchData();
-    await this.reload();
-    this.interval = setInterval(() => this.reload(), 30000);
+    this.interval = setInterval(() => this.fetchData(), 10000);
+  },
+  async beforeDestroy(){
+    clearInterval(this.interval);
   },
   watch: {
     // call again the method if the route changes
@@ -77,23 +79,9 @@ export default {
   },
   methods: {
     async fetchData() {
+      this.refreshTime = Date.now() + 10000;
       this.loading = true;
       const data = await ScoreboardService.load();
-      this.players = data.players;
-      this.poolParticipants = data.poolParticipants
-        .map((p) => {
-          const participant = p;
-          participant.picks = participant.picks
-            .map(pick => this.players[pick.tournament_id])
-            .filter(x => x);
-          return participant;
-        });
-      this.loading = false;
-    },
-    async reload() {
-      this.refreshTime = Date.now() + 30000;
-      this.loading = true;
-      const data = await ScoreboardService.reload();
       this.players = data.players;
       this.poolParticipants = data.poolParticipants
         .map((p) => {

@@ -10,6 +10,7 @@
         <th scope="col">Penalty</th>
         <th scope="col">Thru</th>
         <th scope="col">Pos</th>
+        <th class="d-none d-sm-table-cell" scope="col">Picked By</th>
       </tr>
       </thead>
       <tr
@@ -22,6 +23,7 @@
         <td>{{getPenaltyColumn(player)}}</td>
         <td>{{getPickThru(player)}}</td>
         <td>{{player.position || ''}}</td>
+        <td class="d-none d-sm-table-cell">{{getParticipantsForPlayer(player)}}</td>
       </tr>
     </table>
   </div>
@@ -36,35 +38,30 @@ export default {
   data() {
     return {
       players: {},
+      playersToPoolParticipants: {},
       refreshTime: 0,
-      ...DisplayUtils,
+      ...DisplayUtils, //
     };
   },
   async created() {
     await this.fetchData();
-    await this.reload();
-    this.interval = setInterval(() => this.reload(), 30000);
+    this.interval = setInterval(() => this.fetchData(), 10000);
+  },
+  async beforeDestroy(){
+    clearInterval(this.interval);
   },
   methods: {
     async fetchData() {
       this.loading = true;
       const data = await ScoreboardService.load();
+      this.playersToPoolParticipants = data.playersToPoolParticipants;
       this.players = data.orderedPlayers;
     },
-    async reload() {
-      this.refreshTime = Date.now() + 30000;
-      this.loading = true;
-      const data = await ScoreboardService.reload();
-      this.players = data.players;
-      this.poolParticipants = data.poolParticipants
-        .map((p) => {
-          const participant = p;
-          participant.picks = participant.picks
-            .map(pick => this.players[pick.tournament_id])
-            .filter(x => x);
-          return participant;
-        });
-      this.loading = false;
+    getParticipantsForPlayer(player) {
+      if (this.playersToPoolParticipants.hasOwnProperty(player.id)) {
+        return this.playersToPoolParticipants[player.id].join(', ');
+      }
+      return '';
     },
   },
 };
