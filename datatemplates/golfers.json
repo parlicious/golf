@@ -860,6 +860,16 @@
       "pga_id": null,
       "open_id": null,
       "us_open_id": null
+    },
+    {
+      "id": 87,
+      "first_name": "Corey",
+      "last_name": "Conners",
+      "country_code": "CAN",
+      "masters_id": 39997,
+      "pga_id": null,
+      "open_id": null,
+      "us_open_id": null
     }
   ]
 }
