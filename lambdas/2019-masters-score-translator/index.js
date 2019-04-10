@@ -7,18 +7,6 @@ var https = require('https');
 var host = '2019.masters.com';
 var path = '/en_US/scores/feeds/scores.json';
 
-var leaderboard = {
-    "version": 1,
-    "round": null,
-    "cut_line": null,
-    "cut_penalty": null,
-    "timezone": "EDT",
-    "refreshed": Date.now(),
-    "players": [
-
-    ]
-};
-
 var options = {
     host: host,
     path: path,
@@ -26,8 +14,19 @@ var options = {
 };
 
 exports.handler = (event, context, callback) => {
-    var req = https.request(options, (res) => {
-        var data = '';
+    let leaderboard = {
+        "version": 1,
+        "round": null,
+        "cut_line": null,
+        "cut_penalty": null,
+        "timezone": "EDT",
+        "refreshed": Date.now(),
+        "players": [
+    
+        ]
+    };
+    let req = https.request(options, (res) => {
+        let data = '';
         res.on('data', function (chunk) {
             data += chunk;
         });
@@ -37,13 +36,14 @@ exports.handler = (event, context, callback) => {
         });
 
         res.on('end', () => {
-            var mastersdata = JSON.parse(data);
+            let mastersdata = JSON.parse(data);
 
             //build our model
             leaderboard.cut_line = mastersdata.data.cutLine;
             leaderboard.round = mastersdata.data.currentRound;
             let players = mastersdata.data.player;
-            players.forEach(player => {
+            for(var i = 0; i < players.length; i++) {
+                let player = players[i];
                 let newplayer = {
                     'id': parseInt(player.id),
                     'first_name': player.first_name,
@@ -58,11 +58,11 @@ exports.handler = (event, context, callback) => {
                     "status": player.status
                 };
                 leaderboard.players.push(newplayer);
-            });
+            }
             
             const key = "leaderboards/masters/2019/leaderboard.json";
         
-            var params = {
+            let params = {
                 Bucket : process.env.LEADERBOARD_BUCKET,
                 Key : key,
                 Body : JSON.stringify(leaderboard),
@@ -70,10 +70,16 @@ exports.handler = (event, context, callback) => {
                 ContentType: "application/json"
             };
             s3.putObject(params, function(err, data) {
-                if (err) console.log(err, err.stack); // an error occurred
-                else     console.log(data);           // successful response
+                if (err) 
+                {
+                    console.log(err, err.stack); // an error occurred
+                    callback(null, leaderboard);
+                }
+                else {
+                    console.log(data);           // successful response
+                    callback(null, leaderboard);
+                }
             });
-            callback(null, leaderboard);
         });
     });
     req.end();
