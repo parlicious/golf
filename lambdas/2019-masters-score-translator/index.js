@@ -60,7 +60,7 @@ function buildleaderboard(callback, count){
                     'to_par': player.topar,
                     'position': player.pos,
                     "individual_pen": player.status == "C" ? leaderboard.cut_penalty * 2 : null,
-                    "individual_bonus": ((leaderboard.round == "F" || leaderboard.round == "4") && player.pos == "1") ? leaderboard.cut_penalty * -2 : null,
+                    "individual_bonus": ((leaderboard.round == "0001" || leaderboard.round == "4000") && player.pos == "1") ? leaderboard.cut_penalty * -2 : null,
                     "status": player.status
                 };
                 leaderboard.players.push(newplayer);
