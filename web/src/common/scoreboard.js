@@ -1,4 +1,5 @@
-import { ApiService } from './api';
+import {ApiService} from './api';
+import * as _ from 'lodash';
 
 const calculatePoolParticipantScores = (poolParticipant, playerMap) => {
   const [total, today] = poolParticipant.picks.reduce(([accTotal, accToday], val) => {
@@ -31,8 +32,8 @@ const transformLeaderboardToPlayerMap = leaderboard => leaderboard.players.reduc
   return acc;
 }, {});
 
-const playerIdToPoolParticipants = poolParticipants => poolParticipants
-  .flatMap(p => p.picks.map(pick => [pick.tournament_id, p.name]))
+const playerIdToPoolParticipants = poolParticipants => _.flatMap(poolParticipants,
+  p => p.picks.map(pick => [pick.tournament_id, p.name]))
   .reduce((acc, val) => {
     if (acc.hasOwnProperty(val[0])) {
       acc[val[0]] = [...acc[val[0]], val[1]];
