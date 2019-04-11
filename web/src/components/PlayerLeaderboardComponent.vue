@@ -4,11 +4,14 @@
     <div
       class="table-options"
       v-on:click="tableCondensed = !tableCondensed">
-      <div v-if="!tableCondensed">
-        Condensed view
-      </div>
-      <div v-if="tableCondensed">
-        Spacious view
+<!--      <div v-if="!tableCondensed">-->
+<!--        Condensed view-->
+<!--      </div>-->
+<!--      <div v-if="tableCondensed">-->
+<!--        Spacious view-->
+<!--      </div>-->
+      <div>
+        Refreshing in {{Math.round((refreshTime - currentTime)/1000)}}s
       </div>
     </div>
     <table class="table"
@@ -51,7 +54,7 @@
 <script>
 import { ScoreboardService } from '../common/scoreboard';
 import { DisplayUtils } from '../common/displayUtils';
-
+const REFRESH_INTERVAL = 10000;
 export default {
   name: 'PlayerLeaderboardComponent',
   data() {
@@ -60,18 +63,23 @@ export default {
       tableCondensed: true,
       playersToPoolParticipants: {},
       refreshTime: 0,
+      currentTime: Date.now(),
       ...DisplayUtils, //
     };
   },
   async created() {
     await this.fetchData();
-    this.interval = setInterval(() => this.fetchData(), 30000);
+    this.interval = setInterval(() => this.fetchData(), REFRESH_INTERVAL);
+    // clock for refresh timer
+    this.clock = setInterval(() => this.tick(), 1000);
   },
   async beforeDestroy() {
     clearInterval(this.interval);
+    clearInterval(this.clock);
   },
   methods: {
     async fetchData() {
+      this.refreshTime = Date.now() + REFRESH_INTERVAL;
       const data = await ScoreboardService.load();
       this.playersToPoolParticipants = data.playersToPoolParticipants;
       this.players = data.orderedPlayers;
@@ -81,6 +89,9 @@ export default {
         return this.playersToPoolParticipants[player.id].join(', ');
       }
       return '';
+    },
+    tick() {
+      this.currentTime = Date.now();
     },
   },
 };

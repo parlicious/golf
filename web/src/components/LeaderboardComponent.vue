@@ -18,14 +18,14 @@
        <div>
          Refreshing in {{Math.round((refreshTime - currentTime)/1000)}}s
        </div>
-        <div v-on:click="tableCondensed = !tableCondensed">
-          <div v-if="!tableCondensed">
-            Condensed view
-          </div>
-          <div v-if="tableCondensed">
-            Spacious view
-          </div>
-        </div>
+<!--        <div v-on:click="tableCondensed = !tableCondensed">-->
+<!--          <div v-if="!tableCondensed">-->
+<!--            Condensed view-->
+<!--          </div>-->
+<!--          <div v-if="tableCondensed">-->
+<!--            Spacious view-->
+<!--          </div>-->
+<!--        </div>-->
       </div>
       <div v-if="!loading" class="content">
         <table class="table" v-bind:class="{condensed: tableCondensed}">
@@ -59,6 +59,8 @@ import { setInterval } from 'timers';
 import { ScoreboardService } from '../common/scoreboard';
 import PoolParticipantComponent from '@/components/PoolParticipantComponent.vue';
 
+const REFRESH_INTERVAL = 10000;
+
 export default {
   name: 'LeaderboardComponent',
   components: { 'pool-participant': PoolParticipantComponent },
@@ -78,7 +80,7 @@ export default {
     // fetch the data when the view is created and the data is
     // already being observed
     await this.fetchData();
-    this.interval = setInterval(() => this.fetchData(), 10000);
+    this.interval = setInterval(() => this.fetchData(), REFRESH_INTERVAL);
     // clock for refresh timer
     this.clock = setInterval(() => this.tick(), 1000);
   },
@@ -92,7 +94,7 @@ export default {
   },
   methods: {
     async fetchData() {
-      this.refreshTime = Date.now() + 10000;
+      this.refreshTime = Date.now() + REFRESH_INTERVAL;
       const data = await ScoreboardService.load();
       this.players = data.players;
       this.poolParticipants = data.poolParticipants
