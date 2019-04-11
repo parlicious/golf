@@ -1,5 +1,6 @@
 const AWS = require('aws-sdk');
 const s3 = new AWS.S3();
+const lambda = new AWS.Lambda();
 
 const standardHeaders = {
     'Content-Type': 'application/json',
@@ -18,6 +19,7 @@ const errors = {
 
 const DATA_BUCKET = process.env.DATA_BUCKET_NAME || 'parlicious-data';
 const TOURNAMENTS_KEY = 'tournaments.json';
+const AGGREGATION_LAMBDA = 'picks-aggregator';
 
 const multipleErrors = (errors) => {
     const responseBody = {
@@ -204,6 +206,17 @@ const saveNewPicks = async (picks) => {
     await savePicks(key, picks)
 };
 
+const triggerAggregation = async () => {
+    try{
+        await lambda.invoke({
+            FunctionName: AGGREGATION_LAMBDA,
+            Payload: ""
+        }).promise()
+    } catch(e){
+        console.log('triggering aggregation failed')
+    }
+};
+
 const handleGet = async (event) => {
     const body = event.queryStringParameters;
     const missingFields = validateRequiredFields(body, requiredPlayerPickQueryValues);
@@ -267,6 +280,7 @@ const handlePost = async (event) => {
             try {
                 // update existing picks
                 await savePicks(existingPickKey, body)
+                await triggerAggregation();
             } catch (e) {
                 console.log(e);
                 return fail('Unable to update picks');
@@ -279,6 +293,7 @@ const handlePost = async (event) => {
 
         // save new picks
         await saveNewPicks(body);
+        await triggerAggregation();
         return success(body);
     }
 };
