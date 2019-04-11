@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1> Tournament Leaderboard</h1>
+    <h1> Leaderboard</h1>
     <div
       class="table-options"
       v-on:click="tableCondensed = !tableCondensed">
@@ -26,7 +26,7 @@
       </thead>
       <tr
         v-for="player in players"
-        v-bind:class="{increased: player.score_diff < 0, decreased: player.score_diff > 0}"
+        v-bind:class="{increased: player.score_diff > 0, decreased: player.score_diff < 0}"
         v-bind:key="player.tournament_id">
         <td
           class="player-name-cell"
@@ -57,7 +57,7 @@ export default {
   data() {
     return {
       players: {},
-      tableCondensed: false,
+      tableCondensed: true,
       playersToPoolParticipants: {},
       refreshTime: 0,
       ...DisplayUtils, //

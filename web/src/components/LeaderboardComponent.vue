@@ -1,7 +1,7 @@
 <template>
   <div class="post">
     <div class="hello">
-      <h1> Leaderboard </h1>
+      <h1> Standings </h1>
     </div>
     <div class="loading" v-if="loading">
       Loading...
@@ -65,7 +65,7 @@ export default {
     return {
       loading: false,
       showAll: false,
-      tableCondensed: false,
+      tableCondensed: true,
       leaderboardActive: true,
       refreshTime: 0,
       players: {},

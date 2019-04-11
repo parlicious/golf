@@ -12,7 +12,7 @@
   <tr
     v-show="showPlayers || showPlayersOverride"
     v-for="pick in sortedPicks(participant.picks)"
-    v-bind:class="{increased: pick.score_diff < 0, decreased: pick.score_diff > 0}"
+    v-bind:class="{increased: pick.score_diff > 0, decreased: pick.score_diff < 0}"
     v-bind:key="pick.id">
     <td
       class="player-name-cell">
