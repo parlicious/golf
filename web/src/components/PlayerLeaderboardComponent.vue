@@ -1,7 +1,18 @@
 <template>
   <div>
     <h1> Tournament Leaderboard</h1>
-    <table class="table">
+    <div
+      class="table-options"
+      v-on:click="tableCondensed = !tableCondensed">
+      <div v-if="!tableCondensed">
+        Condensed view
+      </div>
+      <div v-if="tableCondensed">
+        Spacious view
+      </div>
+    </div>
+    <table class="table"
+    v-bind:class="{condensed: tableCondensed}">
       <thead>
       <tr>
         <th scope="col">Name</th>
@@ -46,6 +57,7 @@ export default {
   data() {
     return {
       players: {},
+      tableCondensed: false,
       playersToPoolParticipants: {},
       refreshTime: 0,
       ...DisplayUtils, //
@@ -75,6 +87,11 @@ export default {
 </script>
 
 <style scoped>
+  .table-options{
+    display: flex;
+    justify-content: flex-end;
+  }
+
   .increased{
     color: red;
   }

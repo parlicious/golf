@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div id="app" >
     <div id="nav">
       <router-link to="/standings">Standings</router-link>
       <router-link to="/leaderboard">Leaderboard</router-link>
@@ -19,6 +19,7 @@
   max-width: 1000px;
   margin: 0 auto !important;
 }
+
 #nav {
   padding: 30px 10px 10px 10px;
   display: flex;
@@ -39,7 +40,12 @@
   background-color: #42b983;
   color:white;
 }
+
 .home {
   padding: .75rem;
+}
+
+.condensed td{
+  padding: .1rem !important;
 }
 </style>

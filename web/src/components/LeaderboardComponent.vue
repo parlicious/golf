@@ -8,20 +8,27 @@
     </div>
 
     <div v-if="leaderboardActive">
-      <div class="condense-expand"
-           v-on:click="showAll = !showAll">
-        <div v-if="showAll">
+      <div class="condense-expand">
+        <div v-if="showAll"  v-on:click="showAll = !showAll">
           Collapse All
         </div>
-        <div v-if="!showAll">
+        <div v-if="!showAll" v-on:click="showAll = !showAll">
           Expand All
         </div>
 <!--        <div>-->
 <!--          Refreshing in {{Math.floor((refreshTime - Date.now())/1000)}}s-->
 <!--        </div>-->
+        <div v-on:click="tableCondensed = !tableCondensed">
+          <div v-if="!tableCondensed">
+            Condensed view
+          </div>
+          <div v-if="tableCondensed">
+            Spacious view
+          </div>
+        </div>
       </div>
       <div v-if="!loading" class="content">
-        <table class="table">
+        <table class="table" v-bind:class="{condensed: tableCondensed}">
           <thead>
           <tr>
             <th scope="col">Name</th>
@@ -58,6 +65,7 @@ export default {
     return {
       loading: false,
       showAll: false,
+      tableCondensed: false,
       leaderboardActive: true,
       refreshTime: 0,
       players: {},
