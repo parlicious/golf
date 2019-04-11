@@ -17,7 +17,7 @@ const errors = {
     missingRequired: (val) => `Missing required value: ${val}`
 };
 
-const DATA_BUCKET = process.env.DATA_BUCKET_NAME || 'parlicious-data';
+const DATA_BUCKET = process.env.DATA_BUCKET_NAME || 'parlicious-data-public';
 const TOURNAMENTS_KEY = 'tournaments.json';
 const AGGREGATION_LAMBDA = 'picks-aggregator';
 
