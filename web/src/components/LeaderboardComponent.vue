@@ -15,9 +15,9 @@
         <div v-if="!showAll" v-on:click="showAll = !showAll">
           Expand All
         </div>
-<!--        <div>-->
-<!--          Refreshing in {{Math.floor((refreshTime - Date.now())/1000)}}s-->
-<!--        </div>-->
+       <div>
+         Refreshing in {{Math.round((refreshTime - currentTime)/1000)}}s
+       </div>
         <div v-on:click="tableCondensed = !tableCondensed">
           <div v-if="!tableCondensed">
             Condensed view
@@ -55,6 +55,7 @@
 </template>
 
 <script>
+import { setInterval } from 'timers';
 import { ScoreboardService } from '../common/scoreboard';
 import PoolParticipantComponent from '@/components/PoolParticipantComponent.vue';
 
@@ -68,6 +69,7 @@ export default {
       tableCondensed: true,
       leaderboardActive: true,
       refreshTime: 0,
+      currentTime: Date.now(),
       players: {},
       poolParticipants: [],
     };
@@ -77,9 +79,12 @@ export default {
     // already being observed
     await this.fetchData();
     this.interval = setInterval(() => this.fetchData(), 10000);
+    // clock for refresh timer
+    this.clock = setInterval(() => this.tick(), 1000);
   },
   async beforeDestroy() {
     clearInterval(this.interval);
+    clearInterval(this.clock);
   },
   watch: {
     // call again the method if the route changes
@@ -98,6 +103,9 @@ export default {
             .filter(x => x);
           return participant;
         });
+    },
+    tick() {
+      this.currentTime = Date.now();
     },
   },
 };
