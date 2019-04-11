@@ -49,9 +49,13 @@ const scoreAndRankPoolParticipants = (poolParticipants, leaderboard) => poolPart
 
 const playersWithScoreDiff = (oldPlayers, newPlayers) => {
   Object.keys(oldPlayers).forEach((k) => {
-    const oldScore = oldPlayers[k].to_par;
-    const newScore = newPlayers[k].to_par;
-    newPlayers[k].score_diff = oldScore - newScore;
+    const oldPlayer = oldPlayers[k];
+    newPlayers[k].score_diff = oldPlayer.to_par - newPlayers[k].to_par;
+    // if (newPlayers.thru === oldPlayer.thru) {
+    //   newPlayers[k].score_diff = oldPlayer.score_diff;
+    // } else {
+    //   newPlayers[k].score_diff = oldPlayer.to_par - newPlayers[k].to_par;
+    // }
   });
 
   return newPlayers;
@@ -59,11 +63,12 @@ const playersWithScoreDiff = (oldPlayers, newPlayers) => {
 
 const orderedPlayersWithScoreDiff = (oldPlayers, newPlayers) => newPlayers.map((p) => {
   const oldPlayer = oldPlayers[p.id];
-  if (newPlayers.thru === oldPlayer.thru) {
-    p.score_diff = oldPlayer.score_diff;
-  } else {
-    p.score_diff = oldPlayer.score - p.score;
-  }
+  // if (newPlayers.thru === oldPlayer.thru) {
+  //   p.score_diff = oldPlayer.score_diff;
+  // } else {
+  //   p.score_diff = oldPlayer.score - p.score;
+  // }
+  p.score_diff = oldPlayer.score - p.score;
 
   return p;
 });
@@ -87,7 +92,7 @@ export const ScoreboardService = {
     } else {
       this.players = transformLeaderboardToPlayerMap(leaderboard);
     }
-    this.orderedPlayers = leaderboard.players;
+    this.orderedPlayers = orderedPlayersWithScoreDiff(this.players, leaderboard.players);
     this.poolParticipants = scoreAndRankPoolParticipants(this.picks.pool_participants, this.players);
 
     playerIdToPoolParticipants(this.poolParticipants);
