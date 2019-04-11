@@ -23,182 +23,189 @@
       Loading ...
     </div>
 
-    <div v-if="!loading && selectEmail">
-      <h1> Make Your Picks </h1>
-      <small> Enter your email to get started </small>
-      <form
-        @submit.prevent="getIndividualPicks"
-        class="form-signin form-inline justify-content-center">
-        <label class="sr-only" for="inlineFormInputName2">Email</label>
-        <input
-          v-model="email"
-          type="email"
-          class="form-control mb-2 mr-sm-2"
-          id="inlineFormInputName2"
-          placeholder="Email Address">
+    <div v-if="picksAllowed">
+      <div v-if="!loading && selectEmail">
+        <h1> Make Your Picks </h1>
+        <small> Enter your email to get started</small>
+        <form
+          @submit.prevent="getIndividualPicks"
+          class="form-signin form-inline justify-content-center">
+          <label class="sr-only" for="inlineFormInputName2">Email</label>
+          <input
+            v-model="email"
+            type="email"
+            class="form-control mb-2 mr-sm-2"
+            id="inlineFormInputName2"
+            placeholder="Email Address">
 
-        <button
-          type="submit"
-          class="btn btn-primary mb-2">
-          Let's Go
-        </button>
-      </form>
-      <small> If you've already created picks, we'll look them up.</small>
-    </div>
-
-    <div v-if="!loading && makePicks">
-      <h1 v-if="!editing"> Make Your Picks </h1>
-      <h1 v-if="editing"> Edit Your Picks </h1>
-      <small v-if="!tierView().valid">
-        First pick your players for each tier below
-      </small>
-
-      <small v-if="tierView().valid">
-        Make changes to your players for each tier below
-      </small>
-
-      <div class="tiers ">
-        <div class="row">
-          <div
-            class="col mx-0 px-1 my-2 tier"
-            v-for="tier in tierView().view"
-            v-bind:key="tier.name">
-            <div class="card"
-                 v-bind:class="{ 'tiers-correct': tier.required === tier.selected }"
-            >
-              <div class="card-header">{{tier.name}}</div>
-              <div class="card-body">
-                <p class="card-text">{{tier.required - tier.selected}} left </p>
-              </div>
-            </div>
-          </div>
-
-        </div>
-      </div>
-
-      <div class="picks-list mb-5">
-        <table class="table">
-          <thead>
-          <th scope="col">Tier</th>
-          <th scope="col">Name</th>
-          <th scope="col">Odds</th>
-          </thead>
-          <tr
-            v-for="player in players"
-            v-bind:key="player.id"
-            v-bind:class="{picked: player.picked}"
-            v-on:click="makePick(player.tournament_id)"
-            class="pick-cell">
-            <td> {{player.tier}}</td>
-            <td> {{player.first_name}} {{player.last_name}}</td>
-            <td> {{player.fractional_odds}}</td>
-          </tr>
-        </table>
-
-      </div>
-
-      <div
-        v-if="tierView().valid"
-        class="confirm-area row justify-content-sm-center pb-4 pl-1 pr-1 fixed-bottom">
-        <div class="col-12 col-sm-6">
           <button
-            type="button"
-            class="btn btn-primary btn-block"
-            v-on:click="confirmPicks()"
-            :disabled="!tierView().valid">
-            Confirm Picks
-          </button>
-        </div>
-      </div>
-    </div>
-
-    <div v-if="!loading && confirmingPicks">
-      <h1> Confirm Your Picks </h1>
-      <small>
-        If the picks below look right, enter your name and pick a password to lock
-        down your picks. Don't forget it, you'll need it later if you want to edit your
-        picks.
-      </small>
-      <div
-        class="row">
-        <div class="col  align-self-center">
-          <form
-            @submit.prevent="submitPicks"
-            class="form-signin float-center">
-            <div class="form-row">
-              <div class="col-12 col-md-3">
-                <label class="sr-only" for="editKeyInput">Edit Key</label>
-                <input
-                  v-model="name"
-
-                  type="text"
-                  class="form-control  mb-2 "
-                  id="nameInput"
-                  placeholder="Name">
-              </div>
-              <div class="col-12 col-md-4">
-                <label class="sr-only" for="editKeyInput">Edit Key</label>
-                <input
-                  v-model="email"
-
-                  type="email"
-                  class="form-control  mb-2 "
-                  id="emailInput"
-                  placeholder="Email Address">
-              </div>
-              <div class="col-12 col-md-3">
-                <label class="sr-only" for="editKeyInput">Edit Key</label>
-                <input
-                  v-model="editKey"
-
-                  type="text"
-                  class="form-control  mb-2 "
-                  id="editKeyInput"
-                  placeholder="Picks Password">
-              </div>
-              <div class="col-12 col-md-2">
-                <button
-                  type="submit"
-                  class="btn btn-primary mb-2"
-                  :disabled="!submitFormValid()">
-                  Submit Picks
-                </button>
-              </div>
-            </div>
-          </form>
-        </div>
-      </div>
-
-      <div class="picks-list">
-        <table class="table">
-          <thead>
-          <th scope="col">Tier</th>
-          <th scope="col">Name</th>
-          <th scope="col">Odds</th>
-          </thead>
-          <tr
-            v-for="player in players.filter(p => p.picked)"
-            v-bind:key="player.id"
-            class="pick-cell">
-            <td> {{player.tier}}</td>
-            <td> {{player.first_name}} {{player.last_name}}</td>
-            <td> {{player.fractional_odds}}</td>
-          </tr>
-        </table>
-
-      </div>
-
-      <div
-        class="row">
-        <div class="col  align-self-center">
-          <button
-            v-on:click="changePicks()"
-            type="button"
+            type="submit"
             class="btn btn-primary mb-2">
-            Change Picks
+            Let's Go
           </button>
+        </form>
+        <small> If you've already created picks, we'll look them up.</small>
+      </div>
+
+      <div v-if="!loading && makePicks">
+        <h1 v-if="!editing"> Make Your Picks </h1>
+        <h1 v-if="editing"> Edit Your Picks </h1>
+        <small v-if="!tierView().valid">
+          First pick your players for each tier below
+        </small>
+
+        <small v-if="tierView().valid">
+          Make changes to your players for each tier below
+        </small>
+
+        <div class="tiers ">
+          <div class="row">
+            <div
+              class="col mx-0 px-1 my-2 tier"
+              v-for="tier in tierView().view"
+              v-bind:key="tier.name">
+              <div class="card"
+                   v-bind:class="{ 'tiers-correct': tier.required === tier.selected }"
+              >
+                <div class="card-header">{{tier.name}}</div>
+                <div class="card-body">
+                  <p class="card-text">{{tier.required - tier.selected}} left </p>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <div class="picks-list mb-5">
+          <table class="table">
+            <thead>
+            <th scope="col">Tier</th>
+            <th scope="col">Name</th>
+            <th scope="col">Odds</th>
+            </thead>
+            <tr
+              v-for="player in players"
+              v-bind:key="player.id"
+              v-bind:class="{picked: player.picked}"
+              v-on:click="makePick(player.tournament_id)"
+              class="pick-cell">
+              <td> {{player.tier}}</td>
+              <td> {{player.first_name}} {{player.last_name}}</td>
+              <td> {{player.fractional_odds}}</td>
+            </tr>
+          </table>
+
+        </div>
+
+        <div
+          v-if="tierView().valid"
+          class="confirm-area row justify-content-sm-center pb-4 pl-1 pr-1 fixed-bottom">
+          <div class="col-12 col-sm-6">
+            <button
+              type="button"
+              class="btn btn-primary btn-block"
+              v-on:click="confirmPicks()"
+              :disabled="!tierView().valid">
+              Confirm Picks
+            </button>
+          </div>
         </div>
       </div>
+
+      <div v-if="!loading && confirmingPicks">
+        <h1> Confirm Your Picks </h1>
+        <small>
+          If the picks below look right, enter your name and pick a password to lock
+          down your picks. Don't forget it, you'll need it later if you want to edit your
+          picks.
+        </small>
+        <div
+          class="row">
+          <div class="col  align-self-center">
+            <form
+              @submit.prevent="submitPicks"
+              class="form-signin float-center">
+              <div class="form-row">
+                <div class="col-12 col-md-3">
+                  <label class="sr-only" for="editKeyInput">Edit Key</label>
+                  <input
+                    v-model="name"
+
+                    type="text"
+                    class="form-control  mb-2 "
+                    id="nameInput"
+                    placeholder="Name">
+                </div>
+                <div class="col-12 col-md-4">
+                  <label class="sr-only" for="editKeyInput">Edit Key</label>
+                  <input
+                    v-model="email"
+
+                    type="email"
+                    class="form-control  mb-2 "
+                    id="emailInput"
+                    placeholder="Email Address">
+                </div>
+                <div class="col-12 col-md-3">
+                  <label class="sr-only" for="editKeyInput">Edit Key</label>
+                  <input
+                    v-model="editKey"
+
+                    type="text"
+                    class="form-control  mb-2 "
+                    id="editKeyInput"
+                    placeholder="Picks Password">
+                </div>
+                <div class="col-12 col-md-2">
+                  <button
+                    type="submit"
+                    class="btn btn-primary mb-2"
+                    :disabled="!submitFormValid()">
+                    Submit Picks
+                  </button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+
+        <div class="picks-list">
+          <table class="table">
+            <thead>
+            <th scope="col">Tier</th>
+            <th scope="col">Name</th>
+            <th scope="col">Odds</th>
+            </thead>
+            <tr
+              v-for="player in players.filter(p => p.picked)"
+              v-bind:key="player.id"
+              class="pick-cell">
+              <td> {{player.tier}}</td>
+              <td> {{player.first_name}} {{player.last_name}}</td>
+              <td> {{player.fractional_odds}}</td>
+            </tr>
+          </table>
+
+        </div>
+
+        <div
+          class="row">
+          <div class="col  align-self-center">
+            <button
+              v-on:click="changePicks()"
+              type="button"
+              class="btn btn-primary mb-2">
+              Change Picks
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div v-if="!picksAllowed">
+      <p> Picks are no longer being accepted for this tournament, but you can check out the
+        <router-link to="/standings">standings</router-link>
+      </p>
     </div>
   </div>
 </template>
@@ -222,6 +229,7 @@ export default {
       showSuccessMessage: false,
       successMessage: null,
       loading: false,
+      picksAllowed: true,
       selectEmail: true,
       editing: false,
       makePicks: false,
@@ -237,6 +245,7 @@ export default {
     async fetchData() {
       this.loading = true;
       const data = await PicksService.load();
+      this.picksAllowed = (Date.parse(data.activeTournament.accepting_picks_until) - Date.now()) > 0;
       this.players = data.tournamentField.field;
       this.picks_per_tier = data.tournamentField.picks_per_tier;
       this.loading = false;
@@ -426,16 +435,16 @@ export default {
     color: white;
   }
 
-  .tiers-correct{
+  .tiers-correct {
     background-color: #42b983;
     color: white;
   }
 
-  #inlineFormInputName2{
+  #inlineFormInputName2 {
     width: 80%;
   }
 
-  .confirm-area{
+  .confirm-area {
     background-color: white;
   }
 

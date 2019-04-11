@@ -17,6 +17,7 @@ const errors = {
 };
 
 const DATA_BUCKET = process.env.DATA_BUCKET_NAME || 'parlicious-data';
+const TOURNAMENTS_KEY = 'tournaments.json';
 
 const multipleErrors = (errors) => {
     const responseBody = {
@@ -103,6 +104,15 @@ const validatePicksMeetTierRequirements = (picksRequest, tierRequirements) => {
     }
 };
 
+const shouldAcceptPicks = (tournaments) => {
+    const activeTournament = tournaments.find(t => t.active);
+    if(activeTournament){
+        return (Date.parse(activeTournament.accepting_picks_until) - Date.now()) > 0;
+    } else {
+        return false;
+    }
+};
+
 const getTierRequirements = async (tournament, year) => {
     const key = `picks/${tournament}/${year}/tournament_info.json`;
 
@@ -146,6 +156,21 @@ const listExistingIndividualPicks = async (tournament, year) => {
         });
 };
 
+const getTournaments = async () => {
+    const params = {
+        Bucket: DATA_BUCKET,
+        Key: TOURNAMENTS_KEY
+    };
+
+    let data;
+    try {
+        data = await s3.getObject(params).promise();
+    } catch (e) {
+        console.log(e);
+    }
+
+    return JSON.parse(data.Body);
+};
 
 const getPick = async (key) => {
     const params = {
@@ -209,6 +234,12 @@ const handlePost = async (event) => {
     // validate request
     if (missingFields.length !== 0) {
         return multipleErrors(missingFields)
+    }
+
+    // validate tournament is still accepting picks
+    const tournaments = await getTournaments();
+    if(!shouldAcceptPicks(tournaments)){
+        return fail('Picks are no longer accepted for this tournament', '403');
     }
 
     try {
