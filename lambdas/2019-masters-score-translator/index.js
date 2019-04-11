@@ -7,17 +7,6 @@ var https = require('https');
 var host = '2019.masters.com';
 var path = '/en_US/scores/feeds/scores.json';
 
-var leaderboard = {
-    "version": 1,
-    "round": "1",
-    "cut_line": 6,
-    "cut_penalty": 7,
-    "timezone": "EDT",
-    "players": [
-
-    ]
-};
-
 var options = {
     host: host,
     path: path,
@@ -25,8 +14,25 @@ var options = {
 };
 
 exports.handler = (event, context, callback) => {
-    var req = https.request(options, (res) => {
-        var data = '';
+    buildleaderboard(callback, 1);
+};
+
+function buildleaderboard(callback, count){
+    const newcount = count + 1;
+    console.log(`count: ${count}`);
+    let leaderboard = {
+        "version": 1,
+        "round": null,
+        "cut_line": null,
+        "cut_penalty": null,
+        "timezone": "EDT",
+        "refreshed": Date.now(),
+        "players": [
+    
+        ]
+    };
+    let req = https.request(options, (res) => {
+        let data = '';
         res.on('data', function (chunk) {
             data += chunk;
         });
@@ -36,14 +42,16 @@ exports.handler = (event, context, callback) => {
         });
 
         res.on('end', () => {
-            var mastersdata = JSON.parse(data);
+            let mastersdata = JSON.parse(data);
 
             //build our model
             leaderboard.cut_line = mastersdata.data.cutLine;
+            leaderboard.round = mastersdata.data.currentRound;
             let players = mastersdata.data.player;
-            players.forEach(player => {
+            for(var i = 0; i < players.length; i++) {
+                let player = players[i];
                 let newplayer = {
-                    'id': player.id,
+                    'id': parseInt(player.id),
                     'first_name': player.first_name,
                     'last_name': player.last_name,
                     'thru': player.thru,
@@ -52,26 +60,34 @@ exports.handler = (event, context, callback) => {
                     'to_par': player.topar,
                     'position': player.pos,
                     "individual_pen": player.status == "C" ? leaderboard.cut_penalty * 2 : null,
-                    "individual_bonus": ((leaderboard.round == "F" || leaderboard.round == "4") && player.pos == "1") ? leaderboard.cut_penalty * -2 : null,
+                    "individual_bonus": ((leaderboard.round == "0001" || leaderboard.round == "4000") && player.pos == "1") ? leaderboard.cut_penalty * -2 : null,
                     "status": player.status
                 };
                 leaderboard.players.push(newplayer);
-            });
+            }
             
             const key = "leaderboards/masters/2019/leaderboard.json";
         
-            var params = {
+            let params = {
                 Bucket : process.env.LEADERBOARD_BUCKET,
                 Key : key,
                 Body : JSON.stringify(leaderboard),
-                ACL:'public-read'
+                ACL:'public-read',
+                ContentType: "application/json"
             };
             s3.putObject(params, function(err, data) {
-                if (err) console.log(err, err.stack); // an error occurred
-                else     console.log(data);           // successful response
+                if (err) 
+                {
+                    console.log(err, err.stack); // an error occurred
+                }
+                else {
+                    console.log(data);           // successful response
+                    if(count < 5) {
+                        setTimeout(() => buildleaderboard(callback, newcount), 10000);
+                    } else callback(null,leaderboard);
+                 }
             });
-            callback(null, leaderboard);
         });
     });
     req.end();
-};
+}
