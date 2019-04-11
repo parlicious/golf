@@ -7,7 +7,9 @@
     <td>{{participant.total}}</td>
     <td>{{participant.today}}</td>
     <td>{{getTotalPenalty(participant)}}</td>
-    <td></td>
+    <td class="player-thru-cell">
+      {{180 - getTotalThru(participant)}} <small>⛳️ left</small>
+    </td>
   </tr>
   <tr
     v-show="showPlayers || showPlayersOverride"
@@ -26,7 +28,7 @@
     <td>{{zeroOr(pick.to_par)}}</td>
     <td>{{zeroOr(pick.today)}}</td>
     <td>{{getPenaltyColumn(pick)}}</td>
-    <td>{{getPickThru(pick)}}</td>
+    <td class="player-thru-cell">{{getPickThru(pick)}}</td>
   </tr>
   </tbody>
 </template>
@@ -56,10 +58,6 @@ export default {
 
   .pool_participants td {
     font-weight: bold;
-  }
-
-  .player-name-cell {
-    text-align: left;
   }
 
   .increased{

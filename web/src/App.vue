@@ -48,4 +48,12 @@
 .condensed td{
   padding: .1rem !important;
 }
+
+.player-name-cell {
+  text-align: left;
+}
+
+.player-thru-cell {
+  text-align: right;
+}
 </style>

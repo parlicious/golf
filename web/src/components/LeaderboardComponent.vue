@@ -31,11 +31,11 @@
         <table class="table" v-bind:class="{condensed: tableCondensed}">
           <thead>
           <tr>
-            <th scope="col">Name</th>
+            <th class="player-name-cell" scope="col">Name</th>
             <th scope="col">Total</th>
             <th scope="col">Today</th>
             <th scope="col">Penalty</th>
-            <th scope="col">Thru</th>
+            <th class="player-thru-cell" scope="col">Thru</th>
           </tr>
           </thead>
           <pool-participant

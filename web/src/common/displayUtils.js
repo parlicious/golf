@@ -25,6 +25,14 @@ export const DisplayUtils = {
   getTotalPenalty(participant) {
     return participant.picks.reduce((acc, val) => acc + this.getPenaltyColumn(val), 0);
   },
+  getTotalThru(participant) {
+    return participant.picks
+      .map(p => p.thru)
+      .map(p => p === 'F' ? 18 : p)
+      .filter(p => !isNaN(p))
+      .map(p => parseInt(p))
+      .reduce((acc, val) => acc + (val), 0);
+  },
   zeroOr(val) {
     return val || 'E';
   },
