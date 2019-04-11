@@ -1,7 +1,9 @@
 <template>
   <tbody>
   <tr v-on:click="toggleShowPlayers" class="pool_participants">
-    <td>{{participant.name}}</td>
+    <td
+      class="player-name-cell"
+    >{{participant.name}}</td>
     <td>{{participant.total}}</td>
     <td>{{participant.today}}</td>
     <td>{{getTotalPenalty(participant)}}</td>
@@ -12,7 +14,9 @@
     v-for="pick in sortedPicks(participant.picks)"
     v-bind:class="{increased: pick.score_diff > 0, decreased: pick.score_diff < 0}"
     v-bind:key="pick.id">
-    <td><a
+    <td
+      class="player-name-cell">
+      <a
       rel="noreferrer"
       target="_blank"
       :href="`https://www.masters.com/en_US/scores/track/hole_view/index.html?pid=${pick.id}`">
@@ -52,6 +56,10 @@ export default {
 
   .pool_participants td {
     font-weight: bold;
+  }
+
+  .player-name-cell {
+    text-align: left;
   }
 
   .increased{

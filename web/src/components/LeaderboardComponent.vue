@@ -70,7 +70,7 @@ export default {
     await this.fetchData();
     this.interval = setInterval(() => this.fetchData(), 10000);
   },
-  async beforeDestroy(){
+  async beforeDestroy() {
     clearInterval(this.interval);
   },
   watch: {
@@ -80,7 +80,6 @@ export default {
   methods: {
     async fetchData() {
       this.refreshTime = Date.now() + 10000;
-      this.loading = true;
       const data = await ScoreboardService.load();
       this.players = data.players;
       this.poolParticipants = data.poolParticipants
@@ -91,7 +90,6 @@ export default {
             .filter(x => x);
           return participant;
         });
-      this.loading = false;
     },
   },
 };

@@ -58,7 +58,13 @@ const playersWithScoreDiff = (oldPlayers, newPlayers) => {
 };
 
 const orderedPlayersWithScoreDiff = (oldPlayers, newPlayers) => newPlayers.map((p) => {
-  p.score_diff = oldPlayers[p.id].score - p.score;
+  const oldPlayer = oldPlayers[p.id];
+  if (newPlayers.thru === oldPlayer.thru) {
+    p.score_diff = oldPlayer.score_diff;
+  } else {
+    p.score_diff = oldPlayer.score - p.score;
+  }
+
   return p;
 });
 

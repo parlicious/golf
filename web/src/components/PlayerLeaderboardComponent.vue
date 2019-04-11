@@ -17,7 +17,9 @@
         v-for="player in players"
         v-bind:class="{increased: player.score_diff > 0, decreased: player.score_diff < 0}"
         v-bind:key="player.tournament_id">
-        <td><a
+        <td
+          class="player-name-cell"
+        ><a
           rel="noreferrer"
           target="_blank"
           :href="`https://www.masters.com/en_US/scores/track/hole_view/index.html?pid=${player.id}`">
@@ -58,7 +60,6 @@ export default {
   },
   methods: {
     async fetchData() {
-      this.loading = true;
       const data = await ScoreboardService.load();
       this.playersToPoolParticipants = data.playersToPoolParticipants;
       this.players = data.orderedPlayers;
@@ -76,6 +77,10 @@ export default {
 <style scoped>
   .increased{
     color: red;
+  }
+
+  .player-name-cell {
+    text-align: left;
   }
 
   .decreased{
