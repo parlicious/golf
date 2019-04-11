@@ -11,8 +11,14 @@
     v-show="showPlayers || showPlayersOverride"
     v-for="pick in sortedPicks(participant.picks)"
     v-bind:class="{increased: pick.score_diff > 0, decreased: pick.score_diff < 0}"
-    v-bind:key="pick.last_name">
-    <td>{{pick.first_name}} {{pick.last_name}}</td>
+    v-bind:key="pick.id">
+    <td><a
+      rel="noreferrer"
+      target="_blank"
+      :href="`https://www.masters.com/en_US/scores/track/hole_view/index.html?pid=${pick.id}`">
+      {{pick.first_name}} {{pick.last_name}}
+    </a>
+    </td>
     <td>{{zeroOr(pick.to_par)}}</td>
     <td>{{zeroOr(pick.today)}}</td>
     <td>{{getPenaltyColumn(pick)}}</td>

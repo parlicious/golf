@@ -17,7 +17,13 @@
         v-for="player in players"
         v-bind:class="{increased: player.score_diff > 0, decreased: player.score_diff < 0}"
         v-bind:key="player.tournament_id">
-        <td>{{player.first_name}} {{player.last_name}}</td>
+        <td><a
+          rel="noreferrer"
+          target="_blank"
+          :href="`https://www.masters.com/en_US/scores/track/hole_view/index.html?pid=${player.id}`">
+          {{player.first_name}} {{player.last_name}}
+        </a>
+        </td>
         <td>{{zeroOr(player.to_par)}}</td>
         <td>{{zeroOr(player.today)}}</td>
         <td>{{getPenaltyColumn(player)}}</td>
@@ -45,9 +51,9 @@ export default {
   },
   async created() {
     await this.fetchData();
-    this.interval = setInterval(() => this.fetchData(), 10000);
+    this.interval = setInterval(() => this.fetchData(), 30000);
   },
-  async beforeDestroy(){
+  async beforeDestroy() {
     clearInterval(this.interval);
   },
   methods: {
