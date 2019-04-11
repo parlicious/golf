@@ -27,36 +27,25 @@
         <th class="d-none d-sm-table-cell" scope="col">Picked By</th>
       </tr>
       </thead>
-      <tr
+      <player-component
         v-for="player in players"
+        v-bind:player="player"
         v-bind:class="{increased: player.score_diff > 0, decreased: player.score_diff < 0}"
         v-bind:key="player.tournament_id">
-        <td
-          class="player-name-cell"
-        ><a
-          rel="noreferrer"
-          target="_blank"
-          :href="`https://www.masters.com/en_US/scores/track/hole_view/index.html?pid=${player.id}`">
-          {{player.first_name}} {{player.last_name}}
-        </a>
-        </td>
-        <td>{{zeroOr(player.to_par)}}</td>
-        <td>{{zeroOr(player.today)}}</td>
-        <td>{{getPenaltyColumn(player)}}</td>
-        <td>{{getPickThru(player)}}</td>
-        <td>{{player.position || ''}}</td>
-        <td class="d-none d-sm-table-cell">{{getParticipantsForPlayer(player)}}</td>
-      </tr>
+      </player-component>
     </table>
   </div>
 </template>
 
 <script>
 import { ScoreboardService } from '../common/scoreboard';
+import PlayerComponent from '@/components/PlayerComponent.vue';
 import { DisplayUtils } from '../common/displayUtils';
+
 const REFRESH_INTERVAL = 10000;
 export default {
   name: 'PlayerLeaderboardComponent',
+  components: { 'player-component': PlayerComponent },
   data() {
     return {
       players: {},
@@ -82,13 +71,16 @@ export default {
       this.refreshTime = Date.now() + REFRESH_INTERVAL;
       const data = await ScoreboardService.load();
       this.playersToPoolParticipants = data.playersToPoolParticipants;
-      this.players = data.orderedPlayers;
+      this.players = data.orderedPlayers.map(p => {
+        p.pickedBy = this.getParticipantsForPlayer(p);
+        return p;
+      });
     },
     getParticipantsForPlayer(player) {
       if (this.playersToPoolParticipants.hasOwnProperty(player.id)) {
-        return this.playersToPoolParticipants[player.id].join(', ');
+        return this.playersToPoolParticipants[player.id];
       }
-      return '';
+      return [];
     },
     tick() {
       this.currentTime = Date.now();
