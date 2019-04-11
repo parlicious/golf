@@ -56,4 +56,8 @@
 .player-thru-cell {
   text-align: right;
 }
+
+  tr:hover {
+    background-color: #eee;
+  }
 </style>
