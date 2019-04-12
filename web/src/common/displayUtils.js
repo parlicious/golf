@@ -28,8 +28,8 @@ export const DisplayUtils = {
   getTotalThru(participant) {
     return participant.picks
       .map(p => p.thru)
-      .map(p => (p === 'F' ? 18 : p))
       .map(p => p.trim() === '' ? 0 : p)
+      .map(p => (p === 'F' ? 18 : p))
       .map(p => (isNaN(p) ? 0 : p))
       .map(p => parseInt(p))
       .reduce((acc, val) => acc + (val), 0);

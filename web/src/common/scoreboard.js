@@ -100,6 +100,11 @@ const leaderboardWithTiers = (leaderboard, tournamentInfo) => {
   };
 };
 
+const addCutLineIndicator = (cutLine, orderedPlayers) => {
+  const cutIndex = 1;
+  return orderedPlayers;
+};
+
 
 export const ScoreboardService = {
 
@@ -122,7 +127,7 @@ export const ScoreboardService = {
     } else {
       this.players = transformLeaderboardToPlayerMap(leaderboard);
     }
-    this.orderedPlayers = orderedPlayersWithScoreDiff(this.players, leaderboard.players);
+    this.orderedPlayers = addCutLineIndicator(leaderboard.cut_line, orderedPlayersWithScoreDiff(this.players, leaderboard.players));
     this.poolParticipants = scoreAndRankPoolParticipants(this.picks.pool_participants, this.players);
 
     playerIdToPoolParticipants(this.poolParticipants);

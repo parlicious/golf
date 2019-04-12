@@ -43,7 +43,7 @@ import { DisplayUtils } from '../common/displayUtils';
 
 export default {
   name: 'PoolParticipant',
-  props: ['participant', 'showPlayers', 'cutLine'],
+  props: ['participant', 'showPlayers', 'cutLine', 'invertColors'],
   data() {
     return {
       showPlayersOverride: false,

@@ -47,10 +47,22 @@
             v-bind:key="participant.name"
             v-bind:showPlayers="showAll"
             v-bind:cutLine="cutLine"
+            v-bind:invertColors="invertColors"
             v-bind:participant="participant">
           </pool-participant>
         </table>
         <coloring-key></coloring-key>
+        <div class="condense-expand">
+          <div
+            class="color-mode-button"
+            v-if="invertColors"  v-on:click="invertColors = !invertColors">
+            Green is Good Mode
+          </div>
+          <div v-if="!invertColors" v-on:click="invertColors = !invertColors"
+               class="color-mode-button">
+            Green is Bad Mode
+          </div>
+        </div>
       </div>
     </div>
 
@@ -79,6 +91,7 @@ export default {
       cutLine: '',
       loading: false,
       showAll: false,
+      invertColors: false,
       tableCondensed: true,
       leaderboardActive: true,
       refreshTime: 0,

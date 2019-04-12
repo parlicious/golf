@@ -96,4 +96,16 @@
   background-color: #d4edda;
   border-color: #c3e6cb;
 }
+
+.color-mode-button{
+  cursor: pointer;
+  color: #35495e;
+  font-weight: bold;
+  border-radius: 5px;
+  margin: .25rem;
+  padding-left: .4rem;
+  padding-right: .4rem;
+  text-align: center;
+  border: 3px #35495e solid;
+}
 </style>
