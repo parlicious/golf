@@ -10,7 +10,7 @@
 <!--      <div v-if="tableCondensed">-->
 <!--        Spacious view-->
 <!--      </div>-->
-      <div>
+      <div class="refresh-label">
         Refreshing in {{Math.round((refreshTime - currentTime)/1000)}}s
       </div>
     </div>
@@ -110,15 +110,7 @@ export default {
     justify-content: flex-end;
   }
 
-  .increased{
-    color: red;
-  }
-
   .player-name-cell {
     text-align: left;
-  }
-
-  .decreased{
-    color: green;
   }
 </style>

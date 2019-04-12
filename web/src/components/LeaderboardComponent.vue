@@ -48,6 +48,7 @@
             v-bind:participant="participant">
           </pool-participant>
         </table>
+        <coloring-key></coloring-key>
       </div>
     </div>
 
@@ -60,12 +61,17 @@
 <script>
 import { ScoreboardService } from '../common/scoreboard';
 import PoolParticipantComponent from '@/components/PoolParticipantComponent.vue';
+import ColoringKeyComponent from '@/components/ColoringKeyComponent.vue';
+
 
 const REFRESH_INTERVAL = 10000;
 
 export default {
   name: 'LeaderboardComponent',
-  components: { 'pool-participant': PoolParticipantComponent },
+  components: {
+    'pool-participant': PoolParticipantComponent,
+    'coloring-key': ColoringKeyComponent,
+  },
   data() {
     return {
       loading: false,
@@ -155,9 +161,5 @@ export default {
 
   .participant-name:hover{
     background-color: #4F6378;
-  }
-
-  .refresh-label{
-    color: #aaa
   }
 </style>

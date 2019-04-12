@@ -66,20 +66,4 @@ export default {
     display: block;
   }
 
-  .increased{
-    color: red;
-  }
-
-  .increased a{
-    color: red;
-  }
-
-  .decreased{
-    color: green;
-  }
-
-  .decreased a{
-    color: green;
-  }
-
 </style>
