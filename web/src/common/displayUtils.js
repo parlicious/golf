@@ -28,10 +28,17 @@ export const DisplayUtils = {
   getTotalThru(participant) {
     return participant.picks
       .map(p => p.thru)
-      .map(p => p === 'F' ? 18 : p)
-      .map(p => !isNaN(p) ? 0 : p)
+      .map(p => (p === 'F' ? 18 : p))
+      .map(p => (!isNaN(p) ? 0 : p))
       .map(p => parseInt(p))
       .reduce((acc, val) => acc + (val), 0);
+  },
+  getNameAbbreviation(name) {
+    const names = name.split(' ');
+    if (names.length === 1) {
+      return name.substring(0, 3);
+    }
+    return names.map(n => n[0]).join('');
   },
   zeroOr(val) {
     return val || 'E';

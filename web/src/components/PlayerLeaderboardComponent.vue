@@ -45,7 +45,10 @@
         <td>{{getPenaltyColumn(player)}}</td>
         <td>{{getPickThru(player)}}</td>
         <td>{{player.position || ''}}</td>
-        <td class="d-none d-sm-table-cell">{{getParticipantsForPlayer(player)}}</td>
+        <td class="d-none d-sm-table-cell">
+          <participant-names v-bind:participants="getParticipantsForPlayer(player)">
+          </participant-names>
+        </td>
       </tr>
     </table>
   </div>
@@ -54,9 +57,12 @@
 <script>
 import { ScoreboardService } from '../common/scoreboard';
 import { DisplayUtils } from '../common/displayUtils';
+import ParticipantNameCell from '@/components/ParticipantNameCell.vue';
+
 const REFRESH_INTERVAL = 10000;
 export default {
   name: 'PlayerLeaderboardComponent',
+  components: { 'participant-names': ParticipantNameCell },
   data() {
     return {
       players: {},
@@ -87,7 +93,7 @@ export default {
     },
     getParticipantsForPlayer(player) {
       if (this.playersToPoolParticipants.hasOwnProperty(player.id)) {
-        return this.playersToPoolParticipants[player.id].join(', ');
+        return this.playersToPoolParticipants[player.id];
       }
       return '';
     },
