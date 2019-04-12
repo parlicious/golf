@@ -43,7 +43,7 @@ import { DisplayUtils } from '../common/displayUtils';
 
 export default {
   name: 'PoolParticipant',
-  props: ['participant', 'showPlayers', 'cutLine', 'invertColors'],
+  props: ['participant', 'showPlayers', 'cutLine'],
   data() {
     return {
       showPlayersOverride: false,
@@ -60,6 +60,10 @@ export default {
 <style scoped>
   .pool_participants td {
     cursor: pointer;
+  }
+
+  .fa-cut{
+    transform: rotate(180deg);
   }
 
   .pool_participants td {

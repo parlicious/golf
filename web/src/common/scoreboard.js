@@ -101,7 +101,10 @@ const leaderboardWithTiers = (leaderboard, tournamentInfo) => {
 };
 
 const addCutLineIndicator = (cutLine, orderedPlayers) => {
-  const cutIndex = 1;
+  const cutIndex = orderedPlayers.findIndex(p => p.to_par > parseInt(cutLine));
+  if(cutIndex > 0){
+    orderedPlayers[cutIndex].firstCut = true;
+  }
   return orderedPlayers;
 };
 

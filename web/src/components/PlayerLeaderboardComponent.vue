@@ -28,10 +28,14 @@
         <th class="d-none d-sm-table-cell" scope="col">Picked By</th>
       </tr>
       </thead>
-      <tr
+      <tbody
         v-for="player in players"
         v-bind:class="{increased: player.score_diff > 0, decreased: player.score_diff < 0}"
         v-bind:key="player.tournament_id">
+      <tr v-if="player.firstCut">
+        <td colspan="8" class="cutLine"> <i class="fas fa-cut"></i> Cut Line <i class="fas fa-cut"></i></td>
+      </tr>
+      <tr>
         <td
           class="player-name-cell"
         ><a
@@ -54,6 +58,7 @@
           </participant-names>
         </td>
       </tr>
+      </tbody>
     </table>
     <coloring-key></coloring-key>
   </div>
@@ -123,5 +128,10 @@ export default {
 
   .player-name-cell {
     text-align: left;
+  }
+
+  .cutLine {
+    background-color: #46586A;
+    color: white;
   }
 </style>

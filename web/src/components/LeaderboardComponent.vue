@@ -21,14 +21,6 @@
        <div>
          Cut Line: {{cutLine}}
        </div>
-<!--        <div v-on:click="tableCondensed = !tableCondensed">-->
-<!--          <div v-if="!tableCondensed">-->
-<!--            Condensed view-->
-<!--          </div>-->
-<!--          <div v-if="tableCondensed">-->
-<!--            Spacious view-->
-<!--          </div>-->
-<!--        </div>-->
       </div>
       <div v-if="!loading" class="content">
         <table class="table" v-bind:class="{condensed: tableCondensed}">
@@ -47,7 +39,6 @@
             v-bind:key="participant.name"
             v-bind:showPlayers="showAll"
             v-bind:cutLine="cutLine"
-            v-bind:invertColors="invertColors"
             v-bind:participant="participant">
           </pool-participant>
         </table>
@@ -91,7 +82,6 @@ export default {
       cutLine: '',
       loading: false,
       showAll: false,
-      invertColors: false,
       tableCondensed: true,
       leaderboardActive: true,
       refreshTime: 0,
