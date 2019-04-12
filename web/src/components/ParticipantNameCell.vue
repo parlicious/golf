@@ -1,11 +1,12 @@
 <template>
   <div class="participant-names">
-    <span class="participant-name"
-    v-for="participant in participants"
-          v-bind:id="participant"
-          v-on:click="showAll = !showAll">
-      {{showAll ? participant : getNameAbbreviation(participant)}}
-    </span>
+<!--    <span class="participant-name"-->
+<!--    v-for="participant in participants"-->
+<!--          v-bind:id="participant"-->
+<!--          v-on:click="showAll = !showAll">-->
+<!--      {{getNameAbbreviation(participant)}}-->
+<!--    </span>-->
+    {{participants ? participants.map(getNameAbbreviation).join(', ') : ''}}
   </div>
 </template>
 
@@ -38,9 +39,9 @@ export default {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    background-color: #35495e;
-    color: #ffffff;
-    font-weight: bold;
+    /*background-color: #35495e;*/
+    /*color: #ffffff;*/
+    /*font-weight: bold;*/
     border-radius: 5px;
     margin: .1rem;
     padding-left: .4rem;
@@ -48,7 +49,7 @@ export default {
     text-align: center;
   }
 
-  .participant-name:hover{
-    background-color: #4F6378;
-  }
+  /*.participant-name:hover{*/
+  /*  background-color: #4F6378;*/
+  /*}*/
 </style>
