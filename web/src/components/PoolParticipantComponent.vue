@@ -7,6 +7,7 @@
     <td>{{participant.total}}</td>
     <td>{{participant.today}}</td>
     <td>{{getTotalPenalty(participant)}}</td>
+    <td></td>
     <td class="player-thru-cell">
       {{180 - getTotalThru(participant)}} <small>⛳️ left</small>
     </td>
@@ -29,6 +30,7 @@
     <td>{{zeroOr(pick.to_par)}}</td>
     <td>{{zeroOr(pick.today)}}</td>
     <td>{{getPenaltyColumn(pick)}}</td>
+    <td>{{pick.tier}}</td>
     <td class="player-thru-cell">{{getPickThru(pick)}}</td>
   </tr>
   </tbody>

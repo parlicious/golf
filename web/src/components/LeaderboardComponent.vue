@@ -38,6 +38,7 @@
             <th scope="col">Total</th>
             <th scope="col">Today</th>
             <th scope="col">Penalty</th>
+            <th scope="col">Tier</th>
             <th class="player-thru-cell" scope="col">Thru</th>
           </tr>
           </thead>

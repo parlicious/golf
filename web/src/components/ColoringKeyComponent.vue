@@ -4,10 +4,10 @@
       <small>Coloring key:</small>
     </div>
     <div class="increased coloring-key-item" >
-      <small>Score decreased on last hole</small>
+      <small>Score improved</small>
     </div>
     <div class="decreased coloring-key-item">
-      <small>Score increased on last hole</small>
+      <small>Score worsened</small>
     </div>
   </div>
 </template>

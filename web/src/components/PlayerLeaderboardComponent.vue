@@ -24,6 +24,7 @@
         <th scope="col">Penalty</th>
         <th scope="col">Thru</th>
         <th scope="col">Pos</th>
+        <th scope="col">Tier</th>
         <th class="d-none d-sm-table-cell" scope="col">Picked By</th>
       </tr>
       </thead>
@@ -45,6 +46,7 @@
         <td>{{getPenaltyColumn(player)}}</td>
         <td>{{getPickThru(player)}}</td>
         <td>{{player.position || ''}}</td>
+        <td>{{player.tier || ''}}</td>
         <td class="d-none d-sm-table-cell">
           <participant-names v-bind:participants="getParticipantsForPlayer(player)">
           </participant-names>

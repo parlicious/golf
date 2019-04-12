@@ -1,5 +1,5 @@
-import {ApiService} from './api';
 import * as _ from 'lodash';
+import { ApiService } from './api';
 
 const calculatePoolParticipantScores = (poolParticipant, playerMap) => {
   const [total, today] = poolParticipant.picks.reduce(([accTotal, accToday], val) => {
@@ -58,10 +58,9 @@ const playersWithScoreDiff = (oldPlayers, newPlayers) => {
       newPlayers[k].score_diff = oldPlayer.to_par - newPlayers[k].to_par;
     }
 
-    if(!newPlayers[k].score_diff){
+    if (!newPlayers[k].score_diff) {
       newPlayers[k].score_diff = 0;
     }
-
   });
 
   return newPlayers;
@@ -75,18 +74,38 @@ const orderedPlayersWithScoreDiff = (oldPlayers, newPlayers) => newPlayers.map((
     p.score_diff = oldPlayer.score - p.score;
   }
 
-  if(!p.score_diff){
+  if (!p.score_diff) {
     p.score_diff = 0;
   }
 
   return p;
 });
 
+const leaderboardWithTiers = (leaderboard, tournamentInfo) => {
+  const newPlayers = leaderboard.players.map((p) => {
+    const fieldEntry = tournamentInfo.field.find(q => q.tournament_id === p.id);
+    if (fieldEntry) {
+      return {
+        ...p,
+        tier: fieldEntry.tier,
+      };
+    }
+
+    return p;
+  });
+
+  return {
+    ...leaderboard,
+    players: newPlayers,
+  };
+};
+
 
 export const ScoreboardService = {
 
   players: null,
   picks: null,
+  tournament: null,
   orderedPlayers: [],
   poolParticipants: [],
   tournaments: null,
@@ -94,9 +113,10 @@ export const ScoreboardService = {
   async load() {
     this.tournaments = this.tournaments || (await ApiService.getTournaments()).data;
     this.activeTournament = this.activeTournament || this.tournaments.find(x => x.active);
-    this.tournamentInfo = this.activeTournament
+    this.tournamentField = (await ApiService.getUnbusted(this.activeTournament.field)).data;
     this.picks = this.picks || (await ApiService.get(this.activeTournament.picks)).data;
-    const leaderboard = (await ApiService.get(this.activeTournament.leaderboard)).data;
+    const leaderboard = leaderboardWithTiers((await ApiService.get(this.activeTournament.leaderboard)).data, this.tournamentField);
+
     if (this.players) {
       this.players = playersWithScoreDiff(this.players, transformLeaderboardToPlayerMap(leaderboard));
     } else {
