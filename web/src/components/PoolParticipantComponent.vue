@@ -70,7 +70,15 @@ export default {
     color: red;
   }
 
+  .increased a{
+    color: red;
+  }
+
   .decreased{
+    color: green;
+  }
+
+  .decreased a{
     color: green;
   }
 
