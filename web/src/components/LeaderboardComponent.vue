@@ -9,13 +9,16 @@
 
     <div v-if="leaderboardActive">
       <div class="condense-expand">
-        <div v-if="showAll"  v-on:click="showAll = !showAll">
+        <div
+          class="expand-button"
+          v-if="showAll"  v-on:click="showAll = !showAll">
           Collapse All
         </div>
-        <div v-if="!showAll" v-on:click="showAll = !showAll">
+        <div v-if="!showAll" v-on:click="showAll = !showAll"
+             class="expand-button">
           Expand All
         </div>
-       <div>
+       <div class="refresh-label">
          Refreshing in {{Math.round((refreshTime - currentTime)/1000)}}s
        </div>
 <!--        <div v-on:click="tableCondensed = !tableCondensed">-->
@@ -136,5 +139,25 @@ export default {
   .condense-expand{
     display: flex;
     justify-content: space-between;
+  }
+
+  .expand-button{
+    cursor: pointer;
+    background-color: #35495e;
+    color: #ffffff;
+    font-weight: bold;
+    border-radius: 5px;
+    margin: .25rem;
+    padding-left: .4rem;
+    padding-right: .4rem;
+    text-align: center;
+  }
+
+  .participant-name:hover{
+    background-color: #4F6378;
+  }
+
+  .refresh-label{
+    color: #aaa
   }
 </style>
