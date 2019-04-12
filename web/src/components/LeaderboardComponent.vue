@@ -52,17 +52,17 @@
           </pool-participant>
         </table>
         <coloring-key></coloring-key>
-        <div class="condense-expand">
-          <div
-            class="color-mode-button"
-            v-if="invertColors"  v-on:click="invertColors = !invertColors">
-            Green is Good Mode
-          </div>
-          <div v-if="!invertColors" v-on:click="invertColors = !invertColors"
-               class="color-mode-button">
-            Green is Bad Mode
-          </div>
-        </div>
+<!--        <div class="condense-expand">-->
+<!--          <div-->
+<!--            class="color-mode-button"-->
+<!--            v-if="invertColors"  v-on:click="invertColors = !invertColors">-->
+<!--            Green is Good Mode-->
+<!--          </div>-->
+<!--          <div v-if="!invertColors" v-on:click="invertColors = !invertColors"-->
+<!--               class="color-mode-button">-->
+<!--            Green is Bad Mode-->
+<!--          </div>-->
+<!--        </div>-->
       </div>
     </div>
 
