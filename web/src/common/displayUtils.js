@@ -42,6 +42,10 @@ export const DisplayUtils = {
     // }
     // return names.map(n => n[0]).join('');
   },
+  wouldMakeCut(cutLine, player){
+    const score = player.to_par === 'E' ? 0 : parseInt(player.to_par);
+    return score <= parseInt(cutLine);
+  },
   zeroOr(val) {
     return val || 'E';
   },

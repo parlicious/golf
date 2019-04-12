@@ -27,7 +27,10 @@
       {{pick.first_name}} {{pick.last_name}}
     </a>
     </td>
-    <td>{{zeroOr(pick.to_par)}}</td>
+    <td>
+      {{zeroOr(pick.to_par)}}
+      <i class="fas fa-cut" v-if="!wouldMakeCut(cutLine, pick)"></i>
+    </td>
     <td>{{zeroOr(pick.today)}}</td>
     <td>{{getPenaltyColumn(pick)}}</td>
     <td>{{pick.tier}}</td>
@@ -40,7 +43,7 @@ import { DisplayUtils } from '../common/displayUtils';
 
 export default {
   name: 'PoolParticipant',
-  props: ['participant', 'showPlayers'],
+  props: ['participant', 'showPlayers', 'cutLine'],
   data() {
     return {
       showPlayersOverride: false,

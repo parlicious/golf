@@ -10,8 +10,8 @@
 <!--      <div v-if="tableCondensed">-->
 <!--        Spacious view-->
 <!--      </div>-->
-      <div class="refresh-label">
-        Refreshing in {{Math.round((refreshTime - currentTime)/1000)}}s
+      <div>
+        Cut Line: {{cutLine}}
       </div>
     </div>
     <table class="table"
@@ -41,7 +41,9 @@
           {{player.first_name}} {{player.last_name}}
         </a>
         </td>
-        <td>{{zeroOr(player.to_par)}}</td>
+        <td>
+          {{zeroOr(player.to_par)}}
+        </td>
         <td>{{zeroOr(player.today)}}</td>
         <td>{{getPenaltyColumn(player)}}</td>
         <td>{{getPickThru(player)}}</td>
@@ -72,6 +74,7 @@ export default {
   },
   data() {
     return {
+      cutLine: '',
       players: {},
       tableCondensed: true,
       playersToPoolParticipants: {},
@@ -95,6 +98,7 @@ export default {
     async fetchData() {
       this.refreshTime = Date.now() + REFRESH_INTERVAL;
       const data = await ScoreboardService.load();
+      this.cutLine = data.cutLine;
       this.playersToPoolParticipants = data.playersToPoolParticipants;
       this.players = data.orderedPlayers;
     },

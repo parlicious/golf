@@ -128,6 +128,7 @@ export const ScoreboardService = {
     playerIdToPoolParticipants(this.poolParticipants);
 
     return {
+      cutLine: leaderboard.cut_line,
       players: this.players,
       playersToPoolParticipants: playerIdToPoolParticipants(this.poolParticipants),
       orderedPlayers: this.orderedPlayers,

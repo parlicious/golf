@@ -18,8 +18,8 @@
              class="expand-button">
           Expand All
         </div>
-       <div class="refresh-label">
-         Refreshing in {{Math.round((refreshTime - currentTime)/1000)}}s
+       <div>
+         Cut Line: {{cutLine}}
        </div>
 <!--        <div v-on:click="tableCondensed = !tableCondensed">-->
 <!--          <div v-if="!tableCondensed">-->
@@ -46,6 +46,7 @@
             v-for="participant in poolParticipants"
             v-bind:key="participant.name"
             v-bind:showPlayers="showAll"
+            v-bind:cutLine="cutLine"
             v-bind:participant="participant">
           </pool-participant>
         </table>
@@ -75,6 +76,7 @@ export default {
   },
   data() {
     return {
+      cutLine: '',
       loading: false,
       showAll: false,
       tableCondensed: true,
@@ -106,6 +108,7 @@ export default {
     async fetchData() {
       this.refreshTime = Date.now() + REFRESH_INTERVAL;
       const data = await ScoreboardService.load();
+      this.cutLine = data.cutLine;
       this.players = data.players;
       this.poolParticipants = data.poolParticipants
         .map((p) => {
