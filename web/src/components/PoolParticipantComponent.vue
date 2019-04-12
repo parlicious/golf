@@ -61,7 +61,7 @@ export default {
 
   .pool_participants td {
     font-weight: bold;
-    color: #5F7183;
+    color: #46586A;
   }
 
   .player-name {
