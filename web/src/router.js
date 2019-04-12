@@ -8,11 +8,11 @@ Vue.use(Router);
 
 export default new Router({
   routes: [
-    {
-      path: '/',
-      name: 'home',
-      component: Home,
-    },
+    // {
+    //   path: '/',
+    //   name: 'home',
+    //   component: Home,
+    // },
     {
       path: '/standings',
       name: 'standings',
@@ -31,6 +31,7 @@ export default new Router({
       // which is lazy-loaded when the route is visited.
       component: () => import(/* webpackChunkName: "about" */ './views/Picks.vue'),
     },
+    { path: '*', redirect: '/standings' },
   ],
   // TODO: change this when we go to cloudfront
   // mode: 'history',

@@ -36,10 +36,11 @@ export const DisplayUtils = {
   },
   getNameAbbreviation(name) {
     const names = name.trim().split(' ');
-    if (names.length === 1) {
-      return name.substring(0, 3);
-    }
-    return names.map(n => n[0]).join('');
+    return names[0];
+    // if (names.length === 1) {
+    //   return name.substring(0, 3);
+    // }
+    // return names.map(n => n[0]).join('');
   },
   zeroOr(val) {
     return val || 'E';

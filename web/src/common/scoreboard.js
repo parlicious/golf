@@ -86,6 +86,7 @@ export const ScoreboardService = {
   async load() {
     this.tournaments = this.tournaments || (await ApiService.getTournaments()).data;
     this.activeTournament = this.activeTournament || this.tournaments.find(x => x.active);
+    this.tournamentInfo = this.activeTournament
     this.picks = this.picks || (await ApiService.get(this.activeTournament.picks)).data;
     const leaderboard = (await ApiService.get(this.activeTournament.leaderboard)).data;
     if (this.players) {
