@@ -34,7 +34,7 @@ export const DisplayUtils = {
       .reduce((acc, val) => acc + (val), 0);
   },
   getNameAbbreviation(name) {
-    const names = name.split(' ');
+    const names = name.trim().split(' ');
     if (names.length === 1) {
       return name.substring(0, 3);
     }

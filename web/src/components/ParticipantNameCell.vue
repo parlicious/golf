@@ -34,6 +34,7 @@ export default {
   }
 
   .participant-name{
+    cursor: pointer;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -46,5 +47,9 @@ export default {
     padding-left: .4rem;
     padding-right: .4rem;
     text-align: center;
+  }
+
+  .participant-name:hover{
+    background-color: #4F6378;
   }
 </style>
