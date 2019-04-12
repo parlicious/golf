@@ -19,6 +19,7 @@
     <td
       class="player-name-cell">
       <a
+      class="player-name"
       rel="noreferrer"
       target="_blank"
       :href="`https://www.masters.com/en_US/scores/track/hole_view/index.html?pid=${pick.id}`">
@@ -58,6 +59,10 @@ export default {
 
   .pool_participants td {
     font-weight: bold;
+  }
+
+  .player-name {
+    padding-left: 1.5rem;
   }
 
   .increased{
