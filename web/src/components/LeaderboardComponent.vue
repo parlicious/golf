@@ -55,7 +55,6 @@
 </template>
 
 <script>
-import { setInterval } from 'timers';
 import { ScoreboardService } from '../common/scoreboard';
 import PoolParticipantComponent from '@/components/PoolParticipantComponent.vue';
 
@@ -81,6 +80,7 @@ export default {
     // already being observed
     await this.fetchData();
     this.interval = setInterval(() => this.fetchData(), REFRESH_INTERVAL);
+
     // clock for refresh timer
     this.clock = setInterval(() => this.tick(), 1000);
   },

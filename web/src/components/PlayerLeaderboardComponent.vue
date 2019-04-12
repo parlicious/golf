@@ -70,6 +70,7 @@ export default {
   async created() {
     await this.fetchData();
     this.interval = setInterval(() => this.fetchData(), REFRESH_INTERVAL);
+
     // clock for refresh timer
     this.clock = setInterval(() => this.tick(), 1000);
   },
