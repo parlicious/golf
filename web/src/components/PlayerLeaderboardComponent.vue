@@ -51,6 +51,7 @@
         </td>
       </tr>
     </table>
+    <coloring-key></coloring-key>
   </div>
 </template>
 
@@ -58,11 +59,15 @@
 import { ScoreboardService } from '../common/scoreboard';
 import { DisplayUtils } from '../common/displayUtils';
 import ParticipantNameCell from '@/components/ParticipantNameCell.vue';
+import ColoringKeyComponent from '@/components/ColoringKeyComponent.vue';
 
 const REFRESH_INTERVAL = 10000;
 export default {
   name: 'PlayerLeaderboardComponent',
-  components: { 'participant-names': ParticipantNameCell },
+  components: {
+    'participant-names': ParticipantNameCell,
+    'coloring-key': ColoringKeyComponent,
+  },
   data() {
     return {
       players: {},
