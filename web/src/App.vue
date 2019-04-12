@@ -53,6 +53,14 @@
   padding: .1rem !important;
 }
 
+.condensed th{
+  padding-left: .1rem !important;
+  padding-right: .1rem !important;
+  /*background-color: #92A4B6;*/
+  /*color: white;*/
+  /*color: #92A4B6;*/
+}
+
 .player-name-cell {
   text-align: left;
 }
