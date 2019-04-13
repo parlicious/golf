@@ -2,7 +2,7 @@ const AWS = require('aws-sdk');
 const s3 = new AWS.S3();
 const axios = require('axios');
 
-const DATA_BUCKET = process.env.DATA_BUCKET_NAME || 'parlicious-data';
+const DATA_BUCKET = process.env.DATA_BUCKET_NAME || 'parlicious-data-public';
 const TOURNAMENTS_JSON_KEY = 'tournaments.json';
 const WEATHER_API_KEY = process.env.WEATHER_API_KEY;
 const WEATHER_API_URL = (lat, lon) => `https://api.darksky.net/forecast/${WEATHER_API_KEY}/${lat},${lon}`;
@@ -23,8 +23,12 @@ const transformWeatherResponse = (apiResponse) => {
 };
 
 const getWeather = async (lat, lon) => {
-    const weatherResponse = await axios(WEATHER_API_URL(lat, lon));
-    return transformWeatherResponse(weatherResponse.data);
+    try{
+        const weatherResponse = await axios(WEATHER_API_URL(lat, lon));
+        return transformWeatherResponse(weatherResponse.data);
+    } catch(e){
+        console.log(e);
+    }
 };
 
 const saveWeather = async (tournament, year, weather) => {
@@ -35,13 +39,16 @@ const saveWeather = async (tournament, year, weather) => {
         ACL: 'public-read'
     };
 
-    await s3.putObject(params).promise();
+    return s3.putObject(params).promise();
 };
 
 exports.handler = async () => {
     const activeTournament = await getActiveTournaments();
-    const weather = await(getWeather(activeTournament.location.lat, activeTournament.location.lon));
+    const weather = await(getWeather(activeTournament.coords.lat, activeTournament.coords.lon));
     await saveWeather(activeTournament.title, activeTournament.year, weather);
 
     return true;
 };
+
+// uncomment for local testing
+// exports.handler().then(x => console.log(x));

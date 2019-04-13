@@ -7,9 +7,9 @@
     "start": "",
     "end": "",
     "location": "Augusta, Georgia",
-    "picks": "https://s3.amazonaws.com/parlicious-data/picks/Masters/2018/picks.json",
-    "leaderboard": "https://s3.amazonaws.com/parlicious-data/leaderboards/masters/2018/leaderboard.json",
-    "field": "https://s3.amazonaws.com/parlicious-data/picks/Masters/2018/tournament_field.json"
+    "picks": "https://s3.amazonaws.com/parlicious-data-public/picks/masters/2018/picks.json",
+    "leaderboard": "https://s3.amazonaws.com/parlicious-data-public/leaderboards/masters/2018/leaderboard.json",
+    "field": "https://s3.amazonaws.com/parlicious-data-public/picks/masters/2018/tournament_field.json"
   },
   {
     "id": "2019-masters",
@@ -22,8 +22,12 @@
     "end": "",
     "accepting_picks_until": "2019-04-11T12:00:00.000Z",
     "location": "Augusta, Georgia",
-    "picks": "https://s3.amazonaws.com/parlicious-data/picks/Masters/2019/picks.json",
-    "leaderboard": "https://s3.amazonaws.com/parlicious-data/leaderboards/masters/2019/leaderboard.json",
-    "field": "https://s3.amazonaws.com/parlicious-data/picks/Masters/2019/tournament_info.json"
+    "coords": {
+      "lat": 33.5021,
+      "lon": -82.0226
+    },
+    "picks": "https://s3.amazonaws.com/parlicious-data-public/picks/masters/2019/picks.json",
+    "leaderboard": "https://s3.amazonaws.com/parlicious-data-public/leaderboards/masters/2019/leaderboard.json",
+    "field": "https://s3.amazonaws.com/parlicious-data-public/picks/masters/2019/tournament_info.json"
   }
 ]
