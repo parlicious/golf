@@ -111,7 +111,10 @@ const addCutLineIndicator = (cutLine, orderedPlayers) => {
       orderedPlayers[cutIndex].firstCut = true;
     }
   } else {
-    return orderedPlayers.filter(p => p.status !== 'C');
+    const cutIndex = orderedPlayers.findIndex(p => p.status === 'C');
+    if (cutIndex > 0) {
+      orderedPlayers[cutIndex].firstCut = true;
+    }
   }
 
   return orderedPlayers;

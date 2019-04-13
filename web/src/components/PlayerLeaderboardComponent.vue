@@ -33,7 +33,10 @@
         v-bind:class="{increased: player.score_diff > 0, decreased: player.score_diff < 0}"
         v-bind:key="player.tournament_id">
       <tr v-if="player.firstCut">
-        <td colspan="8" class="cutLine"> <i class="fas fa-cut"></i> Cut Line <i class="fas fa-cut"></i></td>
+        <td colspan="8" class="cutLine"> <i class="fas fa-cut"></i>
+          <span v-if="cutLine"> Cut Line </span>
+          <span v-if="!cutLine"> The following players were cut </span>
+          <i class="fas fa-cut"></i></td>
       </tr>
       <tr>
         <td
@@ -48,7 +51,7 @@
         <td>
           {{zeroOr(player.to_par)}}
         </td>
-        <td>{{player.today}}</td>
+        <td>{{player.today}} <i class="fas fa-cut" v-if="!cutLine && displayPlayerCut(cutLine, player)"></i> </td>
         <td>{{getPenaltyColumn(player)}}</td>
         <td>{{getPickThru(player)}}</td>
         <td>{{player.position || ''}}</td>
