@@ -43,16 +43,17 @@
           </pool-participant>
         </table>
         <coloring-key></coloring-key>
-<!--        <div class="condense-expand">-->
-<!--          <div-->
-<!--            class="color-mode-button"-->
-<!--            v-if="invertColors"  v-on:click="invertColors = !invertColors">-->
-<!--            Green is Good Mode-->
-<!--          </div>-->
-<!--          <div v-if="!invertColors" v-on:click="invertColors = !invertColors"-->
-<!--               class="color-mode-button">-->
-<!--            Green is Bad Mode-->
-<!--          </div>-->
+<!--        <div class="show-best-possible">-->
+<!--          <small v-if="!showBestPicks"-->
+<!--                 v-on:click="showBestPicks = !showBestPicks">-->
+<!--            <i class="far fa-star"></i>-->
+<!--            Show best possible picks-->
+<!--          </small>-->
+<!--          <small v-if="showBestPicks"-->
+<!--                 v-on:click="showBestPicks = !showBestPicks">-->
+<!--            <i class="fas fa-star"></i>-->
+<!--            Hide best possible picks-->
+<!--          </small>-->
 <!--        </div>-->
       </div>
     </div>
@@ -82,6 +83,7 @@ export default {
       cutLine: '',
       loading: false,
       showAll: false,
+      showBestPicks: false,
       tableCondensed: true,
       leaderboardActive: true,
       refreshTime: 0,
@@ -124,6 +126,9 @@ export default {
     },
     tick() {
       this.currentTime = Date.now();
+    },
+    toggleBestPossiblePicks() {
+      this.showBestPicks = !showBestPicks;
     },
   },
 };

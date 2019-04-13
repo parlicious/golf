@@ -113,11 +113,15 @@ export const ScoreboardService = {
 
   players: null,
   picks: null,
+  picks_per_tier: null,
   tournament: null,
   orderedPlayers: [],
   poolParticipants: [],
   tournaments: null,
   activeTournament: null,
+  generateBestPicks(){
+
+  },
   async load() {
     this.tournaments = this.tournaments || (await ApiService.getTournaments()).data;
     this.activeTournament = this.activeTournament || this.tournaments.find(x => x.active);

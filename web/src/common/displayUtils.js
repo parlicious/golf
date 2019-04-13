@@ -28,8 +28,8 @@ export const DisplayUtils = {
   },
   getTotalThru(participant) {
     return participant.picks
-      .map(p => p.thru) // get thru
-      .map(p => (p.trim() === '' ? 0 : p)) // handle blanks
+      .map(p => p.status === 'C' ? 18 : p.thru) // get thru
+      .map(p => (p.trim && p.trim() === '' ? 0 : p)) // handle blanks
       .map(p => (p === 'F' ? 18 : p)) // handle finished
       .map(p => (isNaN(p) ? 0 : p)) // handle non numbers
       .map(p => parseInt(p)) // convert to int
@@ -43,9 +43,17 @@ export const DisplayUtils = {
     // }
     // return names.map(n => n[0]).join('');
   },
-  wouldMakeCut(cutLine, player) {
-    const score = player.to_par === 'E' ? 0 : parseInt(player.to_par);
-    return score <= parseInt(cutLine);
+  displayPlayerCut(cutLine, player) {
+    if (player.status === 'C') {
+      return true;
+    }
+
+    if (cutLine) {
+      const score = player.to_par === 'E' ? 0 : parseInt(player.to_par);
+      return score <= parseInt(cutLine);
+    }
+
+    return false;
   },
   zeroOr(val) {
     return val || 'E';
