@@ -1,5 +1,6 @@
 <template>
   <div>
+    <weather-component></weather-component>
     <h1> Leaderboard</h1>
     <div
       class="table-options"
@@ -75,6 +76,7 @@ import { ScoreboardService } from '../common/scoreboard';
 import { DisplayUtils } from '../common/displayUtils';
 import ParticipantNameCell from '@/components/ParticipantNameCell.vue';
 import ColoringKeyComponent from '@/components/ColoringKeyComponent.vue';
+import WeatherComponent from '@/components/WeatherComponent.vue';
 
 const REFRESH_INTERVAL = 10000;
 export default {
@@ -82,6 +84,7 @@ export default {
   components: {
     'participant-names': ParticipantNameCell,
     'coloring-key': ColoringKeyComponent,
+    'weather-component': WeatherComponent,
   },
   data() {
     return {
