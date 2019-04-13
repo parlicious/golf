@@ -33,6 +33,5 @@ export default new Router({
     },
     { path: '*', redirect: '/standings' },
   ],
-  // TODO: change this when we go to cloudfront
-  // mode: 'history',
+  mode: 'history',
 });
