@@ -13,8 +13,12 @@ const calculatePoolParticipantScores = (poolParticipant, playerMap) => {
         player.today = 0;
       }
 
-      const newTotal = accTotal + parseInt(player.to_par ? player.to_par : 0, 10);
+      const preAdjustmentTotal = accTotal + parseInt(player.to_par ? player.to_par : 0, 10);
       const newToday = accToday + parseInt(player.today ? player.today : 0, 10);
+      const penalty = player.individual_pen ? player.individual_pen : 0;
+      const bonus = player.individual_bonus ? -1 * player.individual_bonus : 0;
+      const newTotal = preAdjustmentTotal + penalty + bonus;
+
       return [newTotal, newToday];
     }
     return [accTotal, accToday];
@@ -101,10 +105,18 @@ const leaderboardWithTiers = (leaderboard, tournamentInfo) => {
 };
 
 const addCutLineIndicator = (cutLine, orderedPlayers) => {
-  const cutIndex = orderedPlayers.findIndex(p => p.to_par > parseInt(cutLine));
-  if(cutIndex > 0){
-    orderedPlayers[cutIndex].firstCut = true;
+  if (cutLine) {
+    const cutIndex = orderedPlayers.findIndex(p => p.to_par > parseInt(cutLine));
+    if (cutIndex > 0) {
+      orderedPlayers[cutIndex].firstCut = true;
+    }
+  } else {
+    const cutIndex = orderedPlayers.findIndex(p => p.status === 'C');
+    if (cutIndex > 0) {
+      orderedPlayers[cutIndex].firstCut = true;
+    }
   }
+
   return orderedPlayers;
 };
 
@@ -119,7 +131,7 @@ export const ScoreboardService = {
   poolParticipants: [],
   tournaments: null,
   activeTournament: null,
-  generateBestPicks(){
+  generateBestPicks() {
 
   },
   async load() {

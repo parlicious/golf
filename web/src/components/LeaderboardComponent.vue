@@ -18,7 +18,7 @@
              class="expand-button">
           Expand All
         </div>
-       <div>
+       <div v-if="cutLine">
          Cut Line: {{cutLine}}
        </div>
       </div>

@@ -10,7 +10,7 @@
 <!--      <div v-if="tableCondensed">-->
 <!--        Spacious view-->
 <!--      </div>-->
-      <div>
+      <div v-if="cutLine">
         Cut Line: {{cutLine}}
       </div>
     </div>

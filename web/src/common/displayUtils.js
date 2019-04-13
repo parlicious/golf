@@ -19,7 +19,7 @@ export const DisplayUtils = {
       return pick.individual_bonus;
     }
     if (pick.individual_pen) {
-      return pick.individual_pen;
+      return -1 * pick.individual_pen;
     }
     return 0;
   },
