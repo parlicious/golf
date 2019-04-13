@@ -31,7 +31,7 @@
       {{zeroOr(pick.to_par)}}
       <i class="fas fa-cut" v-if="displayPlayerCut(cutLine, pick)"></i>
     </td>
-    <td>{{zeroOr(pick.today)}}</td>
+    <td>{{pick.today}}</td>
     <td>{{getPenaltyColumn(pick)}}</td>
     <td>{{pick.tier}}</td>
     <td class="player-thru-cell">{{getPickThru(pick)}}</td>

@@ -48,7 +48,7 @@
         <td>
           {{zeroOr(player.to_par)}}
         </td>
-        <td>{{zeroOr(player.today)}}</td>
+        <td>{{player.today}}</td>
         <td>{{getPenaltyColumn(player)}}</td>
         <td>{{getPickThru(player)}}</td>
         <td>{{player.position || ''}}</td>
