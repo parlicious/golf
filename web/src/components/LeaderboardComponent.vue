@@ -1,6 +1,6 @@
 <template>
   <div class="post">
-    <weather-component></weather-component>
+<!--    <weather-component></weather-component>-->
     <div class="hello">
       <h1> Standings </h1>
     </div>
