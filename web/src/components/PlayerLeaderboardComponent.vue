@@ -51,7 +51,10 @@
         <td>
           {{zeroOr(player.to_par)}}
         </td>
-        <td>{{player.today}} <i class="fas fa-cut" v-if="!cutLine && displayPlayerCut(cutLine, player)"></i> </td>
+        <td>
+          <span v-if="!cutLine && displayPlayerCut(cutLine, player)"><i class="fas fa-cut" ></i></span>
+          <span v-if="cutLine || !displayPlayerCut(cutLine, player)">{{zeroOr(player.today)}}</span>
+        </td>
         <td>{{getPenaltyColumn(player)}}</td>
         <td>{{getPickThru(player)}}</td>
         <td>{{player.position || ''}}</td>
