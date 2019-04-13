@@ -16,7 +16,7 @@ const calculatePoolParticipantScores = (poolParticipant, playerMap) => {
       const preAdjustmentTotal = accTotal + parseInt(player.to_par ? player.to_par : 0, 10);
       const newToday = accToday + parseInt(player.today ? player.today : 0, 10);
       const penalty = player.individual_pen ? player.individual_pen : 0;
-      const bonus = player.individual_bonus ? -1 * player.individual_bonus : 0;
+      const bonus = player.individual_bonus ? player.individual_bonus : 0;
       const newTotal = preAdjustmentTotal + penalty + bonus;
 
       return [newTotal, newToday];
