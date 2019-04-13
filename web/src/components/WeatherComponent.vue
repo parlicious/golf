@@ -48,9 +48,10 @@ export default {
   display: flex;
   flex-direction: row;
   justify-content: flex-end;
-  margin-left: 1rem;
-  margin-right: 1rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
   font-size: .8rem;
+  background-color: white;
 }
 
   .weather-row{
