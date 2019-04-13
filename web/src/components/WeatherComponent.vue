@@ -3,6 +3,15 @@
     <div class="weather-row">
       <div class="weather-item">{{Math.round(weather.temperature)}} °F</div>
       <div class="weather-item"><i :class="iconToFontAwesomeClass(weather.icon)"></i></div>
+      <div class="weather-item">
+        Wind: {{weather.windSpeed}} mph
+      </div>
+      <div class="weather-item">
+        <i
+          :\style="`transform:rotate(${weather.windBearing}deg)`"
+          class="fas fa-long-arrow-alt-up">
+        </i>
+      </div>
     </div>
   </div>
 </template>
@@ -41,6 +50,7 @@ export default {
   justify-content: flex-end;
   margin-left: 1rem;
   margin-right: 1rem;
+  font-size: .8rem;
 }
 
   .weather-row{
@@ -50,6 +60,6 @@ export default {
   }
 
   .weather-item{
-    padding: .5rem;
+    padding: .25rem;
   }
 </style>
