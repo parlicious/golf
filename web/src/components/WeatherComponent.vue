@@ -4,7 +4,7 @@
       <div class="weather-item">{{Math.round(weather.temperature)}} °F</div>
       <div class="weather-item"><i :class="iconToFontAwesomeClass(weather.icon)"></i></div>
       <div class="weather-item">
-        Wind: {{weather.windSpeed}} mph
+        Wind: {{Math.round(weather.windSpeed)}} mph
       </div>
       <div class="weather-item">
         <i
