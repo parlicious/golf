@@ -34,7 +34,10 @@
       <span v-if="!cutLine && displayPlayerCut(cutLine, pick)"><i class="fas fa-cut" ></i></span>
       <span v-if="cutLine || !displayPlayerCut(cutLine, pick)">{{zeroOr(pick.today)}}</span>
     </td>
-    <td>{{getPenaltyColumn(pick)}}</td>
+    <td>
+      {{getPenaltyColumn(pick)}}
+      <img v-if="getPenaltyColumn(pick) < 0" src="../assets/jacket.png" height="20">
+    </td>
     <td>{{pick.tier}}</td>
     <td class="player-thru-cell">{{getPickThru(pick)}}</td>
   </tr>

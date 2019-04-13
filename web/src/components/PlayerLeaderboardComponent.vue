@@ -56,7 +56,10 @@
           <span v-if="!cutLine && displayPlayerCut(cutLine, player)"><i class="fas fa-cut" ></i></span>
           <span v-if="cutLine || !displayPlayerCut(cutLine, player)">{{zeroOr(player.today)}}</span>
         </td>
-        <td>{{getPenaltyColumn(player)}}</td>
+        <td>
+          {{getPenaltyColumn(player)}}
+          <img v-if="getPenaltyColumn(player) < 0" src="../assets/jacket.png" height="20">
+        </td>
         <td>{{getPickThru(player)}}</td>
         <td>{{player.position || ''}}</td>
         <td>{{player.tier || ''}}</td>
