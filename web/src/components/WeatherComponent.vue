@@ -30,11 +30,11 @@ export default {
   methods: {
     async fetchData() {
       this.weather = await WeatherService.getWeather();
-      this.interval = setInterval(() => this.fetchData(), REFRESH_INTERVAL);
     },
     iconToFontAwesomeClass: WeatherService.iconToFontAwesomeClass
   },
   async created() {
+    this.interval = setInterval(() => this.fetchData(), REFRESH_INTERVAL);
     await this.fetchData();
   },
   async beforeDestroy() {
