@@ -36,6 +36,10 @@ export const ApiService = {
     });
   },
 
+  getWeather(tournament, year) {
+    return this.get(`${DATA_URL}/weather/${tournament}-${year}.json`);
+  },
+
   submitPicks(picksRequest) {
     return this.post(API_URL, picksRequest);
   },

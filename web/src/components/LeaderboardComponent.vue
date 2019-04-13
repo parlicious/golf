@@ -1,5 +1,6 @@
 <template>
   <div class="post">
+    <weather-component></weather-component>
     <div class="hello">
       <h1> Standings </h1>
     </div>
@@ -68,6 +69,7 @@
 import { ScoreboardService } from '../common/scoreboard';
 import PoolParticipantComponent from '@/components/PoolParticipantComponent.vue';
 import ColoringKeyComponent from '@/components/ColoringKeyComponent.vue';
+import WeatherComponent from '@/components/WeatherComponent.vue';
 
 
 const REFRESH_INTERVAL = 10000;
@@ -77,6 +79,7 @@ export default {
   components: {
     'pool-participant': PoolParticipantComponent,
     'coloring-key': ColoringKeyComponent,
+    'weather-component': WeatherComponent,
   },
   data() {
     return {

@@ -134,6 +134,10 @@ export const ScoreboardService = {
   generateBestPicks() {
 
   },
+  async getActiveTournament() {
+    this.tournaments = this.tournaments || (await ApiService.getTournaments()).data;
+    return this.activeTournament || this.tournaments.find(x => x.active);
+  },
   async load() {
     this.tournaments = this.tournaments || (await ApiService.getTournaments()).data;
     this.activeTournament = this.activeTournament || this.tournaments.find(x => x.active);
