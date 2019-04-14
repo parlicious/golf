@@ -29,6 +29,7 @@ export const DisplayUtils = {
   getTotalThru(participant) {
     return participant.picks
       .map(p => (p.status === 'C' ? 18 : p.thru)) // get thru
+      .map(p => p.replace ? p.replace('*', '') : p)
       .map(p => (p.trim && p.trim() === '' ? 0 : p)) // handle blanks
       .map(p => (p === 'F' ? 18 : p)) // handle finished
       .map(p => (isNaN(p) ? 0 : p)) // handle non numbers
