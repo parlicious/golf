@@ -17,50 +17,41 @@
 </template>
 
 <script>
+import { mapState } from 'vuex';
 import { WeatherService } from '../common/weather';
-
-const REFRESH_INTERVAL = 30000;
 
 export default {
   name: 'WeatherComponent.vue',
-  data: () => ({
-    weather: null,
-    interval: null,
-  }),
+  computed: mapState([
+    'weather',
+  ]),
   methods: {
-    async fetchData() {
-      this.weather = await WeatherService.getWeather();
-    },
-    iconToFontAwesomeClass: WeatherService.iconToFontAwesomeClass
+    iconToFontAwesomeClass: WeatherService.iconToFontAwesomeClass,
   },
   async created() {
-    this.interval = setInterval(() => this.fetchData(), REFRESH_INTERVAL);
-    await this.fetchData();
-  },
-  async beforeDestroy() {
-    clearInterval(this.interval);
+    await this.$store.dispatch('initWeather');
   },
 };
 </script>
 
 <style scoped>
-.weather-component{
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-end;
-  padding-left: 1rem;
-  padding-right: 1rem;
-  font-size: .8rem;
-  background-color: white;
-}
+  .weather-component {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    font-size: .8rem;
+    background-color: white;
+  }
 
-  .weather-row{
+  .weather-row {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
   }
 
-  .weather-item{
+  .weather-item {
     padding: .25rem;
   }
 </style>

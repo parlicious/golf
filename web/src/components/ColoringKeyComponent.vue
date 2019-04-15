@@ -13,9 +13,9 @@
 </template>
 
 <script>
-    export default {
-        name: "ColoringKeyComponent.vue"
-    }
+export default {
+  name: 'ColoringKeyComponent.vue',
+};
 </script>
 
 <style scoped>
