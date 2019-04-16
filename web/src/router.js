@@ -1,8 +1,7 @@
 import Vue from 'vue';
 import Router from 'vue-router';
 import Leaderboard from './views/Leaderboard.vue';
-import Home from './views/Home.vue';
-import PlayerLeaderboard from './views/PlayerLeaderboard.vue';
+import StandingsComponent from './components/StandingsComponent.vue';
 
 Vue.use(Router);
 
@@ -16,12 +15,12 @@ export default new Router({
     {
       path: '/standings',
       name: 'standings',
-      component: Leaderboard,
+      component: StandingsComponent,
     },
     {
       path: '/leaderboard',
       name: 'leaderboard',
-      component: PlayerLeaderboard,
+      component: Leaderboard,
     },
     {
       path: '/picks',

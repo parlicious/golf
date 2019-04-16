@@ -1,12 +1,12 @@
 <template>
   <div class="home">
-    <LeaderboardComponent msg="Welcome to Your Vue.js App"/>
+    <LeaderboardComponent/>
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
-import LeaderboardComponent from '@/components/LeaderboardComponent.vue';
+import LeaderboardComponent from '../components/LeaderboardComponent.vue';
 
 export default {
   name: 'leaderboard',
