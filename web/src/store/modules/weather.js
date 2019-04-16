@@ -13,7 +13,7 @@ export default {
       state.weather = payload.weather;
     },
     setWeatherInterval(state, payload) {
-      state.weatherIntervalId = payload.id;
+      state.weatherInterval = payload.id;
     },
   },
   getters: {
@@ -28,12 +28,14 @@ export default {
         weather: await WeatherService.getWeather(),
       });
     },
-    async initWeather({ dispatch, commit }) {
-      dispatch('getWeather');
-      commit({
-        type: 'setWeatherInterval',
-        id: setInterval(() => dispatch('getWeather'), WEATHER_REFRESH_INTERVAL),
-      });
+    async initWeather({ dispatch, commit, state }) {
+      if (!state.weatherInterval) {
+        dispatch('getWeather');
+        commit({
+          type: 'setWeatherInterval',
+          id: setInterval(() => dispatch('getWeather'), WEATHER_REFRESH_INTERVAL),
+        });
+      }
     },
   },
 };

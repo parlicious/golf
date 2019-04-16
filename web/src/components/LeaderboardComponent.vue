@@ -1,103 +1,106 @@
 <template>
-  <div class="post">
+  <div>
     <weather-component></weather-component>
-    <div class="hello">
-      <h1> Standings </h1>
-    </div>
-    <div class="loading" v-if="loading">
-      Loading...
-    </div>
-
-    <div v-if="leaderboardActive">
-      <div class="condense-expand">
-        <div
-          class="expand-button"
-          v-if="showAll"  v-on:click="showAll = !showAll">
-          Collapse All
-        </div>
-        <div v-if="!showAll" v-on:click="showAll = !showAll"
-             class="expand-button">
-          Expand All
-        </div>
-       <div v-if="cutLine">
-         Cut Line: {{cutLine}}
-       </div>
-      </div>
-      <div v-if="!loading" class="content">
-        <table class="table" v-bind:class="{condensed: tableCondensed}">
-          <thead>
-          <tr>
-            <th class="player-name-cell" scope="col">Name</th>
-            <th scope="col">Total</th>
-            <th scope="col">Today</th>
-            <th scope="col">Penalty</th>
-            <th scope="col">Tier</th>
-            <th class="player-thru-cell" scope="col">Thru</th>
-          </tr>
-          </thead>
-          <pool-participant
-            v-for="participant in poolParticipants"
-            v-bind:key="participant.name"
-            v-bind:showPlayers="showAll"
-            v-bind:cutLine="cutLine"
-            v-bind:participant="participant">
-          </pool-participant>
-        </table>
-        <coloring-key></coloring-key>
-<!--        <div class="show-best-possible">-->
-<!--          <small v-if="!showBestPicks"-->
-<!--                 v-on:click="showBestPicks = !showBestPicks">-->
-<!--            <i class="far fa-star"></i>-->
-<!--            Show best possible picks-->
-<!--          </small>-->
-<!--          <small v-if="showBestPicks"-->
-<!--                 v-on:click="showBestPicks = !showBestPicks">-->
-<!--            <i class="fas fa-star"></i>-->
-<!--            Hide best possible picks-->
-<!--          </small>-->
-<!--        </div>-->
+    <h1> Leaderboard</h1>
+    <div
+      class="table-options"
+      v-on:click="tableCondensed = !tableCondensed">
+<!--      <div v-if="!tableCondensed">-->
+<!--        Condensed view-->
+<!--      </div>-->
+<!--      <div v-if="tableCondensed">-->
+<!--        Spacious view-->
+<!--      </div>-->
+      <div v-if="cutLine">
+        Cut Line: {{cutLine}}
       </div>
     </div>
-
-    <div v-if="!leaderboardActive">
-      <p> The leaderboard will be available when the tournament begins</p>
-    </div>
+    <table class="table"
+    v-bind:class="{condensed: tableCondensed}">
+      <thead>
+      <tr>
+        <th scope="col">Name</th>
+        <th scope="col">Total</th>
+        <th scope="col">Today</th>
+        <th scope="col">Penalty</th>
+        <th scope="col">Thru</th>
+        <th scope="col">Pos</th>
+        <th scope="col">Tier</th>
+        <th class="d-none d-sm-table-cell" scope="col">Picked By</th>
+      </tr>
+      </thead>
+      <tbody
+        v-for="player in players"
+        v-bind:class="{increased: player.score_diff > 0, decreased: player.score_diff < 0}"
+        v-bind:key="player.tournament_id">
+      <tr v-if="player.firstCut">
+        <td colspan="8" class="cutLine"> <i class="fas fa-cut"></i>
+          <span v-if="cutLine"> Cut Line </span>
+          <span v-if="!cutLine"> The following players were cut </span>
+          <i class="fas fa-cut"></i></td>
+      </tr>
+      <tr>
+        <td
+          class="player-name-cell"
+        ><a
+          rel="noreferrer"
+          target="_blank"
+          :href="`https://www.masters.com/en_US/scores/track/hole_view/index.html?pid=${player.id}`">
+          {{player.first_name}} {{player.last_name}}
+        </a>
+        </td>
+        <td>
+          {{zeroOr(player.to_par)}}
+        </td>
+        <td>
+          <span v-if="!cutLine && displayPlayerCut(cutLine, player)"><i class="fas fa-cut" ></i></span>
+          <span v-if="cutLine || !displayPlayerCut(cutLine, player)">{{zeroOr(player.today)}}</span>
+        </td>
+        <td>
+          {{getPenaltyColumn(player)}}
+          <img v-if="getPenaltyColumn(player) < 0" src="../assets/jacket.png" height="20">
+        </td>
+        <td>{{getPickThru(player)}}</td>
+        <td>{{player.position || ''}}</td>
+        <td>{{player.tier || ''}}</td>
+        <td class="d-none d-sm-table-cell">
+          <participant-names v-bind:participants="getParticipantsForPlayer(player)">
+          </participant-names>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+    <coloring-key></coloring-key>
   </div>
 </template>
 
 <script>
 import { ScoreboardService } from '../common/scoreboard';
-import PoolParticipantComponent from '@/components/PoolParticipantComponent.vue';
+import { DisplayUtils } from '../common/displayUtils';
+import ParticipantNameCell from '@/components/ParticipantNameCell.vue';
 import ColoringKeyComponent from '@/components/ColoringKeyComponent.vue';
 import WeatherComponent from '@/components/WeatherComponent.vue';
 
-
 const REFRESH_INTERVAL = 10000;
-
 export default {
   name: 'LeaderboardComponent',
   components: {
-    'pool-participant': PoolParticipantComponent,
+    'participant-names': ParticipantNameCell,
     'coloring-key': ColoringKeyComponent,
     'weather-component': WeatherComponent,
   },
   data() {
     return {
       cutLine: '',
-      loading: false,
-      showAll: false,
-      showBestPicks: false,
+      players: {},
       tableCondensed: true,
-      leaderboardActive: true,
+      playersToPoolParticipants: {},
       refreshTime: 0,
       currentTime: Date.now(),
-      players: {},
-      poolParticipants: [],
+      ...DisplayUtils, //
     };
   },
   async created() {
-    // fetch the data when the view is created and the data is
-    // already being observed
     await this.fetchData();
     this.interval = setInterval(() => this.fetchData(), REFRESH_INTERVAL);
 
@@ -108,73 +111,39 @@ export default {
     clearInterval(this.interval);
     clearInterval(this.clock);
   },
-  watch: {
-    // call again the method if the route changes
-    $route: 'fetchData',
-  },
   methods: {
     async fetchData() {
       this.refreshTime = Date.now() + REFRESH_INTERVAL;
       const data = await ScoreboardService.load();
       this.cutLine = data.cutLine;
-      this.players = data.players;
-      this.poolParticipants = data.poolParticipants
-        .map((p) => {
-          const participant = p;
-          participant.picks = participant.picks
-            .map(pick => this.players[pick.tournament_id])
-            .filter(x => x);
-          return participant;
-        });
+      this.playersToPoolParticipants = data.playersToPoolParticipants;
+      this.players = data.orderedPlayers;
+    },
+    getParticipantsForPlayer(player) {
+      if (this.playersToPoolParticipants.hasOwnProperty(player.id)) {
+        return this.playersToPoolParticipants[player.id];
+      }
+      return '';
     },
     tick() {
       this.currentTime = Date.now();
-    },
-    toggleBestPossiblePicks() {
-      this.showBestPicks = !showBestPicks;
     },
   },
 };
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-  h3 {
-    margin: 40px 0 0;
-  }
-
-  ul {
-    list-style-type: none;
-    padding: 0;
-  }
-
-  li {
-    display: inline-block;
-    margin: 0 10px;
-  }
-
-  a {
-    color: #42b983;
-  }
-
-  .condense-expand{
+  .table-options{
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-end;
   }
 
-  .expand-button{
-    cursor: pointer;
-    background-color: #35495e;
-    color: #ffffff;
-    font-weight: bold;
-    border-radius: 5px;
-    margin: .25rem;
-    padding-left: .4rem;
-    padding-right: .4rem;
-    text-align: center;
+  .player-name-cell {
+    text-align: left;
   }
 
-  .participant-name:hover{
-    background-color: #4F6378;
+  .cutLine {
+    background-color: #46586A;
+    color: white;
   }
 </style>

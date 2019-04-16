@@ -18,6 +18,7 @@
   color: #2c3e50;
   max-width: 1000px;
   margin: 0 auto !important;
+  padding: .75rem;
 }
 
 #nav {
@@ -39,10 +40,6 @@
 #nav a.router-link-exact-active {
   background-color: #42b983;
   color:white;
-}
-
-.home {
-  padding: .75rem;
 }
 
 .refresh-label{
