@@ -75,13 +75,13 @@
 </template>
 
 <script>
-import { ScoreboardService } from '../common/scoreboard';
 import { DisplayUtils } from '../common/displayUtils';
+import { mapGetters } from 'vuex';
+
 import ParticipantNameCell from '@/components/ParticipantNameCell.vue';
 import ColoringKeyComponent from '@/components/ColoringKeyComponent.vue';
 import WeatherComponent from '@/components/WeatherComponent.vue';
 
-const REFRESH_INTERVAL = 10000;
 export default {
   name: 'LeaderboardComponent',
   components: {
@@ -91,43 +91,27 @@ export default {
   },
   data() {
     return {
-      cutLine: '',
-      players: {},
       tableCondensed: true,
-      playersToPoolParticipants: {},
-      refreshTime: 0,
-      currentTime: Date.now(),
-      ...DisplayUtils, //
     };
   },
-  async created() {
-    await this.fetchData();
-    this.interval = setInterval(() => this.fetchData(), REFRESH_INTERVAL);
-
-    // clock for refresh timer
-    this.clock = setInterval(() => this.tick(), 1000);
+  computed: {
+    ...mapGetters({
+      cutLine: 'getCutLine',
+      players: 'getOrderedPlayers',
+      playersToPoolParticipants: 'getPlayersToPoolParticipants',
+    }),
   },
-  async beforeDestroy() {
-    clearInterval(this.interval);
-    clearInterval(this.clock);
+  async created() {
+    await this.$store.dispatch('initTournament');
   },
   methods: {
-    async fetchData() {
-      this.refreshTime = Date.now() + REFRESH_INTERVAL;
-      const data = await ScoreboardService.load();
-      this.cutLine = data.cutLine;
-      this.playersToPoolParticipants = data.playersToPoolParticipants;
-      this.players = data.orderedPlayers;
-    },
     getParticipantsForPlayer(player) {
       if (this.playersToPoolParticipants.hasOwnProperty(player.id)) {
         return this.playersToPoolParticipants[player.id];
       }
       return '';
     },
-    tick() {
-      this.currentTime = Date.now();
-    },
+    ...DisplayUtils,
   },
 };
 </script>

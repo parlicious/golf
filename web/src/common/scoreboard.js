@@ -31,12 +31,12 @@ const calculatePoolParticipantScores = (poolParticipant, playerMap) => {
   };
 };
 
-const transformLeaderboardToPlayerMap = leaderboard => leaderboard.players.reduce((acc, val) => {
+export const transformLeaderboardToPlayerMap = leaderboard => leaderboard.players.reduce((acc, val) => {
   acc[val.id] = val;
   return acc;
 }, {});
 
-const playerIdToPoolParticipants = poolParticipants => _.flatMap(poolParticipants,
+export const playerIdToPoolParticipants = poolParticipants => _.flatMap(poolParticipants,
   p => p.picks.map(pick => [pick.tournament_id, p.name]))
   .reduce((acc, val) => {
     if (acc.hasOwnProperty(val[0])) {
@@ -48,29 +48,11 @@ const playerIdToPoolParticipants = poolParticipants => _.flatMap(poolParticipant
     return acc;
   }, {});
 
-const scoreAndRankPoolParticipants = (poolParticipants, leaderboard) => poolParticipants
+export const scoreAndRankPoolParticipants = (poolParticipants, leaderboard) => poolParticipants
   .map(p => calculatePoolParticipantScores(p, leaderboard))
   .sort((p1, p2) => p1.total - p2.total);
 
-const playersWithScoreDiff = (oldPlayers, newPlayers) => {
-  Object.keys(oldPlayers).forEach((k) => {
-    const oldPlayer = oldPlayers[k];
-    // newPlayers[k].score_diff = oldPlayer.to_par - newPlayers[k].to_par;
-    if (newPlayers[k].thru === oldPlayer.thru) {
-      newPlayers[k].score_diff = oldPlayer.score_diff;
-    } else {
-      newPlayers[k].score_diff = oldPlayer.to_par - newPlayers[k].to_par;
-    }
-
-    if (!newPlayers[k].score_diff) {
-      newPlayers[k].score_diff = 0;
-    }
-  });
-
-  return newPlayers;
-};
-
-const orderedPlayersWithScoreDiff = (oldPlayers, newPlayers) => newPlayers.map((p) => {
+export const orderedPlayersWithScoreDiff = (oldPlayers, newPlayers) => newPlayers.map((p) => {
   const oldPlayer = oldPlayers[p.id];
   if (p.thru === oldPlayer.thru) {
     p.score_diff = oldPlayer.score_diff;
@@ -85,7 +67,7 @@ const orderedPlayersWithScoreDiff = (oldPlayers, newPlayers) => newPlayers.map((
   return p;
 });
 
-const leaderboardWithTiers = (leaderboard, tournamentInfo) => {
+export const leaderboardWithTiers = (leaderboard, tournamentInfo) => {
   const newPlayers = leaderboard.players.map((p) => {
     const fieldEntry = tournamentInfo.field.find(q => q.tournament_id === p.id);
     if (fieldEntry) {
@@ -104,7 +86,7 @@ const leaderboardWithTiers = (leaderboard, tournamentInfo) => {
   };
 };
 
-const addCutLineIndicator = (cutLine, orderedPlayers) => {
+export const addCutLineIndicator = (cutLine, orderedPlayers) => {
   if (cutLine) {
     const cutIndex = orderedPlayers.findIndex(p => p.to_par > parseInt(cutLine));
     if (cutIndex > 0) {
@@ -122,60 +104,27 @@ const addCutLineIndicator = (cutLine, orderedPlayers) => {
 
 
 export const ScoreboardService = {
-
-  players: null,
-  picks: null,
-  picks_per_tier: null,
-  tournament: null,
-  orderedPlayers: [],
-  poolParticipants: [],
   tournaments: null,
   activeTournament: null,
-  generateBestPicks() {
 
-  },
   async getActiveTournament() {
     this.tournaments = this.tournaments || (await ApiService.getTournaments()).data;
     return this.activeTournament || this.tournaments.find(x => x.active);
   },
-  async load() {
+  async getLeaderboard() {
     this.tournaments = this.tournaments || (await ApiService.getTournaments()).data;
     this.activeTournament = this.activeTournament || this.tournaments.find(x => x.active);
-    this.tournamentField = (await ApiService.getUnbusted(this.activeTournament.field)).data;
-    this.picks = this.picks || (await ApiService.get(this.activeTournament.picks)).data;
-    const leaderboard = leaderboardWithTiers((await ApiService.get(this.activeTournament.leaderboard)).data, this.tournamentField);
-
-    if (this.players) {
-      this.players = playersWithScoreDiff(this.players, transformLeaderboardToPlayerMap(leaderboard));
-    } else {
-      this.players = transformLeaderboardToPlayerMap(leaderboard);
-    }
-    this.orderedPlayers = addCutLineIndicator(leaderboard.cut_line, orderedPlayersWithScoreDiff(this.players, leaderboard.players));
-    this.poolParticipants = scoreAndRankPoolParticipants(this.picks.pool_participants, this.players);
-
-    playerIdToPoolParticipants(this.poolParticipants);
-
-    return {
-      cutLine: leaderboard.cut_line,
-      players: this.players,
-      playersToPoolParticipants: playerIdToPoolParticipants(this.poolParticipants),
-      orderedPlayers: this.orderedPlayers,
-      poolParticipants: this.poolParticipants,
-    };
+    return (await ApiService.get(this.activeTournament.leaderboard)).data;
   },
-
-  async reload() {
-    const picks = (await ApiService.get(this.activeTournament.picks)).data;
-    const leaderboard = (await ApiService.get(this.activeTournament.leaderboard)).data;
-    this.orderedPlayers = orderedPlayersWithScoreDiff(this.players, leaderboard.players);
-    this.players = playersWithScoreDiff(this.players, transformLeaderboardToPlayerMap(leaderboard));
-    this.poolParticipants = scoreAndRankPoolParticipants(picks.pool_participants, this.players);
-
-    return {
-      players: this.players,
-      orderedPlayers: this.orderedPlayers,
-      poolParticipants: this.poolParticipants,
-    };
+  async getPicks() {
+    this.tournaments = this.tournaments || (await ApiService.getTournaments()).data;
+    this.activeTournament = this.activeTournament || this.tournaments.find(x => x.active);
+    return (await ApiService.getUnbusted(this.activeTournament.picks)).data;
+  },
+  async getTournamentInfo() {
+    this.tournaments = this.tournaments || (await ApiService.getTournaments()).data;
+    this.activeTournament = this.activeTournament || this.tournaments.find(x => x.active);
+    return (await ApiService.getUnbusted(this.activeTournament.field)).data;
   },
 };
 

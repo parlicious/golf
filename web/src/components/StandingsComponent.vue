@@ -44,18 +44,6 @@
           </pool-participant>
         </table>
         <coloring-key></coloring-key>
-<!--        <div class="show-best-possible">-->
-<!--          <small v-if="!showBestPicks"-->
-<!--                 v-on:click="showBestPicks = !showBestPicks">-->
-<!--            <i class="far fa-star"></i>-->
-<!--            Show best possible picks-->
-<!--          </small>-->
-<!--          <small v-if="showBestPicks"-->
-<!--                 v-on:click="showBestPicks = !showBestPicks">-->
-<!--            <i class="fas fa-star"></i>-->
-<!--            Hide best possible picks-->
-<!--          </small>-->
-<!--        </div>-->
       </div>
     </div>
 
@@ -66,13 +54,10 @@
 </template>
 
 <script>
-import { ScoreboardService } from '../common/scoreboard';
+import { mapGetters } from 'vuex';
 import PoolParticipantComponent from '@/components/PoolParticipantComponent.vue';
 import ColoringKeyComponent from '@/components/ColoringKeyComponent.vue';
 import WeatherComponent from '@/components/WeatherComponent.vue';
-
-
-const REFRESH_INTERVAL = 10000;
 
 export default {
   name: 'LeaderboardComponent',
@@ -83,56 +68,22 @@ export default {
   },
   data() {
     return {
-      cutLine: '',
       loading: false,
       showAll: false,
       showBestPicks: false,
       tableCondensed: true,
       leaderboardActive: true,
-      refreshTime: 0,
-      currentTime: Date.now(),
-      players: {},
-      poolParticipants: [],
     };
   },
+  computed: {
+    ...mapGetters({
+      cutLine: 'getCutLine',
+      players: 'getPlayers',
+      poolParticipants: 'getPoolParticipantsWithFullPicks',
+    }),
+  },
   async created() {
-    // fetch the data when the view is created and the data is
-    // already being observed
-    await this.fetchData();
-    this.interval = setInterval(() => this.fetchData(), REFRESH_INTERVAL);
-
-    // clock for refresh timer
-    this.clock = setInterval(() => this.tick(), 1000);
-  },
-  async beforeDestroy() {
-    clearInterval(this.interval);
-    clearInterval(this.clock);
-  },
-  watch: {
-    // call again the method if the route changes
-    $route: 'fetchData',
-  },
-  methods: {
-    async fetchData() {
-      this.refreshTime = Date.now() + REFRESH_INTERVAL;
-      const data = await ScoreboardService.load();
-      this.cutLine = data.cutLine;
-      this.players = data.players;
-      this.poolParticipants = data.poolParticipants
-        .map((p) => {
-          const participant = p;
-          participant.picks = participant.picks
-            .map(pick => this.players[pick.tournament_id])
-            .filter(x => x);
-          return participant;
-        });
-    },
-    tick() {
-      this.currentTime = Date.now();
-    },
-    toggleBestPossiblePicks() {
-      this.showBestPicks = !showBestPicks;
-    },
+    this.$store.dispatch('initTournament');
   },
 };
 </script>
