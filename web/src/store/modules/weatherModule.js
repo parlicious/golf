@@ -22,15 +22,18 @@ export default {
     },
   },
   actions: {
-    async getWeather({ commit }) {
+    async getWeather({ commit, rootGetters }) {
       commit({
         type: 'setWeather',
-        weather: await WeatherService.getWeather(),
+        weather: await WeatherService.getWeather(
+          rootGetters.activeTournament.title, rootGetters.activeTournament.year,
+        ),
       });
     },
     async initWeather({ dispatch, commit, state }) {
       if (!state.weatherInterval) {
-        dispatch('getWeather');
+        await dispatch('getTournaments');
+        await dispatch('getWeather');
         commit({
           type: 'setWeatherInterval',
           id: setInterval(() => dispatch('getWeather'), WEATHER_REFRESH_INTERVAL),

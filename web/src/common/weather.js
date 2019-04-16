@@ -2,9 +2,8 @@ import { ApiService } from './api';
 import { ScoreboardService } from './scoreboard';
 
 export const WeatherService = {
-  async getWeather() {
-    const activeTournament = await ScoreboardService.getActiveTournament();
-    const weather = await ApiService.getWeather(activeTournament.title, activeTournament.year);
+  async getWeather(title, year) {
+    const weather = await ApiService.getWeather(title, year);
     return weather.data;
   },
 

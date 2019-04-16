@@ -92,7 +92,7 @@ export const leaderboardWithTiers = (leaderboard, tournamentInfo) => {
 export const addCutLineIndicator = (cutLine, orderedPlayers) => {
   const newOrderedPlayers = orderedPlayers;
   if (cutLine) {
-    const cutIndex = orderedPlayers.findIndex(p => p.to_par > parseInt(cutLine));
+    const cutIndex = orderedPlayers.findIndex(p => p.to_par > window.parseInt(cutLine));
     if (cutIndex > 0) {
       newOrderedPlayers[cutIndex].firstCut = true;
     }
@@ -108,27 +108,17 @@ export const addCutLineIndicator = (cutLine, orderedPlayers) => {
 
 
 export const ScoreboardService = {
-  tournaments: null,
-  activeTournament: null,
-
-  async getActiveTournament() {
-    this.tournaments = this.tournaments || (await ApiService.getTournaments()).data;
-    return this.activeTournament || this.tournaments.find(x => x.active);
+  async getTournaments() {
+    return (await ApiService.getTournaments()).data;
   },
-  async getLeaderboard() {
-    this.tournaments = this.tournaments || (await ApiService.getTournaments()).data;
-    this.activeTournament = this.activeTournament || this.tournaments.find(x => x.active);
-    return (await ApiService.get(this.activeTournament.leaderboard)).data;
+  async getLeaderboard(tournament) {
+    return (await ApiService.get(tournament.leaderboard)).data;
   },
-  async getPicks() {
-    this.tournaments = this.tournaments || (await ApiService.getTournaments()).data;
-    this.activeTournament = this.activeTournament || this.tournaments.find(x => x.active);
-    return (await ApiService.getUnbusted(this.activeTournament.picks)).data;
+  async getPicks(tournament) {
+    return (await ApiService.getUnbusted(tournament.picks)).data;
   },
-  async getTournamentInfo() {
-    this.tournaments = this.tournaments || (await ApiService.getTournaments()).data;
-    this.activeTournament = this.activeTournament || this.tournaments.find(x => x.active);
-    return (await ApiService.getUnbusted(this.activeTournament.field)).data;
+  async getTournamentInfo(tournament) {
+    return (await ApiService.getUnbusted(tournament.field)).data;
   },
 };
 

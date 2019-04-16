@@ -12,8 +12,10 @@ import { TOURNAMENT_REFRESH_INTERVAL } from '../../common/config';
 
 export default {
   state: {
+    activeTournament: null,
     leaderboard: null,
     picks: null,
+    tournaments: [],
     tournamentInfo: null,
     tournamentInterval: null,
   },
@@ -35,6 +37,9 @@ export default {
     setPicks(state, payload) {
       state.picks = payload.picks;
     },
+    setTournaments(state, payload) {
+      state.tournaments = payload.tournaments;
+    },
     setTournamentInfo(state, payload) {
       state.tournamentInfo = payload.tournamentInfo;
     },
@@ -43,6 +48,9 @@ export default {
     },
   },
   getters: {
+    activeTournament({ tournaments }) {
+      return tournaments.find(x => x.active);
+    },
     getCutLine({ leaderboard }) {
       if (leaderboard) {
         return leaderboard.cut_line;
@@ -82,22 +90,28 @@ export default {
     },
   },
   actions: {
-    async getLeaderboard({ commit }) {
+    async getLeaderboard({ commit, getters }) {
       commit({
         type: 'setLeaderboard',
-        leaderboard: await ScoreboardService.getLeaderboard(),
+        leaderboard: await ScoreboardService.getLeaderboard(getters.activeTournament),
       });
     },
-    async getPicks({ commit }) {
+    async getPicks({ commit, getters }) {
       commit({
         type: 'setPicks',
-        picks: await ScoreboardService.getPicks(),
+        picks: await ScoreboardService.getPicks(getters.activeTournament),
       });
     },
-    async getTournamentInfo({ commit }) {
+    async getTournaments({ commit}) {
+      commit({
+        type: 'setTournaments',
+        tournaments: await ScoreboardService.getTournaments(),
+      });
+    },
+    async getTournamentInfo({ commit, getters }) {
       commit({
         type: 'setTournamentInfo',
-        tournamentInfo: await ScoreboardService.getTournamentInfo(),
+        tournamentInfo: await ScoreboardService.getTournamentInfo(getters.activeTournament),
       });
     },
     async loadTournament({ dispatch }) {
@@ -107,6 +121,7 @@ export default {
     },
     async initTournament({ commit, dispatch, state }) {
       if (!state.tournamentInterval) {
+        await dispatch('getTournaments');
         await dispatch('loadTournament');
         commit({
           type: 'setTournamentInterval',
