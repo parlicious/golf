@@ -1,13 +1,9 @@
 /* eslint-disable no-param-reassign */
-import Vue from 'vue';
-import Vuex from 'vuex';
 
-import { WeatherService } from './common/weather';
-import { WEATHER_REFRESH_INTERVAL } from './common/config';
+import { WeatherService } from '../../common/weather';
+import { WEATHER_REFRESH_INTERVAL } from '../../common/config';
 
-Vue.use(Vuex);
-
-export default new Vuex.Store({
+export default {
   state: {
     weather: null,
     weatherInterval: 0,
@@ -18,6 +14,11 @@ export default new Vuex.Store({
     },
     setWeatherInterval(state, payload) {
       state.weatherIntervalId = payload.id;
+    },
+  },
+  getters: {
+    getWeather(state) {
+      return state.weather;
     },
   },
   actions: {
@@ -35,4 +36,4 @@ export default new Vuex.Store({
       });
     },
   },
-});
+};

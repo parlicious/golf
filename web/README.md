@@ -1,4 +1,4 @@
-# golf
+# Parlicious Web
 
 ## Project setup
 ```
@@ -10,20 +10,9 @@ npm install
 npm run serve
 ```
 
-### Compiles and minifies for production
-```
-npm run build
-```
 
-### Run your tests
-```
-npm run test
-```
+## Development
 
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+This app is written in vue. We're using Vuex and Vue Router
+also. The easiest way to get started is to check out the
+weather component.

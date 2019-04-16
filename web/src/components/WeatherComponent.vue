@@ -17,14 +17,14 @@
 </template>
 
 <script>
-import { mapState } from 'vuex';
+import { mapGetters } from 'vuex';
 import { WeatherService } from '../common/weather';
 
 export default {
   name: 'WeatherComponent.vue',
-  computed: mapState([
-    'weather',
-  ]),
+  computed: mapGetters({
+    weather: 'getWeather',
+  }),
   methods: {
     iconToFontAwesomeClass: WeatherService.iconToFontAwesomeClass,
   },
