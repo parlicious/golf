@@ -2,8 +2,8 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
 
-import weatherModule from './modules/weather';
-import scoreboardModule from './modules/scoreboard';
+import weatherModule from './modules/weatherModule';
+import scoreboardModule from './modules/scoreboardModule';
 
 Vue.use(Vuex);
 
