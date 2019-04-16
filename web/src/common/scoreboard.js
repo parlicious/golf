@@ -31,15 +31,17 @@ const calculatePoolParticipantScores = (poolParticipant, playerMap) => {
   };
 };
 
-export const transformLeaderboardToPlayerMap = leaderboard => leaderboard.players.reduce((acc, val) => {
-  acc[val.id] = val;
-  return acc;
-}, {});
+export const transformLeaderboardToPlayerMap = leaderboard => leaderboard.players.reduce(
+  (acc, val) => {
+    acc[val.id] = val;
+    return acc;
+  }, {},
+);
 
 export const playerIdToPoolParticipants = poolParticipants => _.flatMap(poolParticipants,
   p => p.picks.map(pick => [pick.tournament_id, p.name]))
   .reduce((acc, val) => {
-    if (acc.hasOwnProperty(val[0])) {
+    if (Object.prototype.hasOwnProperty.call(acc, val[0])) {
       acc[val[0]] = [...acc[val[0]], val[1]];
     } else {
       acc[val[0]] = [val[1]];
@@ -53,18 +55,19 @@ export const scoreAndRankPoolParticipants = (poolParticipants, leaderboard) => p
   .sort((p1, p2) => p1.total - p2.total);
 
 export const orderedPlayersWithScoreDiff = (oldPlayers, newPlayers) => newPlayers.map((p) => {
+  const newPlayer = p;
   const oldPlayer = oldPlayers[p.id];
   if (p.thru === oldPlayer.thru) {
-    p.score_diff = oldPlayer.score_diff;
+    newPlayer.score_diff = oldPlayer.score_diff;
   } else {
-    p.score_diff = oldPlayer.score - p.score;
+    newPlayer.score_diff = oldPlayer.score - p.score;
   }
 
-  if (!p.score_diff) {
-    p.score_diff = 0;
+  if (!newPlayer.score_diff) {
+    newPlayer.score_diff = 0;
   }
 
-  return p;
+  return newPlayer;
 });
 
 export const leaderboardWithTiers = (leaderboard, tournamentInfo) => {
@@ -87,19 +90,20 @@ export const leaderboardWithTiers = (leaderboard, tournamentInfo) => {
 };
 
 export const addCutLineIndicator = (cutLine, orderedPlayers) => {
+  const newOrderedPlayers = orderedPlayers;
   if (cutLine) {
     const cutIndex = orderedPlayers.findIndex(p => p.to_par > parseInt(cutLine));
     if (cutIndex > 0) {
-      orderedPlayers[cutIndex].firstCut = true;
+      newOrderedPlayers[cutIndex].firstCut = true;
     }
   } else {
     const cutIndex = orderedPlayers.findIndex(p => p.status === 'C');
     if (cutIndex > 0) {
-      orderedPlayers[cutIndex].firstCut = true;
+      newOrderedPlayers[cutIndex].firstCut = true;
     }
   }
 
-  return orderedPlayers;
+  return newOrderedPlayers;
 };
 
 

@@ -106,7 +106,7 @@ export default {
   },
   methods: {
     getParticipantsForPlayer(player) {
-      if (this.playersToPoolParticipants.hasOwnProperty(player.id)) {
+      if (Object.prototype.hasOwnProperty.call(this.playersToPoolParticipants, player.id)) {
         return this.playersToPoolParticipants[player.id];
       }
       return '';
