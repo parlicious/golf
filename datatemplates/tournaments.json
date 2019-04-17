@@ -15,7 +15,7 @@
     "id": "2019-masters",
     "tournament_name": "2019 Masters",
     "timestamp": 1554499286114,
-    "active": true,
+    "active": false,
     "title": "Masters",
     "year": "2019",
     "start": "",
@@ -29,5 +29,24 @@
     "picks": "https://s3.amazonaws.com/parlicious-data-public/picks/masters/2019/picks.json",
     "leaderboard": "https://s3.amazonaws.com/parlicious-data-public/leaderboards/masters/2019/leaderboard.json",
     "field": "https://s3.amazonaws.com/parlicious-data-public/picks/masters/2019/tournament_info.json"
+  },
+  {
+    "id": "2019-pga",
+    "tournament_name": "2019 PGA Championship",
+    "timestamp": 1554499286114,
+    "active": true,
+    "title": "pga",
+    "year": "2019",
+    "start": "",
+    "end": "",
+    "accepting_picks_until": "2019-05-16T12:00:00.000Z",
+    "location": "Old Bethpage, NY ",
+    "coords": {
+      "lat": 40.746,
+      "lon": -73.452
+    },
+    "picks": "https://s3.amazonaws.com/parlicious-data-public/picks/pga/2019/picks.json",
+    "leaderboard": "https://s3.amazonaws.com/parlicious-data-public/leaderboards/pga/2019/leaderboard.json",
+    "field": "https://s3.amazonaws.com/parlicious-data-public/picks/pga/2019/tournament_info.json"
   }
 ]
