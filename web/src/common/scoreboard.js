@@ -112,13 +112,13 @@ export const ScoreboardService = {
     return (await ApiService.getTournaments()).data;
   },
   async getLeaderboard(tournament) {
-    return (await ApiService.get(tournament.leaderboard)).data;
+    return (await ApiService.getBusted(tournament.leaderboard)).data;
   },
   async getPicks(tournament) {
-    return (await ApiService.getUnbusted(tournament.picks)).data;
+    return (await ApiService.get(tournament.picks)).data;
   },
   async getTournamentInfo(tournament) {
-    return (await ApiService.getUnbusted(tournament.field)).data;
+    return (await ApiService.get(tournament.field)).data;
   },
 };
 

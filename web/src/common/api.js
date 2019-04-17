@@ -17,11 +17,11 @@ export const ApiService = {
 
   getTournaments() {
     // const timeSalt = Date.now();
-    return this.get(`${DATA_URL}/tournaments.json?${Date.now()}`);
+    return this.getBusted(`${DATA_URL}/tournaments.json`);
   },
 
   getGolfers() {
-    return this.get(`${DATA_URL}/golfers.json`);
+    return this.getBusted(`${DATA_URL}/golfers.json`);
   },
 
   getIndividualPicks(email, tournament, year) {
@@ -37,20 +37,20 @@ export const ApiService = {
   },
 
   getWeather(tournament, year) {
-    return this.get(`${DATA_URL}/weather/${tournament}-${year}.json`);
+    return this.getBusted(`${DATA_URL}/weather/${tournament}-${year}.json`);
   },
 
   submitPicks(picksRequest) {
     return this.post(API_URL, picksRequest);
   },
 
-  get(resource) {
+  getBusted(resource) {
     return Vue.axios.get(`${resource}?${Date.now()}`).catch((error) => {
       throw new Error(`[RWV] ApiService ${error}`);
     });
   },
 
-  getUnbusted(resource) {
+  get(resource) {
     return Vue.axios.get(`${resource}`).catch((error) => {
       throw new Error(`[RWV] ApiService ${error}`);
     });

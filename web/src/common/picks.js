@@ -10,7 +10,7 @@ export const PicksService = {
   async load() {
     const tournaments = (await ApiService.getTournaments()).data;
     this.activeTournament = tournaments.find(x => x.active);
-    this.tournamentField = (await ApiService.get(this.activeTournament.field)).data;
+    this.tournamentField = (await ApiService.getBusted(this.activeTournament.field)).data;
 
     return {
       golfers: this.golfers,
