@@ -43,8 +43,8 @@ function buildleaderboard(callback, count) {
 			const pgadata = JSON.parse(data);
 
 			// build our model
-			leaderboard.cut_line = pgadata.roundTotal === 2 ? pgadata.tournamentCut.projectedCut : null;
-			leaderboard.round = pgadata.roundTotal;
+			leaderboard.cut_line = pgadata.currentRound === 2 ? pgadata.tournamentCut.projectedCut : null;
+			leaderboard.round = pgadata.currentRound;
 			const players = pgadata.player;
 			for (let i = 0; i < players.length; i++) {
 				const player = players[i];
