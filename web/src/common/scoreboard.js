@@ -9,7 +9,7 @@ const calculatePoolParticipantScores = (poolParticipant, playerMap) => {
         player.to_par = 0;
       }
 
-      if (player.today === 'E') {
+      if (player.today === 'E' || !parseInt(player.today, 10)) {
         player.today = 0;
       }
 

@@ -9,7 +9,7 @@
     <td>{{getTotalPenalty(participant)}}</td>
     <td></td>
     <td class="player-thru-cell">
-      {{180 - getTotalThru(participant)}} <small>⛳️ left</small>
+      {{getTotalThru(participant)}} <small>⛳️ left</small>
     </td>
   </tr>
   <tr
@@ -23,7 +23,7 @@
       class="player-name"
       rel="noreferrer"
       target="_blank"
-      :href="`https://www.masters.com/en_US/scores/track/hole_view/index.html?pid=${pick.id}`">
+      :href="`https://www.pga.com/events/pgachampionship/leaderboard/2019/?pid=${pick.id}`">
       {{pick.first_name}} {{pick.last_name}}
     </a>
     </td>

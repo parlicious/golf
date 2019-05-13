@@ -27,14 +27,21 @@ export const DisplayUtils = {
     return participant.picks.reduce((acc, val) => acc + this.getPenaltyColumn(val), 0);
   },
   getTotalThru(participant) {
-    return participant.picks
+    const {possible, thru} = participant.picks
       .map(p => (p.status === 'C' ? 18 : p.thru)) // get thru
       .map(p => (p.replace ? p.replace('*', '') : p))
       .map(p => (p.trim && p.trim() === '' ? 0 : p)) // handle blanks
       .map(p => (p === 'F' ? 18 : p)) // handle finished
       .map(p => (isNaN(p) ? 0 : p)) // handle non numbers
       .map(p => parseInt(p)) // convert to int
-      .reduce((acc, val) => acc + (val), 0); // sum
+      .reduce((acc, val) => {
+        return {
+          possible: acc.possible + 18,
+          thru: acc.thru + val,
+        };
+      }, { possible: 0, thru: 0 }); // sum
+
+    return possible - thru;
   },
   getNameAbbreviation(name) {
     const names = name.trim().split(' ');
