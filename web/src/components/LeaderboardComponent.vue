@@ -45,7 +45,7 @@
         ><a
           rel="noreferrer"
           target="_blank"
-          :href="`https://www.masters.com/en_US/scores/track/hole_view/index.html?pid=${player.id}`">
+          :href="`https://www.pga.com/events/pgachampionship/leaderboard/2019/?pid=${player.id}`">
           {{player.first_name}} {{player.last_name}}
         </a>
         </td>
