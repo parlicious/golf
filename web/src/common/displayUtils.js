@@ -58,7 +58,7 @@ export const DisplayUtils = {
 
     if (cutLine) {
       const score = player.to_par === 'E' ? 0 : parseInt(player.to_par);
-      return score <= parseInt(cutLine);
+      return score > parseInt(cutLine);
     }
 
     return false;

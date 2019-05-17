@@ -36,7 +36,7 @@
     </td>
     <td>
       {{getPenaltyColumn(pick)}}
-      <img v-if="getPenaltyColumn(pick) < 0" src="../assets/jacket.png" height="20">
+      <img v-if="getPenaltyColumn(pick) < 0" src="../assets/trophy.jpg" height="20">
     </td>
     <td>{{pick.tier}}</td>
     <td class="player-thru-cell">{{getPickThru(pick)}}</td>
