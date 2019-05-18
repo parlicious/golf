@@ -28,7 +28,8 @@
     },
     "picks": "https://s3.amazonaws.com/parlicious-data-public/picks/masters/2019/picks.json",
     "leaderboard": "https://s3.amazonaws.com/parlicious-data-public/leaderboards/masters/2019/leaderboard.json",
-    "field": "https://s3.amazonaws.com/parlicious-data-public/picks/masters/2019/tournament_info.json"
+    "field": "https://s3.amazonaws.com/parlicious-data-public/picks/masters/2019/tournament_info.json",
+    "player_info_url_pattern": ""
   },
   {
     "id": "2019-pga",
@@ -47,6 +48,7 @@
     },
     "picks": "https://s3.amazonaws.com/parlicious-data-public/picks/pga/2019/picks.json",
     "leaderboard": "https://s3.amazonaws.com/parlicious-data-public/leaderboards/pga/2019/leaderboard.json",
-    "field": "https://s3.amazonaws.com/parlicious-data-public/picks/pga/2019/tournament_info.json"
+    "field": "https://s3.amazonaws.com/parlicious-data-public/picks/pga/2019/tournament_info.json",
+    "player_info_url_pattern": ""
   }
 ]

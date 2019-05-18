@@ -19,12 +19,12 @@
     v-bind:class="{condensed: tableCondensed}">
       <thead>
       <tr>
+        <th scope="col">Pos</th>
         <th scope="col">Name</th>
         <th scope="col">Total</th>
         <th scope="col">Today</th>
         <th scope="col">Penalty</th>
         <th scope="col">Thru</th>
-        <th scope="col">Pos</th>
         <th scope="col">Tier</th>
         <th class="d-none d-sm-table-cell" scope="col">Picked By</th>
       </tr>
@@ -40,6 +40,7 @@
           <i class="fas fa-cut"></i></td>
       </tr>
       <tr>
+        <td>{{player.position || ''}}</td>
         <td
           class="player-name-cell"
         ><a
@@ -61,7 +62,6 @@
           <img v-if="getPenaltyColumn(player) < 0" src="../assets/trophy.jpg" height="20">
         </td>
         <td>{{getPickThru(player)}}</td>
-        <td>{{player.position || ''}}</td>
         <td>{{player.tier || ''}}</td>
         <td class="d-none d-sm-table-cell">
           <participant-names v-bind:participants="getParticipantsForPlayer(player)">
