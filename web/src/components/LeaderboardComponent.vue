@@ -58,7 +58,7 @@
         </td>
         <td>
           {{getPenaltyColumn(player)}}
-          <img v-if="getPenaltyColumn(player) < 0" src="../assets/jacket.png" height="20">
+          <img v-if="getPenaltyColumn(player) < 0" src="../assets/trophy.jpg" height="20">
         </td>
         <td>{{getPickThru(player)}}</td>
         <td>{{player.position || ''}}</td>
