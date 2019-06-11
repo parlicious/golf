@@ -12,6 +12,9 @@
 <style>
 
   :root {
+
+    color-scheme: light dark;
+
     --cyan: #7FC1CA;
     --blue: #83AFE5;
     --purple: #9A93E1;
@@ -55,15 +58,17 @@
     --nav-button-text: var(--light-nav-button-text);
   }
 
-  [data-theme="dark"] {
-    --body-text: var(--gray5);
-    --background: var(--gray1);
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --body-text: var(--gray5);
+      --background: var(--gray1);
 
-    --nav-button-bg: var(--gray6);
-    --nav-button-text: var(--gray1);
+      --nav-button-bg: var(--gray6);
+      --nav-button-text: var(--gray1);
 
-    --table-row-hover: var(--gray2);
-    --td-th-border-top: var(--gray2);
+      --table-row-hover: var(--gray2);
+      --td-th-border-top: var(--gray2);
+    }
   }
 
   #bootstrap-overrides {
