@@ -401,7 +401,7 @@ export default {
   .tiers {
     position: sticky;
     top: 0;
-    background: white;
+    background: var(--background);
   }
 
   .tiers .tier .card-header {
@@ -445,7 +445,7 @@ export default {
   }
 
   .confirm-area {
-    background-color: white;
+    background-color: var(--background);
   }
 
 
