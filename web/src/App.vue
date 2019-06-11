@@ -92,7 +92,7 @@
   }
 
   #bootstrap-overrides a {
-    color: var(--body-text);
+    color: var(--cyan);
   }
 
   #app {
