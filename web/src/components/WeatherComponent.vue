@@ -42,7 +42,7 @@ export default {
     padding-left: 1rem;
     padding-right: 1rem;
     font-size: .8rem;
-    background-color: white;
+    background-color: var(--background);
   }
 
   .weather-row {

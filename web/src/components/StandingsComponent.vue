@@ -115,8 +115,8 @@ export default {
 
   .expand-button{
     cursor: pointer;
-    background-color: #35495e;
-    color: #ffffff;
+    background-color: var(--expand-button-bg-color);
+    color: var(--expand-button-color);;
     font-weight: bold;
     border-radius: 5px;
     margin: .25rem;

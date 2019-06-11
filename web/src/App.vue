@@ -6,8 +6,21 @@
       <router-link to="/picks">Picks</router-link>
     </div>
     <router-view/>
+    <DarkModeComponent/>
   </div>
 </template>
+
+<script>
+  import DarkModeComponent from './components/DarkModeComponent.vue';
+
+  export default {
+    name: "App",
+    components: {
+      DarkModeComponent,
+    }
+  };
+</script>
+
 
 <style>
 
@@ -38,6 +51,9 @@
     --light-nav-button-bg: #42b983;
     --light-nav-button-text: #FFFFFF;
 
+    --light-expand-button-color: #ffffff;
+    --light-exapnd-button-bg-color: #35495e;
+
     --danger-color: #721c24;
     --danger-background-color: #f8d7da;
     --danger-border-color: #f5c6cb;
@@ -52,24 +68,42 @@
     --td-th-border-top: #dee2e6;
 
     --body-text: var(--light-body-text);
+    --link-color: #007BFF;
     --background: var(--light-background);
 
     --nav-button-bg: var(--light-nav-button-bg);
     --nav-button-text: var(--light-nav-button-text);
+
+    --expand-button-color: var(--light-expand-button-color);
+    --expand-button-bg-color: var(--light-exapnd-button-bg-color);
   }
 
-  @media (prefers-color-scheme: dark) {
-    :root {
-      --body-text: var(--gray5);
-      --background: var(--gray1);
+  [data-theme="dark"] {
+    --body-text: var(--gray5);
+    --background: var(--gray1);
+    --nav-button-bg: var(--gray6);
+    --nav-button-text: var(--gray1);
+    --table-row-hover: var(--gray2);
+    --td-th-border-top: var(--gray2);
 
-      --nav-button-bg: var(--gray6);
-      --nav-button-text: var(--gray1);
+    --link-color: var(--cyan);
 
-      --table-row-hover: var(--gray2);
-      --td-th-border-top: var(--gray2);
-    }
+    --expand-button-color: var(--gray1);
+    --expand-button-bg-color: var(--gray5);
   }
+
+  /*@media (prefers-color-scheme: dark) {*/
+  /*  :root {*/
+  /*    --body-text: var(--gray5);*/
+  /*    --background: var(--gray1);*/
+
+  /*    --nav-button-bg: var(--gray6);*/
+  /*    --nav-button-text: var(--gray1);*/
+
+  /*    --table-row-hover: var(--gray2);*/
+  /*    --td-th-border-top: var(--gray2);*/
+  /*  }*/
+  /*}*/
 
   #bootstrap-overrides {
     color: var(--body-text);
@@ -97,7 +131,7 @@
   }
 
   #bootstrap-overrides a {
-    color: var(--cyan);
+    color: var(--link-color);
   }
 
   #app {
