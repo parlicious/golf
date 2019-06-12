@@ -46,4 +46,5 @@ if [ "prod" == "${LIFECYCLE}" ]; then
     echo '** Copying to production UI buckets **'
     aws s3 sync web/dist s3://parlicious.com
     aws s3 sync web/dist s3://www.parlicious.com
+    aws cloudfront create-invalidation --distribution-id E3PILKX8V8E4Z1 --paths *
 fi
