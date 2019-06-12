@@ -26,7 +26,7 @@ function buildleaderboard(callback, count){
         "cut_line": null,
         "cut_penalty": null,
         "projected_penalty": null,
-        "timezone": "EDT",
+        "timezone": "PDT",
         "refreshed": Date.now(),
         "players": [
     
