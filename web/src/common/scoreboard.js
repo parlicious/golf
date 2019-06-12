@@ -60,7 +60,7 @@ export const orderedPlayersWithScoreDiff = (oldPlayers, newPlayers) => newPlayer
   if (p.thru === oldPlayer.thru) {
     newPlayer.score_diff = oldPlayer.score_diff;
   } else {
-    newPlayer.score_diff = oldPlayer.score - p.score;
+    newPlayer.score_diff = oldPlayer.to_par - p.to_par;
   }
 
   if (!newPlayer.score_diff) {

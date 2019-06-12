@@ -102,7 +102,7 @@ export default {
         picks: await ScoreboardService.getPicks(getters.activeTournament),
       });
     },
-    async getTournaments({ commit}) {
+    async getTournaments({ commit }) {
       commit({
         type: 'setTournaments',
         tournaments: await ScoreboardService.getTournaments(),
