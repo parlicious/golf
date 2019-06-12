@@ -1,7 +1,7 @@
 //load the file
 const fs = require('fs');
 
-let rawdata = fs.readFileSync('tournament_info.json');
+let rawdata = fs.readFileSync('tournament_info.json');  
 let tournament_info = JSON.parse(rawdata);
 
 //rules
@@ -30,15 +30,10 @@ var previousodds = 0;
 
 for(var i = 0; i < tournament_info.field.length; i++) {
     var dude = tournament_info.field[i];
-    var countofas = 0;
     //if the odds are the same keep the tier the same
-    if(dude.decimal_odds == previousodds) {
-        dude.tier = currenttier;
-        if (currenttier == "A") countofas;
-    }
+    if(dude.decimal_odds == previousodds) dude.tier = currenttier;
     else if (i < 4) {
         currenttier = "A";
-        countofas++;
         previousodds = dude.decimal_odds;
         dude.tier = currenttier;
     } else if (i < 15) {
@@ -60,9 +55,4 @@ for(var i = 0; i < tournament_info.field.length; i++) {
     }
 }
 
-tournament_info.picks_per_tier.A = countofas > 4 ? 2 : 1
-tournament_info.picks_per_tier.B = 2;
-tournament_info.picks_per_tier.C = 3;
-tournament_info.picks_per_tier.D = 4;
-tournament_info.picks_per_tier.E = tournament_info.field.length > 100 ? 1 : 0;
 console.log(JSON.stringify(tournament_info));
