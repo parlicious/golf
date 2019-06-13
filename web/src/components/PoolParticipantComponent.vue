@@ -48,7 +48,7 @@ import { DisplayUtils } from '../common/displayUtils';
 
 export default {
   name: 'PoolParticipant',
-  props: ['participant', 'showPlayers', 'cutLine'],
+  props: ['participant', 'showPlayers', 'cutLine', 'timezone'],
   data() {
     return {
       showPlayersOverride: false,
@@ -79,6 +79,11 @@ export default {
   .player-name {
     padding-left: 1.5rem;
     display: block;
+  }
+
+  .timezone-indicator {
+    font-weight: normal;
+    font-size: smaller;
   }
 
 </style>

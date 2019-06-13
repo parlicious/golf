@@ -23,6 +23,14 @@ export default {
   mutations: {
     setLeaderboard(state, payload) {
       const newLeaderboard = payload.leaderboard;
+
+      // newLeaderboard.players = newLeaderboard.players.map((p) => {
+      //   if (p.thru.includes(':')) {
+      //     p.thru = `${p.thru} ${newLeaderboard.timezone}`;
+      //   }
+      //   return p;
+      // });
+
       if (state.leaderboard) {
         const oldPlayers = transformLeaderboardToPlayerMap(state.leaderboard);
         newLeaderboard.players = orderedPlayersWithScoreDiff(
@@ -68,6 +76,9 @@ export default {
     },
     getTournaments({ tournaments }) {
       return tournaments;
+    },
+    getTimezone({ leaderboard }) {
+      return leaderboard ? leaderboard.timezone : '';
     },
     getCutLine({ leaderboard }) {
       if (leaderboard) {

@@ -40,6 +40,7 @@
             v-bind:key="participant.name"
             v-bind:showPlayers="showAll"
             v-bind:cutLine="cutLine"
+            v-bind:timezone="timezone"
             v-bind:participant="participant">
           </pool-participant>
         </table>
@@ -80,6 +81,7 @@ export default {
       tournamentName: 'getTournamentName',
       cutLine: 'getCutLine',
       players: 'getPlayers',
+      timezone: 'getTimezone',
       poolParticipants: 'getPoolParticipantsWithFullPicks',
     }),
   },
