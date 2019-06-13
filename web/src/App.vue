@@ -4,6 +4,7 @@
       <router-link to="/standings">Standings</router-link>
       <router-link to="/leaderboard">Leaderboard</router-link>
       <router-link to="/picks">Picks</router-link>
+      <router-link to="/history">History</router-link>
     </div>
     <router-view/>
     <DarkModeComponent/>
@@ -62,7 +63,6 @@
     --success-background-color: #d4edda;
     --success-border-color: #c3e6cb;
 
-
     --table-header-text-color: #46586A;
     --table-row-hover: #eee;
     --td-th-border-top: #dee2e6;
@@ -76,6 +76,9 @@
 
     --expand-button-color: var(--light-expand-button-color);
     --expand-button-bg-color: var(--light-exapnd-button-bg-color);
+
+    --cut-line-bg-color: var(--table-header-text-color);
+    --cut-line-color: var(--light-nav-button-text);
   }
 
   [data-theme="dark"] {
@@ -90,6 +93,9 @@
 
     --expand-button-color: var(--gray1);
     --expand-button-bg-color: var(--gray5);
+
+    --cut-line-bg-color: var(--gray5);
+    --cut-line-color: var(--gray1);
   }
 
   /*@media (prefers-color-scheme: dark) {*/

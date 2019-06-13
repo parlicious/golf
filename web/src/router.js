@@ -1,21 +1,22 @@
 import Vue from 'vue';
 import Router from 'vue-router';
 import Leaderboard from './views/Leaderboard.vue';
-import StandingsComponent from './components/StandingsComponent.vue';
+import History from './views/History.vue';
+import Standings from './views/Standings.vue';
 
 Vue.use(Router);
 
 export default new Router({
   routes: [
-    // {
-    //   path: '/',
-    //   name: 'home',
-    //   component: Home,
-    // },
+    {
+      path: '/history',
+      name: 'history',
+      component: History,
+    },
     {
       path: '/standings',
       name: 'standings',
-      component: StandingsComponent,
+      component: Standings,
     },
     {
       path: '/leaderboard',

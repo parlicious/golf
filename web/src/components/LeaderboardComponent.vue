@@ -1,7 +1,7 @@
 <template>
   <div>
     <weather-component></weather-component>
-    <h1> {{activeTournament.tournament_name}} Leaderboard</h1>
+    <h1> {{tournamentName}}  Leaderboard</h1>
     <div
       class="table-options"
       v-on:click="tableCondensed = !tableCondensed">
@@ -59,7 +59,7 @@
         </td>
         <td>
           {{getPenaltyColumn(player)}}
-          <img v-if="getPenaltyColumn(player) < 0" src="../assets/trophy.jpg" height="20">
+          <i v-if="getPenaltyColumn(player) < 0" class="fas fa-trophy"></i>
         </td>
         <td>{{getPickThru(player)}}</td>
         <td>{{player.tier || ''}}</td>
@@ -96,14 +96,11 @@ export default {
   },
   computed: {
     ...mapGetters({
-      activeTournament: 'activeTournament',
+      tournamentName: 'getTournamentName',
       cutLine: 'getCutLine',
       players: 'getOrderedPlayers',
       playersToPoolParticipants: 'getPlayersToPoolParticipants',
     }),
-  },
-  async created() {
-    await this.$store.dispatch('initTournament');
   },
   methods: {
     getParticipantsForPlayer(player) {
@@ -128,7 +125,7 @@ export default {
   }
 
   .cutLine {
-    background-color: #46586A;
-    color: white;
+    background-color: var(--cut-line-bg-color);
+    color: var(--cut-line-color);
   }
 </style>

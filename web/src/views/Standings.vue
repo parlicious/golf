@@ -12,5 +12,8 @@ export default {
   components: {
     StandingsComponent,
   },
+  async created() {
+    await this.$store.dispatch('initTournament');
+  },
 };
 </script>

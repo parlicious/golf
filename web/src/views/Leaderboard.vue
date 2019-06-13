@@ -13,5 +13,8 @@ export default {
   components: {
     LeaderboardComponent,
   },
+  async created() {
+    this.$store.dispatch('initTournament');
+  },
 };
 </script>

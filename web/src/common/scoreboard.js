@@ -57,6 +57,11 @@ export const scoreAndRankPoolParticipants = (poolParticipants, leaderboard) => p
 export const orderedPlayersWithScoreDiff = (oldPlayers, newPlayers) => newPlayers.map((p) => {
   const newPlayer = p;
   const oldPlayer = oldPlayers[p.id];
+
+  if (!oldPlayer) {
+    return newPlayer;
+  }
+
   if (p.thru === oldPlayer.thru) {
     newPlayer.score_diff = oldPlayer.score_diff;
   } else {

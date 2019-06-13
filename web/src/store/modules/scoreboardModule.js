@@ -12,6 +12,7 @@ import { TOURNAMENT_REFRESH_INTERVAL } from '../../common/config';
 
 export default {
   state: {
+    tournamentName: null,
     activeTournament: null,
     leaderboard: null,
     picks: null,
@@ -40,16 +41,33 @@ export default {
     setTournaments(state, payload) {
       state.tournaments = payload.tournaments;
     },
+    setTournamentName(state, payload) {
+      state.tournamentName = payload.tournamentName;
+    },
     setTournamentInfo(state, payload) {
       state.tournamentInfo = payload.tournamentInfo;
     },
     setTournamentInterval(state, payload) {
       state.tournamentInterval = payload.id;
     },
+    clearTournament(state) {
+      clearInterval(state.tournamentInterval);
+      state.activeTournament = null;
+      state.leaderboard = null;
+      state.picks = null;
+      state.tournamentInfo = null;
+      state.tournamentInterval = null;
+    },
   },
   getters: {
     activeTournament({ tournaments }) {
       return tournaments.find(x => x.active);
+    },
+    getTournamentName({ tournamentName }) {
+      return tournamentName;
+    },
+    getTournaments({ tournaments }) {
+      return tournaments;
     },
     getCutLine({ leaderboard }) {
       if (leaderboard) {
@@ -90,16 +108,16 @@ export default {
     },
   },
   actions: {
-    async getLeaderboard({ commit, getters }) {
+    async getLeaderboard({ commit }, payload) {
       commit({
         type: 'setLeaderboard',
-        leaderboard: await ScoreboardService.getLeaderboard(getters.activeTournament),
+        leaderboard: await ScoreboardService.getLeaderboard(payload.tournament),
       });
     },
-    async getPicks({ commit, getters }) {
+    async getPicks({ commit }, payload) {
       commit({
         type: 'setPicks',
-        picks: await ScoreboardService.getPicks(getters.activeTournament),
+        picks: await ScoreboardService.getPicks(payload.tournament),
       });
     },
     async getTournaments({ commit }) {
@@ -108,24 +126,48 @@ export default {
         tournaments: await ScoreboardService.getTournaments(),
       });
     },
-    async getTournamentInfo({ commit, getters }) {
+    async getTournamentInfo({ commit }, payload) {
       commit({
         type: 'setTournamentInfo',
-        tournamentInfo: await ScoreboardService.getTournamentInfo(getters.activeTournament),
+        tournamentInfo: await ScoreboardService.getTournamentInfo(payload.tournament),
       });
     },
-    async loadTournament({ dispatch }) {
-      await dispatch('getTournamentInfo');
-      await dispatch('getLeaderboard');
-      await dispatch('getPicks');
+    async clearTournament({ commit }) {
+      commit('clearTournament');
     },
-    async initTournament({ commit, dispatch, state }) {
-      if (!state.tournamentInterval) {
+    async loadTournament({ dispatch, commit }, payload) {
+      commit({
+        type: 'setTournamentName',
+        tournamentName: payload.tournament.tournament_name,
+      });
+      await dispatch('getTournamentInfo', {
+        tournament: payload.tournament,
+      });
+      await dispatch('getLeaderboard', {
+        tournament: payload.tournament,
+      });
+      await dispatch('getPicks', {
+        tournament: payload.tournament,
+      });
+    },
+    async initTournament({
+      commit, dispatch, state, getters,
+    }, payload) {
+      if (payload && payload.tournament) {
+        await dispatch('loadTournament', {
+          tournament: payload.tournament,
+        });
+      } else if (!state.tournamentInterval) {
         await dispatch('getTournaments');
-        await dispatch('loadTournament');
+        const loadTournament = async () => dispatch('loadTournament', {
+          tournament: getters.activeTournament,
+        });
+
+        await loadTournament();
+
         commit({
           type: 'setTournamentInterval',
-          id: setInterval(() => dispatch('loadTournament'), TOURNAMENT_REFRESH_INTERVAL),
+          id: setInterval(loadTournament, TOURNAMENT_REFRESH_INTERVAL),
         });
       }
     },
