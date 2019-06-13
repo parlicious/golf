@@ -1,5 +1,5 @@
 <template>
-  <div v-on:click="toggleDarkMode()">
+  <div v-on:click="toggleDarkMode()" class="dark-mode-toggle">
     <i v-if="darkMode"
        class="far fa-lightbulb">
     </i>
@@ -44,5 +44,7 @@ export default {
 </script>
 
 <style scoped>
-
+  .dark-mode-toggle {
+    padding: .5rem;
+  }
 </style>
