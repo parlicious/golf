@@ -1,7 +1,7 @@
 <template>
   <div>
     <weather-component></weather-component>
-    <h1> Leaderboard</h1>
+    <h1> {{activeTournament.tournament_name}} Leaderboard</h1>
     <div
       class="table-options"
       v-on:click="tableCondensed = !tableCondensed">
@@ -96,6 +96,7 @@ export default {
   },
   computed: {
     ...mapGetters({
+      activeTournament: 'activeTournament',
       cutLine: 'getCutLine',
       players: 'getOrderedPlayers',
       playersToPoolParticipants: 'getPlayersToPoolParticipants',

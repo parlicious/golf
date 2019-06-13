@@ -2,7 +2,7 @@
   <div class="post">
     <weather-component></weather-component>
     <div class="hello">
-      <h1> Standings </h1>
+      <h1> {{activeTournament.tournament_name}} Standings </h1>
     </div>
     <div class="loading" v-if="loading">
       Loading...
@@ -77,6 +77,7 @@ export default {
   },
   computed: {
     ...mapGetters({
+      activeTournament: 'activeTournament',
       cutLine: 'getCutLine',
       players: 'getPlayers',
       poolParticipants: 'getPoolParticipantsWithFullPicks',
