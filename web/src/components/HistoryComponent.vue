@@ -7,12 +7,14 @@
         v-for="tournament in tournaments.filter(t => !t.active)"
         v-bind:key="tournament.id">
         <span class="tournament-name">{{tournament.tournament_name}}</span>
+        <div class="tournament-history-item-select">
         <a v-on:click="selectTournament(tournament, 'standings')">
           Standings
         </a>
         <a v-on:click="selectTournament(tournament, 'leaderboard')">
           Leaderboard
         </a>
+        </div>
       </div>
     </div>
     <StandingsComponent v-if="displayType === 'standings'"/>
@@ -62,8 +64,8 @@ export default {
   .tournaments-history-row {
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
     justify-content: space-between;
-    align-items: center;
 
     padding: 1rem;
     border: 1px solid #ccc;
@@ -75,8 +77,14 @@ export default {
   }
 
   .tournament-history-item{
-    margin: auto;
     display: flex;
-    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+  }
+
+  .tournament-history-item span {
+    padding-right: .5rem;
+    padding-left: .5rem;
   }
 </style>
