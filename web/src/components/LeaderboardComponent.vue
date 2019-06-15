@@ -61,7 +61,7 @@
           {{getPenaltyColumn(player)}}
           <i v-if="getPenaltyColumn(player) < 0" class="fas fa-trophy"></i>
         </td>
-        <td>{{getPickThru(player)}}</td>
+        <td>{{getPickThru(player, timeInformation)}}</td>
         <td>{{player.tier || ''}}</td>
         <td class="d-none d-sm-table-cell">
           <participant-names v-bind:participants="getParticipantsForPlayer(player)">
@@ -96,6 +96,7 @@ export default {
   },
   computed: {
     ...mapGetters({
+      timeInformation: 'getTimeInformationForActiveTournament',
       tournamentName: 'getTournamentName',
       cutLine: 'getCutLine',
       players: 'getOrderedPlayers',

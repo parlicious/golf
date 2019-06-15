@@ -63,6 +63,16 @@ export default {
     activeTournament({ tournaments }) {
       return tournaments.find(x => x.active);
     },
+    getTimeInformationForActiveTournament(_, { activeTournament }) {
+      if (activeTournament && activeTournament.timeFormat && activeTournament.timeZone) {
+        return {
+          format: activeTournament.timeFormat,
+          zone: activeTournament.timeZone,
+        };
+      }
+
+      return {};
+    },
     getTournamentName({ tournamentName }) {
       return tournamentName;
     },

@@ -39,11 +39,12 @@
       <i v-if="getPenaltyColumn(pick) < 0" class="fas fa-trophy"></i>
     </td>
     <td>{{pick.tier}}</td>
-    <td class="player-thru-cell">{{getPickThru(pick)}}</td>
+    <td class="player-thru-cell">{{getPickThru(pick, timeInformation)}}</td>
   </tr>
   </tbody>
 </template>
 <script>
+import { mapGetters } from 'vuex';
 import { DisplayUtils } from '../common/displayUtils';
 
 export default {
@@ -54,6 +55,11 @@ export default {
       showPlayersOverride: false,
       ...DisplayUtils,
     };
+  },
+  computed: {
+    ...mapGetters({
+      timeInformation: 'getTimeInformationForActiveTournament',
+    }),
   },
   methods: {
     toggleShowPlayers() {

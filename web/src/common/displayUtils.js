@@ -1,12 +1,26 @@
 import * as _ from 'lodash';
+import moment from 'moment-timezone';
 
 const inProgressOrFinishedThruPattern = /[0-9]+|F/;
 
 export const DisplayUtils = {
-  getPickThru(pick) {
+
+  convertTeeTimeToLocalTimeZone(teeTimeString, teeTimeFormat, teeTimeZone) {
+    const toZone = moment.tz.guess();
+    const result = moment.tz(teeTimeString, teeTimeFormat, teeTimeZone);
+    return result.tz(toZone).format(teeTimeFormat);
+  },
+  getPickThru(pick, timeInformation) {
+    if (pick.thru.includes(':')) {
+      if (timeInformation && timeInformation.zone && timeInformation.format) {
+        return this.convertTeeTimeToLocalTimeZone(pick.thru, timeInformation.format, timeInformation.zone);
+      }
+    }
+
     if (inProgressOrFinishedThruPattern.test(pick.thru)) {
       return pick.thru;
     }
+
     return pick.teetime;
   },
   sortedPicks(picks) {
@@ -27,19 +41,17 @@ export const DisplayUtils = {
     return participant.picks.reduce((acc, val) => acc + this.getPenaltyColumn(val), 0);
   },
   getTotalThru(participant) {
-    const {possible, thru} = participant.picks
+    const { possible, thru } = participant.picks
       .map(p => (p.status === 'C' ? 18 : p.thru)) // get thru
       .map(p => (p.replace ? p.replace('*', '') : p))
       .map(p => (p.trim && p.trim() === '' ? 0 : p)) // handle blanks
       .map(p => (p === 'F' ? 18 : p)) // handle finished
       .map(p => (isNaN(p) ? 0 : p)) // handle non numbers
       .map(p => parseInt(p)) // convert to int
-      .reduce((acc, val) => {
-        return {
-          possible: acc.possible + 18,
-          thru: acc.thru + val,
-        };
-      }, { possible: 0, thru: 0 }); // sum
+      .reduce((acc, val) => ({
+        possible: acc.possible + 18,
+        thru: acc.thru + val,
+      }), { possible: 0, thru: 0 }); // sum
 
     return possible - thru;
   },
