@@ -141,6 +141,18 @@ export default {
         picks: await ScoreboardService.getPicks(payload.tournament),
       });
     },
+    async hardRefreshPicks({ commit, getters, dispatch }) {
+      let tournament = getters.activeTournament;
+      if (!tournament) {
+        await dispatch('initTournament');
+        tournament = getters.activeTournament;
+      }
+
+      commit({
+        type: 'setPicks',
+        picks: await ScoreboardService.getPicks(tournament),
+      });
+    },
     async getTournaments({ commit }) {
       commit({
         type: 'setTournaments',

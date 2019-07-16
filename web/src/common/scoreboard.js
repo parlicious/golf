@@ -122,6 +122,9 @@ export const ScoreboardService = {
   async getPicks(tournament) {
     return (await ApiService.get(tournament.picks)).data;
   },
+  async hardRefreshPicks(tournament) {
+    return (await ApiService.getBusted(tournament.picks)).data;
+  },
   async getTournamentInfo(tournament) {
     return (await ApiService.get(tournament.field)).data;
   },

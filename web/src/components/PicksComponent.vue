@@ -319,6 +319,7 @@ export default {
       const picks = this.players.filter(p => p.picked);
       try {
         await PicksService.submitPicks(picks, this.email, this.name, this.editKey);
+        await this.$store.dispatch('hardRefreshPicks');
         this.displaySuccess('Picks Saved!');
       } catch (e) {
         console.log(e);
