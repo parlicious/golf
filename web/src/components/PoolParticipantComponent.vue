@@ -23,7 +23,7 @@
       class="player-name"
       rel="noreferrer"
       target="_blank"
-      :href="`https://www.pga.com/events/usopen/leaderboard/2019/?pid=${pick.id}`">
+      :href="`https://www.pga.com/events/openchampionship/leaderboard/2019/?pid=${pick.id}`">
       {{pick.first_name}} {{pick.last_name}}
     </a>
     </td>

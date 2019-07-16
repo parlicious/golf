@@ -46,7 +46,7 @@
         ><a
           rel="noreferrer"
           target="_blank"
-          :href="`https://www.pga.com/events/usopen/leaderboard/2019/?pid=${player.id}`">
+          :href="`https://www.pga.com/events/openchampionship/leaderboard/2019/?pid=${player.id}`">
           {{player.first_name}} {{player.last_name}}
         </a>
         </td>
