@@ -25,7 +25,10 @@ export const DisplayUtils = {
   },
   sortedPicks(picks) {
     const newPicks = _.cloneDeep(picks);
-    return newPicks.sort((a, b) => a.to_par - b.to_par);
+    const sortFn = (a, b) => a.to_par - b.to_par;
+    const cutPlayers = newPicks.filter(p => p.status === 'C');
+    const activePlayers = newPicks.filter(p => p.status !== 'C');
+    return [...activePlayers.sort(sortFn), ...cutPlayers.sort(sortFn)];
   },
   getPenaltyColumn(pick) {
     // display either penalty or bonus
