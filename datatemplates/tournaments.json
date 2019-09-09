@@ -1,15 +1,24 @@
 [
   {
-    "id": 1,
-    "active": false,
-    "title": "Masters",
-    "year": "2018",
+    "id": "2019-open-championship",
+    "tournament_name": "2019 Open Championship",
+    "timestamp": 1563198166806,
+    "active": true,
+    "title": "open-championship",
+    "year": "2019",
     "start": "",
     "end": "",
-    "location": "Augusta, Georgia",
-    "picks": "https://s3.amazonaws.com/parlicious-data-public/picks/masters/2018/picks.json",
-    "leaderboard": "https://s3.amazonaws.com/parlicious-data-public/leaderboards/masters/2018/leaderboard.json",
-    "field": "https://s3.amazonaws.com/parlicious-data-public/picks/masters/2018/tournament_field.json"
+    "accepting_picks_until": "2019-07-18T05:30:00.000Z",
+    "location": "Northern Ireland",
+    "coords": {
+      "lat": 55.2,
+      "lon": -6.635
+    },
+    "timeFormat": "h:mm A",
+    "timeZone": "Europe/London",
+    "picks": "https://s3.amazonaws.com/parlicious-data-public/picks/open-championship/2019/picks.json",
+    "leaderboard": "https://s3.amazonaws.com/parlicious-data-public/leaderboards/open-championship/2019/leaderboard.json",
+    "field": "https://s3.amazonaws.com/parlicious-data-public/picks/open-championship/2019/tournament_info.json"
   },
   {
     "id": "2019-masters",
@@ -26,29 +35,73 @@
       "lat": 33.5021,
       "lon": -82.0226
     },
+    "timeFormat": "h:mm A",
+    "timeZone": "America/New_York",
     "picks": "https://s3.amazonaws.com/parlicious-data-public/picks/masters/2019/picks.json",
     "leaderboard": "https://s3.amazonaws.com/parlicious-data-public/leaderboards/masters/2019/leaderboard.json",
-    "field": "https://s3.amazonaws.com/parlicious-data-public/picks/masters/2019/tournament_info.json",
-    "player_info_url_pattern": ""
+    "field": "https://s3.amazonaws.com/parlicious-data-public/picks/masters/2019/tournament_info.json"
   },
   {
     "id": "2019-pga",
-    "tournament_name": "2019 PGA Championship",
+    "tournament_name": "2019 PGA",
     "timestamp": 1554499286114,
-    "active": true,
+    "active": false,
     "title": "pga",
     "year": "2019",
     "start": "",
     "end": "",
-    "accepting_picks_until": "2019-05-16T12:00:00.000Z",
-    "location": "Old Bethpage, NY ",
+    "accepting_picks_until": "2019-05-16T10:45:00Z",
+    "location": "Bethpage Black Course, Old Bethpage, Ny",
     "coords": {
-      "lat": 40.746,
-      "lon": -73.452
+      "lat": 40.7467,
+      "lon": -73.4530
     },
+    "timeFormat": "h:mm A",
+    "timeZone": "America/New_York",
     "picks": "https://s3.amazonaws.com/parlicious-data-public/picks/pga/2019/picks.json",
     "leaderboard": "https://s3.amazonaws.com/parlicious-data-public/leaderboards/pga/2019/leaderboard.json",
-    "field": "https://s3.amazonaws.com/parlicious-data-public/picks/pga/2019/tournament_info.json",
-    "player_info_url_pattern": ""
+    "field": "https://s3.amazonaws.com/parlicious-data-public/picks/pga/2019/tournament_info.json"
+  },
+  {
+    "id": "2019-usopen",
+    "tournament_name": "2019 US Open",
+    "timestamp": 1560184046232,
+    "active": false,
+    "title": "us-open",
+    "year": "2019",
+    "start": "",
+    "end": "",
+    "accepting_picks_until": "2019-06-13T13:45:00Z",
+    "location": "Pebble Beach Golf Links, CA",
+    "coords": {
+      "lat": 36.5685,
+      "lon": -121.9508
+    },
+    "timeFormat": "h:mm A",
+    "timeZone": "America/Los_Angeles",
+    "picks": "https://s3.amazonaws.com/parlicious-data-public/picks/us-open/2019/picks.json",
+    "leaderboard": "https://s3.amazonaws.com/parlicious-data-public/leaderboards/us-open/2019/leaderboard.json",
+    "field": "https://s3.amazonaws.com/parlicious-data-public/picks/us-open/2019/tournament_info.json"
+  },
+  {
+    "id": "2019-rugby-world-cup",
+    "tournament_name": "Rugby World Cup",
+    "timestamp": 1560184046232,
+    "active": true,
+    "title": "rugby-world-cup",
+    "year": "2019",
+    "start": "",
+    "end": "",
+    "accepting_picks_until": "2019-09-21T13:45:00Z",
+    "location": "",
+    "coords": {
+      "lat": 36.5685,
+      "lon": -121.9508
+    },
+    "timeFormat": "h:mm A",
+    "timeZone": "America/Los_Angeles",
+    "picks": "https://s3.amazonaws.com/parlicious-data-public/picks/rubgy/2019/picks.json",
+    "leaderboard": "",
+    "field": ""
   }
 ]

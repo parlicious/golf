@@ -6,49 +6,16 @@
   "name": "Jeremy Lizza",
   "editKey": "hex string of sha-512'd input",
   "picks": [
-    {
-      "id": 30978,
-      "tier": "A"
-    },
-    {
-      "id": 33803,
-      "tier": "A"
-    },
-    {
-      "id": 28089,
-      "tier": "B"
-    },
-    {
-      "id": 47959,
-      "tier": "B"
-    },
-    {
-      "id": 28938,
-      "tier": "C"
-    },
-    {
-      "id": 12716,
-      "tier": "C"
-    },
-    {
-      "id": 27141,
-      "tier": "C"
-    },
-    {
-      "id": 1717,
-      "tier": "D"
-    },
-    {
-      "id": 32839,
-      "tier": "D"
-    },
-    {
-      "id": 28237,
-      "tier": "D"
-    },
-    {
-      "id": 6373,
-      "tier": "D"
-    }
+    {"id": 30978, "tier": "A"},
+    {"id": 33803, "tier": "A"},
+    {"id": 28089, "tier": "B"},
+    {"id": 47959, "tier": "B"},
+    {"id": 28938, "tier": "C"},
+    {"id": 12716, "tier": "C"},
+    {"id": 27141, "tier": "C"},
+    {"id": 1717, "tier": "D"},
+    {"id": 32839, "tier": "D"},
+    {"id": 28237, "tier": "D"},
+    {"id": 6373, "tier": "D"}
   ]
 }
