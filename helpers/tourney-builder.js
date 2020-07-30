@@ -1,9 +1,33 @@
 var https = require('https');
+var http = require('follow-redirects').http
+    , vm = require('vm')
+    , concat = require('concat-stream'); // this is just a helper to receive the
+                                         // http payload in a single callback
+                                         // see https://www.npmjs.com/package/concat-stream
 
 var host = 'www.bovada.lv';
 var path = '/services/sports/event/v2/events/A/description/golf?marketFilterId=rank&preMatchOnly=true&eventsLimit=50&lang=en';
 var odds = new Map();
 var id = 1;
+
+const getPgaUrl = () => {
+    http.get({
+            host: 'microservice.pgatour.com',
+            port: 80,
+            path: '/js'
+        },
+        function(res) {
+            res.setEncoding('utf8');
+            res.pipe(concat({ encoding: 'string' }, function(remoteSrc) {
+                const id = 'id8730931'
+                const window = {}
+                vm.runInThisContext(remoteSrc, 'remote_modules/hello.js');
+                const token = global.window.pgatour.setTrackingUserId(id)
+                global.host = "lbdata.pgatour.com"
+                global.path = `/2020/r/476/leaderboard.json?userTrackingId=${token}`
+            }));
+        });
+}
 
 var golfers = null;
 var tournament_info = {
