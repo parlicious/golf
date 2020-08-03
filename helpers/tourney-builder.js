@@ -1,20 +1,44 @@
 var https = require('https');
+const fs = require('fs').promises;
+var http = require('follow-redirects').http
+    , vm = require('vm')
+    , concat = require('concat-stream'); // this is just a helper to receive the
+                                         // http payload in a single callback
+                                         // see https://www.npmjs.com/package/concat-stream
+
+const axios = require('axios');
 
 var host = 'www.bovada.lv';
 var path = '/services/sports/event/v2/events/A/description/golf?marketFilterId=rank&preMatchOnly=true&eventsLimit=50&lang=en';
 var odds = new Map();
 var id = 1;
 
+const getLeaderboard = async () => {
+    const response = await axios.get('http://microservice.pgatour.com/js');
+    const remoteSrc = response.data;
+    global.window = {};
+    vm.runInThisContext(remoteSrc, 'pga_token.js');
+
+    const id = 'id8730931'
+    const token = global.window.pgatour.setTrackingUserId(id);
+    const url = `http://lbdata.pgatour.com/2020/r/476/leaderboard.json?userTrackingId=${token}`;
+    console.log(url);
+    const leaderboardResponse = await axios.get(url);
+    return leaderboardResponse.data;
+};
+
+// getLeaderboard().then(console.log).catch();
+
 var golfers = null;
 var tournament_info = {
-    "id": "2019-usopen",
-    "tournament_name": "2019 US Open",
+    "id": "2020-st-jude-invitational",
+    "tournament_name": "2020 St. Jude Invitational",
     "timestamp": Date.now(),
     "picks_per_tier": {
-        "A": 0,
-        "B": 0,
-        "C": 0,
-        "D": 0,
+        "A": 1,
+        "B": 2,
+        "C": 3,
+        "D": 4,
         "E": 0
     },
     "field": [
@@ -36,71 +60,39 @@ var options = {
     method: 'GET'
 };
 
-var req = https.request(options, (res) => {
-    var data = '';
-    res.on('data', function (chunk) {
-        data += chunk;
-    });
+const bovada = async () => {
+    const bovadaResponse = await axios.get('http://www.bovada.lv/services/sports/event/v2/events/A/description/golf?marketFilterId=rank&preMatchOnly=true&eventsLimit=50&lang=en');
+    var bovadadata = bovadaResponse.data
+    var bovadaobj = bovadadata[1];
+    var bovtourney = bovadaobj.events[0];
+    var bovfield = bovtourney.displayGroups[0].markets[0].outcomes;
+    var prevodds = 0;
 
-    res.on('error', function (e) {
-        console.log(e);
-    });
-
-    res.on('end', () => {
-        var bovadadata = JSON.parse(data);
-        var bovadaobj = bovadadata[1];
-        var bovtourney = bovadaobj.events[0];
-        var bovfield = bovtourney.displayGroups[0].markets[0].outcomes;
-        var prevodds = 0;
-
-        for(var i = 0; i < bovfield.length; i++) {
-            var player = {
-                "tournament_id": null,
-                "id": null,
-                "first_name": null,
-                "last_name": null,
-                "name": bovfield[i].description,
-                "decimal_odds": parseFloat(bovfield[i].price.decimal),
-                "fractional_odds": bovfield[i].price.fractional,
-                "tier": null
-            }
-            //tournament_field.field.push(player);
-            if(!odds.has(player.name.toLowerCase())) odds.set(player.name.toLowerCase(), player);
-            else console.log(player);
+    for(var i = 0; i < bovfield.length; i++) {
+        var player = {
+            "tournament_id": null,
+            "id": null,
+            "first_name": null,
+            "last_name": null,
+            "name": bovfield[i].description,
+            "decimal_odds": parseFloat(bovfield[i].price.decimal),
+            "fractional_odds": bovfield[i].price.fractional,
+            "tier": null
         }
-        getfieldfrompga();
-    });
-});
+        //tournament_field.field.push(player);
+        if(!odds.has(player.name.toLowerCase())) odds.set(player.name.toLowerCase(), player);
+        else console.log(player);
+    }
 
-req.end();
+    return bovfield;
+    // getfieldfrompga();
+};
 
-function getfieldfrompga() {
-    //eventually turn this into a secure call to s3 or our db
-    var pgahost = 'data.pga.com';
-    var pgapath = '/event/R/current/leaderboard.json';
-    var pgareq = https.request({
-        host: pgahost,
-        path: pgapath,
-        method: 'GET'
-    }, (res) => {
-        var pgadata = '';
-        res.on('data', function (chunk) {
-            pgadata += chunk;
-        });
+// bovada().then(console.log).catch(console.error);
 
-        res.on('error', function (e) {
-            console.log(e);
-        });
-
-        res.on('end', () => {
-            pgagolfers = JSON.parse(pgadata);
-            golfers = pgagolfers.player;
-            buildit();
-        });
-    });
-    pgareq.end();}
-
-function buildit() {
+const buildit = async () => {
+    const golfers = (await getLeaderboard()).rows
+    const bovadaField = await bovada();
     //need to fix the masters hard coding
     for(let g = 0; g < golfers.length; g++) {
         let golfer = golfers[g];
@@ -109,20 +101,19 @@ function buildit() {
         //standardize the record
         let newgolfer = {
             "id": id++,
-            "first_name":golfer.firstName,
-            "last_name":golfer.lastName,
+            "first_name":golfer.playerNames.firstName,
+            "last_name":golfer.playerNames.lastName,
             "country_code": golfer.country,
             "masters_id": parseInt(golfer.id),
-            "pga_id": parseInt(golfer.id),
+            "pga_id": parseInt(golfer.playerId),
             "open_id": null,
             "us_open_id": null
         };
         var golferkey = newgolfer.first_name + " " + newgolfer.last_name;
         if(!odds.has(golferkey.toLowerCase())) {
             //create a new player with 500:1 odds?
-            console.log(golferkey);
             var player = {
-                "tournament_id": newgolfer.masters_id,
+                "tournament_id": newgolfer.pga_id,
                 "id": newgolfer.id,
                 "first_name": newgolfer.first_name,
                 "last_name": newgolfer.last_name,
@@ -134,7 +125,7 @@ function buildit() {
         } else {
             var oddsgolf = odds.get(golferkey.toLowerCase());
             var player = {
-                "tournament_id": newgolfer.masters_id,
+                "tournament_id": newgolfer.pga_id,
                 "id": newgolfer.id,
                 "first_name": newgolfer.first_name,
                 "last_name": newgolfer.last_name,
@@ -146,6 +137,17 @@ function buildit() {
         }
     }
     tournament_info.field.sort((a, b) => {return a.decimal_odds-b.decimal_odds;});
-    console.log(JSON.stringify(tournament_info));
 
-}
+    return tournament_info;
+};
+
+const saveTournamentInfo = async (tournament_info) => {
+    await fs.writeFile('tournament_info.json', JSON.stringify(tournament_info, null, 4));
+};
+
+const main = async () => {
+    const tournamentInfo = await buildit();
+    await saveTournamentInfo(tournament_info);
+};
+
+main().catch(console.error);

@@ -1,0 +1,16 @@
+{
+  "name": "helpers",
+  "version": "1.0.0",
+  "description": "",
+  "main": "2019-bovada-masters.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.19.2",
+    "concat-stream": "^2.0.0",
+    "follow-redirects": "^1.12.1"
+  }
+}
