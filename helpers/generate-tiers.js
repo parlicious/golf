@@ -55,4 +55,4 @@ for(var i = 0; i < tournament_info.field.length; i++) {
     }
 }
 
-console.log(JSON.stringify(tournament_info));
+fs.writeFileSync('tournament_info.json', JSON.stringify(tournament_info, null, 4));
