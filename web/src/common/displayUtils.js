@@ -4,16 +4,21 @@ import moment from 'moment-timezone';
 const inProgressOrFinishedThruPattern = /[0-9]+|F/;
 
 export const DisplayUtils = {
-
   convertTeeTimeToLocalTimeZone(teeTimeString, teeTimeFormat, teeTimeZone) {
+    let baseString = teeTimeString;
+    let modifier = '';
+    if(teeTimeString.endsWith('*')) {
+      baseString = teeTimeString.split(-1);
+      modifier = '*';
+    }
     const toZone = moment.tz.guess();
-    const result = moment.tz(teeTimeString, teeTimeFormat, teeTimeZone);
-    return result.tz(toZone).format(teeTimeFormat);
+    const result = moment.tz(baseString, teeTimeFormat, teeTimeZone);
+    return `${result.tz(toZone).format(teeTimeFormat)}${modifier}`;
   },
   getPickThru(pick, timeInformation) {
-    if (pick.thru.includes(':')) {
+    if (pick.thru.includes(':') || pick.thru.includes('--')) {
       if (timeInformation && timeInformation.zone && timeInformation.format) {
-        return this.convertTeeTimeToLocalTimeZone(pick.thru, timeInformation.format, timeInformation.zone);
+        return this.convertTeeTimeToLocalTimeZone(pick.teetime, timeInformation.format, timeInformation.zone);
       }
     }
 
