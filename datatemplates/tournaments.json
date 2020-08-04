@@ -3,7 +3,7 @@
     "id": "2019-open-championship",
     "tournament_name": "2019 Open Championship",
     "timestamp": 1563198166806,
-    "active": true,
+    "active": false,
     "title": "open-championship",
     "year": "2019",
     "start": "",
@@ -84,24 +84,24 @@
     "field": "https://s3.amazonaws.com/parlicious-data-public/picks/us-open/2019/tournament_info.json"
   },
   {
-    "id": "2019-rugby-world-cup",
-    "tournament_name": "Rugby World Cup",
-    "timestamp": 1560184046232,
+    "id": "2020-pga",
+    "tournament_name": "2020 PGA",
+    "timestamp": 1554499286114,
     "active": true,
-    "title": "rugby-world-cup",
-    "year": "2019",
+    "title": "pga",
+    "year": "2020",
     "start": "",
     "end": "",
-    "accepting_picks_until": "2019-09-21T13:45:00Z",
-    "location": "",
+    "accepting_picks_until": "2020-08-06T00:00:00Z",
+    "location": "TPC Harding Park, San Fransisco, CA",
     "coords": {
-      "lat": 36.5685,
-      "lon": -121.9508
+      "lat": 37.7240,
+      "lon": -122.4930
     },
     "timeFormat": "h:mm A",
     "timeZone": "America/Los_Angeles",
-    "picks": "https://s3.amazonaws.com/parlicious-data-public/picks/rubgy/2019/picks.json",
-    "leaderboard": "",
-    "field": ""
+    "picks": "https://s3.amazonaws.com/parlicious-data-public/picks/pga/2020/picks.json",
+    "leaderboard": "https://s3.amazonaws.com/parlicious-data-public/leaderboards/pga/2020/leaderboard.json",
+    "field": "https://s3.amazonaws.com/parlicious-data-public/picks/pga/2020/tournament_info.json"
   }
 ]

@@ -21,7 +21,7 @@ const getLeaderboard = async () => {
 
     const id = 'id8730931'
     const token = global.window.pgatour.setTrackingUserId(id);
-    const url = `http://lbdata.pgatour.com/2020/r/476/leaderboard.json?userTrackingId=${token}`;
+    const url = `https://lbdata.pgatour.com/2020/r/033/leaderboard.json?userTrackingId=${token}`;
     console.log(url);
     const leaderboardResponse = await axios.get(url);
     return leaderboardResponse.data;
@@ -31,15 +31,15 @@ const getLeaderboard = async () => {
 
 var golfers = null;
 var tournament_info = {
-    "id": "2020-st-jude-invitational",
-    "tournament_name": "2020 St. Jude Invitational",
+    "id": "2020-pga-championship",
+    "tournament_name": "2020 PGA Championship",
     "timestamp": Date.now(),
     "picks_per_tier": {
         "A": 1,
         "B": 2,
         "C": 3,
         "D": 4,
-        "E": 0
+        "E": 1
     },
     "field": [
         // {
@@ -63,7 +63,7 @@ var options = {
 const bovada = async () => {
     const bovadaResponse = await axios.get('http://www.bovada.lv/services/sports/event/v2/events/A/description/golf?marketFilterId=rank&preMatchOnly=true&eventsLimit=50&lang=en');
     var bovadadata = bovadaResponse.data
-    var bovadaobj = bovadadata[1];
+    var bovadaobj = bovadadata[0];
     var bovtourney = bovadaobj.events[0];
     var bovfield = bovtourney.displayGroups[0].markets[0].outcomes;
     var prevodds = 0;
@@ -117,8 +117,8 @@ const buildit = async () => {
                 "id": newgolfer.id,
                 "first_name": newgolfer.first_name,
                 "last_name": newgolfer.last_name,
-                "decimal_odds": 501,
-                "fractional_odds": "500/1",
+                "decimal_odds": 502,
+                "fractional_odds": "501/1",
                 "tier": null
             };
             tournament_info.field.push(player);
