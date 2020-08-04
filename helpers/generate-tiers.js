@@ -55,4 +55,6 @@ for(var i = 0; i < tournament_info.field.length; i++) {
     }
 }
 
+tournament_info.field.sort((a, b) => {return a.decimal_odds-b.decimal_odds;});
+
 fs.writeFileSync('tournament_info.json', JSON.stringify(tournament_info, null, 4));

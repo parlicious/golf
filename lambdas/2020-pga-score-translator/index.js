@@ -13,7 +13,7 @@ const getLeaderboard = async () => {
 
     const id = 'id8730931';
     const token = global.window.pgatour.setTrackingUserId(id);
-    const url = `http://lbdata.pgatour.com/2020/r/476/leaderboard.json?userTrackingId=${token}`;
+    const url = `https://lbdata.pgatour.com/2020/r/033/leaderboard.json?userTrackingId=${token}`;
     console.log(url);
     const leaderboardResponse = await axios.get(url);
     return leaderboardResponse.data;
@@ -53,7 +53,7 @@ function buildleaderboard(callback, count) {
             };
             leaderboard.players.push(newplayer);
         }
-        const key = 'leaderboards/stjude/2020/leaderboard.json';
+        const key = 'leaderboards/pga/2020/leaderboard.json';
 
         // console.log(leaderboard);
         const params = {
