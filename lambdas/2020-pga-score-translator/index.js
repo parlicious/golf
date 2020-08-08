@@ -26,15 +26,15 @@ function buildleaderboard(callback, count) {
         version: 1,
         round: null,
         cut_line: null,
-        cut_penalty: null,
+        cut_penalty: 3,
         timezone: 'EDT',
         refreshed: Date.now(),
         players: [],
     };
     getLeaderboard().then((pgadata) => {
         // build our model
-        leaderboard.cut_line = pgadata.currentRound === 2 ? pgadata.tournamentCut.projectedCut : null;
-        leaderboard.round = pgadata.currentRound;
+        leaderboard.cut_line = pgadata.tournamentRoundId === 2 ? pgadata.cutLines[0].cut_line_score : null;
+        leaderboard.round = pgadata.tournamentRoundId;
         const players = pgadata.rows;
         for (let i = 0; i < players.length; i++) {
             const player = players[i];
@@ -48,8 +48,8 @@ function buildleaderboard(callback, count) {
                 to_par: player.total === '-' ? getScoreTotal(player.round) : player.total,
                 position: player.positionCurrent,
                 individual_pen: player.positionCurrent === 'CUT' ? leaderboard.cut_penalty * 2 : null,
-                individual_bonus: ((leaderboard.round === 3 || leaderboard.round === 4) && player.currentPosition === '1') ? leaderboard.cut_penalty * -2 : null,
-                status: player.currentPosition === 'CUT' ? 'C' : 'A',
+                individual_bonus: ((leaderboard.round === 3 || leaderboard.round === 4) && player.positionCurrent === '1') ? leaderboard.cut_penalty * -2 : null,
+                status: player.positionCurrent === 'CUT' ? 'C' : 'A',
             };
             leaderboard.players.push(newplayer);
         }
