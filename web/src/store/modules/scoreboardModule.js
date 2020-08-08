@@ -92,7 +92,7 @@ export default {
     },
     getCutLine({ leaderboard }) {
       if (leaderboard) {
-        return leaderboard.cutline;
+        return leaderboard.cut_line;
       }
       return '';
     },
