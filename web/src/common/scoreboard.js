@@ -1,5 +1,20 @@
 import * as _ from 'lodash';
 import { ApiService } from './api';
+import * as firebase from "firebase/app";
+
+import 'firebase/storage';
+
+const firebaseConfig = {
+  apiKey: "AIzaSyCUrTOYW7fiMrInL3rHvtU2ospEjz-ZN_o",
+  authDomain: "parlicious.firebaseapp.com",
+  databaseURL: "https://parlicious.firebaseio.com",
+  projectId: "parlicious",
+  storageBucket: "parlicious.appspot.com",
+  messagingSenderId: "1045237535069",
+  appId: "1:1045237535069:web:353b8629ee2f6026b5d8b4"
+};
+
+firebase.initializeApp(firebaseConfig);
 
 const calculatePoolParticipantScores = (poolParticipant, playerMap) => {
   const [total, today] = poolParticipant.picks.reduce(([accTotal, accToday], val) => {
@@ -111,13 +126,14 @@ export const addCutLineIndicator = (cutLine, orderedPlayers) => {
   return newOrderedPlayers;
 };
 
-
 export const ScoreboardService = {
   async getTournaments() {
     return (await ApiService.getTournaments()).data;
   },
   async getLeaderboard(tournament) {
-    return (await ApiService.getBusted(tournament.leaderboard)).data;
+    const storage = firebase.storage();
+    const url = await storage.refFromURL('gs://parlicious.appspot.com/leaderboard.json').getDownloadURL();
+    return (await ApiService.getBusted(url)).data;
   },
   async getPicks(tournament) {
     return (await ApiService.get(tournament.picks)).data;

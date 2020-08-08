@@ -12,14 +12,14 @@
 </template>
 
 <script>
-  import DarkModeComponent from './components/DarkModeComponent.vue';
+import DarkModeComponent from './components/DarkModeComponent.vue';
 
-  export default {
-    name: "App",
-    components: {
-      DarkModeComponent,
-    }
-  };
+export default {
+  name: 'App',
+  components: {
+    DarkModeComponent,
+  },
+};
 </script>
 
 
@@ -283,12 +283,6 @@
     text-align: right;
   }
 
-  .increased {
-    color: var(--danger-color);
-    background-color: var(--danger-background-color);
-    border-color: var(--danger-border-color);
-  }
-
 
   #bootstrap-overrides .increased a {
     color: var(--danger-color);
@@ -300,6 +294,12 @@
     color: var(--success-color);
     background-color: var(--success-background-color);
     border-color: var(--success-border-color);
+  }
+
+  .increased {
+    color: var(--danger-color);
+    background-color: var(--danger-background-color);
+    border-color: var(--danger-border-color);
   }
 
   .decreased {
