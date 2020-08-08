@@ -65,15 +65,6 @@
             "tier": "B"
         },
         {
-            "tournament_id": 49771,
-            "id": 97,
-            "first_name": "J.T.",
-            "last_name": "Poston",
-            "decimal_odds": 17,
-            "fractional_odds": "16/1",
-            "tier": "B"
-        },
-        {
             "tournament_id": 30925,
             "id": 47,
             "first_name": "Dustin",
@@ -656,6 +647,15 @@
             "last_name": "Champ",
             "decimal_odds": 201,
             "fractional_odds": "200/1",
+            "tier": "D"
+        },
+        {
+            "tournament_id": 49771,
+            "id": 97,
+            "first_name": "J.T.",
+            "last_name": "Poston",
+            "decimal_odds": 251,
+            "fractional_odds": "250/1",
             "tier": "D"
         },
         {

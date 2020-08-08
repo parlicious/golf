@@ -92,7 +92,13 @@ export default {
     },
     getCutLine({ leaderboard }) {
       if (leaderboard) {
-        return leaderboard.cut_line;
+        return leaderboard.cutline;
+      }
+      return '';
+    },
+    getProjectedCutLine({ leaderboard }) {
+      if (leaderboard) {
+        return leaderboard.projected_penalty;
       }
       return '';
     },

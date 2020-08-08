@@ -27,12 +27,14 @@ function buildleaderboard(callback, count) {
         round: null,
         cut_line: null,
         cut_penalty: null,
+        projected_penalty: null,
         timezone: 'EDT',
         refreshed: Date.now(),
         players: [],
     };
     getLeaderboard().then((pgadata) => {
         // build our model
+        leaderboard.projected_penalty = pgadata.cutLines && pgadata.cutLines[0] && pgadata.cutLines[0].cut_line_score;
         leaderboard.cut_line = pgadata.currentRound === 2 ? pgadata.tournamentCut.projectedCut : null;
         leaderboard.round = pgadata.currentRound;
         const players = pgadata.rows;

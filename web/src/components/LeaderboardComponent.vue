@@ -14,6 +14,9 @@
       <div v-if="cutLine">
         Cut Line: {{cutLine}}
       </div>
+      <div v-if="projectedCutLine">
+        Projected Cut Line: {{projectedCutLine}}
+      </div>
     </div>
     <table class="table"
     v-bind:class="{condensed: tableCondensed}">
@@ -46,7 +49,7 @@
         ><a
           rel="noreferrer"
           target="_blank"
-          :href="`https://www.pga.com/events/openchampionship/leaderboard/2019/?pid=${player.id}`">
+          :href="`https://www.pgatour.com/players/player.${player.id}.${player.first_name}-${player.last_name}.html/scorecards/r033/2020`">
           {{player.first_name}} {{player.last_name}}
         </a>
         </td>
@@ -91,7 +94,7 @@ export default {
   },
   data() {
     return {
-      tableCondensed: true,
+      tableCondensed: false,
     };
   },
   computed: {
@@ -99,6 +102,7 @@ export default {
       timeInformation: 'getTimeInformationForActiveTournament',
       tournamentName: 'getTournamentName',
       cutLine: 'getCutLine',
+      projectedCutLine: 'getProjectedCutLine',
       players: 'getOrderedPlayers',
       playersToPoolParticipants: 'getPlayersToPoolParticipants',
     }),

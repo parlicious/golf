@@ -5,6 +5,9 @@ const inProgressOrFinishedThruPattern = /[0-9]+|F/;
 
 export const DisplayUtils = {
   convertTeeTimeToLocalTimeZone(teeTimeString, teeTimeFormat, teeTimeZone) {
+    if(!teeTimeString){
+      return "";
+    }
     let baseString = teeTimeString;
     let modifier = '';
     if(teeTimeString.endsWith('*')) {

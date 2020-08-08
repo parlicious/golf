@@ -44,6 +44,15 @@ export const ApiService = {
     return this.post(API_URL, picksRequest);
   },
 
+  async getShotTracker(round, playerId) {
+    await import(/* webpackIgnore: true */'https://microservice.pgatour.com/js');
+    const id = 'id8730931';
+    const token = window.pgatour.setTrackingUserId(id);
+    const url = `https://lbdata.pgatour.com/2020/r/033/drawer/r${round}-m${playerId}.json?userTrackingId=${token}`;
+    const leaderboardResponse = await axios.get(url);
+    return leaderboardResponse.data;
+  },
+
   getBusted(resource) {
     return Vue.axios.get(`${resource}?${Date.now()}`).catch((error) => {
       throw new Error(`[RWV] ApiService ${error}`);

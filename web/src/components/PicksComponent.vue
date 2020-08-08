@@ -162,7 +162,10 @@
                     type="submit"
                     class="btn btn-primary mb-2"
                     :disabled="!submitFormValid()">
-                    Submit Picks
+                    <template v-if="!this.submitting"> Submit Picks </template>
+                    <template v-if="this.submitting">
+                      <i class="fas fa-spinner fa-spin"></i>
+                    </template>
                   </button>
                 </div>
               </div>
@@ -222,6 +225,7 @@ export default {
       email: '',
       name: '',
       editKey: '',
+      submitting: false,
       showErrorMessage: false,
       errorMessage: null,
       showInfoMessage: false,
@@ -316,6 +320,7 @@ export default {
       return !!this.email && !!this.name && !!this.editKey;
     },
     async submitPicks() {
+      this.submitting = true;
       const picks = this.players.filter(p => p.picked);
       try {
         await PicksService.submitPicks(picks, this.email, this.name, this.editKey);
@@ -328,6 +333,8 @@ export default {
         } else {
           this.displayError('Error saving picks');
         }
+      } finally {
+        this.submitting = false;
       }
     },
     tierView() {

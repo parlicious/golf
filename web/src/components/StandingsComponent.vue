@@ -22,6 +22,9 @@
        <div v-if="cutLine">
          Cut Line: {{cutLine}}
        </div>
+        <div v-if="projectedCutLine">
+          Projected Cut Line: {{projectedCutLine}}
+        </div>
       </div>
       <div v-if="!loading" class="content">
         <table class="table" v-bind:class="{condensed: tableCondensed}">
@@ -80,6 +83,7 @@ export default {
     ...mapGetters({
       tournamentName: 'getTournamentName',
       cutLine: 'getCutLine',
+      projectedCutLine: 'getProjectedCutLine',
       players: 'getPlayers',
       timezone: 'getTimezone',
       poolParticipants: 'getPoolParticipantsWithFullPicks',
