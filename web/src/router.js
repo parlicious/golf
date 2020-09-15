@@ -3,6 +3,7 @@ import Router from 'vue-router';
 import Leaderboard from './views/Leaderboard.vue';
 import History from './views/History.vue';
 import Standings from './views/Standings.vue';
+import Stream from './views/Stream.vue';
 
 Vue.use(Router);
 
@@ -22,6 +23,11 @@ export default new Router({
       path: '/leaderboard',
       name: 'leaderboard',
       component: Leaderboard,
+    },
+    {
+      path: '/stream',
+      name: 'stream',
+      component: Stream,
     },
     {
       path: '/picks',

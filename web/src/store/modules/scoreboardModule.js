@@ -189,6 +189,10 @@ export default {
         tournament: payload.tournament,
       });
     },
+    async performSimulation({ state }) {
+      console.log('in simulation');
+      console.log(state);
+    },
     async initTournament({
       commit, dispatch, state, getters,
     }, payload) {
@@ -203,7 +207,7 @@ export default {
         });
 
         await loadTournament();
-
+        dispatch('performSimulation');
         commit({
           type: 'setTournamentInterval',
           id: setInterval(loadTournament, TOURNAMENT_REFRESH_INTERVAL),

@@ -13,19 +13,6 @@ var path = '/services/sports/event/v2/events/A/description/golf?marketFilterId=r
 var odds = new Map();
 var id = 1;
 
-const getLeaderboardNew = async () => {
-    const response = await axios.get('http://microservice.pgatour.com/js');
-    const remoteSrc = response.data;
-    global.window = {};
-    vm.runInThisContext(remoteSrc, 'pga_token.js');
-
-    const id = 'id8730931'
-    const token = global.window.pgatour.setTrackingUserId(id);
-    const url = `https://lbdata.pgatour.com/2020/r/033/leaderboard.json?userTrackingId=${token}`;
-    console.log(url);
-    const leaderboardResponse = await axios.get(url);
-    return leaderboardResponse.data;
-};
 
 const getLeaderboard = async () => {
     const leaderboardResponse = await axios.get("https://statdata.pgatour.com/r/026/2021/field.json");
@@ -36,8 +23,8 @@ const getLeaderboard = async () => {
 
 var golfers = null;
 var tournament_info = {
-    "id": "2020-pga-championship",
-    "tournament_name": "2020 PGA Championship",
+    "id": "2020-us-open",
+    "tournament_name": "2020 US Open",
     "timestamp": Date.now(),
     "picks_per_tier": {
         "A": 1,
@@ -96,7 +83,7 @@ const bovada = async () => {
 // bovada().then(console.log).catch(console.error);
 
 const buildit = async () => {
-    const golfers = (await getLeaderboard()).rows
+    const golfers = (await getLeaderboard()).Tournament.Players
     const bovadaField = await bovada();
     //need to fix the masters hard coding
     for(let g = 0; g < golfers.length; g++) {
@@ -104,21 +91,22 @@ const buildit = async () => {
         //skip placeholders
         if(golfer.id === "90001") continue;
         //standardize the record
+        const [lastname, firstname] = golfer.PlayerName.split(',').map(s => s.trim())
         let newgolfer = {
             "id": id++,
-            "first_name":golfer.playerNames.firstName,
-            "last_name":golfer.playerNames.lastName,
-            "country_code": golfer.country,
-            "masters_id": parseInt(golfer.id),
+            "first_name":firstname,
+            "last_name":lastname,
+            "country_code": 'USA',
+            "masters_id": parseInt(golfer.TournamentPlayerId),
             "pga_id": parseInt(golfer.playerId),
             "open_id": null,
-            "us_open_id": null
+            "us_open_id": parseInt(golfer.TournamentPlayerId),
         };
-        var golferkey = newgolfer.first_name + " " + newgolfer.last_name;
+        var golferkey = newgolfer.first_name.normalize("NFD").replace(/[\u0300-\u036f]/g, "") + " " + newgolfer.last_name.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
         if(!odds.has(golferkey.toLowerCase())) {
             //create a new player with 500:1 odds?
             var player = {
-                "tournament_id": newgolfer.pga_id,
+                "tournament_id": newgolfer.us_open_id,
                 "id": newgolfer.id,
                 "first_name": newgolfer.first_name,
                 "last_name": newgolfer.last_name,
@@ -130,7 +118,7 @@ const buildit = async () => {
         } else {
             var oddsgolf = odds.get(golferkey.toLowerCase());
             var player = {
-                "tournament_id": newgolfer.pga_id,
+                "tournament_id": newgolfer.us_open_id,
                 "id": newgolfer.id,
                 "first_name": newgolfer.first_name,
                 "last_name": newgolfer.last_name,
