@@ -47,9 +47,9 @@ function buildleaderboard(callback, count) {
                 today: player.round,
                 to_par: player.total === '-' ? getScoreTotal(player.round) : player.total,
                 position: player.positionCurrent,
-                individual_pen: player.positionCurrent === 'CUT' ? leaderboard.cut_penalty * 2 : null,
+                individual_pen: player.status === 'cut' ? leaderboard.cut_penalty * 2 : null,
                 individual_bonus: ((leaderboard.round === 3 || leaderboard.round === 4) && player.positionCurrent === '1') ? leaderboard.cut_penalty * -2 : null,
-                status: player.positionCurrent === 'CUT' ? 'C' : 'A',
+                status: player.status === 'cut' ? 'C' : 'A',
             };
             leaderboard.players.push(newplayer);
         }
