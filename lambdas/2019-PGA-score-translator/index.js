@@ -57,9 +57,9 @@ function buildleaderboard(callback, count) {
 					today: player.currentParRelative,
 					to_par: player.totalParRelative === '-' ? getScoreTotal(player.round) : player.totalParRelative,
 					position: player.currentPosition,
-					individual_pen: player.currentPosition === 'CUT' ? leaderboard.cut_penalty * 2 : null,
+					individual_pen: player.status === 'cut' ? leaderboard.cut_penalty * 2 : null,
 					individual_bonus: ((leaderboard.round === 3 || leaderboard.round === 4) && player.currentPosition === '1') ? leaderboard.cut_penalty * -2 : null,
-					status: player.currentPosition === 'CUT' ? 'C' : 'A',
+					status: player.status === 'CUT' ? 'C' : 'A',
 				};
 				leaderboard.players.push(newplayer);
 			}
