@@ -111,6 +111,9 @@ export const addCutLineIndicator = (cutLine, orderedPlayers) => {
   return newOrderedPlayers;
 };
 
+export const simulateRemainingScores = (leaderboard) => {
+  console.log(leaderboard);
+};
 
 export const ScoreboardService = {
   async getTournaments() {

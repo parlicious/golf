@@ -92,4 +92,7 @@ export const DisplayUtils = {
     }
     return val || 'E';
   },
+  getParticipantByName(participants, name) {
+    return participants.find(p => p.name === name)
+  },
 };

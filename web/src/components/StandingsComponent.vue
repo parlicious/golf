@@ -62,6 +62,7 @@ import { mapGetters } from 'vuex';
 import PoolParticipantComponent from '@/components/PoolParticipantComponent.vue';
 import ColoringKeyComponent from '@/components/ColoringKeyComponent.vue';
 import WeatherComponent from '@/components/WeatherComponent.vue';
+import {simulateRemainingScores} from "../common/scoreboard";
 
 export default {
   name: 'LeaderboardComponent',
@@ -78,6 +79,9 @@ export default {
       tableCondensed: true,
       leaderboardActive: true,
     };
+  },
+  mounted() {
+
   },
   computed: {
     ...mapGetters({

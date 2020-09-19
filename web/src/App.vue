@@ -4,6 +4,7 @@
       <router-link to="/standings">Standings</router-link>
       <router-link to="/leaderboard">Leaderboard</router-link>
       <router-link to="/picks">Picks</router-link>
+      <router-link to="/stream">Stream</router-link>
       <router-link to="/history">History</router-link>
     </div>
     <router-view/>
@@ -12,14 +13,14 @@
 </template>
 
 <script>
-  import DarkModeComponent from './components/DarkModeComponent.vue';
+import DarkModeComponent from './components/DarkModeComponent.vue';
 
-  export default {
-    name: "App",
-    components: {
-      DarkModeComponent,
-    }
-  };
+export default {
+  name: 'App',
+  components: {
+    DarkModeComponent,
+  },
+};
 </script>
 
 
