@@ -13,14 +13,14 @@
 </template>
 
 <script>
-import DarkModeComponent from './components/DarkModeComponent.vue';
+  import DarkModeComponent from './components/DarkModeComponent.vue';
 
-export default {
-  name: 'App',
-  components: {
-    DarkModeComponent,
-  },
-};
+  export default {
+    name: 'App',
+    components: {
+      DarkModeComponent,
+    },
+  };
 </script>
 
 
@@ -62,6 +62,14 @@ export default {
     --sonic4: #F1C3BB;
     --sonic5: #FFE2CF;
     --sonic6: #FFE2CF;
+
+    --autumn6: #D99E29;
+    --autumn5: #F2C49B;
+    --autumn4: #D99E29;
+    --autumn3: #D99E29;
+    /*--autumn2: #964850;*/
+    --autumn2: #C05E48;
+    --autumn1: #8C4946;
 
 
     --water1: #E7E8EA;
@@ -107,6 +115,8 @@ export default {
 
     --cut-line-bg-color: var(--table-header-text-color);
     --cut-line-color: var(--light-nav-button-text);
+
+    --font-family: 'Avenir', Helvetica, Arial, sans-serif;
   }
 
   [data-theme="dark"] {
@@ -143,6 +153,23 @@ export default {
     --cut-line-color: var(--sonic1);
   }
 
+  [data-theme="autumn"] {
+    --body-text: var(--autumn5);
+    --background: var(--autumn1);
+    --nav-button-bg: var(--autumn6);
+    --nav-button-text: var(--autumn1);
+    --table-row-hover: var(--autumn2);
+    --td-th-border-top: var(--autumn2);
+
+    --link-color: var(--orange);
+
+    --expand-button-color: var(--autumn1);
+    --expand-button-bg-color: var(--autumn5);
+
+    --cut-line-bg-color: var(--autumn5);
+    --cut-line-color: var(--autumn1);
+  }
+
   [data-theme="vaporwave"] {
     --body-text: var(--vapor5);
     --background: var(--vapor1);
@@ -158,6 +185,34 @@ export default {
 
     --cut-line-bg-color: var(--vapor5);
     --cut-line-color: var(--vapor1);
+  }
+
+  [data-theme="console"] {
+
+    --console2: var(--gray0);
+    --console1: black;
+    --console5: green;
+    --console6: green;
+
+    --font-family: monospace;
+
+    font-size: 1.2rem;
+
+    --body-text: var(--console5);
+    --background: var(--console1);
+    --nav-button-bg: var(--console6);
+    --nav-button-text: var(--console1);
+    --table-row-hover: var(--console2);
+    --td-th-border-top: var(--console2);
+
+    --link-color: var(--console6);
+
+    --expand-button-color: var(--console1);
+    --expand-button-bg-color: var(--console5);
+
+    --cut-line-bg-color: var(--console5);
+    --cut-line-color: var(--console1);
+
   }
 
   [data-theme="beach"] {
@@ -182,6 +237,23 @@ export default {
     --cut-line-color: var(--beach1);
   }
 
+  [data-theme="overlay"] {
+    --body-text: white;
+    --background: transparent;
+    --nav-button-bg: var(--gray6);
+    --nav-button-text: var(--gray1);
+    --table-row-hover: var(--gray2);
+    --td-th-border-top: white;
+
+    --link-color: var(--orange);
+
+    --expand-button-color: var(--gray1);
+    --expand-button-bg-color: var(--gray5);
+
+    --cut-line-bg-color: var(--gray5);
+    --cut-line-color: var(--gray1);
+  }
+
   [data-theme="water"] {
     --body-text: var(--water5);
     --background: var(--water1);
@@ -197,6 +269,16 @@ export default {
 
     --cut-line-bg-color: var(--water5);
     --cut-line-color: var(--water1);
+  }
+
+  [data-movement-theme="inverted"] {
+    --danger-color: #155724;
+    --danger-background-color: #d4edda;
+    --danger-border-color: #c3e6cb;
+
+    --success-color: #721c24;
+    --success-background-color: #f8d7da;
+    --success-border-color: #f5c6cb;
   }
 
   /*@media (prefers-color-scheme: dark) {*/
@@ -253,7 +335,7 @@ export default {
   }
 
   #app {
-    font-family: 'Avenir', Helvetica, Arial, sans-serif;
+    font-family: var(--font-family);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-align: center;
@@ -366,5 +448,15 @@ export default {
     padding-right: .4rem;
     text-align: center;
     border: 3px #35495e solid;
+  }
+
+  h1 {
+    font-size: 32px;
+    text-align: right;
+    margin-bottom: 40px;
+  }
+
+  .scoreboard-year {
+    font-weight: 200;
   }
 </style>
