@@ -24,7 +24,7 @@
           class="player-name"
           rel="noreferrer"
           target="_blank"
-          :href="`https://www.pgatour.com/players/player.${pick.id}.${pick.first_name}-${pick.last_name}.html/scorecards/r033/2020`">
+          :href="`https://www.masters.com/en_US/players/player_${pick.id}.html`">
           {{pick.first_name}} {{pick.last_name}}
         </a>
       </td>

@@ -9,12 +9,16 @@
     <i v-on:click="setTheme('light')"
        class="fas fa-sun">
     </i>
+    <i v-on:click="setTheme('autumn')"
+       class="fas fa-leaf">
+    </i>
   </div>
 </template>
 
 <script>
 import figlet from 'figlet';
-import big from 'figlet/importable-fonts/Big.js'
+import big from 'figlet/importable-fonts/Big.js';
+
 figlet.defaults({ fontPath: `${window.location.origin}/fonts/` });
 
 export default {
@@ -40,13 +44,29 @@ export default {
       this.theme = 'dark';
     }
 
+    if (this.$route.query.theme) {
+      this.theme = this.$route.query.theme;
+    }
+
+    const ascii = `
+     '\\                   .  .                        |>18>>
+       \\              .         ' .                   |
+      O>>         .                 'o                |
+       \\       .                                      |
+       /\\    .                                        |
+      / /  .'                                         |
+jgs^^^^^^^\`^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    `;
+
     figlet.parseFont('big', big);
     figlet.text('Parlicious', {
       font: 'big',
     }, (err, data) => {
       console.log(data);
+      console.log(ascii);
       const themes = this.themesList.map(t => `'${t}'`).join(' ');
       console.log(`Call setTheme with any of the following themes to change your theme:\n${themes}`);
+      console.log('Call \`wrongMode\` to swap increase and decrease colors');
     });
 
     this.applyTheme(this.theme);
@@ -66,6 +86,10 @@ export default {
 window.setTheme = (theme) => {
   localStorage.theme = theme;
   document.body.setAttribute('data-theme', theme);
+};
+
+window.wrongMode = () => {
+  document.body.setAttribute('data-movement-theme', 'inverted');
 };
 </script>
 

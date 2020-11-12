@@ -18,8 +18,7 @@
         Projected Cut Line: {{projectedCutLine}}
       </div>
     </div>
-    <table class="table"
-    v-bind:class="{condensed: tableCondensed}">
+    <table class="table condensed">
       <thead>
       <tr>
         <th scope="col">Pos</th>
@@ -49,7 +48,7 @@
         ><a
           rel="noreferrer"
           target="_blank"
-          :href="`https://www.pgatour.com/players/player.${player.id}.${player.first_name}-${player.last_name}.html/scorecards/r033/2020`">
+          :href="`https://www.masters.com/en_US/players/player_${player.id}.html`">
           {{player.first_name}} {{player.last_name}}
         </a>
         </td>
