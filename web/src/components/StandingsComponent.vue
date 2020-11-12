@@ -2,7 +2,7 @@
   <div class="post">
     <weather-component></weather-component>
     <div class="hello">
-      <h1> {{tournamentName}} Standings </h1>
+      <h1>{{tournamentName}} <span class="light">Standings</span></h1>
     </div>
     <div class="loading" v-if="loading">
       Loading...
@@ -10,15 +10,6 @@
 
     <div v-if="leaderboardActive">
       <div class="condense-expand">
-        <div
-          class="expand-button"
-          v-if="showAll"  v-on:click="showAll = !showAll">
-          Collapse All
-        </div>
-        <div v-if="!showAll" v-on:click="showAll = !showAll"
-             class="expand-button">
-          Expand All
-        </div>
        <div v-if="cutLine">
          Cut Line: {{cutLine}}
        </div>
@@ -30,11 +21,20 @@
         <table class="table" v-bind:class="{condensed: tableCondensed}">
           <thead>
           <tr>
-            <th class="player-name-cell" scope="col">Name</th>
+            <th class="player-name-cell" scope="col">
+              <div class="expand-button" v-if="showAll"  v-on:click="showAll = !showAll">
+                  <i class="far fa-minus-square"></i>
+                  Collapse All
+              </div>
+              <div v-if="!showAll" v-on:click="showAll = !showAll" class="expand-button">
+                <i class="far fa-plus-square"></i>
+                Expand All
+              </div>
+              <div>Name</div>
+            </th>
             <th scope="col">Total</th>
             <th scope="col">Today</th>
             <th scope="col">Penalty</th>
-            <th scope="col">Tier</th>
             <th class="player-thru-cell" scope="col">Thru</th>
           </tr>
           </thead>
@@ -123,14 +123,15 @@ export default {
 
   .expand-button{
     cursor: pointer;
-    background-color: var(--expand-button-bg-color);
-    color: var(--expand-button-color);;
+    background-color: transparent;
+    color: var(--expand-button-bg-color);;
     font-weight: bold;
     border-radius: 5px;
-    margin: .25rem;
-    padding-left: .4rem;
-    padding-right: .4rem;
-    text-align: center;
+    padding: 10px 0px;
+    text-align: left;
+
+    font-size: 10px;
+    font-weight: 300;
   }
 
   .participant-name:hover{

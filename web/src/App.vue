@@ -26,6 +26,14 @@ export default {
 
 <style>
 
+.table {
+
+}
+
+</style>
+
+<style>
+
   :root {
 
     color-scheme: light dark;
@@ -41,7 +49,7 @@ export default {
 
     --gray0: #171717;
     --gray1: #171717;
-    --gray2: #2E2E2E;
+    --gray2: #e7e7e7;
     --gray3: #525252;
     --gray4: #6B6B6B;
     --gray5: #8C8C8C;
@@ -85,7 +93,7 @@ export default {
 
     --table-header-text-color: #46586A;
     --table-row-hover: #eee;
-    --td-th-border-top: #dee2e6;
+    --td-th-border-top: #e7e7e7;
 
     --body-text: var(--light-body-text);
     --link-color: #007BFF;
@@ -214,19 +222,30 @@ export default {
   }
 
   #bootstrap-overrides .table tbody {
-    border-bottom: 2px solid var(--td-th-border-top);
+    border-bottom: 1px solid var(--td-th-border-top);
   }
 
   #bootstrap-overrides .table thead th {
-    border-bottom: 2px solid var(--td-th-border-top);
+    border-bottom: 1px solid var(--td-th-border-top);
+    border-top: 0px;
+    text-transform: uppercase;
+    font-size: 12px;
+    font-weight: 600;
+    padding: 12px 8px;
   }
 
-  tr:hover {
+  #bootstrap-overrides .table td {
+    padding: 2px 8px;
+    border-top: 1px solid var(--td-th-border-top);
+  }
+
+  tbody tr:hover {
     background-color: var(--table-row-hover);
   }
 
   #bootstrap-overrides .table td, #bootstrap-overrides .table th {
-    border-top: 1px solid var(--td-th-border-top);
+    border-bottom: 0px;
+    font-weight: 300;
   }
 
   #bootstrap-overrides a {
@@ -244,19 +263,23 @@ export default {
   }
 
   #nav {
-    padding: 30px 10px 10px 10px;
+    padding: 30px 10px 0px 10px;
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
+    border-bottom: 1px solid var(--nav-button-bg);
+    margin-bottom: 40px;
   }
 
   #nav a {
     font-weight: bold;
     color: var(--body-text);
     padding: 1rem;
-    border: 1px solid #ccc;
-    border-radius: .25rem;
-    margin: .25rem;
+    margin: 0px .25rem;
+  }
+
+  #nav a:hover {
+    text-decoration: none;
   }
 
   #nav a.router-link-exact-active {
@@ -264,16 +287,20 @@ export default {
     color: var(--nav-button-text);
   }
 
+  h1 {
+    font-weight: 900;
+    text-align: right;
+  }
+
+  h1 .light {
+    font-weight: 300;
+  }
+
   .condensed td {
-    padding: .1rem !important;
+
   }
 
   .condensed th {
-    padding-left: .1rem !important;
-    padding-right: .1rem !important;
-    /*background-color: #92A4B6;*/
-    /*color: white;*/
-    /*color: #92A4B6;*/
   }
 
   .player-name-cell {
@@ -313,12 +340,16 @@ export default {
     background-color: var(--danger-background-color);
   }
 
+  #bootstrap-overrides tbody {
+    border: 0px;
+  }
+
   #bootstrap-overrides tbody.increased {
-    border-bottom: 2px solid var(--danger-border-color);
+    border-bottom: 1px solid var(--danger-border-color);
   }
 
   #bootstrap-overrides tbody.decreased {
-    border-bottom: 2px solid var(--success-border-color);
+    border-bottom: 1px solid var(--success-border-color);
   }
 
   .decreased:hover, .decreased tr:hover {

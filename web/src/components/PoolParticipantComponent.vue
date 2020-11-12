@@ -8,9 +8,8 @@
     <td>{{participant.total}}</td>
     <td>{{participant.today}}</td>
     <td>{{getTotalPenalty(participant)}}</td>
-    <td></td>
     <td class="player-thru-cell">
-      {{getTotalThru(participant)}} <small>⛳️ left</small>
+      <small>({{getTotalThru(participant)}} remaining)</small>
     </td>
   </tr>
   <tr
@@ -40,7 +39,6 @@
         {{getPenaltyColumn(pick)}}
         <i v-if="getPenaltyColumn(pick) < 0" class="fas fa-trophy"></i>
       </td>
-      <td>{{pick.tier}}</td>
       <td class="player-thru-cell">{{getPickThru(pick, timeInformation)}}</td>
   </tr>
   </tbody>
@@ -83,6 +81,7 @@
   .pool_participants td {
     font-weight: bold;
     color: var(--body-text);
+    border: 0px;
   }
 
   .player-name {

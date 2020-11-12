@@ -1,7 +1,7 @@
 <template>
   <div>
     <weather-component></weather-component>
-    <h1> {{tournamentName}}  Leaderboard</h1>
+    <h1> {{tournamentName}}  <span class="light">Leaderboard</span></h1>
     <div
       class="table-options"
       v-on:click="tableCondensed = !tableCondensed">
