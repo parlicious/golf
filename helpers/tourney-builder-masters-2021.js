@@ -13,31 +13,32 @@ var path = '/services/sports/event/v2/events/A/description/golf?marketFilterId=r
 var odds = new Map();
 var id = 1;
 
-const getLeaderboardNew = async () => {
-    const response = await axios.get('http://microservice.pgatour.com/js');
-    const remoteSrc = response.data;
-    global.window = {};
-    vm.runInThisContext(remoteSrc, 'pga_token.js');
-
-    const id = 'id8730931'
-    const token = global.window.pgatour.setTrackingUserId(id);
-    const url = `https://statdata-api-prod.pgatour.com/api/clientfile/Field?T_CODE=r&T_NUM=536&YEAR=2021&format=json&userTrackingId=${token}`;
-    console.log(url);
-    const leaderboardResponse = await axios.get(url);
-    return leaderboardResponse.data;
-};
 
 const getLeaderboard = async () => {
-    const leaderboardResponse = await axios.get("https://statdata.pgatour.com/r/026/2021/field.json");
+    const leaderboardResponse = await axios.get("https://www.masters.com/en_US/scores/feeds/2021/players/players.json");
     return leaderboardResponse.data;
 }
+
+// const getLeaderboardNew = async () => {
+//     const response = await axios.get('http://microservice.pgatour.com/js');
+//     const remoteSrc = response.data;
+//     global.window = {};
+//     vm.runInThisContext(remoteSrc, 'pga_token.js');
+//
+//     const id = 'id8730931'
+//     const token = global.window.pgatour.setTrackingUserId(id);
+//     const url = `https://statdata-api-prod.pgatour.com/api/clientfile/Field?T_CODE=r&T_NUM=536&YEAR=2021&format=json&userTrackingId=${token}`;
+//     console.log(url);
+//     const leaderboardResponse = await axios.get(url);
+//     return leaderboardResponse.data;
+// };
 
 // getLeaderboard().then(console.log).catch();
 
 var golfers = null;
 var tournament_info = {
-    "id": "2020-pga-championship",
-    "tournament_name": "2020 PGA Championship",
+    "id": "2021-masters",
+    "tournament_name": "2021 Masters",
     "timestamp": Date.now(),
     "picks_per_tier": {
         "A": 1,
@@ -66,7 +67,7 @@ var options = {
 };
 
 const bovada = async () => {
-    const bovadaResponse = await axios.get('http://www.bovada.lv/services/sports/event/v2/events/A/description/golf?marketFilterId=rank&preMatchOnly=true&eventsLimit=50&lang=en');
+    const bovadaResponse = await axios.get('https://www.bovada.lv/services/sports/event/coupon/events/A/description/golf/golf-futures/the-masters-2021-202104080000?lang=en');
     var bovadadata = bovadaResponse.data
     var bovadaobj = bovadadata[0];
     var bovtourney = bovadaobj.events[0];
@@ -96,7 +97,7 @@ const bovada = async () => {
 // bovada().then(console.log).catch(console.error);
 
 const buildit = async () => {
-    const golfers = (await getLeaderboardNew()).Tournament.Players
+    const golfers = (await getLeaderboard()).players
     const bovadaField = await bovada();
     //need to fix the masters hard coding
     for(let g = 0; g < golfers.length; g++) {
@@ -104,21 +105,20 @@ const buildit = async () => {
         //skip placeholders
         if(golfer.id === "90001") continue;
         //standardize the record
+        // const [lastname, firstname] = golfer.PlayerName.split(',').map(s => s.trim())
         let newgolfer = {
             "id": id++,
-            "first_name":golfer.playerNames.firstName,
-            "last_name":golfer.playerNames.lastName,
-            "country_code": golfer.country,
+            "first_name":golfer.first_name,
+            "last_name":golfer.last_name,
+            "country_code": golfer.country_code,
             "masters_id": parseInt(golfer.id),
-            "pga_id": parseInt(golfer.playerId),
-            "open_id": null,
-            "us_open_id": null
+            "open_id": null
         };
-        var golferkey = newgolfer.first_name + " " + newgolfer.last_name;
+        var golferkey = newgolfer.first_name.normalize("NFD").replace(/[\u0300-\u036f]/g, "") + " " + newgolfer.last_name.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
         if(!odds.has(golferkey.toLowerCase())) {
             //create a new player with 500:1 odds?
             var player = {
-                "tournament_id": newgolfer.pga_id,
+                "tournament_id": newgolfer.us_open_id,
                 "id": newgolfer.id,
                 "first_name": newgolfer.first_name,
                 "last_name": newgolfer.last_name,
@@ -130,8 +130,9 @@ const buildit = async () => {
         } else {
             var oddsgolf = odds.get(golferkey.toLowerCase());
             var player = {
-                "tournament_id": newgolfer.pga_id,
+                "tournament_id": parseInt(golfer.id),
                 "id": newgolfer.id,
+                "country_code": golfer.country_code,
                 "first_name": newgolfer.first_name,
                 "last_name": newgolfer.last_name,
                 "decimal_odds": oddsgolf.decimal_odds,
