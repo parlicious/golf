@@ -24,7 +24,7 @@ function buildleaderboard(callback, count){
         "version": 1,
         "round": null,
         "cut_line": null,
-        "cut_penalty": null,
+        "cut_penalty": 3,
         "timezone": "EDT",
         "refreshed": Date.now(),
         "players": [
@@ -50,6 +50,7 @@ function buildleaderboard(callback, count){
             let players = mastersdata.data.player;
             for(var i = 0; i < players.length; i++) {
                 let player = players[i];
+                const id = parseInt(player.id);
                 let newplayer = {
                     'id': parseInt(player.id),
                     'first_name': player.first_name,
@@ -57,11 +58,11 @@ function buildleaderboard(callback, count){
                     'thru': player.thru,
                     'teetime': player.teetime,
                     'today': player.today,
-                    'to_par': player.topar,
+                    'to_par': id === 56278 ? '+11' : player.topar,
                     'position': player.pos,
-                    "individual_pen": player.status == "C" ? leaderboard.cut_penalty * 2 : null,
+                    "individual_pen": player.status == "C" || player.status == "D" ? leaderboard.cut_penalty * 2 : null,
                     "individual_bonus": ((leaderboard.round == "0001" || leaderboard.round == "0010") && player.pos == "1") ? leaderboard.cut_penalty * -2 : null,
-                    "status": player.status
+                    "status": id === 56278 ? 'C' : player.status
                 };
                 leaderboard.players.push(newplayer);
             }

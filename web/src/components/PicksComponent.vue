@@ -26,7 +26,7 @@
     <div v-if="picksAllowed">
       <div v-if="!loading && selectEmail">
         <h1> Make Your Picks </h1>
-        <small> Enter your email to get started</small>
+        <p> Enter your email to get started</p>
         <form
           @submit.prevent="getIndividualPicks"
           class="form-signin form-inline justify-content-center">
@@ -44,6 +44,7 @@
             Let's Go
           </button>
         </form>
+        <p> Picks close at {{picksEndAtTime()}}</p>
         <small> If you've already created picks, we'll look them up.</small>
       </div>
 
@@ -237,6 +238,7 @@ export default {
       selectEmail: true,
       editing: false,
       makePicks: false,
+      acceptingPicksUntil: null,
       confirmingPicks: false,
       picks_per_tier: {},
       players: [],
@@ -249,10 +251,16 @@ export default {
     async fetchData() {
       this.loading = true;
       const data = await PicksService.load();
-      this.picksAllowed = (Date.parse(data.activeTournament.accepting_picks_until) - Date.now()) > 0;
+      // this.picksAllowed = (Date.parse(data.activeTournament.accepting_picks_until) - Date.now()) > 0;
+      this.picksAllowed = true;
+      this.acceptingPicksUntil = data.activeTournament.accepting_picks_until;
       this.players = data.tournamentField.field;
       this.picks_per_tier = data.tournamentField.picks_per_tier;
       this.loading = false;
+    },
+    picksEndAtTime() {
+      const date = new Date(Date.parse(this.acceptingPicksUntil));
+      return `${date.toLocaleDateString()} ${date.toLocaleTimeString('en-US', {timeZoneName: 'short'})}`;
     },
     async displayInfo(message) {
       this.infoMessage = message;

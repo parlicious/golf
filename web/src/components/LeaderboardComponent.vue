@@ -28,7 +28,7 @@
         <th scope="col">Penalty</th>
         <th scope="col">Thru</th>
         <th scope="col">Tier</th>
-        <th class="d-none d-sm-table-cell" scope="col">Picked By</th>
+        <th class="d-none d-sm-table-cell picked-by-col" scope="col">Picked By</th>
       </tr>
       </thead>
       <tbody
@@ -61,11 +61,11 @@
         </td>
         <td>
           {{getPenaltyColumn(player)}}
-          <i v-if="getPenaltyColumn(player) < 0" class="fas fa-trophy"></i>
+          <img v-if="getPenaltyColumn(player) < 0" src="../assets/jacket.svg" height="20">
         </td>
         <td>{{getPickThru(player, timeInformation)}}</td>
         <td>{{player.tier || ''}}</td>
-        <td class="d-none d-sm-table-cell">
+        <td class="d-none d-sm-table-cell picked-by-col">
           <participant-names v-bind:participants="getParticipantsForPlayer(player)">
           </participant-names>
         </td>
@@ -131,5 +131,9 @@ export default {
   .cutLine {
     background-color: var(--cut-line-bg-color);
     color: var(--cut-line-color);
+  }
+
+  .picked-by-col {
+    max-width: 200px;
   }
 </style>
