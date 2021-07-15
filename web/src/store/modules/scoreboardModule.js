@@ -8,7 +8,7 @@ import {
   ScoreboardService,
   transformLeaderboardToPlayerMap,
 } from '../../common/scoreboard';
-import {TOURNAMENT_REFRESH_INTERVAL} from '../../common/config';
+import { TOURNAMENT_REFRESH_INTERVAL } from '../../common/config';
 
 export default {
   state: {
@@ -82,10 +82,10 @@ export default {
     },
   },
   getters: {
-    activeTournament({tournaments}) {
+    activeTournament({ tournaments }) {
       return tournaments.find(x => x.active);
     },
-    getTimeInformationForActiveTournament(_, {activeTournament}) {
+    getTimeInformationForActiveTournament(_, { activeTournament }) {
       if (activeTournament && activeTournament.timeFormat && activeTournament.timeZone) {
         return {
           format: activeTournament.timeFormat,
@@ -95,46 +95,46 @@ export default {
 
       return {};
     },
-    getTournamentName({tournamentName}) {
+    getTournamentName({ tournamentName }) {
       return tournamentName;
     },
-    getTournaments({tournaments}) {
+    getTournaments({ tournaments }) {
       return tournaments;
     },
-    getSimulationOptions({simulationOptions}) {
+    getSimulationOptions({ simulationOptions }) {
       return simulationOptions;
     },
-    getTimezone({leaderboard}) {
+    getTimezone({ leaderboard }) {
       return leaderboard ? leaderboard.timezone : '';
     },
-    getCutLine({leaderboard}) {
+    getCutLine({ leaderboard }) {
       if (leaderboard) {
         return leaderboard.cut_line;
       }
       return '';
     },
-    getProjectedCutLine({leaderboard}) {
+    getProjectedCutLine({ leaderboard }) {
       if (leaderboard) {
         return leaderboard.projected_penalty;
       }
       return '';
     },
-    getPlayers({leaderboard, simulationOptions}) {
+    getPlayers({ leaderboard, simulationOptions }) {
       if (leaderboard) {
         return transformLeaderboardToPlayerMap(leaderboard, simulationOptions);
       }
       return null;
     },
-    getPlayersToPoolParticipants(state, {getPoolParticipants}) {
+    getPlayersToPoolParticipants(state, { getPoolParticipants }) {
       return playerIdToPoolParticipants(getPoolParticipants);
     },
-    getPoolParticipants(state, {getPlayers}) {
+    getPoolParticipants(state, { getPlayers }) {
       if (state.picks) {
         return scoreAndRankPoolParticipants(state.picks.pool_participants, getPlayers, state.simulationOptions);
       }
       return [];
     },
-    getPoolParticipantsWithFullPicks(state, {getPoolParticipants, getPlayers}) {
+    getPoolParticipantsWithFullPicks(state, { getPoolParticipants, getPlayers }) {
       return getPoolParticipants
         .map((p) => {
           const participant = p;
@@ -144,7 +144,7 @@ export default {
           return participant;
         });
     },
-    getOrderedPlayers({leaderboard}, {getCutLine}) {
+    getOrderedPlayers({ leaderboard }, { getCutLine }) {
       if (leaderboard) {
         return addCutLineIndicator(getCutLine, leaderboard.players);
       }
@@ -152,19 +152,19 @@ export default {
     },
   },
   actions: {
-    async getLeaderboard({commit}, payload) {
+    async getLeaderboard({ commit }, payload) {
       commit({
         type: 'setLeaderboard',
         leaderboard: await ScoreboardService.getLeaderboard(payload.tournament),
       });
     },
-    async getPicks({commit}, payload) {
+    async getPicks({ commit }, payload) {
       commit({
         type: 'setPicks',
         picks: await ScoreboardService.getPicks(payload.tournament),
       });
     },
-    async hardRefreshPicks({commit, getters, dispatch}) {
+    async hardRefreshPicks({ commit, getters, dispatch }) {
       let tournament = getters.activeTournament;
       if (!tournament) {
         await dispatch('initTournament');
@@ -176,22 +176,22 @@ export default {
         picks: await ScoreboardService.getPicks(tournament),
       });
     },
-    async getTournaments({commit}) {
+    async getTournaments({ commit }) {
       commit({
         type: 'setTournaments',
         tournaments: await ScoreboardService.getTournaments(),
       });
     },
-    async getTournamentInfo({commit}, payload) {
+    async getTournamentInfo({ commit }, payload) {
       commit({
         type: 'setTournamentInfo',
         tournamentInfo: await ScoreboardService.getTournamentInfo(payload.tournament),
       });
     },
-    async clearTournament({commit}) {
+    async clearTournament({ commit }) {
       commit('clearTournament');
     },
-    async loadTournament({dispatch, commit}, payload) {
+    async loadTournament({ dispatch, commit }, payload) {
       commit({
         type: 'setTournamentName',
         tournamentName: payload.tournament.tournament_name,
@@ -206,13 +206,13 @@ export default {
         tournament: payload.tournament,
       });
     },
-    async performSimulation({state}) {
+    async performSimulation({ state }) {
       console.log('in simulation');
       console.log(state);
     },
     async initTournament({
-                           commit, dispatch, state, getters,
-                         }, payload) {
+      commit, dispatch, state, getters,
+    }, payload) {
       if (payload && payload.tournament) {
         await dispatch('loadTournament', {
           tournament: payload.tournament,

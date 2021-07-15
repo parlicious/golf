@@ -77,7 +77,6 @@ import {mapGetters, mapMutations} from 'vuex';
 import PoolParticipantComponent from '@/components/PoolParticipantComponent.vue';
 import ColoringKeyComponent from '@/components/ColoringKeyComponent.vue';
 import WeatherComponent from '@/components/WeatherComponent.vue';
-import {simulateRemainingScores} from "../common/scoreboard";
 
 export default {
   name: 'LeaderboardComponent',
@@ -100,10 +99,9 @@ export default {
   },
   methods: {
     ...mapMutations([
-        'toggleSimulatedCutPenalty',
-        'adjustSimulatedCut'
-      ]
-    )
+      'toggleSimulatedCutPenalty',
+      'adjustSimulatedCut',
+    ]),
   },
   computed: {
     ...mapGetters({
@@ -114,6 +112,7 @@ export default {
       players: 'getPlayers',
       timezone: 'getTimezone',
       poolParticipants: 'getPoolParticipantsWithFullPicks',
+      playersToPoolParticipants: 'getPlayersToPoolParticipants',
     }),
   },
 };

@@ -90,13 +90,15 @@ export const transformLeaderboardToPlayerMap = (leaderboard, simulationOptions =
 );
 
 export const playerIdToPoolParticipants = poolParticipants => _.flatMap(poolParticipants,
-  p => p.picks.map(pick => [pick.tournament_id, p.name]))
+  p => p.picks.map(pick => [pick.tournament_id || pick.id, p.name]))
   .reduce((acc, val) => {
     if (Object.prototype.hasOwnProperty.call(acc, val[0])) {
       acc[val[0]] = [...acc[val[0]], val[1]];
     } else {
       acc[val[0]] = [val[1]];
     }
+
+    // console.log(acc, val);
 
     return acc;
   }, {});
