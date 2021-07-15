@@ -1,9 +1,56 @@
 import * as _ from 'lodash';
-import { ApiService } from './api';
+import {ApiService} from './api';
+import {DisplayUtils} from '@/common/displayUtils';
 
-const calculatePoolParticipantScores = (poolParticipant, playerMap) => {
+
+// const playerIsLeader = (player, leaderboard)
+
+const determinePenalty = (player, leaderboard, simulationOptions) => {
+  const cutLine = parseInt(leaderboard.cut_line);
+  if (simulationOptions.simulateCutPenalty && DisplayUtils.displayPlayerCut(simulationOptions.cutPenaltyAmount, player)) {
+    return 2 * leaderboard.cut_penalty;
+  }
+  if (simulationOptions.simulateCutPenalty && player.position === '1') {
+    return -2 * leaderboard.cut_penalty;
+  }
+  return player.individual_pen ? player.individual_pen : 0;
+};
+
+const getCompletedHoles = (pick) => {
+  if (pick.status === 'C') {
+    return 2 * 18;
+  }
+
+  const holesFromPrevRounds = (parseInt(pick.round, 10) - 1) * 18;
+
+  if (pick.thru.includes('F')) {
+    return holesFromPrevRounds + 18;
+  }
+
+  const normalizedThru = pick && pick.thru && pick.thru.replace && pick.thru.replace('*', '').trim();
+  if (isNaN(normalizedThru)) {
+    return holesFromPrevRounds;
+  }
+
+  return parseInt(normalizedThru, 10) + holesFromPrevRounds;
+};
+
+const getAverageScorePerHole = (participant, playerMap) => {
+  return _.sum(participant.picks.map((p) => {
+    const pick = playerMap[p.tournament_id];
+    const completed = getCompletedHoles(pick);
+    // const to_par = pick.to_par === 'E' ? 0 : parseInt(pick.to_par, 10);
+    // const res = completed === 0 ? 0 : to_par / completed;
+    // console.log(pick);
+    // console.log(`${pick.first_name} ${pick.last_name} is ${to_par} through ${completed} (${res})`);
+    return completed;
+  }));
+};
+
+const calculatePoolParticipantScores = (poolParticipant, playerMap, simulationOptions = {}) => {
   const [total, today] = poolParticipant.picks.reduce(([accTotal, accToday], val) => {
     const player = playerMap[val.tournament_id];
+
     if (player) {
       if (player.to_par === 'E') {
         player.to_par = 0;
@@ -15,7 +62,7 @@ const calculatePoolParticipantScores = (poolParticipant, playerMap) => {
 
       const preAdjustmentTotal = accTotal + parseInt(player.to_par ? player.to_par : 0, 10);
       const newToday = accToday + parseInt(player.today ? player.today : 0, 10);
-      const penalty = player.individual_pen ? player.individual_pen : 0;
+      const penalty = determinePenalty(player, playerMap, simulationOptions);
       const bonus = player.individual_bonus ? player.individual_bonus : 0;
       const newTotal = preAdjustmentTotal + penalty + bonus;
 
@@ -26,16 +73,20 @@ const calculatePoolParticipantScores = (poolParticipant, playerMap) => {
 
   return {
     ...poolParticipant,
+    averageScorePerHole: total / getAverageScorePerHole(poolParticipant, playerMap),
     total,
     today,
   };
 };
 
-export const transformLeaderboardToPlayerMap = leaderboard => leaderboard.players.reduce(
+export const transformLeaderboardToPlayerMap = (leaderboard, simulationOptions = {}) => leaderboard.players.reduce(
   (acc, val) => {
-    acc[val.id] = val;
+    acc[val.id] = {
+      ...val,
+      individual_pen: determinePenalty(val, leaderboard, simulationOptions),
+    };
     return acc;
-  }, {},
+  }, {...leaderboard},
 );
 
 export const playerIdToPoolParticipants = poolParticipants => _.flatMap(poolParticipants,
@@ -50,8 +101,8 @@ export const playerIdToPoolParticipants = poolParticipants => _.flatMap(poolPart
     return acc;
   }, {});
 
-export const scoreAndRankPoolParticipants = (poolParticipants, leaderboard) => poolParticipants
-  .map(p => calculatePoolParticipantScores(p, leaderboard))
+export const scoreAndRankPoolParticipants = (poolParticipants, leaderboard, simulationOptions = {}) => poolParticipants
+  .map(p => calculatePoolParticipantScores(p, leaderboard, simulationOptions))
   .sort((p1, p2) => p1.total - p2.total);
 
 export const orderedPlayersWithScoreDiff = (oldPlayers, newPlayers) => newPlayers.map((p) => {

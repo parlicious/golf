@@ -2,7 +2,7 @@
   <div class="post">
     <weather-component></weather-component>
     <div class="hello">
-      <h1>{{tournamentName}} <span class="light">Standings</span></h1>
+      <h1>{{ tournamentName }} <span class="light">Standings</span></h1>
     </div>
     <div class="loading" v-if="loading">
       Loading...
@@ -10,11 +10,11 @@
 
     <div v-if="leaderboardActive">
       <div class="condense-expand">
-       <div v-if="cutLine">
-         Cut Line: {{cutLine}}
-       </div>
+        <div v-if="cutLine && !simulationOptions.simulateCutPenalty">
+          Cut Line: {{ cutLine }}
+        </div>
         <div v-if="projectedCutLine">
-          Projected Cut Line: {{projectedCutLine}}
+          Projected Cut Line: {{ projectedCutLine }}
         </div>
       </div>
       <div v-if="!loading" class="content">
@@ -22,9 +22,9 @@
           <thead>
           <tr>
             <th class="player-name-cell" scope="col">
-              <div class="expand-button" v-if="showAll"  v-on:click="showAll = !showAll">
-                  <i class="far fa-minus-square"></i>
-                  Collapse All
+              <div class="expand-button" v-if="showAll" v-on:click="showAll = !showAll">
+                <i class="far fa-minus-square"></i>
+                Collapse All
               </div>
               <div v-if="!showAll" v-on:click="showAll = !showAll" class="expand-button">
                 <i class="far fa-plus-square"></i>
@@ -34,8 +34,23 @@
             </th>
             <th scope="col">Total</th>
             <th scope="col">Today</th>
-            <th scope="col">Penalty</th>
-            <th class="player-thru-cell" scope="col">Thru</th>
+            <th scope="col" v-if="!simulationOptions.simulateCutPenalty">Penalty</th>
+            <th scope="col" v-if="simulationOptions.simulateCutPenalty">Simulated Penalty</th>
+            <th class="player-thru-cell" scope="col">
+<!--              <div class="expand-button-right" v-if="simulationOptions.simulateCutPenalty">-->
+<!--                <div class="cut-simulator">-->
+<!--                  <i class="far fa-plus-square" v-on:click="adjustSimulatedCut(1)"></i>-->
+<!--                  {{ simulationOptions.cutPenaltyAmount }}-->
+<!--                  <i class="far fa-minus-square"v-on:click="adjustSimulatedCut(-1)"></i>-->
+<!--                </div>-->
+<!--                <div v-on:click="toggleSimulatedCutPenalty()"> Remove Simulated Cut</div>-->
+<!--              </div>-->
+<!--              <div v-if="!simulationOptions.simulateCutPenalty" v-on:click="toggleSimulatedCutPenalty()"-->
+<!--                   class="expand-button-right">-->
+<!--                Simulate Cut Penatly-->
+<!--              </div>-->
+              Thru
+            </th>
           </tr>
           </thead>
           <pool-participant
@@ -58,7 +73,7 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex';
+import {mapGetters, mapMutations} from 'vuex';
 import PoolParticipantComponent from '@/components/PoolParticipantComponent.vue';
 import ColoringKeyComponent from '@/components/ColoringKeyComponent.vue';
 import WeatherComponent from '@/components/WeatherComponent.vue';
@@ -83,8 +98,16 @@ export default {
   mounted() {
 
   },
+  methods: {
+    ...mapMutations([
+        'toggleSimulatedCutPenalty',
+        'adjustSimulatedCut'
+      ]
+    )
+  },
   computed: {
     ...mapGetters({
+      simulationOptions: 'getSimulationOptions',
       tournamentName: 'getTournamentName',
       cutLine: 'getCutLine',
       projectedCutLine: 'getProjectedCutLine',
@@ -98,43 +121,60 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-  h3 {
-    margin: 40px 0 0;
-  }
+h3 {
+  margin: 40px 0 0;
+}
 
-  ul {
-    list-style-type: none;
-    padding: 0;
-  }
+ul {
+  list-style-type: none;
+  padding: 0;
+}
 
-  li {
-    display: inline-block;
-    margin: 0 10px;
-  }
+li {
+  display: inline-block;
+  margin: 0 10px;
+}
 
-  a {
-    color: #42b983;
-  }
+a {
+  color: #42b983;
+}
 
-  .condense-expand{
-    display: flex;
-    justify-content: space-between;
-  }
+.condense-expand {
+  display: flex;
+  justify-content: space-between;
+}
 
-  .expand-button{
-    cursor: pointer;
-    background-color: transparent;
-    color: var(--expand-button-bg-color);;
-    font-weight: bold;
-    border-radius: 5px;
-    padding: 10px 0px;
-    text-align: left;
+.cut-simulator {
+  font-size: 14px;
+}
 
-    font-size: 10px;
-    font-weight: 300;
-  }
+.expand-button {
+  cursor: pointer;
+  background-color: transparent;
+  color: var(--expand-button-bg-color);;
+  font-weight: bold;
+  border-radius: 5px;
+  padding: 10px 0px;
+  text-align: left;
 
-  .participant-name:hover{
-    background-color: #4F6378;
-  }
+  font-size: 10px;
+  font-weight: 300;
+}
+
+.expand-button-right {
+  cursor: pointer;
+  background-color: transparent;
+  color: var(--expand-button-bg-color);;
+  font-weight: bold;
+  border-radius: 5px;
+  padding: 10px 0px;
+  text-align: right;
+
+  font-size: 10px;
+  font-weight: 300;
+}
+
+.participant-name:hover {
+  background-color: #4F6378;
+}
 </style>

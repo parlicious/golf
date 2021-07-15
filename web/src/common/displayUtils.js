@@ -51,14 +51,17 @@ export const DisplayUtils = {
   getTotalPenalty(participant) {
     return participant.picks.reduce((acc, val) => acc + this.getPenaltyColumn(val), 0);
   },
-  getTotalThru(participant) {
-    const { possible, thru } = participant.picks
+  getNormalizedThru(picks) {
+    return picks
       .map(p => (p.status === 'C' ? 18 : p.thru)) // get thru
-      .map(p => (p.replace ? p.replace('*', '') : p))
+      .map(p => (p.replace ? p.replace('*', '') : p)) // handle starting on the back 9
       .map(p => (p.trim && p.trim() === '' ? 0 : p)) // handle blanks
       .map(p => (p === 'F' ? 18 : p)) // handle finished
       .map(p => (isNaN(p) ? 0 : p)) // handle non numbers
       .map(p => parseInt(p)) // convert to int
+  },
+  getTotalThru(participant) {
+    const { possible, thru } = this.getNormalizedThru(participant.picks)
       .reduce((acc, val) => ({
         possible: acc.possible + 18,
         thru: acc.thru + val,

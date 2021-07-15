@@ -61,7 +61,7 @@
         </td>
         <td>
           {{getPenaltyColumn(player)}}
-          <img v-if="getPenaltyColumn(player) < 0" src="../assets/jacket.svg" height="20">
+          <i v-if="getPenaltyColumn(player) < 0" class="fas fa-trophy"></i>
         </td>
         <td>{{getPickThru(player, timeInformation)}}</td>
         <td>{{player.tier || ''}}</td>

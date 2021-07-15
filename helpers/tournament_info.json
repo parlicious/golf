@@ -1,7 +1,7 @@
 {
-    "id": "2021-pga-championship",
-    "tournament_name": "2021 US Open",
-    "timestamp": 1621172266702,
+    "id": "2021-open-championship",
+    "tournament_name": "2021 Open Championship",
+    "timestamp": 1626094531182,
     "picks_per_tier": {
         "A": 1,
         "B": 2,
@@ -11,98 +11,89 @@
     },
     "field": [
         {
-            "tournament_id": 28237,
-            "id": 89,
-            "first_name": "Rory",
-            "last_name": "McIlroy",
-            "decimal_odds": 11,
-            "fractional_odds": "10/1",
-            "tier": "A"
-        },
-        {
-            "tournament_id": 30925,
-            "id": 64,
-            "first_name": "Dustin",
-            "last_name": "Johnson",
-            "decimal_odds": 12,
-            "fractional_odds": "11/1",
-            "tier": "A"
-        },
-        {
             "tournament_id": 46970,
-            "id": 109,
+            "id": 111,
             "first_name": "Jon",
             "last_name": "Rahm",
-            "decimal_odds": 13,
-            "fractional_odds": "12/1",
+            "decimal_odds": 8.5,
+            "fractional_odds": "15/2",
             "tier": "A"
-        },
-        {
-            "tournament_id": 33448,
-            "id": 136,
-            "first_name": "Justin",
-            "last_name": "Thomas",
-            "decimal_odds": 13,
-            "fractional_odds": "12/1",
-            "tier": "A"
-        },
-        {
-            "tournament_id": 47959,
-            "id": 26,
-            "first_name": "Bryson",
-            "last_name": "DeChambeau",
-            "decimal_odds": 15,
-            "fractional_odds": "14/1",
-            "tier": "B"
-        },
-        {
-            "tournament_id": 34046,
-            "id": 126,
-            "first_name": "Jordan",
-            "last_name": "Spieth",
-            "decimal_odds": 15,
-            "fractional_odds": "14/1",
-            "tier": "B"
-        },
-        {
-            "tournament_id": 36689,
-            "id": 75,
-            "first_name": "Brooks",
-            "last_name": "Koepka",
-            "decimal_odds": 21,
-            "fractional_odds": "20/1",
-            "tier": "B"
         },
         {
             "tournament_id": 48081,
-            "id": 116,
+            "id": 119,
             "first_name": "Xander",
             "last_name": "Schauffele",
+            "decimal_odds": 17,
+            "fractional_odds": "16/1",
+            "tier": "A"
+        },
+        {
+            "tournament_id": 36689,
+            "id": 76,
+            "first_name": "Brooks",
+            "last_name": "Koepka",
+            "decimal_odds": 19,
+            "fractional_odds": "18/1",
+            "tier": "A"
+        },
+        {
+            "tournament_id": 28237,
+            "id": 91,
+            "first_name": "Rory",
+            "last_name": "McIlroy",
+            "decimal_odds": 19,
+            "fractional_odds": "18/1",
+            "tier": "A"
+        },
+        {
+            "tournament_id": 34046,
+            "id": 130,
+            "first_name": "Jordan",
+            "last_name": "Spieth",
             "decimal_odds": 21,
             "fractional_odds": "20/1",
             "tier": "B"
         },
         {
-            "tournament_id": 32839,
-            "id": 87,
-            "first_name": "Hideki",
-            "last_name": "Matsuyama",
-            "decimal_odds": 26,
-            "fractional_odds": "25/1",
+            "tournament_id": 33448,
+            "id": 135,
+            "first_name": "Justin",
+            "last_name": "Thomas",
+            "decimal_odds": 21,
+            "fractional_odds": "20/1",
             "tier": "B"
         },
         {
-            "tournament_id": 50525,
-            "id": 94,
-            "first_name": "Collin",
-            "last_name": "Morikawa",
+            "tournament_id": 46717,
+            "id": 58,
+            "first_name": "Viktor",
+            "last_name": "Hovland",
+            "decimal_odds": 23,
+            "fractional_odds": "22/1",
+            "tier": "B"
+        },
+        {
+            "tournament_id": 30925,
+            "id": 63,
+            "first_name": "Dustin",
+            "last_name": "Johnson",
+            "decimal_odds": 23,
+            "fractional_odds": "22/1",
+            "tier": "B"
+        },
+        {
+            "tournament_id": 26329,
+            "id": 103,
+            "first_name": "Louis",
+            "last_name": "Oosthuizen",
             "decimal_odds": 26,
             "fractional_odds": "25/1",
             "tier": "B"
         },
         {
             "tournament_id": 35450,
-            "id": 13,
+            "id": 15,
             "first_name": "Patrick",
             "last_name": "Cantlay",
             "decimal_odds": 29,
@@ -110,19 +101,55 @@
             "tier": "B"
         },
         {
-            "tournament_id": 46717,
-            "id": 60,
-            "first_name": "Viktor",
-            "last_name": "Hovland",
+            "tournament_id": 25364,
+            "id": 16,
+            "first_name": "Paul",
+            "last_name": "Casey",
             "decimal_odds": 29,
             "fractional_odds": "28/1",
             "tier": "B"
         },
         {
-            "tournament_id": 40026,
-            "id": 8,
-            "first_name": "Daniel",
-            "last_name": "Berger",
+            "tournament_id": 34360,
+            "id": 114,
+            "first_name": "Patrick",
+            "last_name": "Reed",
+            "decimal_odds": 29,
+            "fractional_odds": "28/1",
+            "tier": "B"
+        },
+        {
+            "tournament_id": 40098,
+            "id": 31,
+            "first_name": "Matt",
+            "last_name": "Fitzpatrick",
+            "decimal_odds": 29,
+            "fractional_odds": "28/1",
+            "tier": "B"
+        },
+        {
+            "tournament_id": 47959,
+            "id": 26,
+            "first_name": "Bryson",
+            "last_name": "DeChambeau",
+            "decimal_odds": 34,
+            "fractional_odds": "33/1",
+            "tier": "B"
+        },
+        {
+            "tournament_id": 34363,
+            "id": 48,
+            "first_name": "Tyrrell",
+            "last_name": "Hatton",
+            "decimal_odds": 34,
+            "fractional_odds": "33/1",
+            "tier": "B"
+        },
+        {
+            "tournament_id": 50525,
+            "id": 97,
+            "first_name": "Collin",
+            "last_name": "Morikawa",
             "decimal_odds": 34,
             "fractional_odds": "33/1",
             "tier": "B"
@@ -132,60 +159,24 @@
             "id": 30,
             "first_name": "Tony",
             "last_name": "Finau",
-            "decimal_odds": 34,
-            "fractional_odds": "33/1",
-            "tier": "B"
-        },
-        {
-            "tournament_id": 34363,
-            "id": 46,
-            "first_name": "Tyrrell",
-            "last_name": "Hatton",
-            "decimal_odds": 34,
-            "fractional_odds": "33/1",
-            "tier": "B"
-        },
-        {
-            "tournament_id": 34360,
-            "id": 112,
-            "first_name": "Patrick",
-            "last_name": "Reed",
-            "decimal_odds": 34,
-            "fractional_odds": "33/1",
-            "tier": "B"
-        },
-        {
-            "tournament_id": 29221,
-            "id": 121,
-            "first_name": "Webb",
-            "last_name": "Simpson",
-            "decimal_odds": 34,
-            "fractional_odds": "33/1",
-            "tier": "B"
-        },
-        {
-            "tournament_id": 47504,
-            "id": 12,
-            "first_name": "Sam",
-            "last_name": "Burns",
             "decimal_odds": 41,
             "fractional_odds": "40/1",
             "tier": "C"
         },
         {
-            "tournament_id": 35891,
-            "id": 124,
-            "first_name": "Cameron",
-            "last_name": "Smith",
+            "tournament_id": 21209,
+            "id": 37,
+            "first_name": "Sergio",
+            "last_name": "Garcia",
             "decimal_odds": 41,
             "fractional_odds": "40/1",
             "tier": "C"
         },
         {
-            "tournament_id": 47483,
-            "id": 155,
-            "first_name": "Will",
-            "last_name": "Zalatoris",
+            "tournament_id": 46046,
+            "id": 120,
+            "first_name": "Scottie",
+            "last_name": "Scheffler",
             "decimal_odds": 41,
             "fractional_odds": "40/1",
             "tier": "C"
@@ -200,188 +191,215 @@
             "tier": "C"
         },
         {
-            "tournament_id": 22405,
-            "id": 113,
-            "first_name": "Justin",
-            "last_name": "Rose",
+            "tournament_id": 33204,
+            "id": 87,
+            "first_name": "Shane",
+            "last_name": "Lowry",
             "decimal_odds": 46,
             "fractional_odds": "45/1",
             "tier": "C"
         },
         {
-            "tournament_id": 45526,
-            "id": 2,
-            "first_name": "Abraham",
-            "last_name": "Ancer",
+            "tournament_id": 24138,
+            "id": 110,
+            "first_name": "Ian",
+            "last_name": "Poulter",
             "decimal_odds": 51,
             "fractional_odds": "50/1",
             "tier": "C"
         },
         {
-            "tournament_id": 25364,
-            "id": 14,
-            "first_name": "Paul",
-            "last_name": "Casey",
+            "tournament_id": 22405,
+            "id": 116,
+            "first_name": "Justin",
+            "last_name": "Rose",
             "decimal_odds": 51,
             "fractional_odds": "50/1",
             "tier": "C"
         },
         {
-            "tournament_id": 39971,
-            "id": 62,
-            "first_name": "Sungjae",
-            "last_name": "Im",
-            "decimal_odds": 51,
-            "fractional_odds": "50/1",
+            "tournament_id": 20396,
+            "id": 146,
+            "first_name": "Lee",
+            "last_name": "Westwood",
+            "decimal_odds": 56,
+            "fractional_odds": "55/1",
+            "tier": "C"
+        },
+        {
+            "tournament_id": 34099,
+            "id": 28,
+            "first_name": "Harris",
+            "last_name": "English",
+            "decimal_odds": 67,
+            "fractional_odds": "66/1",
+            "tier": "C"
+        },
+        {
+            "tournament_id": 26851,
+            "id": 82,
+            "first_name": "Marc",
+            "last_name": "Leishman",
+            "decimal_odds": 67,
+            "fractional_odds": "66/1",
             "tier": "C"
         },
         {
             "tournament_id": 45486,
-            "id": 97,
+            "id": 100,
             "first_name": "Joaquin",
             "last_name": "Niemann",
-            "decimal_odds": 51,
-            "fractional_odds": "50/1",
-            "tier": "C"
-        },
-        {
-            "tournament_id": 26329,
-            "id": 99,
-            "first_name": "Louis",
-            "last_name": "Oosthuizen",
-            "decimal_odds": 51,
-            "fractional_odds": "50/1",
-            "tier": "C"
-        },
-        {
-            "tournament_id": 46046,
-            "id": 117,
-            "first_name": "Scottie",
-            "last_name": "Scheffler",
-            "decimal_odds": 51,
-            "fractional_odds": "50/1",
-            "tier": "C"
-        },
-        {
-            "tournament_id": 24502,
-            "id": 119,
-            "first_name": "Adam",
-            "last_name": "Scott",
-            "decimal_odds": 51,
-            "fractional_odds": "50/1",
-            "tier": "C"
-        },
-        {
-            "tournament_id": 40098,
-            "id": 31,
-            "first_name": "Matt",
-            "last_name": "Fitzpatrick",
-            "decimal_odds": 51,
-            "fractional_odds": "50/1",
-            "tier": "C"
-        },
-        {
-            "tournament_id": 39997,
-            "id": 20,
-            "first_name": "Corey",
-            "last_name": "Conners",
             "decimal_odds": 67,
             "fractional_odds": "66/1",
+            "tier": "C"
+        },
+        {
+            "tournament_id": 40026,
+            "id": 6,
+            "first_name": "Daniel",
+            "last_name": "Berger",
+            "decimal_odds": 71,
+            "fractional_odds": "70/1",
+            "tier": "C"
+        },
+        {
+            "tournament_id": 29974,
+            "id": 40,
+            "first_name": "Branden",
+            "last_name": "Grace",
+            "decimal_odds": 71,
+            "fractional_odds": "70/1",
+            "tier": "C"
+        },
+        {
+            "tournament_id": 29221,
+            "id": 127,
+            "first_name": "Webb",
+            "last_name": "Simpson",
+            "decimal_odds": 71,
+            "fractional_odds": "70/1",
+            "tier": "C"
+        },
+        {
+            "tournament_id": 35891,
+            "id": 128,
+            "first_name": "Cameron",
+            "last_name": "Smith",
+            "decimal_odds": 71,
+            "fractional_odds": "70/1",
+            "tier": "C"
+        },
+        {
+            "tournament_id": 45526,
+            "id": 3,
+            "first_name": "Abraham",
+            "last_name": "Ancer",
+            "decimal_odds": 81,
+            "fractional_odds": "80/1",
+            "tier": "C"
+        },
+        {
+            "tournament_id": 47504,
+            "id": 12,
+            "first_name": "Sam",
+            "last_name": "Burns",
+            "decimal_odds": 81,
+            "fractional_odds": "80/1",
             "tier": "C"
         },
         {
             "tournament_id": 28089,
-            "id": 25,
+            "id": 24,
             "first_name": "Jason",
             "last_name": "Day",
-            "decimal_odds": 67,
-            "fractional_odds": "66/1",
-            "tier": "C"
-        },
-        {
-            "tournament_id": 21209,
-            "id": 35,
-            "first_name": "Sergio",
-            "last_name": "Garcia",
-            "decimal_odds": 67,
-            "fractional_odds": "66/1",
-            "tier": "C"
-        },
-        {
-            "tournament_id": 39977,
-            "id": 56,
-            "first_name": "Max",
-            "last_name": "Homa",
-            "decimal_odds": 67,
-            "fractional_odds": "66/1",
-            "tier": "C"
-        },
-        {
-            "tournament_id": 37455,
-            "id": 70,
-            "first_name": "Si Woo",
-            "last_name": "Kim",
-            "decimal_odds": 67,
-            "fractional_odds": "66/1",
-            "tier": "C"
-        },
-        {
-            "tournament_id": 33204,
-            "id": 83,
-            "first_name": "Shane",
-            "last_name": "Lowry",
-            "decimal_odds": 67,
-            "fractional_odds": "66/1",
-            "tier": "C"
-        },
-        {
-            "tournament_id": 31323,
-            "id": 153,
-            "first_name": "Gary",
-            "last_name": "Woodland",
-            "decimal_odds": 67,
-            "fractional_odds": "66/1",
-            "tier": "C"
-        },
-        {
-            "tournament_id": 32102,
-            "id": 33,
-            "first_name": "Rickie",
-            "last_name": "Fowler",
             "decimal_odds": 81,
             "fractional_odds": "80/1",
-            "tier": "D"
+            "tier": "C"
+        },
+        {
+            "tournament_id": 29478,
+            "id": 74,
+            "first_name": "Kevin",
+            "last_name": "Kisner",
+            "decimal_odds": 81,
+            "fractional_odds": "80/1",
+            "tier": "C"
         },
         {
             "tournament_id": 30944,
-            "id": 76,
+            "id": 77,
             "first_name": "Jason",
             "last_name": "Kokrak",
             "decimal_odds": 81,
             "fractional_odds": "80/1",
+            "tier": "C"
+        },
+        {
+            "tournament_id": 52215,
+            "id": 89,
+            "first_name": "Robert",
+            "last_name": "MacIntyre",
+            "decimal_odds": 81,
+            "fractional_odds": "80/1",
+            "tier": "C"
+        },
+        {
+            "tournament_id": 23320,
+            "id": 105,
+            "first_name": "Ryan",
+            "last_name": "Palmer",
+            "decimal_odds": 81,
+            "fractional_odds": "80/1",
+            "tier": "C"
+        },
+        {
+            "tournament_id": 47483,
+            "id": 151,
+            "first_name": "Will",
+            "last_name": "Zalatoris",
+            "decimal_odds": 81,
+            "fractional_odds": "80/1",
+            "tier": "C"
+        },
+        {
+            "tournament_id": 32102,
+            "id": 34,
+            "first_name": "Rickie",
+            "last_name": "Fowler",
+            "decimal_odds": 91,
+            "fractional_odds": "90/1",
             "tier": "D"
         },
         {
-            "tournament_id": 26851,
-            "id": 80,
-            "first_name": "Marc",
-            "last_name": "Leishman",
-            "decimal_odds": 81,
-            "fractional_odds": "80/1",
+            "tournament_id": 25900,
+            "id": 38,
+            "first_name": "Lucas",
+            "last_name": "Glover",
+            "decimal_odds": 91,
+            "fractional_odds": "90/1",
             "tier": "D"
         },
         {
-            "tournament_id": 20396,
-            "id": 149,
-            "first_name": "Lee",
-            "last_name": "Westwood",
-            "decimal_odds": 81,
-            "fractional_odds": "80/1",
+            "tournament_id": 34098,
+            "id": 50,
+            "first_name": "Russell",
+            "last_name": "Henley",
+            "decimal_odds": 91,
+            "fractional_odds": "90/1",
+            "tier": "D"
+        },
+        {
+            "tournament_id": 39058,
+            "id": 51,
+            "first_name": "Lucas",
+            "last_name": "Herbert",
+            "decimal_odds": 91,
+            "fractional_odds": "90/1",
             "tier": "D"
         },
         {
             "tournament_id": 48887,
-            "id": 146,
+            "id": 144,
             "first_name": "Matt",
             "last_name": "Wallace",
             "decimal_odds": 91,
@@ -389,62 +407,35 @@
             "tier": "D"
         },
         {
-            "tournament_id": 33141,
-            "id": 10,
-            "first_name": "Keegan",
-            "last_name": "Bradley",
-            "decimal_odds": 101,
-            "fractional_odds": "100/1",
+            "tournament_id": 29454,
+            "id": 147,
+            "first_name": "Bernd",
+            "last_name": "Wiesberger",
+            "decimal_odds": 91,
+            "fractional_odds": "90/1",
             "tier": "D"
         },
         {
-            "tournament_id": 52372,
-            "id": 16,
-            "first_name": "Cameron",
-            "last_name": "Champ",
-            "decimal_odds": 101,
-            "fractional_odds": "100/1",
+            "tournament_id": 27349,
+            "id": 101,
+            "first_name": "Alex",
+            "last_name": "Noren",
+            "decimal_odds": 91,
+            "fractional_odds": "90/1",
             "tier": "D"
         },
         {
-            "tournament_id": 45157,
-            "id": 24,
-            "first_name": "Cameron",
-            "last_name": "Davis",
-            "decimal_odds": 101,
-            "fractional_odds": "100/1",
-            "tier": "D"
-        },
-        {
-            "tournament_id": 34099,
-            "id": 29,
-            "first_name": "Harris",
-            "last_name": "English",
-            "decimal_odds": 101,
-            "fractional_odds": "100/1",
-            "tier": "D"
-        },
-        {
-            "tournament_id": 31646,
-            "id": 41,
-            "first_name": "Emiliano",
-            "last_name": "Grillo",
-            "decimal_odds": 101,
-            "fractional_odds": "100/1",
-            "tier": "D"
-        },
-        {
-            "tournament_id": 27644,
-            "id": 44,
-            "first_name": "Brian",
-            "last_name": "Harman",
+            "tournament_id": 20229,
+            "id": 19,
+            "first_name": "Stewart",
+            "last_name": "Cink",
             "decimal_odds": 101,
             "fractional_odds": "100/1",
             "tier": "D"
         },
         {
             "tournament_id": 54421,
-            "id": 50,
+            "id": 52,
             "first_name": "Garrick",
             "last_name": "Higgo",
             "decimal_odds": 101,
@@ -453,7 +444,7 @@
         },
         {
             "tournament_id": 12716,
-            "id": 52,
+            "id": 54,
             "first_name": "Charley",
             "last_name": "Hoffman",
             "decimal_odds": 101,
@@ -462,7 +453,7 @@
         },
         {
             "tournament_id": 29420,
-            "id": 57,
+            "id": 56,
             "first_name": "Billy",
             "last_name": "Horschel",
             "decimal_odds": 101,
@@ -470,35 +461,8 @@
             "tier": "D"
         },
         {
-            "tournament_id": 30926,
-            "id": 71,
-            "first_name": "Chris",
-            "last_name": "Kirk",
-            "decimal_odds": 101,
-            "fractional_odds": "100/1",
-            "tier": "D"
-        },
-        {
-            "tournament_id": 29478,
-            "id": 72,
-            "first_name": "Kevin",
-            "last_name": "Kisner",
-            "decimal_odds": 101,
-            "fractional_odds": "100/1",
-            "tier": "D"
-        },
-        {
-            "tournament_id": 23108,
-            "id": 77,
-            "first_name": "Matt",
-            "last_name": "Kuchar",
-            "decimal_odds": 101,
-            "fractional_odds": "100/1",
-            "tier": "D"
-        },
-        {
             "tournament_id": 1810,
-            "id": 92,
+            "id": 93,
             "first_name": "Phil",
             "last_name": "Mickelson",
             "decimal_odds": 101,
@@ -506,147 +470,39 @@
             "tier": "D"
         },
         {
-            "tournament_id": 23320,
-            "id": 101,
-            "first_name": "Ryan",
-            "last_name": "Palmer",
+            "tournament_id": 24502,
+            "id": 124,
+            "first_name": "Adam",
+            "last_name": "Scott",
             "decimal_odds": 101,
             "fractional_odds": "100/1",
             "tier": "D"
         },
         {
-            "tournament_id": 21528,
-            "id": 128,
-            "first_name": "Henrik",
-            "last_name": "Stenson",
+            "tournament_id": 40006,
+            "id": 139,
+            "first_name": "Erik",
+            "last_name": "van Rooyen",
             "decimal_odds": 101,
             "fractional_odds": "100/1",
             "tier": "D"
         },
         {
-            "tournament_id": 33419,
-            "id": 138,
-            "first_name": "Cameron",
-            "last_name": "Tringale",
-            "decimal_odds": 101,
-            "fractional_odds": "100/1",
-            "tier": "D"
-        },
-        {
-            "tournament_id": 25804,
-            "id": 147,
-            "first_name": "Bubba",
-            "last_name": "Watson",
-            "decimal_odds": 101,
-            "fractional_odds": "100/1",
-            "tier": "D"
-        },
-        {
-            "tournament_id": 49964,
-            "id": 152,
-            "first_name": "Aaron",
-            "last_name": "Wise",
-            "decimal_odds": 101,
-            "fractional_odds": "100/1",
-            "tier": "D"
-        },
-        {
-            "tournament_id": 45522,
-            "id": 9,
-            "first_name": "Christiaan",
-            "last_name": "Bezuidenhout",
+            "tournament_id": 27644,
+            "id": 46,
+            "first_name": "Brian",
+            "last_name": "Harman",
             "decimal_odds": 126,
             "fractional_odds": "125/1",
             "tier": "D"
         },
         {
-            "tournament_id": 52215,
-            "id": 84,
-            "first_name": "Robert",
-            "last_name": "MacIntyre",
+            "tournament_id": 24024,
+            "id": 64,
+            "first_name": "Zach",
+            "last_name": "Johnson",
             "decimal_odds": 126,
             "fractional_odds": "125/1",
-            "tier": "D"
-        },
-        {
-            "tournament_id": 25198,
-            "id": 93,
-            "first_name": "Francesco",
-            "last_name": "Molinari",
-            "decimal_odds": 126,
-            "fractional_odds": "125/1",
-            "tier": "D"
-        },
-        {
-            "tournament_id": 24138,
-            "id": 107,
-            "first_name": "Ian",
-            "last_name": "Poulter",
-            "decimal_odds": 126,
-            "fractional_odds": "125/1",
-            "tier": "D"
-        },
-        {
-            "tournament_id": 20229,
-            "id": 17,
-            "first_name": "Stewart",
-            "last_name": "Cink",
-            "decimal_odds": 151,
-            "fractional_odds": "150/1",
-            "tier": "D"
-        },
-        {
-            "tournament_id": 29974,
-            "id": 39,
-            "first_name": "Branden",
-            "last_name": "Grace",
-            "decimal_odds": 151,
-            "fractional_odds": "150/1",
-            "tier": "D"
-        },
-        {
-            "tournament_id": 34098,
-            "id": 47,
-            "first_name": "Russell",
-            "last_name": "Henley",
-            "decimal_odds": 151,
-            "fractional_odds": "150/1",
-            "tier": "D"
-        },
-        {
-            "tournament_id": 35532,
-            "id": 53,
-            "first_name": "Tom",
-            "last_name": "Hoge",
-            "decimal_odds": 151,
-            "fractional_odds": "150/1",
-            "tier": "D"
-        },
-        {
-            "tournament_id": 52686,
-            "id": 54,
-            "first_name": "Rasmus",
-            "last_name": "Hojgaard",
-            "decimal_odds": 151,
-            "fractional_odds": "150/1",
-            "tier": "D"
-        },
-        {
-            "tournament_id": 35506,
-            "id": 61,
-            "first_name": "Mackenzie",
-            "last_name": "Hughes",
-            "decimal_odds": 151,
-            "fractional_odds": "150/1",
-            "tier": "D"
-        },
-        {
-            "tournament_id": 26300,
-            "id": 66,
-            "first_name": "Matt",
-            "last_name": "Jones",
-            "decimal_odds": 151,
-            "fractional_odds": "150/1",
             "tier": "D"
         },
         {
@@ -654,22 +510,103 @@
             "id": 68,
             "first_name": "Martin",
             "last_name": "Kaymer",
+            "decimal_odds": 126,
+            "fractional_odds": "125/1",
+            "tier": "D"
+        },
+        {
+            "tournament_id": 27214,
+            "id": 133,
+            "first_name": "Kevin",
+            "last_name": "Streelman",
+            "decimal_odds": 126,
+            "fractional_odds": "125/1",
+            "tier": "D"
+        },
+        {
+            "tournament_id": 33419,
+            "id": 138,
+            "first_name": "Cameron",
+            "last_name": "Tringale",
+            "decimal_odds": 126,
+            "fractional_odds": "125/1",
+            "tier": "D"
+        },
+        {
+            "tournament_id": 26499,
+            "id": 13,
+            "first_name": "Rafa",
+            "last_name": "Cabrera Bello",
             "decimal_odds": 151,
             "fractional_odds": "150/1",
             "tier": "D"
         },
         {
-            "tournament_id": 48117,
+            "tournament_id": 33141,
+            "id": 9,
+            "first_name": "Keegan",
+            "last_name": "Bradley",
+            "decimal_odds": 151,
+            "fractional_odds": "150/1",
+            "tier": "D"
+        },
+        {
+            "tournament_id": 39997,
+            "id": 21,
+            "first_name": "Corey",
+            "last_name": "Conners",
+            "decimal_odds": 151,
+            "fractional_odds": "150/1",
+            "tier": "D"
+        },
+        {
+            "tournament_id": 35310,
+            "id": 41,
+            "first_name": "Lanto",
+            "last_name": "Griffin",
+            "decimal_odds": 151,
+            "fractional_odds": "150/1",
+            "tier": "D"
+        },
+        {
+            "tournament_id": 20766,
+            "id": 47,
+            "first_name": "Padraig",
+            "last_name": "Harrington",
+            "decimal_odds": 151,
+            "fractional_odds": "150/1",
+            "tier": "D"
+        },
+        {
+            "tournament_id": 39977,
+            "id": 55,
+            "first_name": "Max",
+            "last_name": "Homa",
+            "decimal_odds": 151,
+            "fractional_odds": "150/1",
+            "tier": "D"
+        },
+        {
+            "tournament_id": 35506,
+            "id": 59,
+            "first_name": "Mackenzie",
+            "last_name": "Hughes",
+            "decimal_odds": 151,
+            "fractional_odds": "150/1",
+            "tier": "D"
+        },
+        {
+            "tournament_id": 30926,
             "id": 73,
-            "first_name": "Kurt",
-            "last_name": "Kitayama",
+            "first_name": "Chris",
+            "last_name": "Kirk",
             "decimal_odds": 151,
             "fractional_odds": "150/1",
             "tier": "D"
         },
         {
             "tournament_id": 48822,
-            "id": 95,
+            "id": 98,
             "first_name": "Sebastián",
             "last_name": "Muñoz",
             "decimal_odds": 151,
@@ -677,17 +614,8 @@
             "tier": "D"
         },
         {
-            "tournament_id": 25396,
-            "id": 96,
-            "first_name": "Kevin",
-            "last_name": "Na",
-            "decimal_odds": 151,
-            "fractional_odds": "150/1",
-            "tier": "D"
-        },
-        {
             "tournament_id": 33667,
-            "id": 100,
+            "id": 104,
             "first_name": "Carlos",
             "last_name": "Ortiz",
             "decimal_odds": 151,
@@ -695,152 +623,125 @@
             "tier": "D"
         },
         {
-            "tournament_id": 47679,
-            "id": 103,
-            "first_name": "Victor",
-            "last_name": "Perez",
+            "tournament_id": 30927,
+            "id": 137,
+            "first_name": "Brendon",
+            "last_name": "Todd",
             "decimal_odds": 151,
             "fractional_odds": "150/1",
             "tier": "D"
         },
         {
-            "tournament_id": 33293,
-            "id": 104,
-            "first_name": "Thomas",
-            "last_name": "Pieters",
+            "tournament_id": 31323,
+            "id": 149,
+            "first_name": "Gary",
+            "last_name": "Woodland",
             "decimal_odds": 151,
             "fractional_odds": "150/1",
             "tier": "D"
         },
         {
-            "tournament_id": 26331,
-            "id": 118,
-            "first_name": "Charl",
-            "last_name": "Schwartzel",
-            "decimal_odds": 151,
-            "fractional_odds": "150/1",
-            "tier": "D"
-        },
-        {
-            "tournament_id": 40006,
-            "id": 141,
-            "first_name": "Erik",
-            "last_name": "van Rooyen",
-            "decimal_odds": 151,
-            "fractional_odds": "150/1",
-            "tier": "D"
-        },
-        {
-            "tournament_id": 29454,
-            "id": 150,
-            "first_name": "Bernd",
-            "last_name": "Wiesberger",
-            "decimal_odds": 151,
-            "fractional_odds": "150/1",
-            "tier": "D"
-        },
-        {
-            "tournament_id": 32139,
-            "id": 151,
-            "first_name": "Danny",
-            "last_name": "Willett",
-            "decimal_odds": 151,
-            "fractional_odds": "150/1",
-            "tier": "D"
-        },
-        {
-            "tournament_id": 27349,
-            "id": 98,
-            "first_name": "Alex",
-            "last_name": "Noren",
+            "tournament_id": 46402,
+            "id": 39,
+            "first_name": "Talor",
+            "last_name": "Gooch",
             "decimal_odds": 176,
             "fractional_odds": "160/1",
             "tier": "D"
         },
         {
-            "tournament_id": 45734,
-            "id": 15,
-            "first_name": "John",
-            "last_name": "Catlin",
+            "tournament_id": 25198,
+            "id": 96,
+            "first_name": "Francesco",
+            "last_name": "Molinari",
+            "decimal_odds": 176,
+            "fractional_odds": "160/1",
+            "tier": "D"
+        },
+        {
+            "tournament_id": 47679,
+            "id": 107,
+            "first_name": "Victor",
+            "last_name": "Perez",
+            "decimal_odds": 176,
+            "fractional_odds": "160/1",
+            "tier": "D"
+        },
+        {
+            "tournament_id": 46414,
+            "id": 112,
+            "first_name": "Aaron",
+            "last_name": "Rai",
+            "decimal_odds": 176,
+            "fractional_odds": "160/1",
+            "tier": "D"
+        },
+        {
+            "tournament_id": 45836,
+            "id": 8,
+            "first_name": "Richard",
+            "last_name": "Bland",
             "decimal_odds": 201,
             "fractional_odds": "200/1",
             "tier": "D"
         },
         {
-            "tournament_id": 33653,
-            "id": 27,
-            "first_name": "Thomas",
-            "last_name": "Detry",
+            "tournament_id": 34076,
+            "id": 23,
+            "first_name": "Joel",
+            "last_name": "Dahmen",
             "decimal_odds": 201,
             "fractional_odds": "200/1",
             "tier": "D"
         },
         {
-            "tournament_id": 29970,
-            "id": 34,
-            "first_name": "Dylan",
-            "last_name": "Frittelli",
+            "tournament_id": 31646,
+            "id": 42,
+            "first_name": "Emiliano",
+            "last_name": "Grillo",
             "decimal_odds": 201,
             "fractional_odds": "200/1",
             "tier": "D"
         },
         {
-            "tournament_id": 46402,
-            "id": 38,
-            "first_name": "Talor",
-            "last_name": "Gooch",
+            "tournament_id": 23108,
+            "id": 78,
+            "first_name": "Matt",
+            "last_name": "Kuchar",
             "decimal_odds": 201,
             "fractional_odds": "200/1",
             "tier": "D"
         },
         {
-            "tournament_id": 33597,
-            "id": 51,
-            "first_name": "Harry",
-            "last_name": "Higgs",
-            "decimal_odds": 201,
-            "fractional_odds": "200/1",
-            "tier": "D"
-        },
-        {
-            "tournament_id": 47989,
-            "id": 58,
-            "first_name": "Sam",
-            "last_name": "Horsfield",
-            "decimal_odds": 201,
-            "fractional_odds": "200/1",
-            "tier": "D"
-        },
-        {
-            "tournament_id": 24024,
-            "id": 65,
-            "first_name": "Zach",
-            "last_name": "Johnson",
-            "decimal_odds": 201,
-            "fractional_odds": "200/1",
-            "tier": "D"
-        },
-        {
-            "tournament_id": 35104,
-            "id": 81,
-            "first_name": "Tom",
-            "last_name": "Lewis",
-            "decimal_odds": 201,
-            "fractional_odds": "200/1",
-            "tier": "D"
-        },
-        {
-            "tournament_id": 47993,
+            "tournament_id": 28300,
             "id": 88,
-            "first_name": "Denny",
-            "last_name": "McCarthy",
+            "first_name": "Joost",
+            "last_name": "Luiten",
+            "decimal_odds": 201,
+            "fractional_odds": "200/1",
+            "tier": "D"
+        },
+        {
+            "tournament_id": 39834,
+            "id": 94,
+            "first_name": "Guido",
+            "last_name": "Migliozzi",
+            "decimal_odds": 201,
+            "fractional_odds": "200/1",
+            "tier": "D"
+        },
+        {
+            "tournament_id": 26476,
+            "id": 113,
+            "first_name": "Chez",
+            "last_name": "Reavie",
             "decimal_odds": 201,
             "fractional_odds": "200/1",
             "tier": "D"
         },
         {
             "tournament_id": 46646,
-            "id": 114,
+            "id": 117,
             "first_name": "Antoine",
             "last_name": "Rozner",
             "decimal_odds": 201,
@@ -848,8 +749,17 @@
             "tier": "D"
         },
         {
+            "tournament_id": 31569,
+            "id": 125,
+            "first_name": "Jason",
+            "last_name": "Scrivener",
+            "decimal_odds": 201,
+            "fractional_odds": "200/1",
+            "tier": "D"
+        },
+        {
             "tournament_id": 29518,
-            "id": 127,
+            "id": 131,
             "first_name": "Brendan",
             "last_name": "Steele",
             "decimal_odds": 201,
@@ -857,84 +767,21 @@
             "tier": "D"
         },
         {
-            "tournament_id": 35225,
-            "id": 129,
-            "first_name": "Brandon",
-            "last_name": "Stone",
+            "tournament_id": 35314,
+            "id": 134,
+            "first_name": "Andy",
+            "last_name": "Sullivan",
             "decimal_odds": 201,
             "fractional_odds": "200/1",
             "tier": "D"
         },
         {
-            "tournament_id": 27214,
-            "id": 131,
-            "first_name": "Kevin",
-            "last_name": "Streelman",
+            "tournament_id": 32139,
+            "id": 148,
+            "first_name": "Danny",
+            "last_name": "Willett",
             "decimal_odds": 201,
             "fractional_odds": "200/1",
-            "tier": "D"
-        },
-        {
-            "tournament_id": 30927,
-            "id": 137,
-            "first_name": "Brendon",
-            "last_name": "Todd",
-            "decimal_odds": 201,
-            "fractional_odds": "200/1",
-            "tier": "D"
-        },
-        {
-            "tournament_id": 37189,
-            "id": 143,
-            "first_name": "Harold",
-            "last_name": "Varner III",
-            "decimal_odds": 201,
-            "fractional_odds": "200/1",
-            "tier": "D"
-        },
-        {
-            "tournament_id": 33948,
-            "id": 1,
-            "first_name": "Byeong Hun",
-            "last_name": "An",
-            "decimal_odds": 251,
-            "fractional_odds": "250/1",
-            "tier": "D"
-        },
-        {
-            "tournament_id": 28937,
-            "id": 18,
-            "first_name": "George",
-            "last_name": "Coetzee",
-            "decimal_odds": 251,
-            "fractional_odds": "250/1",
-            "tier": "D"
-        },
-        {
-            "tournament_id": 34076,
-            "id": 22,
-            "first_name": "Joel",
-            "last_name": "Dahmen",
-            "decimal_odds": 251,
-            "fractional_odds": "250/1",
-            "tier": "D"
-        },
-        {
-            "tournament_id": 25686,
-            "id": 28,
-            "first_name": "Jason",
-            "last_name": "Dufner",
-            "decimal_odds": 251,
-            "fractional_odds": "250/1",
-            "tier": "D"
-        },
-        {
-            "tournament_id": 35310,
-            "id": 40,
-            "first_name": "Lanto",
-            "last_name": "Griffin",
-            "decimal_odds": 251,
-            "fractional_odds": "250/1",
             "tier": "D"
         },
         {
@@ -947,215 +794,170 @@
             "tier": "D"
         },
         {
-            "tournament_id": 39058,
-            "id": 48,
-            "first_name": "Lucas",
-            "last_name": "Herbert",
+            "tournament_id": 26300,
+            "id": 65,
+            "first_name": "Matt",
+            "last_name": "Jones",
             "decimal_odds": 251,
             "fractional_odds": "250/1",
             "tier": "D"
         },
         {
-            "tournament_id": 47238,
-            "id": 63,
-            "first_name": "Jazz",
-            "last_name": "Janewattananond",
+            "tournament_id": 34610,
+            "id": 123,
+            "first_name": "Matthias",
+            "last_name": "Schwab",
             "decimal_odds": 251,
             "fractional_odds": "250/1",
             "tier": "D"
         },
         {
-            "tournament_id": 34466,
-            "id": 85,
-            "first_name": "Peter",
-            "last_name": "Malnati",
-            "decimal_odds": 251,
-            "fractional_odds": "250/1",
-            "tier": "D"
-        },
-        {
-            "tournament_id": 46442,
-            "id": 90,
-            "first_name": "Maverick",
-            "last_name": "McNealy",
-            "decimal_odds": 251,
-            "fractional_odds": "250/1",
-            "tier": "D"
-        },
-        {
-            "tournament_id": 46414,
-            "id": 110,
-            "first_name": "Aaron",
-            "last_name": "Rai",
-            "decimal_odds": 251,
-            "fractional_odds": "250/1",
-            "tier": "D"
-        },
-        {
-            "tournament_id": 26476,
-            "id": 111,
-            "first_name": "Chez",
-            "last_name": "Reavie",
-            "decimal_odds": 251,
-            "fractional_odds": "250/1",
-            "tier": "D"
-        },
-        {
-            "tournament_id": 33568,
-            "id": 115,
-            "first_name": "Kalle",
-            "last_name": "Samooja",
-            "decimal_odds": 251,
-            "fractional_odds": "250/1",
-            "tier": "D"
-        },
-        {
-            "tournament_id": 6527,
+            "tournament_id": 21528,
             "id": 132,
-            "first_name": "Steve",
-            "last_name": "Stricker",
+            "first_name": "Henrik",
+            "last_name": "Stenson",
             "decimal_odds": 251,
             "fractional_odds": "250/1",
             "tier": "D"
         },
         {
-            "tournament_id": 35314,
-            "id": 133,
-            "first_name": "Andy",
-            "last_name": "Sullivan",
-            "decimal_odds": 251,
-            "fractional_odds": "250/1",
+            "tournament_id": 33948,
+            "id": 2,
+            "first_name": "Byeong Hun",
+            "last_name": "An",
+            "decimal_odds": 351,
+            "fractional_odds": "350/1",
             "tier": "D"
         },
         {
-            "tournament_id": 47128,
-            "id": 148,
-            "first_name": "Richy",
-            "last_name": "Werenski",
-            "decimal_odds": 251,
-            "fractional_odds": "250/1",
+            "tournament_id": 45194,
+            "id": 4,
+            "first_name": "Marcus",
+            "last_name": "Armitage",
+            "decimal_odds": 351,
+            "fractional_odds": "350/1",
             "tier": "D"
         },
         {
-            "tournament_id": 35181,
-            "id": 142,
-            "first_name": "Danie",
-            "last_name": "van Tonder",
-            "decimal_odds": 251,
-            "fractional_odds": "250/1",
-            "tier": "E"
+            "tournament_id": 33974,
+            "id": 11,
+            "first_name": "Dean",
+            "last_name": "Burmester",
+            "decimal_odds": 351,
+            "fractional_odds": "350/1",
+            "tier": "D"
         },
         {
-            "tournament_id": 20766,
+            "tournament_id": 45734,
+            "id": 17,
+            "first_name": "John",
+            "last_name": "Catlin",
+            "decimal_odds": 351,
+            "fractional_odds": "350/1",
+            "tier": "D"
+        },
+        {
+            "tournament_id": 29936,
+            "id": 35,
+            "first_name": "Ryan",
+            "last_name": "Fox",
+            "decimal_odds": 351,
+            "fractional_odds": "350/1",
+            "tier": "D"
+        },
+        {
+            "tournament_id": 28938,
             "id": 45,
-            "first_name": "Padraig",
-            "last_name": "Harrington",
+            "first_name": "Justin",
+            "last_name": "Harding",
             "decimal_odds": 351,
             "fractional_odds": "350/1",
-            "tier": "E"
-        },
-        {
-            "tournament_id": 31557,
-            "id": 49,
-            "first_name": "Jim",
-            "last_name": "Herman",
-            "decimal_odds": 351,
-            "fractional_odds": "350/1",
-            "tier": "E"
+            "tier": "D"
         },
         {
             "tournament_id": 47917,
-            "id": 67,
+            "id": 66,
             "first_name": "Takumi",
             "last_name": "Kanaya",
             "decimal_odds": 351,
             "fractional_odds": "350/1",
-            "tier": "E"
+            "tier": "D"
         },
         {
-            "tournament_id": 27936,
-            "id": 79,
-            "first_name": "Martin",
-            "last_name": "Laird",
-            "decimal_odds": 351,
-            "fractional_odds": "350/1",
-            "tier": "E"
-        },
-        {
-            "tournament_id": 35449,
-            "id": 82,
-            "first_name": "Adam",
-            "last_name": "Long",
-            "decimal_odds": 351,
-            "fractional_odds": "350/1",
-            "tier": "E"
-        },
-        {
-            "tournament_id": 49771,
+            "tournament_id": 29908,
             "id": 106,
-            "first_name": "J.T.",
-            "last_name": "Poston",
+            "first_name": "C.T.",
+            "last_name": "Pan",
             "decimal_odds": 351,
             "fractional_odds": "350/1",
-            "tier": "E"
+            "tier": "D"
         },
         {
-            "tournament_id": 31569,
-            "id": 120,
-            "first_name": "Jason",
-            "last_name": "Scrivener",
+            "tournament_id": 27649,
+            "id": 129,
+            "first_name": "Brandt",
+            "last_name": "Snedeker",
             "decimal_odds": 351,
             "fractional_odds": "350/1",
-            "tier": "E"
+            "tier": "D"
         },
         {
-            "tournament_id": 59570,
-            "id": 19,
-            "first_name": "Tyler",
-            "last_name": "Collet",
+            "tournament_id": 48640,
+            "id": 142,
+            "first_name": "Johannes",
+            "last_name": "Veerman",
+            "decimal_odds": 351,
+            "fractional_odds": "350/1",
+            "tier": "D"
+        },
+        {
+            "tournament_id": 32367,
+            "id": 14,
+            "first_name": "Jorge",
+            "last_name": "Campillo",
             "decimal_odds": 501,
             "fractional_odds": "500/1",
             "tier": "E"
         },
         {
-            "tournament_id": 54334,
-            "id": 21,
-            "first_name": "Ben",
-            "last_name": "Cook",
+            "tournament_id": 31681,
+            "id": 25,
+            "first_name": "Louis",
+            "last_name": "de Jager",
             "decimal_odds": 501,
             "fractional_odds": "500/1",
             "tier": "E"
         },
         {
-            "tournament_id": 19846,
-            "id": 36,
-            "first_name": "Brian",
-            "last_name": "Gay",
+            "tournament_id": 6522,
+            "id": 27,
+            "first_name": "Ernie",
+            "last_name": "Els",
             "decimal_odds": 501,
             "fractional_odds": "500/1",
             "tier": "E"
         },
         {
-            "tournament_id": 49893,
-            "id": 37,
-            "first_name": "Mark",
-            "last_name": "Geddes",
+            "tournament_id": 47987,
+            "id": 44,
+            "first_name": "Cole",
+            "last_name": "Hammer",
             "decimal_odds": 501,
             "fractional_odds": "500/1",
             "tier": "E"
         },
         {
-            "tournament_id": 59870,
-            "id": 55,
-            "first_name": "Derek",
-            "last_name": "Holmes",
+            "tournament_id": 30812,
+            "id": 49,
+            "first_name": "Benjamin",
+            "last_name": "Hebert",
             "decimal_odds": 501,
             "fractional_odds": "500/1",
             "tier": "E"
         },
         {
             "tournament_id": 47056,
-            "id": 59,
+            "id": 57,
             "first_name": "Rikuya",
             "last_name": "Hoshino",
             "decimal_odds": 501,
@@ -1163,8 +965,35 @@
             "tier": "E"
         },
         {
+            "tournament_id": 36514,
+            "id": 61,
+            "first_name": "Yuki",
+            "last_name": "Inamori",
+            "decimal_odds": 501,
+            "fractional_odds": "500/1",
+            "tier": "E"
+        },
+        {
+            "tournament_id": 47238,
+            "id": 62,
+            "first_name": "Jazz",
+            "last_name": "Janewattananond",
+            "decimal_odds": 501,
+            "fractional_odds": "500/1",
+            "tier": "E"
+        },
+        {
+            "tournament_id": 27899,
+            "id": 67,
+            "first_name": "Rikard",
+            "last_name": "Karlberg",
+            "decimal_odds": 501,
+            "fractional_odds": "500/1",
+            "tier": "E"
+        },
+        {
             "tournament_id": 34587,
-            "id": 69,
+            "id": 70,
             "first_name": "Chan",
             "last_name": "Kim",
             "decimal_odds": 501,
@@ -1172,89 +1001,98 @@
             "tier": "E"
         },
         {
-            "tournament_id": 25431,
-            "id": 78,
-            "first_name": "Rob",
-            "last_name": "Labritz",
+            "tournament_id": 46404,
+            "id": 71,
+            "first_name": "Marcus",
+            "last_name": "Kinhult",
             "decimal_odds": 501,
             "fractional_odds": "500/1",
             "tier": "E"
         },
         {
-            "tournament_id": 59873,
+            "tournament_id": 34500,
+            "id": 72,
+            "first_name": "Ryosuke",
+            "last_name": "Kinoshita",
+            "decimal_odds": 501,
+            "fractional_odds": "500/1",
+            "tier": "E"
+        },
+        {
+            "tournament_id": 48117,
+            "id": 75,
+            "first_name": "Kurt",
+            "last_name": "Kitayama",
+            "decimal_odds": 501,
+            "fractional_odds": "500/1",
+            "tier": "E"
+        },
+        {
+            "tournament_id": 37250,
+            "id": 79,
+            "first_name": "Romain",
+            "last_name": "Langasque",
+            "decimal_odds": 501,
+            "fractional_odds": "500/1",
+            "tier": "E"
+        },
+        {
+            "tournament_id": 54190,
+            "id": 90,
+            "first_name": "Richard",
+            "last_name": "Mansell",
+            "decimal_odds": 501,
+            "fractional_odds": "500/1",
+            "tier": "E"
+        },
+        {
+            "tournament_id": 39546,
+            "id": 95,
+            "first_name": "Keith",
+            "last_name": "Mitchell",
+            "decimal_odds": 501,
+            "fractional_odds": "500/1",
+            "tier": "E"
+        },
+        {
+            "tournament_id": 26328,
             "id": 102,
-            "first_name": "Tim",
-            "last_name": "Pearce",
+            "first_name": "Shaun",
+            "last_name": "Norris",
             "decimal_odds": 501,
             "fractional_odds": "500/1",
             "tier": "E"
         },
         {
-            "tournament_id": 47567,
-            "id": 105,
-            "first_name": "Ben",
-            "last_name": "Polland",
+            "tournament_id": 45847,
+            "id": 115,
+            "first_name": "JC",
+            "last_name": "Ritchie",
             "decimal_odds": 501,
             "fractional_odds": "500/1",
             "tier": "E"
         },
         {
-            "tournament_id": 6132,
-            "id": 123,
-            "first_name": "Sonny",
-            "last_name": "Skinner",
+            "tournament_id": 31242,
+            "id": 122,
+            "first_name": "Marcel",
+            "last_name": "Schneider",
             "decimal_odds": 501,
             "fractional_odds": "500/1",
             "tier": "E"
         },
         {
-            "tournament_id": 34431,
-            "id": 130,
-            "first_name": "Robert",
-            "last_name": "Streb",
-            "decimal_odds": 501,
-            "fractional_odds": "500/1",
-            "tier": "E"
-        },
-        {
-            "tournament_id": 23218,
-            "id": 134,
-            "first_name": "Joe",
-            "last_name": "Summerhays",
-            "decimal_odds": 501,
-            "fractional_odds": "500/1",
-            "tier": "E"
-        },
-        {
-            "tournament_id": 34264,
-            "id": 135,
-            "first_name": "Hudson",
-            "last_name": "Swafford",
-            "decimal_odds": 501,
-            "fractional_odds": "500/1",
-            "tier": "E"
-        },
-        {
-            "tournament_id": 8385,
-            "id": 139,
-            "first_name": "Omar",
-            "last_name": "Uresti",
-            "decimal_odds": 501,
-            "fractional_odds": "500/1",
-            "tier": "E"
-        },
-        {
-            "tournament_id": 51860,
-            "id": 144,
-            "first_name": "Brett",
-            "last_name": "Walker",
+            "tournament_id": 35181,
+            "id": 140,
+            "first_name": "Daniel",
+            "last_name": "van Tonder",
             "decimal_odds": 501,
             "fractional_odds": "500/1",
             "tier": "E"
         },
         {
             "tournament_id": 25632,
-            "id": 145,
+            "id": 143,
             "first_name": "Jimmy",
             "last_name": "Walker",
             "decimal_odds": 501,
@@ -1262,145 +1100,226 @@
             "tier": "E"
         },
         {
-            "tournament_id": 28103,
-            "id": 125,
-            "first_name": "Stuart L.",
-            "last_name": "Smith",
+            "tournament_id": 31113,
+            "id": 145,
+            "first_name": "Paul",
+            "last_name": "Waring",
             "decimal_odds": 501,
             "fractional_odds": "500/1",
             "tier": "E"
         },
         {
-            "tournament_id": 34387,
-            "id": 3,
-            "first_name": "Daniel",
-            "last_name": "Balin",
-            "decimal_odds": 502,
-            "fractional_odds": "501/1",
-            "tier": "E"
-        },
-        {
-            "tournament_id": 59868,
-            "id": 4,
-            "first_name": "Pete",
-            "last_name": "Ballo",
-            "decimal_odds": 502,
-            "fractional_odds": "501/1",
-            "tier": "E"
-        },
-        {
-            "tournament_id": 52633,
-            "id": 5,
-            "first_name": "Alex",
-            "last_name": "Beach",
-            "decimal_odds": 502,
-            "fractional_odds": "501/1",
-            "tier": "E"
-        },
-        {
-            "tournament_id": 23614,
-            "id": 6,
-            "first_name": "Rich",
-            "last_name": "Beem",
-            "decimal_odds": 502,
-            "fractional_odds": "501/1",
-            "tier": "E"
-        },
-        {
-            "tournament_id": 23305,
-            "id": 7,
-            "first_name": "Jr.",
-            "last_name": "Bensel",
-            "decimal_odds": 502,
-            "fractional_odds": "501/1",
-            "tier": "E"
-        },
-        {
-            "tournament_id": 33974,
-            "id": 11,
-            "first_name": "Dean",
-            "last_name": "Burmester",
-            "decimal_odds": 502,
-            "fractional_odds": "501/1",
-            "tier": "E"
-        },
-        {
-            "tournament_id": 59869,
-            "id": 42,
-            "first_name": "Larkin",
-            "last_name": "Gross",
-            "decimal_odds": 502,
-            "fractional_odds": "501/1",
-            "tier": "E"
-        },
-        {
-            "tournament_id": 59871,
-            "id": 74,
-            "first_name": "Greg",
-            "last_name": "Koch",
-            "decimal_odds": 502,
-            "fractional_odds": "501/1",
-            "tier": "E"
-        },
-        {
-            "tournament_id": 59872,
+            "tournament_id": 29772,
             "id": 86,
+            "first_name": "Michael",
+            "last_name": "Lorenzo-Vera",
+            "decimal_odds": 501,
+            "fractional_odds": "500/1",
+            "tier": "E"
+        },
+        {
+            "tournament_id": 35296,
+            "id": 83,
+            "first_name": "Haotong",
+            "last_name": "Li",
+            "decimal_odds": 751,
+            "fractional_odds": "750/1",
+            "tier": "E"
+        },
+        {
+            "tournament_id": 48867,
+            "id": 121,
+            "first_name": "Matthias",
+            "last_name": "Schmid",
+            "decimal_odds": 751,
+            "fractional_odds": "750/1",
+            "tier": "E"
+        },
+        {
+            "tournament_id": 25191,
+            "id": 29,
+            "first_name": "Gonzalo",
+            "last_name": "Fernandez-Castaño",
+            "decimal_odds": 1001,
+            "fractional_odds": "1000/1",
+            "tier": "E"
+        },
+        {
+            "tournament_id": 50722,
+            "id": 136,
+            "first_name": "Jon",
+            "last_name": "Thomson",
+            "decimal_odds": 1001,
+            "fractional_odds": "1000/1",
+            "tier": "E"
+        },
+        {
+            "tournament_id": 29334,
+            "id": 1,
+            "first_name": "Jaco",
+            "last_name": "Ahlers",
+            "decimal_odds": 1001,
+            "fractional_odds": "1000/1",
+            "tier": "E"
+        },
+        {
+            "tournament_id": 52095,
+            "id": 10,
+            "first_name": "Christoffer",
+            "last_name": "Bring",
+            "decimal_odds": 1001,
+            "fractional_odds": "1000/1",
+            "tier": "E"
+        },
+        {
+            "tournament_id": 36391,
+            "id": 18,
+            "first_name": "Ricardo",
+            "last_name": "Celia",
+            "decimal_odds": 1001,
+            "fractional_odds": "1000/1",
+            "tier": "E"
+        },
+        {
+            "tournament_id": 19825,
+            "id": 20,
+            "first_name": "Darren",
+            "last_name": "Clarke",
+            "decimal_odds": 1001,
+            "fractional_odds": "1000/1",
+            "tier": "E"
+        },
+        {
+            "tournament_id": 58166,
+            "id": 36,
+            "first_name": "Abel",
+            "last_name": "Gallegos",
+            "decimal_odds": 1001,
+            "fractional_odds": "1000/1",
+            "tier": "E"
+        },
+        {
+            "tournament_id": 49813,
+            "id": 53,
+            "first_name": "Daniel",
+            "last_name": "Hillier",
+            "decimal_odds": 1001,
+            "fractional_odds": "1000/1",
+            "tier": "E"
+        },
+        {
+            "tournament_id": 23802,
+            "id": 69,
             "first_name": "Brad",
-            "last_name": "Marek",
-            "decimal_odds": 502,
-            "fractional_odds": "501/1",
+            "last_name": "Kennedy",
+            "decimal_odds": 1001,
+            "fractional_odds": "1000/1",
             "tier": "E"
         },
         {
-            "tournament_id": 59874,
+            "tournament_id": 35930,
+            "id": 80,
+            "first_name": "Deyen",
+            "last_name": "Lawson",
+            "decimal_odds": 1001,
+            "fractional_odds": "1000/1",
+            "tier": "E"
+        },
+        {
+            "tournament_id": 31109,
+            "id": 81,
+            "first_name": "Richard T.",
+            "last_name": "Lee",
+            "decimal_odds": 1001,
+            "fractional_odds": "1000/1",
+            "tier": "E"
+        },
+        {
+            "tournament_id": 46837,
+            "id": 84,
+            "first_name": "Yuxin",
+            "last_name": "Lin",
+            "decimal_odds": 1001,
+            "fractional_odds": "1000/1",
+            "tier": "E"
+        },
+        {
+            "tournament_id": 59441,
+            "id": 85,
+            "first_name": "Joe",
+            "last_name": "Long",
+            "decimal_odds": 1001,
+            "fractional_odds": "1000/1",
+            "tier": "E"
+        },
+        {
+            "tournament_id": 28521,
+            "id": 99,
+            "first_name": "Ryutaro",
+            "last_name": "Nagano",
+            "decimal_odds": 1001,
+            "fractional_odds": "1000/1",
+            "tier": "E"
+        },
+        {
+            "tournament_id": 28757,
             "id": 108,
-            "first_name": "Patrick",
-            "last_name": "Rada",
-            "decimal_odds": 502,
-            "fractional_odds": "501/1",
-            "tier": "E"
-        },
-        {
-            "tournament_id": 52666,
-            "id": 140,
-            "first_name": "Sami",
-            "last_name": "Valimaki",
-            "decimal_odds": 502,
-            "fractional_odds": "501/1",
-            "tier": "E"
-        },
-        {
-            "tournament_id": 24663,
-            "id": 154,
-            "first_name": "Y.E.",
-            "last_name": "Yang",
+            "first_name": "Aaron",
+            "last_name": "Pike",
             "decimal_odds": 1001,
             "fractional_odds": "1000/1",
             "tier": "E"
         },
         {
-            "tournament_id": 1249,
-            "id": 23,
-            "first_name": "John",
-            "last_name": "Daly",
+            "tournament_id": 55939,
+            "id": 109,
+            "first_name": "Nicholas",
+            "last_name": "Poppleton",
             "decimal_odds": 1001,
             "fractional_odds": "1000/1",
             "tier": "E"
         },
         {
-            "tournament_id": 6567,
-            "id": 122,
-            "first_name": "Vijay",
-            "last_name": "Singh",
+            "tournament_id": 34541,
+            "id": 118,
+            "first_name": "Poom",
+            "last_name": "Saksansin",
             "decimal_odds": 1001,
             "fractional_odds": "1000/1",
             "tier": "E"
         },
         {
-            "tournament_id": 6515,
-            "id": 91,
-            "first_name": "Shaun",
-            "last_name": "Micheel",
+            "tournament_id": 45198,
+            "id": 33,
+            "first_name": "Sam",
+            "last_name": "Forgan",
+            "decimal_odds": 1501,
+            "fractional_odds": "1500/1",
+            "tier": "E"
+        },
+        {
+            "tournament_id": 60370,
+            "id": 22,
+            "first_name": "Daniel",
+            "last_name": "Croft",
+            "decimal_odds": 2001,
+            "fractional_odds": "2000/1",
+            "tier": "E"
+        },
+        {
+            "tournament_id": 58461,
+            "id": 60,
+            "first_name": "Ben",
+            "last_name": "Hutchinson",
+            "decimal_odds": 2001,
+            "fractional_odds": "2000/1",
+            "tier": "E"
+        },
+        {
+            "tournament_id": 55537,
+            "id": 150,
+            "first_name": "Connor",
+            "last_name": "Worsdall",
             "decimal_odds": 2001,
             "fractional_odds": "2000/1",
             "tier": "E"

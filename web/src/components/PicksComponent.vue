@@ -251,8 +251,8 @@ export default {
     async fetchData() {
       this.loading = true;
       const data = await PicksService.load();
-      // this.picksAllowed = (Date.parse(data.activeTournament.accepting_picks_until) - Date.now()) > 0;
-      this.picksAllowed = true;
+      this.picksAllowed = (Date.parse(data.activeTournament.accepting_picks_until) - Date.now()) > 0;
+      // this.picksAllowed = true;
       this.acceptingPicksUntil = data.activeTournament.accepting_picks_until;
       this.players = data.tournamentField.field;
       this.picks_per_tier = data.tournamentField.picks_per_tier;
