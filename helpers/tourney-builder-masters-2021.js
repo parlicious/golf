@@ -37,8 +37,8 @@ const getLeaderboard = async () => {
 
 var golfers = null;
 var tournament_info = {
-    "id": "2021-masters",
-    "tournament_name": "2021 Masters",
+    "id": "2022-masters",
+    "tournament_name": "2022 Masters",
     "timestamp": Date.now(),
     "picks_per_tier": {
         "A": 1,
@@ -153,7 +153,7 @@ const saveTournamentInfo = async (tournament_info) => {
 
 const main = async () => {
     const tournamentInfo = await buildit();
-    await saveTournamentInfo(tournament_info);
+    await saveTournamentInfo(tournamentInfo);
 };
 
 main().catch(console.error);
