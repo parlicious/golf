@@ -15,7 +15,7 @@ var id = 1;
 
 
 const getLeaderboard = async () => {
-    const leaderboardResponse = await axios.get("https://www.masters.com/en_US/scores/feeds/2021/players/players.json");
+    const leaderboardResponse = await axios.get("https://www.masters.com/en_US/scores/feeds/2022/players/players.json");
     return leaderboardResponse.data;
 }
 
@@ -67,7 +67,7 @@ var options = {
 };
 
 const bovada = async () => {
-    const bovadaResponse = await axios.get('https://www.bovada.lv/services/sports/event/coupon/events/A/description/golf/golf-futures/the-masters-2021-202104080000?lang=en');
+    const bovadaResponse = await axios.get('https://www.bovada.lv/services/sports/event/coupon/events/A/description/golf/pga-tour?marketFilterId=rank&preMatchOnly=true&eventsLimit=50&lang=en');
     var bovadadata = bovadaResponse.data
     var bovadaobj = bovadadata[0];
     var bovtourney = bovadaobj.events[0];
