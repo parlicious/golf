@@ -7,7 +7,7 @@
     "refreshed": 1618196594901,
     "players": [
         {
-            "id": "45526",
+            "id": 45526,
             "first_name": "Abraham",
             "last_name": "Ancer",
             "thru": "",
@@ -20,7 +20,7 @@
             "status": "F"
         },
         {
-            "id": "40026",
+            "id": 40026,
             "first_name": "Daniel",
             "last_name": "Berger",
             "thru": "",
@@ -33,7 +33,7 @@
             "status": "F"
         },
         {
-            "id": "45522",
+            "id": 45522,
             "first_name": "Christiaan",
             "last_name": "Bezuidenhout",
             "thru": "",
@@ -46,7 +46,7 @@
             "status": "F"
         },
         {
-            "id": "47504",
+            "id": 47504,
             "first_name": "Sam",
             "last_name": "Burns",
             "thru": "",
@@ -59,7 +59,7 @@
             "status": "F"
         },
         {
-            "id": "35450",
+            "id": 35450,
             "first_name": "Patrick",
             "last_name": "Cantlay",
             "thru": "",
@@ -72,7 +72,7 @@
             "status": "F"
         },
         {
-            "id": "25364",
+            "id": 25364,
             "first_name": "Paul",
             "last_name": "Casey",
             "thru": "",
@@ -85,7 +85,7 @@
             "status": "F"
         },
         {
-            "id": "52372",
+            "id": 52372,
             "first_name": "Cameron",
             "last_name": "Champ",
             "thru": "",
@@ -98,7 +98,7 @@
             "status": "F"
         },
         {
-            "id": "20229",
+            "id": 20229,
             "first_name": "Stewart",
             "last_name": "Cink",
             "thru": "",
@@ -111,7 +111,7 @@
             "status": "F"
         },
         {
-            "id": "39997",
+            "id": 39997,
             "first_name": "Corey",
             "last_name": "Conners",
             "thru": "",
@@ -124,7 +124,7 @@
             "status": "F"
         },
         {
-            "id": "1226",
+            "id": 1226,
             "first_name": "Fred",
             "last_name": "Couples",
             "thru": "",
@@ -137,7 +137,7 @@
             "status": "F"
         },
         {
-            "id": "45157",
+            "id": 45157,
             "first_name": "Cameron",
             "last_name": "Davis",
             "thru": "",
@@ -150,7 +150,7 @@
             "status": "F"
         },
         {
-            "id": "47959",
+            "id": 47959,
             "first_name": "Bryson",
             "last_name": "DeChambeau",
             "thru": "",
@@ -163,7 +163,7 @@
             "status": "F"
         },
         {
-            "id": "29725",
+            "id": 29725,
             "first_name": "Tony",
             "last_name": "Finau",
             "thru": "",
@@ -176,7 +176,7 @@
             "status": "F"
         },
         {
-            "id": "40098",
+            "id": 40098,
             "first_name": "Matthew",
             "last_name": "Fitzpatrick",
             "thru": "",
@@ -189,7 +189,7 @@
             "status": "F"
         },
         {
-            "id": "30911",
+            "id": 30911,
             "first_name": "Tommy",
             "last_name": "Fleetwood",
             "thru": "",
@@ -202,7 +202,7 @@
             "status": "F"
         },
         {
-            "id": "21209",
+            "id": 21209,
             "first_name": "Sergio",
             "last_name": "García",
             "thru": "",
@@ -215,7 +215,7 @@
             "status": "F"
         },
         {
-            "id": "25900",
+            "id": 25900,
             "first_name": "Lucas",
             "last_name": "Glover",
             "thru": "",
@@ -228,7 +228,7 @@
             "status": "F"
         },
         {
-            "id": "46402",
+            "id": 46402,
             "first_name": "Talor",
             "last_name": "Gooch",
             "thru": "",
@@ -241,7 +241,7 @@
             "status": "F"
         },
         {
-            "id": "61143",
+            "id": 61143,
             "first_name": "Austin",
             "last_name": "Greaser",
             "thru": "",
@@ -254,7 +254,7 @@
             "status": "F"
         },
         {
-            "id": "51586",
+            "id": 51586,
             "first_name": "Stewart",
             "last_name": "Hagestad",
             "thru": "",
@@ -267,7 +267,7 @@
             "status": "F"
         },
         {
-            "id": "27644",
+            "id": 27644,
             "first_name": "Brian",
             "last_name": "Harman",
             "thru": "",
@@ -280,7 +280,7 @@
             "status": "F"
         },
         {
-            "id": "20766",
+            "id": 20766,
             "first_name": "Padraig",
             "last_name": "Harrington",
             "thru": "",
@@ -293,7 +293,7 @@
             "status": "F"
         },
         {
-            "id": "34363",
+            "id": 34363,
             "first_name": "Tyrrell",
             "last_name": "Hatton",
             "thru": "",
@@ -306,7 +306,7 @@
             "status": "F"
         },
         {
-            "id": "34098",
+            "id": 34098,
             "first_name": "Russell",
             "last_name": "Henley",
             "thru": "",
@@ -319,7 +319,7 @@
             "status": "F"
         },
         {
-            "id": "39058",
+            "id": 39058,
             "first_name": "Lucas",
             "last_name": "Herbert",
             "thru": "",
@@ -332,7 +332,7 @@
             "status": "F"
         },
         {
-            "id": "54421",
+            "id": 54421,
             "first_name": "Garrick",
             "last_name": "Higgo",
             "thru": "",
@@ -345,7 +345,7 @@
             "status": "F"
         },
         {
-            "id": "33597",
+            "id": 33597,
             "first_name": "Harry",
             "last_name": "Higgs",
             "thru": "",
@@ -358,7 +358,7 @@
             "status": "F"
         },
         {
-            "id": "35532",
+            "id": 35532,
             "first_name": "Tom",
             "last_name": "Hoge",
             "thru": "",
@@ -371,7 +371,7 @@
             "status": "F"
         },
         {
-            "id": "39977",
+            "id": 39977,
             "first_name": "Max",
             "last_name": "Homa",
             "thru": "",
@@ -384,7 +384,7 @@
             "status": "F"
         },
         {
-            "id": "29420",
+            "id": 29420,
             "first_name": "Billy",
             "last_name": "Horschel",
             "thru": "",
@@ -397,7 +397,7 @@
             "status": "F"
         },
         {
-            "id": "46717",
+            "id": 46717,
             "first_name": "Viktor",
             "last_name": "Hovland",
             "thru": "",
@@ -410,7 +410,7 @@
             "status": "F"
         },
         {
-            "id": "35506",
+            "id": 35506,
             "first_name": "Mackenzie",
             "last_name": "Hughes",
             "thru": "",
@@ -423,7 +423,7 @@
             "status": "F"
         },
         {
-            "id": "39971",
+            "id": 39971,
             "first_name": "Sungjae",
             "last_name": "Im",
             "thru": "",
@@ -436,7 +436,7 @@
             "status": "F"
         },
         {
-            "id": "61560",
+            "id": 61560,
             "first_name": "Aaron",
             "last_name": "Jarvis",
             "thru": "",
@@ -449,7 +449,7 @@
             "status": "F"
         },
         {
-            "id": "30925",
+            "id": 30925,
             "first_name": "Dustin",
             "last_name": "Johnson",
             "thru": "",
@@ -462,7 +462,7 @@
             "status": "F"
         },
         {
-            "id": "24024",
+            "id": 24024,
             "first_name": "Zach",
             "last_name": "Johnson",
             "thru": "",
@@ -475,7 +475,7 @@
             "status": "F"
         },
         {
-            "id": "47917",
+            "id": 47917,
             "first_name": "Takumi",
             "last_name": "Kanaya",
             "thru": "",
@@ -488,7 +488,7 @@
             "status": "F"
         },
         {
-            "id": "37455",
+            "id": 37455,
             "first_name": "Si Woo",
             "last_name": "Kim",
             "thru": "",
@@ -501,7 +501,7 @@
             "status": "F"
         },
         {
-            "id": "29478",
+            "id": 29478,
             "first_name": "Kevin",
             "last_name": "Kisner",
             "thru": "",
@@ -514,7 +514,7 @@
             "status": "F"
         },
         {
-            "id": "36689",
+            "id": 36689,
             "first_name": "Brooks",
             "last_name": "Koepka",
             "thru": "",
@@ -527,7 +527,7 @@
             "status": "F"
         },
         {
-            "id": "30944",
+            "id": 30944,
             "first_name": "Jason",
             "last_name": "Kokrak",
             "thru": "",
@@ -540,7 +540,7 @@
             "status": "F"
         },
         {
-            "id": "1666",
+            "id": 1666,
             "first_name": "Bernhard",
             "last_name": "Langer",
             "thru": "",
@@ -553,7 +553,7 @@
             "status": "F"
         },
         {
-            "id": "32791",
+            "id": 32791,
             "first_name": "Kyoung-Hoon",
             "last_name": "Lee",
             "thru": "",
@@ -566,7 +566,7 @@
             "status": "F"
         },
         {
-            "id": "37378",
+            "id": 37378,
             "first_name": "Min Woo",
             "last_name": "Lee",
             "thru": "",
@@ -579,7 +579,7 @@
             "status": "F"
         },
         {
-            "id": "26851",
+            "id": 26851,
             "first_name": "Marc",
             "last_name": "Leishman",
             "thru": "",
@@ -592,7 +592,7 @@
             "status": "F"
         },
         {
-            "id": "27129",
+            "id": 27129,
             "first_name": "Luke",
             "last_name": "List",
             "thru": "",
@@ -605,7 +605,7 @@
             "status": "F"
         },
         {
-            "id": "33204",
+            "id": 33204,
             "first_name": "Shane",
             "last_name": "Lowry",
             "thru": "",
@@ -618,7 +618,7 @@
             "status": "F"
         },
         {
-            "id": "1717",
+            "id": 1717,
             "first_name": "Sandy",
             "last_name": "Lyle",
             "thru": "",
@@ -631,7 +631,7 @@
             "status": "F"
         },
         {
-            "id": "52215",
+            "id": 52215,
             "first_name": "Robert",
             "last_name": "MacIntyre",
             "thru": "",
@@ -644,7 +644,7 @@
             "status": "F"
         },
         {
-            "id": "32839",
+            "id": 32839,
             "first_name": "Hideki",
             "last_name": "Matsuyama",
             "thru": "",
@@ -657,7 +657,7 @@
             "status": "F"
         },
         {
-            "id": "28237",
+            "id": 28237,
             "first_name": "Rory",
             "last_name": "McIlroy",
             "thru": "",
@@ -670,7 +670,7 @@
             "status": "F"
         },
         {
-            "id": "39834",
+            "id": 39834,
             "first_name": "Guido",
             "last_name": "Migliozzi",
             "thru": "",
@@ -683,7 +683,7 @@
             "status": "F"
         },
         {
-            "id": "1823",
+            "id": 1823,
             "first_name": "Larry",
             "last_name": "Mize",
             "thru": "",
@@ -696,7 +696,7 @@
             "status": "F"
         },
         {
-            "id": "25198",
+            "id": 25198,
             "first_name": "Francesco",
             "last_name": "Molinari",
             "thru": "",
@@ -709,7 +709,7 @@
             "status": "F"
         },
         {
-            "id": "50525",
+            "id": 50525,
             "first_name": "Collin",
             "last_name": "Morikawa",
             "thru": "",
@@ -722,7 +722,7 @@
             "status": "F"
         },
         {
-            "id": "25396",
+            "id": 25396,
             "first_name": "Kevin",
             "last_name": "Na",
             "thru": "",
@@ -735,7 +735,7 @@
             "status": "F"
         },
         {
-            "id": "49228",
+            "id": 49228,
             "first_name": "Keita",
             "last_name": "Nakajima",
             "thru": "",
@@ -748,7 +748,7 @@
             "status": "F"
         },
         {
-            "id": "45486",
+            "id": 45486,
             "first_name": "Joaquin",
             "last_name": "Niemann",
             "thru": "",
@@ -761,7 +761,7 @@
             "status": "F"
         },
         {
-            "id": "6373",
+            "id": 6373,
             "first_name": "José María",
             "last_name": "Olazábal",
             "thru": "",
@@ -774,7 +774,7 @@
             "status": "F"
         },
         {
-            "id": "26329",
+            "id": 26329,
             "first_name": "Louis",
             "last_name": "Oosthuizen",
             "thru": "",
@@ -787,7 +787,7 @@
             "status": "F"
         },
         {
-            "id": "23320",
+            "id": 23320,
             "first_name": "Ryan",
             "last_name": "Palmer",
             "thru": "",
@@ -800,7 +800,7 @@
             "status": "F"
         },
         {
-            "id": "33293",
+            "id": 33293,
             "first_name": "Thomas",
             "last_name": "Pieters",
             "thru": "",
@@ -813,7 +813,7 @@
             "status": "F"
         },
         {
-            "id": "59164",
+            "id": 59164,
             "first_name": "James",
             "last_name": "Piot",
             "thru": "",
@@ -826,7 +826,7 @@
             "status": "F"
         },
         {
-            "id": "28252",
+            "id": 28252,
             "first_name": "Séamus",
             "last_name": "Power",
             "thru": "",
@@ -839,7 +839,7 @@
             "status": "F"
         },
         {
-            "id": "46970",
+            "id": 46970,
             "first_name": "Jon",
             "last_name": "Rahm",
             "thru": "",
@@ -852,7 +852,7 @@
             "status": "F"
         },
         {
-            "id": "34360",
+            "id": 34360,
             "first_name": "Patrick",
             "last_name": "Reed",
             "thru": "",
@@ -865,7 +865,7 @@
             "status": "F"
         },
         {
-            "id": "22405",
+            "id": 22405,
             "first_name": "Justin",
             "last_name": "Rose",
             "thru": "",
@@ -878,7 +878,7 @@
             "status": "F"
         },
         {
-            "id": "48081",
+            "id": 48081,
             "first_name": "Xander",
             "last_name": "Schauffele",
             "thru": "",
@@ -891,7 +891,7 @@
             "status": "F"
         },
         {
-            "id": "46046",
+            "id": 46046,
             "first_name": "Scottie",
             "last_name": "Scheffler",
             "thru": "",
@@ -904,7 +904,7 @@
             "status": "F"
         },
         {
-            "id": "26331",
+            "id": 26331,
             "first_name": "Charl",
             "last_name": "Schwartzel",
             "thru": "",
@@ -917,7 +917,7 @@
             "status": "F"
         },
         {
-            "id": "24502",
+            "id": 24502,
             "first_name": "Adam",
             "last_name": "Scott",
             "thru": "",
@@ -930,7 +930,7 @@
             "status": "F"
         },
         {
-            "id": "60371",
+            "id": 60371,
             "first_name": "Laird",
             "last_name": "Shepherd",
             "thru": "",
@@ -943,7 +943,7 @@
             "status": "F"
         },
         {
-            "id": "29221",
+            "id": 29221,
             "first_name": "Webb",
             "last_name": "Simpson",
             "thru": "",
@@ -956,7 +956,7 @@
             "status": "F"
         },
         {
-            "id": "6567",
+            "id": 6567,
             "first_name": "Vijay",
             "last_name": "Singh",
             "thru": "",
@@ -969,7 +969,7 @@
             "status": "F"
         },
         {
-            "id": "35891",
+            "id": 35891,
             "first_name": "Cameron",
             "last_name": "Smith",
             "thru": "",
@@ -982,7 +982,7 @@
             "status": "F"
         },
         {
-            "id": "39324",
+            "id": 39324,
             "first_name": "J.J.",
             "last_name": "Spaun",
             "thru": "",
@@ -995,7 +995,7 @@
             "status": "F"
         },
         {
-            "id": "34046",
+            "id": 34046,
             "first_name": "Jordan",
             "last_name": "Spieth",
             "thru": "",
@@ -1008,7 +1008,7 @@
             "status": "F"
         },
         {
-            "id": "49960",
+            "id": 49960,
             "first_name": "Sepp",
             "last_name": "Straka",
             "thru": "",
@@ -1021,7 +1021,7 @@
             "status": "F"
         },
         {
-            "id": "34264",
+            "id": 34264,
             "first_name": "Hudson",
             "last_name": "Swafford",
             "thru": "",
@@ -1034,7 +1034,7 @@
             "status": "F"
         },
         {
-            "id": "33448",
+            "id": 33448,
             "first_name": "Justin",
             "last_name": "Thomas",
             "thru": "",
@@ -1047,7 +1047,7 @@
             "status": "F"
         },
         {
-            "id": "40006",
+            "id": 40006,
             "first_name": "Erik",
             "last_name": "van Rooyen",
             "thru": "",
@@ -1060,7 +1060,7 @@
             "status": "F"
         },
         {
-            "id": "37189",
+            "id": 37189,
             "first_name": "Harold",
             "last_name": "Varner III",
             "thru": "",
@@ -1073,7 +1073,7 @@
             "status": "F"
         },
         {
-            "id": "25804",
+            "id": 25804,
             "first_name": "Bubba",
             "last_name": "Watson",
             "thru": "",
@@ -1086,7 +1086,7 @@
             "status": "F"
         },
         {
-            "id": "10423",
+            "id": 10423,
             "first_name": "Mike",
             "last_name": "Weir",
             "thru": "",
@@ -1099,7 +1099,7 @@
             "status": "F"
         },
         {
-            "id": "20396",
+            "id": 20396,
             "first_name": "Lee",
             "last_name": "Westwood",
             "thru": "",
@@ -1112,7 +1112,7 @@
             "status": "F"
         },
         {
-            "id": "32139",
+            "id": 32139,
             "first_name": "Danny",
             "last_name": "Willett",
             "thru": "",
@@ -1125,7 +1125,7 @@
             "status": "F"
         },
         {
-            "id": "56278",
+            "id": 56278,
             "first_name": "Matthew",
             "last_name": "Wolff",
             "thru": "",
@@ -1138,7 +1138,7 @@
             "status": "F"
         },
         {
-            "id": "31323",
+            "id": 31323,
             "first_name": "Gary",
             "last_name": "Woodland",
             "thru": "",
@@ -1151,7 +1151,7 @@
             "status": "F"
         },
         {
-            "id": "8793",
+            "id": 8793,
             "first_name": "Tiger",
             "last_name": "Woods",
             "thru": "",
@@ -1164,7 +1164,7 @@
             "status": "F"
         },
         {
-            "id": "57366",
+            "id": 57366,
             "first_name": "Cameron",
             "last_name": "Young",
             "thru": "",
@@ -1177,7 +1177,7 @@
             "status": "F"
         },
         {
-            "id": "47483",
+            "id": 47483,
             "first_name": "Will",
             "last_name": "Zalatoris",
             "thru": "",

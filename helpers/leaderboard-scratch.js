@@ -29,7 +29,7 @@ const buildit = async () => {
         let golfer = golfers[g];
         let newgolfer = 
         {
-            "id": golfer.id,
+            "id": parseInt(golfer.id,10),
             "first_name": golfer.first_name,
             "last_name": golfer.last_name,
             "thru": "",
