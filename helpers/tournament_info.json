@@ -272,10 +272,11 @@
             "tier": "C"
         },
         {
+            "tournament_id": 39971,
             "id": 33,
             "first_name": "Sungjae",
             "last_name": "Im",
-            "decimal_odds": 502,
+            "decimal_odds": 67,
             "fractional_odds": "66/1",
             "tier": "C"
         },
@@ -703,18 +704,20 @@
             "tier": "D"
         },
         {
+            "tournament_id": 32791,
             "id": 43,
             "first_name": "Kyoung-Hoon",
             "last_name": "Lee",
-            "decimal_odds": 502,
+            "decimal_odds": 161,
             "fractional_odds": "160/1",
             "tier": "D"
         },
         {
+            "tournament_id":39324,
             "id": 76,
             "first_name": "J.J.",
             "last_name": "Spaun",
-            "decimal_odds": 502,
+            "decimal_odds": 201,
             "fractional_odds": "200/1",
             "tier": "D"
         },
