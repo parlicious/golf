@@ -272,6 +272,14 @@
             "tier": "C"
         },
         {
+            "id": 33,
+            "first_name": "Sungjae",
+            "last_name": "Im",
+            "decimal_odds": 502,
+            "fractional_odds": "66/1",
+            "tier": "C"
+        },
+        {
             "tournament_id": 26851,
             "id": 45,
             "first_name": "Marc",
@@ -692,14 +700,6 @@
             "last_name": "Migliozzi",
             "decimal_odds": 401,
             "fractional_odds": "400/1",
-            "tier": "D"
-        },
-        {
-            "id": 33,
-            "first_name": "Sungjae",
-            "last_name": "Im",
-            "decimal_odds": 502,
-            "fractional_odds": "66/1",
             "tier": "D"
         },
         {
