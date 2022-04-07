@@ -5,6 +5,7 @@ import History from './views/History.vue';
 import Standings from './views/Standings.vue';
 import Stream from './views/Stream.vue';
 import Rosters from "./views/Rosters.vue";
+import Ticker from "./views/Ticker.vue";
 
 Vue.use(Router);
 
@@ -34,6 +35,11 @@ export default new Router({
       path: '/rosters',
       name: 'rosters',
       component: Rosters,
+    },
+    {
+      path: '/ticker',
+      name: 'ticker',
+      component: Ticker,
     },
     {
       path: '/picks',

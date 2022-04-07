@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "axios": "^0.18.0",
+    "babel-plugin-transform-react-jsx": "^6.24.1",
     "bcryptjs": "^2.4.3",
     "bootstrap": "^4.3.1",
     "figlet": "^1.5.0",
@@ -17,11 +18,15 @@
     "moment": "^2.24.0",
     "moment-timezone": "^0.5.25",
     "popper.js": "^1.14.7",
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0",
     "sjcl": "^1.0.8",
+    "styled-components": "^5.3.5",
     "vue": "^2.6.6",
     "vue-async-computed": "^3.6.1",
     "vue-axios": "^2.1.4",
     "vue-router": "^3.0.1",
+    "vuera": "^0.2.7",
     "vuex": "^3.0.1"
   },
   "devDependencies": {
