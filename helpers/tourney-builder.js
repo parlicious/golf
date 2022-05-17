@@ -14,21 +14,23 @@ var odds = new Map();
 var id = 1;
 
 const getLeaderboardNew = async () => {
-    const response = await axios.get('http://microservice.pgatour.com/js');
+    console.log('Getting leaderboard...');
+    const response = await axios.get('https://microservice.pgatour.com/js');
     const remoteSrc = response.data;
+    console.log(remoteSrc);
     global.window = {};
     vm.runInThisContext(remoteSrc, 'pga_token.js');
 
     const id = 'id8730931'
     const token = global.window.pgatour.setTrackingUserId(id);
-    const url = `https://statdata-api-prod.pgatour.com/api/clientfile/Field?T_CODE=r&T_NUM=536&YEAR=2021&format=json&userTrackingId=${token}`;
+    const url = `https://statdata-api-prod.pgatour.com/api/clientfile/Field?T_CODE=r&T_NUM=536&YEAR=2022&format=json&userTrackingId=${token}`;
     console.log(url);
     const leaderboardResponse = await axios.get(url);
     return leaderboardResponse.data;
 };
 
 const getLeaderboard = async () => {
-    const leaderboardResponse = await axios.get("https://statdata.pgatour.com/r/026/2021/field.json");
+    const leaderboardResponse = await axios.get("https://statdata-api-prod.pgatour.com/api/clientfile/Field?T_CODE=r&T_NUM=033&YEAR=2022&format=json");
     return leaderboardResponse.data;
 }
 
@@ -66,7 +68,7 @@ var options = {
 };
 
 const bovada = async () => {
-    const bovadaResponse = await axios.get('http://www.bovada.lv/services/sports/event/v2/events/A/description/golf?marketFilterId=rank&preMatchOnly=true&eventsLimit=50&lang=en');
+    const bovadaResponse = await axios.get('https://www.bovada.lv/services/sports/event/v2/events/A/description/golf?marketFilterId=rank&preMatchOnly=true&eventsLimit=50&lang=en');
     var bovadadata = bovadaResponse.data
     var bovadaobj = bovadadata[0];
     var bovtourney = bovadaobj.events[0];
@@ -96,21 +98,25 @@ const bovada = async () => {
 // bovada().then(console.log).catch(console.error);
 
 const buildit = async () => {
-    const golfers = (await getLeaderboardNew()).Tournament.Players
+    console.log('Building...');
+    const golfers = (await getLeaderboard()).Tournament.Players
+    console.log('Fetched golfers');
     const bovadaField = await bovada();
+    console.log('Fetched bovada');
     //need to fix the masters hard coding
     for(let g = 0; g < golfers.length; g++) {
         let golfer = golfers[g];
         //skip placeholders
         if(golfer.id === "90001") continue;
         //standardize the record
+        console.log(golfer);
         let newgolfer = {
             "id": id++,
-            "first_name":golfer.playerNames.firstName,
-            "last_name":golfer.playerNames.lastName,
+            "first_name":golfer.PlayerFirstName,
+            "last_name":golfer.PlayerLastName,
             "country_code": golfer.country,
             "masters_id": parseInt(golfer.id),
-            "pga_id": parseInt(golfer.playerId),
+            "pga_id": parseInt(golfer.TournamentPlayerId),
             "open_id": null,
             "us_open_id": null
         };
@@ -151,8 +157,10 @@ const saveTournamentInfo = async (tournament_info) => {
 };
 
 const main = async () => {
+    console.log("Starting...");
     const tournamentInfo = await buildit();
-    await saveTournamentInfo(tournament_info);
+    console.log("Built tournament info");
+    await saveTournamentInfo(tournamentInfo);
 };
 
-main().catch(console.error);
+main().then(console.log).catch(console.error);
